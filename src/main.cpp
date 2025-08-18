@@ -7,6 +7,7 @@
 
 #define DELAY 2000
 #define BLINK_SPEED 500
+#define COUNTDOWN_DURATION 10000  // 10 seconds in milliseconds
 
 const int ledPin = D7; 
 const int shutterPin = D6; // Pin for trigger
@@ -15,6 +16,8 @@ int incoming;
 unsigned long now;
 unsigned long timestampButton;
 unsigned long timestampButton2;
+unsigned long countdownStartTime;
+bool countdownActive = false;
 
 BLEServer *pServer = nullptr;
 bool deviceConnected = false;
@@ -76,6 +79,26 @@ class MyCallbacks : public BLECharacteristicCallbacks {
                     timestampButton2 = now;
                 } else {
                     digitalWrite(ledPin, LOW);
+                }
+                break;
+            case 3:
+                Serial.print("Button 3, value = ");
+                Serial.println(value);
+                if (value == 1) {
+                    // Start Arduino countdown - ensure clean state first
+                    countdownActive = false;
+                    countdownStartTime = millis();
+                    countdownActive = true;
+                    digitalWrite(ledPin, HIGH);
+                    Serial.print("Starting 10-second countdown on Arduino at time: ");
+                    Serial.println(countdownStartTime);
+                } else {
+                    // Cancel Arduino countdown
+                    countdownActive = false;
+                    countdownStartTime = 0;
+                    digitalWrite(ledPin, LOW);
+                    Serial.print("Countdown cancelled. Reset timestamp to: ");
+                    Serial.println(countdownStartTime);
                 }
                 break;
         }
@@ -147,6 +170,37 @@ void loop() {
             digitalWrite(ledPin, !digitalRead(ledPin));
             timestampButton2 = now;
             Serial.println("Button 2: Blink LED");
+        }
+    }
+    
+    // Handle Arduino countdown - runs regardless of connection status
+    if (countdownActive && countdownStartTime > 0) {
+        unsigned long currentTime = millis();
+        unsigned long elapsed = currentTime - countdownStartTime;
+        Serial.print("Countdown running - active: ");
+        Serial.print(countdownActive);
+        Serial.print(", startTime: ");
+        Serial.print(countdownStartTime);
+        Serial.print(", elapsed: ");
+        Serial.println(elapsed);
+        
+        if (elapsed >= COUNTDOWN_DURATION) {
+            // Countdown complete - trigger shutter
+            countdownActive = false;
+            countdownStartTime = 0;
+            triggerShutter();
+            digitalWrite(ledPin, LOW);
+            Serial.print("Arduino countdown complete - shutter triggered. Elapsed: ");
+            Serial.print(elapsed);
+            Serial.print("ms at time: ");
+            Serial.println(currentTime);
+        } else {
+            // Blink LED during countdown (faster blink than button 2)
+            if (elapsed % 250 < 125) {  // 250ms cycle, on for first 125ms
+                digitalWrite(ledPin, HIGH);
+            } else {
+                digitalWrite(ledPin, LOW);
+            }
         }
     }
 }
