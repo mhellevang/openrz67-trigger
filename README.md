@@ -2,7 +2,7 @@
 
 openrz67-trigger is a arduino compatible project made for enabling remote triggering of the Mamiya RZ67 analog camera from an app. openrz67-trigger is made to run on a small ESP32 device (in this case Seeed XIAO ESP32C3) that is connected to the electrical input pins on the Mamiya RZ67 camera.
 
-There is also an android app made for communication with openrz67-trigger, see [Android Blaa RZ67](https://github.com/mhellevang/Android-Blaa-RZ67).
+There is also an android app made for communication with openrz67-trigger, see [openrz67-android](https://github.com/mhellevang/openrz67-android).
 
 # What is the Mamiya RZ67?
 
