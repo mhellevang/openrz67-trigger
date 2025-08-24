@@ -4,26 +4,15 @@ openrz67-trigger is a arduino compatible project made for enabling remote trigge
 
 There is also an android app made for communication with openrz67-trigger, see [openrz67-android](https://github.com/mhellevang/openrz67-android).
 
-# What is the Mamiya RZ67?
-
-The [Mamiya RZ67](https://en.wikipedia.org/wiki/Mamiya_RZ67) is a great analog medium format film camera by Mamiya,
-first made in 1982. It's the pinnacle of medium format studio cameras. 
-
-![Photo of Mamiya RZ67](assets/Mamiya_RZ67_Professional_and_a_Fujifilm_color_120_format_roll_film_(60_mm_wide).jpg)
-*Photo by Thomas Claveirole from Paris, France, CC BY-SA 2.0 <https://creativecommons.org/licenses/by-sa/2.0>, via Wikimedia Commons*
-
-# How do I get my own device?
-
-This project is still very much a work in progress. 
-
-I'll publish my recommendations for making your own device once I've made a prototype I'm happy with. If you want to start working on making your own device now, you can use the schematics and code in this repository as a starting point, but do expect to make some changes to get it to work for you. Tinkering is half the fun!
-
 ## Hardware
+Openrz67-trigger is made to run on an ESP32-C3, a single-core Wi-Fi and Bluetooth 5 (LE) microcontroller SoC from Espressif.
 
-* 1x Seeed XIAO ESP32C3 (or similar ESP32 device with BLE) to receive the bluetooth commands and trigger the camera
-* 1x IRF520 MOSFET (or similar) to control the shutter release
-* Wires
-* Battery or other power source (LiPo, USP-C) 
+My current prototype is made up of:
+
+* 1x Seeed XIAO ESP32C3 development board
+* 1x IRF520 MOSFET to control the shutter release
+* Small 500mah LiPo
+* 3d printed case
 
 ## Camera connection
 
