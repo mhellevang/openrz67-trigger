@@ -25,6 +25,3 @@ The camera has a four pin IO port in front. The pins are labeled as follows (lef
 
 To trigger the shutter release from the ESP32, we need to connect GND, S1 and S2 via the MOSFET.
 
-## Wiring
-
-![Schematics](assets/RZ67_Seeed_XIAO_ESP32C3_bb.png?)
