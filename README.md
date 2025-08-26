@@ -23,5 +23,5 @@ The camera has a four pin IO port in front. The pins are labeled as follows (lef
 * 3: S1 switch
 * 4: S2 switch
 
-To trigger the shutter release from the ESP32, we need to connect GND, S1 and S2 via the MOSFET.
+To trigger the shutter release from the ESP32, we need to short S1/S2 to GND.
 
