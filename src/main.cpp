@@ -124,9 +124,9 @@ void checkToReconnect() //added
 
 void setup() {
     Serial.begin(19200);
-    Serial.println("Hello from RZ67 Blaa!");
+    Serial.println("Hello from Open RZ67 Trigger!");
 
-    BLEDevice::init("RZ67 Blaa");
+    BLEDevice::init("Open RZ67 Trigger");
     pServer = BLEDevice::createServer();
     pServer->setCallbacks(new MyServerCallbacks());
 
@@ -138,7 +138,7 @@ void setup() {
     );
     pCharacteristic->setCallbacks(new MyCallbacks());
 
-    pCharacteristic->setValue("Hello World says Neil");
+    pCharacteristic->setValue("Hello from Open RZ67 Trigger!");
     pService->start();
 
     BLEAdvertising *pAdvertising = BLEDevice::getAdvertising();
@@ -147,7 +147,6 @@ void setup() {
     pAdvertising->setMinPreferred(0x06);  // functions that help with iPhone connections issue
     pAdvertising->setMinPreferred(0x12);
     BLEDevice::startAdvertising();
-    Serial.println("Characteristic defined! Now you can read it in your phone!");
 
     pinMode(ledPin, OUTPUT);
     pinMode(shutterPin, OUTPUT);
@@ -190,7 +189,7 @@ void loop() {
             countdownStartTime = 0;
             triggerShutter();
             digitalWrite(ledPin, LOW);
-            Serial.print("Arduino countdown complete - shutter triggered. Elapsed: ");
+            Serial.print("Open RZ67 Trigger countdown complete - shutter triggered. Elapsed: ");
             Serial.print(elapsed);
             Serial.print("ms at time: ");
             Serial.println(currentTime);
