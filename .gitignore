@@ -1,6 +1,42 @@
-.pio
+# PlatformIO
+.pio/
+.pioenvs/
+.piolibdeps/
+pioenvs/
+piolibdeps/
+
+# Arduino IDE
+*.hex
+*.bin
+*.elf
+*.map
+
+# Build artifacts
+build/
+cmake-build-*/
 CMakeListsPrivate.txt
-cmake-build-*/ 
+CMakeLists.txt
+
+# IDE files
 .idea/
 .vscode/
+*.code-workspace
+
+# OS files
 .DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*~
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Backup files
+*.bak
+*.backup
+projectFilesBackup/
