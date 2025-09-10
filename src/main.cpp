@@ -56,6 +56,11 @@ class MyServerCallbacks : public BLEServerCallbacks {
         deviceConnected = false;
         Serial.println("*** BLE CLIENT DISCONNECTED ***");
         Serial.flush();
+        
+        // Immediately restart advertising for new connections
+        delay(100); // Minimal delay for cleanup
+        pServer->startAdvertising();
+        Serial.println("*** RESTARTED ADVERTISING AFTER DISCONNECT ***");
     };
 
 };
@@ -163,24 +168,15 @@ void setupBLE() {
     Serial.println("Initializing BLE...");
     Serial.flush();
     
-    // Add small delay before BLE init to ensure system is stable
-    delay(500);
-    
     BLEDevice::init("OpenRZ67");
     Serial.println("BLE device initialized with name: OpenRZ67");
     Serial.flush();
-    
-    // Small delay after init to let BLE stack stabilize
-    delay(200);
     
     Serial.println("Creating BLE server...");
     Serial.flush();
     pServer = BLEDevice::createServer();
     Serial.println("BLE server object created");
     Serial.flush();
-    
-    // Delay after server creation
-    delay(100);
     
     pServer->setCallbacks(new MyServerCallbacks());
     Serial.println("BLE server callbacks set");
@@ -260,17 +256,15 @@ void setupBLE() {
 
 void checkToReconnect() //added
 {
-    // disconnected so advertise
-    if (!deviceConnected && oldDeviceConnected) {
-        delay(500); // give the bluetooth stack the chance to get things ready
-        pServer->startAdvertising(); // restart advertising
-        Serial.println("Disconnected: start advertising");
-        oldDeviceConnected = deviceConnected;
-    }
-    // connected so reset boolean control
+    // Only handle connection state changes, not advertising restart
+    // (advertising restart is now handled in onDisconnect callback)
     if (deviceConnected && !oldDeviceConnected) {
         // do stuff here on connecting
         Serial.println("Reconnected");
+        oldDeviceConnected = deviceConnected;
+    }
+    if (!deviceConnected && oldDeviceConnected) {
+        Serial.println("Connection state updated: disconnected");
         oldDeviceConnected = deviceConnected;
     }
 }
@@ -282,7 +276,7 @@ void setup() {
     // Then initialize Serial after BLE is running
     Serial.begin(115200);
     Serial.setTxTimeoutMs(0);  // Don't block when no serial monitor connected
-    delay(2000);
+    delay(500);  // Brief delay for serial stability
 
     Serial.println("=== OPENRZ67 TRIGGER STARTING ===");
     Serial.print("ESP32 Chip Model: ");
