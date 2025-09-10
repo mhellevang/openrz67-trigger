@@ -161,17 +161,26 @@ void performBLEScan() {
 
 void setupBLE() {
     Serial.println("Initializing BLE...");
-    Serial.flush();  // Force serial output before potentially crashing
+    Serial.flush();
+    
+    // Add small delay before BLE init to ensure system is stable
+    delay(500);
     
     BLEDevice::init("OpenRZ67");
     Serial.println("BLE device initialized with name: OpenRZ67");
     Serial.flush();
+    
+    // Small delay after init to let BLE stack stabilize
+    delay(200);
     
     Serial.println("Creating BLE server...");
     Serial.flush();
     pServer = BLEDevice::createServer();
     Serial.println("BLE server object created");
     Serial.flush();
+    
+    // Delay after server creation
+    delay(100);
     
     pServer->setCallbacks(new MyServerCallbacks());
     Serial.println("BLE server callbacks set");
@@ -267,7 +276,12 @@ void checkToReconnect() //added
 }
 
 void setup() {
+    // Initialize BLE FIRST, before any Serial/USB CDC activity
+    setupBLE();
+    
+    // Then initialize Serial after BLE is running
     Serial.begin(115200);
+    Serial.setTxTimeoutMs(0);  // Don't block when no serial monitor connected
     delay(2000);
 
     Serial.println("=== OPENRZ67 TRIGGER STARTING ===");
@@ -293,7 +307,8 @@ void setup() {
     // Skip BLE scan for now - double init may be causing crash
     // performBLEScan();
     
-    setupBLE();
+    // BLE already initialized at start of setup()
+    // setupBLE();
 
     Serial.println("=== SETUP COMPLETE - SYSTEM READY ===");
     Serial.println("Hello from Open RZ67 Trigger!");
