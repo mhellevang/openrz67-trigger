@@ -27,10 +27,12 @@ bool deviceConnected = false;
 bool oldDeviceConnected = false;
 
 void openShutter() {
+    Serial.println("Setting shutterPin HIGH...");
     digitalWrite(shutterPin, HIGH);
 }
 
 void closeShutter() {
+    Serial.println("Setting shutterPin LOW...");
     digitalWrite(shutterPin, LOW);
 }
 
@@ -84,12 +86,14 @@ class MyCallbacks : public BLECharacteristicCallbacks {
                 Serial.print("Button 1, value = ");
                 Serial.println(value);
                 if (value == 1) {
+                    // Button 1 PRESS - trigger shutter
                     digitalWrite(ledPin, HIGH);
                     timestampButton = now;
+                    triggerShutter();
                 } else {
+                    // Button 1 RELEASE - just turn off LED, don't trigger again
                     digitalWrite(ledPin, LOW);
                 }
-                triggerShutter();
                 break;
             case 2:
                 Serial.print("Button 2, value = ");
