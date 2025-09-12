@@ -11,9 +11,9 @@
 #define BLINK_SPEED 500
 #define COUNTDOWN_DURATION 10000  // 10 seconds in milliseconds
 
-const int ledPin = 20; // GPIO20 (U0RXD) 
-const int shutterPinD1 = 3; // GPIO03
-const int shutterPinD6 = 21; // GPIO21 (U0TXD)
+constexpr int ledPin = 20; // GPIO20 (U0RXD)
+constexpr int shutterPinD1 = 3; // GPIO03
+constexpr int shutterPinD6 = 21; // GPIO21 (U0TXD)
 
 int incoming;
 unsigned long now;
@@ -21,11 +21,14 @@ unsigned long timestampButton;
 unsigned long timestampButton2;
 unsigned long countdownStartTime;
 bool countdownActive = false;
+bool bulbModeActive = false;
 
 BLEServer *pServer = nullptr;
 BLEScan *pBLEScan = nullptr;
 bool deviceConnected = false;
 bool oldDeviceConnected = false;
+
+void cancelBulbMode();
 
 void openShutter() {
     Serial.println("Setting shutterPins HIGH...");
@@ -41,9 +44,29 @@ void closeShutter() {
 
 void triggerShutter() {
     Serial.println("Trigger shutter");
+    cancelBulbMode();
     openShutter();
     delay(100);
     closeShutter();
+}
+
+void startBulbMode() {
+    Serial.println("Starting bulb mode - shutter opening");
+    bulbModeActive = true;
+    openShutter();
+}
+
+void endBulbMode() {
+    Serial.println("Ending bulb mode - shutter closing");
+    bulbModeActive = false;
+    closeShutter();
+}
+
+void cancelBulbMode() {
+    if (bulbModeActive) {
+        Serial.println("Cancelling bulb mode due to mode switch");
+        bulbModeActive = false;
+    }
 }
 
 class MyServerCallbacks : public BLEServerCallbacks {
@@ -99,13 +122,16 @@ class MyCallbacks : public BLECharacteristicCallbacks {
                 }
                 break;
             case 2:
-                Serial.print("Button 2, value = ");
+                Serial.print("Button 2 (Bulb Mode), value = ");
                 Serial.println(value);
                 if (value == 1) {
+                    // Start bulb mode
                     digitalWrite(ledPin, HIGH);
-                    timestampButton2 = now;
+                    startBulbMode();
                 } else {
+                    // End bulb mode
                     digitalWrite(ledPin, LOW);
+                    endBulbMode();
                 }
                 break;
             case 3:
@@ -113,6 +139,7 @@ class MyCallbacks : public BLECharacteristicCallbacks {
                 Serial.println(value);
                 if (value == 1) {
                     // Start Arduino countdown - ensure clean state first
+                    cancelBulbMode();
                     countdownActive = false;
                     countdownStartTime = millis();
                     countdownActive = true;
@@ -128,6 +155,8 @@ class MyCallbacks : public BLECharacteristicCallbacks {
                     Serial.println(countdownStartTime);
                 }
                 break;
+            default:
+                Serial.println("Unknown button triggered");
         }
     }
 };
@@ -343,11 +372,6 @@ void loop() {
             // Shutter has fired, disable LED
             digitalWrite(ledPin, LOW);
             Serial.println("Button 1 timeout reached");
-        } else if (incoming == 21 and now > timestampButton2 + BLINK_SPEED) {
-            // Blink LED to indicate countdown
-            digitalWrite(ledPin, !digitalRead(ledPin));
-            timestampButton2 = now;
-            Serial.println("Button 2: Blink LED");
         }
     }
     
@@ -380,5 +404,10 @@ void loop() {
                 digitalWrite(ledPin, LOW);
             }
         }
+    }
+    
+    // Handle bulb mode LED indication - steady light when active
+    if (bulbModeActive) {
+        digitalWrite(ledPin, HIGH);
     }
 }
