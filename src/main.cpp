@@ -12,7 +12,8 @@
 #define COUNTDOWN_DURATION 10000  // 10 seconds in milliseconds
 
 const int ledPin = 20; // GPIO20 (U0RXD) 
-const int shutterPin = 21; // GPIO21 (U0TXD) - Pin for trigger
+const int shutterPinD1 = 3; // GPIO03
+const int shutterPinD6 = 21; // GPIO21 (U0TXD)
 
 int incoming;
 unsigned long now;
@@ -27,13 +28,15 @@ bool deviceConnected = false;
 bool oldDeviceConnected = false;
 
 void openShutter() {
-    Serial.println("Setting shutterPin HIGH...");
-    digitalWrite(shutterPin, HIGH);
+    Serial.println("Setting shutterPins HIGH...");
+    digitalWrite(shutterPinD1, HIGH);
+    digitalWrite(shutterPinD6, HIGH);
 }
 
 void closeShutter() {
-    Serial.println("Setting shutterPin LOW...");
-    digitalWrite(shutterPin, LOW);
+    Serial.println("Setting shutterPins LOW...");
+    digitalWrite(shutterPinD1, LOW);
+    digitalWrite(shutterPinD6, LOW);
 }
 
 void triggerShutter() {
@@ -296,11 +299,14 @@ void setup() {
 
     Serial.println("Configuring GPIO pins...");
     pinMode(ledPin, OUTPUT);
-    pinMode(shutterPin, OUTPUT);
+    pinMode(shutterPinD6, OUTPUT);
+    pinMode(shutterPinD1, OUTPUT);
     Serial.print("LED pin configured: GPIO");
     Serial.println(ledPin);
     Serial.print("Shutter pin configured: GPIO");
-    Serial.println(shutterPin);
+    Serial.println(shutterPinD1);
+    Serial.print("Shutter pin configured: GPIO");
+    Serial.println(shutterPinD6);
 
     // Skip BLE scan for now - double init may be causing crash
     // performBLEScan();
