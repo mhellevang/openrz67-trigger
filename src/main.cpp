@@ -310,8 +310,10 @@ void setup() {
     setupBLE();
     
     // Then initialize Serial after BLE is running
+#if ARDUINO_USB_CDC_ON_BOOT
+    Serial.setTxTimeoutMs(0); // Don't block when no serial monitor connected
+#endif
     Serial.begin(115200);
-    Serial.setTxTimeoutMs(0);  // Don't block when no serial monitor connected
     delay(500);  // Brief delay for serial stability
 
     Serial.println("=== OPENRZ67 TRIGGER STARTING ===");
