@@ -9,16 +9,15 @@ Openrz67-trigger is made to run on an ESP32-C3, a single-core Wi-Fi and Bluetoot
 
 ![Custom PCB](pcb/3D_ESP32CamTrigger_PCB_2_2025-09-23.png)
 
-My current prototype is made up of:
-
-* 1x Custom ESP32C3 board
+My current prototype is made up of a custom PCB with:
+* 1x ESP32-C3FH4
 * 2x G6K-2F-Y-DC3 relays to control the shutter release
-* All the other bibs and bobs required to run a ESP32C3
+* All the other bibs and bobs required to run a ESP32C3 (see [BOM](pcb/BOM_ESP32CamTrigger_1_ESP32CamTrigger_PCB_2_2025-09-23.csv))
 * A small 500mah LiPo for power
 * SS12F15 power switch
 * 3d printed case with toggle embedded
 
-However, the solution is flexible and can be used with a standard ESP32-C3 development board if you do not want to go down the path of a custom PCB.
+However, the solution is flexible and can be used with a standard ESP32-C3 development board + one or two relays or MOSFETs. Adjust pinout as needed.
 
 ## Camera connection
 
@@ -29,5 +28,4 @@ The camera has a four pin IO port in front. The pins are labeled as follows (lef
 * 3: S1 switch
 * 4: S2 switch
 
-To trigger the shutter release from the ESP32, we need to short S1/S2 to GND.
-
+To trigger the shutter release from the ESP32, we need to short S1/S2 to GND using our relays.
