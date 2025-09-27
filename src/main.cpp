@@ -3,6 +3,7 @@
 #include <BLEServer.h>
 #include <BLEAdvertisedDevice.h>
 #include <BLEScan.h>
+#include <esp_pm.h>
 
 #define SERVICE_UUID        "c9239c9e-6fc9-4168-b3aa-53105eb990b0"
 #define CHARACTERISTIC_UUID "458d4dc9-349f-401d-b092-a2b1c55f5319"
@@ -98,8 +99,9 @@ class MyCallbacks : public BLECharacteristicCallbacks {
         Serial.println("*** BLE CHARACTERISTIC WRITE RECEIVED ***");
         Serial.flush();
         
-        now = millis(); // Store current time
+        now = millis();
         incoming = pCharacteristic->getData()[0];
+
         Serial.print("Incoming = ");
         Serial.println(incoming);
         Serial.flush();
@@ -254,48 +256,29 @@ void setupBLE() {
     
     Serial.println("BLE advertising configured with enhanced discoverability");
     
-    // Set optimal TX power for both advertising and connection stability
-    Serial.println("Setting optimal TX power levels...");
+    // Set lower TX power for better battery life
+    Serial.println("Setting BLE TX power levels...");
     
-    // Set advertising power (for discovery)
-    esp_err_t adv_power = esp_ble_tx_power_set(ESP_BLE_PWR_TYPE_ADV, ESP_PWR_LVL_P3);  // +3dBm
-    Serial.print("Set advertising power to +3dBm: ");
+    // Set advertising power (most important for battery life)
+    esp_err_t adv_power = esp_ble_tx_power_set(ESP_BLE_PWR_TYPE_ADV, ESP_PWR_LVL_N0);  // 0dBm
+    Serial.print("Set advertising power to 0dBm: ");
     Serial.println(adv_power == ESP_OK ? "SUCCESS" : "FAILED");
     
-    // Set connection power (for stable data transfer) 
-    esp_err_t conn_power = esp_ble_tx_power_set(ESP_BLE_PWR_TYPE_CONN_HDL0, ESP_PWR_LVL_P3);  // +3dBm
-    Serial.print("Set connection power to +3dBm: ");
-    Serial.println(conn_power == ESP_OK ? "SUCCESS" : "FAILED");
-    
     // Set default power for other operations
-    esp_err_t default_power = esp_ble_tx_power_set(ESP_BLE_PWR_TYPE_DEFAULT, ESP_PWR_LVL_P3);  // +3dBm
-    Serial.print("Set default power to +3dBm: ");
+    esp_err_t default_power = esp_ble_tx_power_set(ESP_BLE_PWR_TYPE_DEFAULT, ESP_PWR_LVL_N0);  // 0dBm
+    Serial.print("Set default power to 0dBm: ");
     Serial.println(default_power == ESP_OK ? "SUCCESS" : "FAILED");
-    
-    if (adv_power != ESP_OK || conn_power != ESP_OK) {
-        Serial.println("High power failed, trying moderate levels...");
-        
-        // Fallback to 0dBm if +3dBm fails
-        adv_power = esp_ble_tx_power_set(ESP_BLE_PWR_TYPE_ADV, ESP_PWR_LVL_N0);  // 0dBm
-        conn_power = esp_ble_tx_power_set(ESP_BLE_PWR_TYPE_CONN_HDL0, ESP_PWR_LVL_N0);  // 0dBm
-        Serial.print("Set advertising/connection power to 0dBm: ");
-        Serial.println((adv_power == ESP_OK && conn_power == ESP_OK) ? "SUCCESS" : "FAILED");
-    }
     
     // Start advertising 
     Serial.println("Starting BLE advertising...");
     pAdvertising->start();
-    Serial.println("BLE advertising start command sent");
-    
+
     Serial.println("*** BLE ADVERTISING STARTED - Device should now be visible as 'OpenRZ67' ***");
 }
 
 void checkToReconnect() //added
 {
-    // Only handle connection state changes, not advertising restart
-    // (advertising restart is now handled in onDisconnect callback)
     if (deviceConnected && !oldDeviceConnected) {
-        // do stuff here on connecting
         Serial.println("Reconnected");
         oldDeviceConnected = deviceConnected;
     }
@@ -305,16 +288,26 @@ void checkToReconnect() //added
     }
 }
 
-void setup() {
-    // Initialize BLE FIRST, before any Serial/USB CDC activity
-    setupBLE();
+void configurePowerManagement() {
+    esp_pm_config_esp32c3_t pm_config = {
+        .max_freq_mhz = 160,
+        .min_freq_mhz = 10,
+        .light_sleep_enable = false
+    };
+    esp_pm_configure(&pm_config);
     
-    // Then initialize Serial after BLE is running
+    Serial.println("Power management configured for frequency scaling");
+}
+
+void setup() {
+    
 #if ARDUINO_USB_CDC_ON_BOOT
     Serial.setTxTimeoutMs(0); // Don't block when no serial monitor connected
 #endif
     Serial.begin(115200);
     delay(500);  // Brief delay for serial stability
+
+    setupBLE();
 
     Serial.println("=== OPENRZ67 TRIGGER STARTING ===");
     Serial.print("ESP32 Chip Model: ");
@@ -338,12 +331,9 @@ void setup() {
     Serial.println(shutterPinD1);
     Serial.print("Shutter pin configured: GPIO");
     Serial.println(shutterPinD6);
-
-    // Skip BLE scan for now - double init may be causing crash
-    // performBLEScan();
     
-    // BLE already initialized at start of setup()
-    // setupBLE();
+    // Configure power management for light sleep
+    configurePowerManagement();
 
     Serial.println("=== SETUP COMPLETE - SYSTEM READY ===");
     Serial.println("Hello from Open RZ67 Trigger!");
@@ -351,19 +341,6 @@ void setup() {
 
 
 void loop() {
-    static unsigned long lastHeartbeat = 0;
-    unsigned long currentTime = millis();
-    
-    // Heartbeat every 30 seconds to show system is alive
-    if (currentTime - lastHeartbeat > 30000) {
-        Serial.print("System heartbeat - Uptime: ");
-        Serial.print(currentTime / 1000);
-        Serial.print("s, Free heap: ");
-        Serial.print(ESP.getFreeHeap());
-        Serial.print(" bytes, BLE connected: ");
-        Serial.println(deviceConnected ? "YES" : "NO");
-        lastHeartbeat = currentTime;
-    }
 
     checkToReconnect();
 
@@ -412,4 +389,5 @@ void loop() {
     if (bulbModeActive) {
         digitalWrite(ledPin, HIGH);
     }
+    
 }
