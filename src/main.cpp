@@ -33,6 +33,7 @@ int incoming;
 unsigned long now;
 unsigned long timestampButton;
 unsigned long countdownStartTime;
+unsigned long countdownDuration = COUNTDOWN_DURATION; // Default to 10 seconds
 bool countdownActive = false;
 bool bulbModeActive = false;
 unsigned long lastCountdownPrint = 0;
@@ -41,7 +42,9 @@ BLEServer *pServer = nullptr;
 bool deviceConnected = false;
 bool oldDeviceConnected = false;
 
-void cancelBulbMode();
+void endBulbMode();
+void startCountdown(unsigned long durationMs);
+void cancelCountdown();
 
 void openShutter() {
     Serial.println("Setting shutterPins HIGH...");
@@ -57,7 +60,7 @@ void closeShutter() {
 
 void triggerShutter() {
     Serial.println("Trigger shutter");
-    cancelBulbMode();
+    endBulbMode();
     openShutter();
     delay(100);
     closeShutter();
@@ -75,11 +78,25 @@ void endBulbMode() {
     closeShutter();
 }
 
-void cancelBulbMode() {
-    if (bulbModeActive) {
-        Serial.println("Cancelling bulb mode due to mode switch");
-        bulbModeActive = false;
-    }
+
+void startCountdown(unsigned long durationMs) {
+    endBulbMode();
+    countdownActive = false;
+    countdownDuration = durationMs;
+    countdownStartTime = millis();
+    lastCountdownPrint = 0;
+    countdownActive = true;
+    digitalWrite(ledPin, HIGH);
+    Serial.print("Starting ");
+    Serial.print(durationMs / 1000);
+    Serial.println("-second countdown...");
+}
+
+void cancelCountdown() {
+    countdownActive = false;
+    countdownStartTime = 0;
+    digitalWrite(ledPin, LOW);
+    Serial.println("Countdown cancelled");
 }
 
 class BleServerCallback : public BLEServerCallbacks {
@@ -103,63 +120,86 @@ class BleServerCallback : public BLEServerCallbacks {
 class BLECharacteristicCallback : public BLECharacteristicCallbacks {
     void onWrite(BLECharacteristic *pCharacteristic) override {
         now = millis();
-        incoming = pCharacteristic->getData()[0];
+        std::string data = pCharacteristic->getValue();
+        
+        if (data.length() == 1) {
+            // Legacy single-byte protocol
+            incoming = data[0];
+            Serial.print("BLE command received (legacy): ");
+            Serial.println(incoming);
 
-        Serial.print("BLE command received: ");
-        Serial.println(incoming);
+            int button = floor(incoming / 10);
+            int value = incoming % 10;
 
-        int button = floor(incoming / 10);
-        int value = incoming % 10;
-
-        switch (button) {
-            case 1:
-                Serial.print("Button 1, value = ");
-                Serial.println(value);
-                if (value == 1) {
-                    // Button 1 PRESS - trigger shutter
-                    digitalWrite(ledPin, HIGH);
-                    timestampButton = now;
-                    triggerShutter();
+            switch (button) {
+                case 1:
+                    Serial.print("Button 1, value = ");
+                    Serial.println(value);
+                    if (value == 1) {
+                        // Button 1 PRESS - trigger shutter
+                        digitalWrite(ledPin, HIGH);
+                        timestampButton = now;
+                        triggerShutter();
+                    } else {
+                        // Button 1 RELEASE - just turn off LED, don't trigger again
+                        digitalWrite(ledPin, LOW);
+                    }
+                    break;
+                case 2:
+                    Serial.print("Button 2 (Bulb Mode), value = ");
+                    Serial.println(value);
+                    if (value == 1) {
+                        // Start bulb mode
+                        digitalWrite(ledPin, HIGH);
+                        startBulbMode();
+                    } else {
+                        // End bulb mode
+                        digitalWrite(ledPin, LOW);
+                        endBulbMode();
+                    }
+                    break;
+                case 3:
+                    Serial.print("Button 3 (Legacy Countdown), value = ");
+                    Serial.println(value);
+                    if (value == 1) {
+                        // Start countdown with default duration
+                        startCountdown(COUNTDOWN_DURATION);
+                    } else {
+                        // Cancel countdown
+                        cancelCountdown();
+                    }
+                    break;
+                default:
+                    Serial.println("Unknown button triggered");
+            }
+        } else if (data.length() == 3) {
+            // New multi-byte protocol
+            uint8_t command = data[0];
+            uint8_t duration = data[1];
+            uint8_t action = data[2];
+            
+            Serial.print("BLE command received (multi-byte): [");
+            Serial.print(command);
+            Serial.print(", ");
+            Serial.print(duration);
+            Serial.print(", ");
+            Serial.print(action);
+            Serial.println("]");
+            
+            if (command == 3) { // Countdown command
+                if (action == 1) {
+                    // Start countdown with specified duration
+                    startCountdown(duration * 1000UL); // Convert seconds to milliseconds
                 } else {
-                    // Button 1 RELEASE - just turn off LED, don't trigger again
-                    digitalWrite(ledPin, LOW);
+                    // Cancel countdown
+                    cancelCountdown();
                 }
-                break;
-            case 2:
-                Serial.print("Button 2 (Bulb Mode), value = ");
-                Serial.println(value);
-                if (value == 1) {
-                    // Start bulb mode
-                    digitalWrite(ledPin, HIGH);
-                    startBulbMode();
-                } else {
-                    // End bulb mode
-                    digitalWrite(ledPin, LOW);
-                    endBulbMode();
-                }
-                break;
-            case 3:
-                Serial.print("Button 3, value = ");
-                Serial.println(value);
-                if (value == 1) {
-                    // Start Arduino countdown - ensure clean state first
-                    cancelBulbMode();
-                    countdownActive = false;
-                    countdownStartTime = millis();
-                    lastCountdownPrint = 0; // Reset print timer
-                    countdownActive = true;
-                    digitalWrite(ledPin, HIGH);
-                    Serial.println("Starting 10-second countdown...");
-                } else {
-                    // Cancel Arduino countdown
-                    countdownActive = false;
-                    countdownStartTime = 0;
-                    digitalWrite(ledPin, LOW);
-                    Serial.println("Countdown cancelled");
-                }
-                break;
-            default:
-                Serial.println("Unknown button triggered");
+            } else {
+                Serial.println("Unknown multi-byte command");
+            }
+        } else {
+            Serial.print("Invalid command length: ");
+            Serial.println(data.length());
         }
     }
 };
@@ -303,14 +343,14 @@ void loop() {
 
         // Print countdown status only once per second to avoid spam
         if (currentTime - lastCountdownPrint >= 1000) {
-            unsigned long secondsRemaining = (COUNTDOWN_DURATION - elapsed) / 1000;
+            unsigned long secondsRemaining = (countdownDuration - elapsed) / 1000;
             Serial.print("Countdown: ");
             Serial.print(secondsRemaining);
             Serial.println(" seconds remaining");
             lastCountdownPrint = currentTime;
         }
 
-        if (elapsed >= COUNTDOWN_DURATION) {
+        if (elapsed >= countdownDuration) {
             // Countdown complete - trigger shutter
             countdownActive = false;
             countdownStartTime = 0;
