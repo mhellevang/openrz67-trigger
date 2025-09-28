@@ -19,13 +19,11 @@ constexpr int shutterPinD6 = 21; // GPIO21 (U0TXD)
 int incoming;
 unsigned long now;
 unsigned long timestampButton;
-unsigned long timestampButton2;
 unsigned long countdownStartTime;
 bool countdownActive = false;
 bool bulbModeActive = false;
 
 BLEServer *pServer = nullptr;
-BLEScan *pBLEScan = nullptr;
 bool deviceConnected = false;
 bool oldDeviceConnected = false;
 
@@ -163,45 +161,6 @@ class MyCallbacks : public BLECharacteristicCallbacks {
     }
 };
 
-class MyAdvertisedDeviceCallbacks: public BLEAdvertisedDeviceCallbacks {
-    void onResult(BLEAdvertisedDevice advertisedDevice) {
-        Serial.print("BLE Device found: ");
-        Serial.print(advertisedDevice.getName().c_str());
-        Serial.print(" (");
-        Serial.print(advertisedDevice.getAddress().toString().c_str());
-        Serial.print(") RSSI: ");
-        Serial.print(advertisedDevice.getRSSI());
-        Serial.println(" dBm");
-    }
-};
-
-void performBLEScan() {
-    Serial.println("=== STARTING BLE SCAN TO VERIFY RADIO WORKS ===");
-    
-    // Initialize BLE first (required before scanning)
-    BLEDevice::init("OpenRZ67-Scanner");
-    Serial.println("BLE initialized for scanning...");
-    
-    pBLEScan = BLEDevice::getScan();
-    pBLEScan->setAdvertisedDeviceCallbacks(new MyAdvertisedDeviceCallbacks());
-    pBLEScan->setActiveScan(true);
-    pBLEScan->setInterval(100);
-    pBLEScan->setWindow(99);
-    
-    Serial.println("Scanning for BLE devices for 10 seconds...");
-    BLEScanResults foundDevices = pBLEScan->start(10, false);
-    
-    Serial.print("Scan complete. Found ");
-    Serial.print(foundDevices.getCount());
-    Serial.println(" devices.");
-    
-    pBLEScan->clearResults();
-    
-    // Deinitialize BLE after scanning so we can reinitialize for server mode
-    BLEDevice::deinit(true);
-    Serial.println("=== BLE SCAN COMPLETE - REINITIALIZING FOR SERVER MODE ===");
-}
-
 void setupBLE() {
     Serial.println("Initializing BLE...");
     Serial.flush();
@@ -332,7 +291,7 @@ void setup() {
     Serial.print("Shutter pin configured: GPIO");
     Serial.println(shutterPinD6);
     
-    // Configure power management for light sleep
+    // Configure power management for frequency scaling
     configurePowerManagement();
 
     Serial.println("=== SETUP COMPLETE - SYSTEM READY ===");
