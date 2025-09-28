@@ -10,6 +10,21 @@
 #define BLINK_SPEED 500
 #define COUNTDOWN_DURATION 10000  // 10 seconds in milliseconds
 
+// Suppress serial output for normal builds to save resources
+// Set VERBOSE to 1 to enable serial output
+#define VERBOSE 0
+#if !VERBOSE
+  struct NullStream {
+      template<typename T> NullStream& operator<<(T const&) { return *this; }
+      void print(...) {}
+      void println(...) {}
+      void setTxTimeoutMs(...) {}
+      void begin(...) {}
+  };
+static NullStream nullSerial;
+#define Serial nullSerial
+#endif
+
 constexpr int ledPin = 20; // GPIO20 (U0RXD)
 constexpr int shutterPinD1 = 3; // GPIO03
 constexpr int shutterPinD6 = 21; // GPIO21 (U0TXD)
@@ -76,7 +91,7 @@ class BleServerCallback : public BLEServerCallbacks {
     void onDisconnect(BLEServer *pServer) override {
         Serial.println("*** BLE CLIENT DISCONNECTED ***");
         deviceConnected = false;
-        
+
         // Immediately restart advertising for new connections
         delay(100); // Minimal delay for cleanup
         pServer->startAdvertising();
@@ -151,13 +166,13 @@ class BLECharacteristicCallback : public BLECharacteristicCallbacks {
 
 void setupBLE() {
     Serial.println("Initializing BLE...");
-    
+
     BLEDevice::init("OpenRZ67");
     pServer = BLEDevice::createServer();
     pServer->setCallbacks(new BleServerCallback());
 
     BLEService *pService = pServer->createService(SERVICE_UUID);
-    
+
     BLECharacteristic *pCharacteristic = pService->createCharacteristic(
             CHARACTERISTIC_UUID,
             BLECharacteristic::PROPERTY_READ |
@@ -165,42 +180,40 @@ void setupBLE() {
     );
     pCharacteristic->setCallbacks(new BLECharacteristicCallback());
     pCharacteristic->setValue("Hello from OpenRZ67!");
-    
+
     pService->start();
     Serial.println("BLE service and characteristic configured");
 
     BLEAdvertising *pAdvertising = BLEDevice::getAdvertising();
     pAdvertising->addServiceUUID(SERVICE_UUID);
     pAdvertising->setScanResponse(true);
-    pAdvertising->setMinPreferred(0x06);  // 7.5ms
-    pAdvertising->setMaxPreferred(0x12);  // 22.5ms
-    
+    pAdvertising->setMinPreferred(0);
+    pAdvertising->setMaxPreferred(0);
+
     // Additional advertising configuration for better discoverability
     BLEAdvertisementData adData;
     adData.setName("OpenRZ67");
     adData.setCompleteServices(BLEUUID(SERVICE_UUID));
     pAdvertising->setAdvertisementData(adData);
-    
+
     BLEAdvertisementData scanResponseData;
     scanResponseData.setName("OpenRZ67");
     scanResponseData.setCompleteServices(BLEUUID(SERVICE_UUID));
     pAdvertising->setScanResponseData(scanResponseData);
-    
+
     Serial.println("BLE advertising configured");
-    
-    // Set lower TX power for better battery life
-    
+
     // Set advertising power (most important for battery life)
     esp_err_t adv_power = esp_ble_tx_power_set(ESP_BLE_PWR_TYPE_ADV, ESP_PWR_LVL_N0);  // 0dBm
     Serial.print("Set advertising power to 0dBm: ");
     Serial.println(adv_power == ESP_OK ? "SUCCESS" : "FAILED");
-    
+
     // Set default power for other operations
     esp_err_t default_power = esp_ble_tx_power_set(ESP_BLE_PWR_TYPE_DEFAULT, ESP_PWR_LVL_N0);  // 0dBm
     Serial.print("Set default power to 0dBm: ");
     Serial.println(default_power == ESP_OK ? "SUCCESS" : "FAILED");
-    
-    // Start advertising 
+
+    // Start advertising
     pAdvertising->start();
     Serial.println("*** BLE ADVERTISING STARTED - Device visible as 'OpenRZ67' ***");
 }
@@ -219,17 +232,17 @@ void checkToReconnect() //added
 
 void configurePowerManagement() {
     esp_pm_config_esp32c3_t pm_config = {
-        .max_freq_mhz = 160,
+        .max_freq_mhz = 80,
         .min_freq_mhz = 10,
-        .light_sleep_enable = false
+        .light_sleep_enable = true
     };
     esp_pm_configure(&pm_config);
-    
+
     Serial.println("Power management configured for frequency scaling");
 }
 
 void setup() {
-    
+
 #if ARDUINO_USB_CDC_ON_BOOT
     Serial.setTxTimeoutMs(0); // Don't block when no serial monitor connected
 #endif
@@ -260,7 +273,7 @@ void setup() {
     Serial.println(shutterPinD1);
     Serial.print("Shutter pin configured: GPIO");
     Serial.println(shutterPinD6);
-    
+
     // Configure power management for frequency scaling
     configurePowerManagement();
 
@@ -282,12 +295,12 @@ void loop() {
             Serial.println("Button 1 timeout reached");
         }
     }
-    
+
     // Handle Arduino countdown - runs regardless of connection status
     if (countdownActive && countdownStartTime > 0) {
         unsigned long currentTime = millis();
         unsigned long elapsed = currentTime - countdownStartTime;
-        
+
         // Print countdown status only once per second to avoid spam
         if (currentTime - lastCountdownPrint >= 1000) {
             unsigned long secondsRemaining = (COUNTDOWN_DURATION - elapsed) / 1000;
@@ -296,7 +309,7 @@ void loop() {
             Serial.println(" seconds remaining");
             lastCountdownPrint = currentTime;
         }
-        
+
         if (elapsed >= COUNTDOWN_DURATION) {
             // Countdown complete - trigger shutter
             countdownActive = false;
@@ -313,10 +326,12 @@ void loop() {
             }
         }
     }
-    
+
     // Handle bulb mode LED indication - steady light when active
     if (bulbModeActive) {
         digitalWrite(ledPin, HIGH);
     }
-    
+
+    delay(10);
+
 }
