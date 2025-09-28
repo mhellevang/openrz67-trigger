@@ -1,8 +1,6 @@
 #include <Arduino.h>
 #include <BLEDevice.h>
 #include <BLEServer.h>
-#include <BLEAdvertisedDevice.h>
-#include <BLEScan.h>
 #include <esp_pm.h>
 
 #define SERVICE_UUID        "c9239c9e-6fc9-4168-b3aa-53105eb990b0"
@@ -22,6 +20,7 @@ unsigned long timestampButton;
 unsigned long countdownStartTime;
 bool countdownActive = false;
 bool bulbModeActive = false;
+unsigned long lastCountdownPrint = 0;
 
 BLEServer *pServer = nullptr;
 bool deviceConnected = false;
@@ -68,41 +67,31 @@ void cancelBulbMode() {
     }
 }
 
-class MyServerCallbacks : public BLEServerCallbacks {
+class BleServerCallback : public BLEServerCallbacks {
     void onConnect(BLEServer *pServer) override {
-        Serial.println("*** BLE CLIENT CONNECTION ATTEMPT ***");
-        Serial.flush();
+        Serial.println("*** BLE CLIENT CONNECTED ***");
         deviceConnected = true;
-        Serial.println("*** BLE CLIENT CONNECTED SUCCESSFULLY ***");
-        Serial.flush();
     };
 
     void onDisconnect(BLEServer *pServer) override {
-        Serial.println("*** BLE CLIENT DISCONNECTING ***");
-        Serial.flush();
-        deviceConnected = false;
         Serial.println("*** BLE CLIENT DISCONNECTED ***");
-        Serial.flush();
+        deviceConnected = false;
         
         // Immediately restart advertising for new connections
         delay(100); // Minimal delay for cleanup
         pServer->startAdvertising();
-        Serial.println("*** RESTARTED ADVERTISING AFTER DISCONNECT ***");
+        Serial.println("*** RESTARTED ADVERTISING ***");
     };
 
 };
 
-class MyCallbacks : public BLECharacteristicCallbacks {
+class BLECharacteristicCallback : public BLECharacteristicCallbacks {
     void onWrite(BLECharacteristic *pCharacteristic) override {
-        Serial.println("*** BLE CHARACTERISTIC WRITE RECEIVED ***");
-        Serial.flush();
-        
         now = millis();
         incoming = pCharacteristic->getData()[0];
 
-        Serial.print("Incoming = ");
+        Serial.print("BLE command received: ");
         Serial.println(incoming);
-        Serial.flush();
 
         int button = floor(incoming / 10);
         int value = incoming % 10;
@@ -142,17 +131,16 @@ class MyCallbacks : public BLECharacteristicCallbacks {
                     cancelBulbMode();
                     countdownActive = false;
                     countdownStartTime = millis();
+                    lastCountdownPrint = 0; // Reset print timer
                     countdownActive = true;
                     digitalWrite(ledPin, HIGH);
-                    Serial.print("Starting 10-second countdown on Arduino at time: ");
-                    Serial.println(countdownStartTime);
+                    Serial.println("Starting 10-second countdown...");
                 } else {
                     // Cancel Arduino countdown
                     countdownActive = false;
                     countdownStartTime = 0;
                     digitalWrite(ledPin, LOW);
-                    Serial.print("Countdown cancelled. Reset timestamp to: ");
-                    Serial.println(countdownStartTime);
+                    Serial.println("Countdown cancelled");
                 }
                 break;
             default:
@@ -163,38 +151,23 @@ class MyCallbacks : public BLECharacteristicCallbacks {
 
 void setupBLE() {
     Serial.println("Initializing BLE...");
-    Serial.flush();
     
     BLEDevice::init("OpenRZ67");
-    Serial.println("BLE device initialized with name: OpenRZ67");
-    Serial.flush();
-    
-    Serial.println("Creating BLE server...");
-    Serial.flush();
     pServer = BLEDevice::createServer();
-    Serial.println("BLE server object created");
-    Serial.flush();
-    
-    pServer->setCallbacks(new MyServerCallbacks());
-    Serial.println("BLE server callbacks set");
-    Serial.flush();
+    pServer->setCallbacks(new BleServerCallback());
 
     BLEService *pService = pServer->createService(SERVICE_UUID);
-    Serial.print("BLE service created with UUID: ");
-    Serial.println(SERVICE_UUID);
     
     BLECharacteristic *pCharacteristic = pService->createCharacteristic(
             CHARACTERISTIC_UUID,
             BLECharacteristic::PROPERTY_READ |
             BLECharacteristic::PROPERTY_WRITE_NR
     );
-    pCharacteristic->setCallbacks(new MyCallbacks());
+    pCharacteristic->setCallbacks(new BLECharacteristicCallback());
     pCharacteristic->setValue("Hello from OpenRZ67!");
-    Serial.print("BLE characteristic created with UUID: ");
-    Serial.println(CHARACTERISTIC_UUID);
     
     pService->start();
-    Serial.println("BLE service started");
+    Serial.println("BLE service and characteristic configured");
 
     BLEAdvertising *pAdvertising = BLEDevice::getAdvertising();
     pAdvertising->addServiceUUID(SERVICE_UUID);
@@ -213,10 +186,9 @@ void setupBLE() {
     scanResponseData.setCompleteServices(BLEUUID(SERVICE_UUID));
     pAdvertising->setScanResponseData(scanResponseData);
     
-    Serial.println("BLE advertising configured with enhanced discoverability");
+    Serial.println("BLE advertising configured");
     
     // Set lower TX power for better battery life
-    Serial.println("Setting BLE TX power levels...");
     
     // Set advertising power (most important for battery life)
     esp_err_t adv_power = esp_ble_tx_power_set(ESP_BLE_PWR_TYPE_ADV, ESP_PWR_LVL_N0);  // 0dBm
@@ -229,10 +201,8 @@ void setupBLE() {
     Serial.println(default_power == ESP_OK ? "SUCCESS" : "FAILED");
     
     // Start advertising 
-    Serial.println("Starting BLE advertising...");
     pAdvertising->start();
-
-    Serial.println("*** BLE ADVERTISING STARTED - Device should now be visible as 'OpenRZ67' ***");
+    Serial.println("*** BLE ADVERTISING STARTED - Device visible as 'OpenRZ67' ***");
 }
 
 void checkToReconnect() //added
@@ -317,12 +287,15 @@ void loop() {
     if (countdownActive && countdownStartTime > 0) {
         unsigned long currentTime = millis();
         unsigned long elapsed = currentTime - countdownStartTime;
-        Serial.print("Countdown running - active: ");
-        Serial.print(countdownActive);
-        Serial.print(", startTime: ");
-        Serial.print(countdownStartTime);
-        Serial.print(", elapsed: ");
-        Serial.println(elapsed);
+        
+        // Print countdown status only once per second to avoid spam
+        if (currentTime - lastCountdownPrint >= 1000) {
+            unsigned long secondsRemaining = (COUNTDOWN_DURATION - elapsed) / 1000;
+            Serial.print("Countdown: ");
+            Serial.print(secondsRemaining);
+            Serial.println(" seconds remaining");
+            lastCountdownPrint = currentTime;
+        }
         
         if (elapsed >= COUNTDOWN_DURATION) {
             // Countdown complete - trigger shutter
@@ -330,10 +303,7 @@ void loop() {
             countdownStartTime = 0;
             triggerShutter();
             digitalWrite(ledPin, LOW);
-            Serial.print("Open RZ67 Trigger countdown complete - shutter triggered. Elapsed: ");
-            Serial.print(elapsed);
-            Serial.print("ms at time: ");
-            Serial.println(currentTime);
+            Serial.println("Countdown complete - shutter triggered!");
         } else {
             // Blink LED during countdown (faster blink than button 2)
             if (elapsed % 250 < 125) {  // 250ms cycle, on for first 125ms
