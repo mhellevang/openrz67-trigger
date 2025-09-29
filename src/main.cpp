@@ -128,7 +128,7 @@ class BLECharacteristicCallback : public BLECharacteristicCallbacks {
             Serial.print("BLE command received (legacy): ");
             Serial.println(incoming);
 
-            int button = floor(incoming / 10);
+            int button = incoming / 10;
             int value = incoming % 10;
 
             switch (button) {
