@@ -13,7 +13,7 @@ My current prototype is made up of a custom PCB with:
 * 1x ESP32-C3FH4
 * 2x G6K-2F-Y-DC3 relays to control the shutter release
 * All the other bibs and bobs required to run a ESP32C3 (see [BOM](pcb/BOM_ESP32CamTrigger_1_ESP32CamTrigger_PCB_2_2025-09-23.csv))
-* A small 500mah LiPo for power
+* A small 250mah LiPo for power
 * SS12F15 power switch
 * 3d printed case with toggle embedded
 
