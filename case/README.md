@@ -110,6 +110,26 @@ wall. Parameters: `orient_mark_x` (board-X of the mark, near the USB side), `ori
 (width), `orient_mark_d` (how far it sticks out), `orient_mark_h` (total height across the
 seam). Set `orient_mark = false` to remove it.
 
+## Lid text — second colour (`lid_text`)
+**Raised text** on the lid top (default `"Open RZ67 Trigger"`), for printing in a second
+filament colour on a multi-material printer. The text stands `lid_text_h` (0.6 mm) proud of
+the otherwise flat top face and is centred at mid-Y, clear of the LED window (back) and the
+two screw counterbores (corners). At the default `lid_text_size = 3.5` it is ~43 mm wide on
+the 54.8 mm top. Parameters: `lid_text` (string, `""` to disable), `lid_text_size` (cap
+height), `lid_text_h` (relief height = the colour-change layer thickness), `lid_text_font`,
+`lid_text_dx/dy` (nudge from centre), `lid_text_angle`.
+
+Two ways to get the second colour:
+- **Filament change by height** – print the lid **text-up** (top plate up). The text is the
+  only geometry above the top face, so a single colour change at Z = the top face paints
+  exactly the letters. Simplest. Note this conflicts with the "print lid upside down"
+  recommendation below: text-up means the internal bosses/pillars need supports.
+- **Separate coloured part** – export `part="lidtext"` (`./export.sh` writes
+  `openrz67-lidtext.stl`) and load it into the slicer **as a part of the lid object** (Bambu
+  Studio / PrusaSlicer: right-click the lid → *Add part / Load as part*). Assign it its own
+  filament. The text solid coincides with the raised bump on the lid; the slicer prints that
+  region in the chosen colour. **Works in any print orientation** (incl. lid upside down).
+
 ## Usage
 Open in OpenSCAD and use the **Customizer** (View → Customizer) – the parameters are
 grouped into sections. Change `part` to choose what is generated:
@@ -123,7 +143,7 @@ openscad case/openrz67-case.scad
 
 ```bash
 cd case
-./export.sh            # closure=screw (default) -> stl/openrz67-{base,lid}-screw.stl
+./export.sh            # closure=screw (default): base, lid, lightpipe, lidtext -> stl/
 ./export.sh snap       # the snap-fit variant
 ```
 
@@ -141,6 +161,10 @@ openscad -o lid.stl  -D 'part="lid"'  case/openrz67-case.scad
 - **Lid**: print **upside down** (top plate against the bed). That way the bosses/lip
   point upward with no overhang, the head counterbores (screw mode) come out as clean
   flats against the bed, and the LED window/counterbore gets a nice top surface.
+  - **With the raised lid text** in a second colour: either print **text-up** (top plate up)
+    and change filament at the top layer (the bosses/pillars then need supports), or keep the
+    upside-down orientation and colour the text via the separate `lidtext` part (see "Lid
+    text" above). The `lidtext` part method is the one that doesn't force the orientation.
 - **Light pipe** (`openrz67-lightpipe.stl`): **clear filament**. Print upright (head down
   against the bed) for the fewest layer lines across the light path, or lying down for
   smoother walls – both work for an indicator. For the clearest light: print at a fine

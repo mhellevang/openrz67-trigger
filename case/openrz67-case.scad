@@ -217,6 +217,22 @@ orient_mark_w = 2.5;      // width along X
 orient_mark_d = 0.8;      // depth out from the wall (< wall)
 orient_mark_h = 9.0;      // total height (half on each side of the seam)
 
+/* [Lid text] */
+// Raised text on the lid top, for printing in a second filament colour. The text stands
+// lid_text_h proud of the otherwise flat top face, so on a multi-material printer you
+// either insert a filament change at that top layer (printing the lid TEXT-UP) or load the
+// separate `part="lidtext"` solid as its own coloured part in the slicer (any orientation).
+// Centred on the top face; sits at mid-Y, clear of the LED window (back) and the two screw
+// counterbores (front-left / back-right corners). Set lid_text = "" to disable.
+lid_text_show  = true;
+lid_text       = "Open RZ67 Trigger";
+lid_text_size  = 3.5;     // cap height (mm); ~43mm wide at this size, fits the 54.8mm top
+lid_text_h     = 0.6;     // how far the text stands proud of the top (the 2nd-colour layer)
+lid_text_font  = "Liberation Sans:style=Bold";
+lid_text_dx    = 0;       // nudge from the top-face centre, X
+lid_text_dy    = 0;       // nudge from the top-face centre, Y
+lid_text_angle = 0;       // rotation on the top face (deg)
+
 /* [Misc] */
 loc_pin = true;       // locating pins in the mount holes (snap mode only)
 $fa = 2; $fs = 0.4;
@@ -404,6 +420,7 @@ module snap_groove() {
 
 /* ============================== LID ============================== */
 module lid() {
+    union() {
     difference() {
         union() {
             difference() {
@@ -439,6 +456,20 @@ module lid() {
         // notch in the lid tongue where the PCB frame fins stand (else the lid won't go down)
         frame_tongue_notch();
     }
+    // raised text, added on top of the finished lid so the openings can't cut it
+    lid_text_relief();
+    }
+}
+
+// Raised lid text (added to the lid; also exportable alone via part="lidtext" for the
+// load-as-separate-coloured-part workflow). Stands lid_text_h proud of the top face.
+module lid_text_relief() {
+    if (lid_text_show && lid_text != "")
+        translate([outer_w/2 + lid_text_dx, outer_h/2 + lid_text_dy, total_h - eps])
+            rotate([0, 0, lid_text_angle])
+                linear_extrude(lid_text_h + eps)
+                    text(lid_text, size = lid_text_size, font = lid_text_font,
+                         halign = "center", valign = "center", $fn = 32);
 }
 
 // Cuts out the component clearances (full height above the PCB) so lid bosses don't
@@ -688,6 +719,7 @@ module components() {
 /* ============================= RENDER ============================ */
 if (part == "base") base();
 else if (part == "lid") lid();
+else if (part == "lidtext") lid_text_relief();      // text only - second filament colour
 else if (part == "lightpipe") light_pipe();         // clear insert - print in clear filament
 else if (part == "both") { base(); translate([0, outer_h + 8, 0]) lid(); }
 else {                      // preview: assembled, lid translucent
@@ -695,5 +727,6 @@ else {                      // preview: assembled, lid translucent
     if (show_pcb) { pcb(); components(); }
     if (sw_enable && sw_screw) switch_preview();
     color([0.6, 0.6, 0.65, 0.25]) lid();
+    color([0.9, 0.9, 0.2]) lid_text_relief();            // lid text (2nd colour)
     if (led_show) color([1, 1, 1, 0.55]) light_pipe();   // light pipe in place
 }

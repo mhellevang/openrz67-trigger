@@ -38,4 +38,9 @@ lp="$OUTDIR/openrz67-lightpipe.stl"
 echo "==> lightpipe (klart filament)  ->  ${lp}"
 "$OPENSCAD" -o "$lp" -D "part=\"lightpipe\"" "$SCAD"
 
-echo "Ferdig. STL-filer ligger i ${OUTDIR}/ (lightpipe i klart filament, resten opakt)"
+# Lokk-tekst - kun teksten, for 2-farge-print (last som egen del/farge i sliceren)
+lt="$OUTDIR/openrz67-lidtext.stl"
+echo "==> lidtext (2. filamentfarge)  ->  ${lt}"
+"$OPENSCAD" -o "$lt" -D "part=\"lidtext\"" "$SCAD"
+
+echo "Ferdig. STL-filer ligger i ${OUTDIR}/ (lightpipe i klart filament, lidtext i 2. farge, resten opakt)"
