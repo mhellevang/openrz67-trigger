@@ -204,6 +204,17 @@ lap_gap   = 0.15;     // glidklaring i lasken
 snap_bead = 0.5;      // hvor mye perla stikker ut
 bead_h    = 1.4;      // perlehoyde
 
+/* [Orienteringsmerke] */
+// Vertikalt justeringsspor paa FRONTveggen (lav Y) naer VENSTRE hjorne. Kuttes fra
+// baade base og lokk og krysser skillet, saa de to halvdelene danner EN sammenhengende
+// strek naar lokket sitter riktig vei. Lokk montert 180 grader feil flytter lokkets
+// halvdel til motsatt hjorne -> strekene bommer tydelig paa hverandre.
+orient_mark   = true;
+orient_mark_x = 8.0;      // brett-X for spor-senter (naer venstre/USB-siden)
+orient_mark_w = 2.5;      // bredde langs X
+orient_mark_d = 0.8;      // dybde inn i veggen (< wall)
+orient_mark_h = 9.0;      // total hoyde (halvparten paa hver del av skillet)
+
 /* [Diverse] */
 loc_pin = true;       // lokaliseringspinner i monteringshull (kun snap-modus)
 $fa = 2; $fs = 0.4;
@@ -265,9 +276,14 @@ module base() {
             pcb_corner_supports();
             batt_retainer();
             pcb_frame_ribs();
+            orient_mark_rib(+1);   // orienteringsmerke, nedre halvdel
         }
         // frigangslommer for gjennomhulls-loddetinn i toppen av pilarene
         th_keepout_pockets();
+        // USB-C-aapningen straddler skillet: senteret ligger ~1.65mm OVER split_z,
+        // men nedre ~1.85mm av hullet faller UNDER skillet og blokkeres ellers av
+        // basens sidevegg. Kutt samme aapning fra basen saa hele hullet aapnes.
+        cut_usb();
     }
 }
 
@@ -403,6 +419,7 @@ module lid() {
             // legges til ETTER hulrom (ellers fjernes de):
             if (sw_enable && sw_screw) switch_bosses();
             holddowns();
+            orient_mark_rib(-1);   // orienteringsmerke, ovre halvdel
         }
         // alle aapninger kuttes til slutt (gjennom vegg + holder)
         cut_usb();
@@ -549,6 +566,23 @@ module light_pipe() {
         translate([led_cx, led_cy, z_bot])
             linear_extrude(z_cb - z_bot + eps)
                 rrect_c(led_win_l, led_win_w, led_win_r);
+    }
+}
+
+// Opphoyd vertikalt orienterings-/justeringsmerke paa frontveggen (lav Y) ved venstre
+// hjorne. LEGGES TIL paa baade base (nedre halvdel) og lokk (ovre halvdel), sentrert paa
+// skillet, saa halvdelene flukter til EN sammenhengende ribbe naar lokket sitter riktig
+// vei. Lokk montert 180 grader feil flytter lokkets halvdel til motsatt hjorne -> de to
+// halvdelene bommer tydelig paa hverandre. Merket stikker UT fra veggen (legger til
+// materiale; et innfelt spor ville her tynnet ut den 1mm tynne lask-veggen). Klar av
+// brytersporet/-bossene (sentrert rundt bx(sw_x), langt til hoyre for bx(orient_mark_x)).
+// dir=+1: nedre halvdel (base), dir=-1: ovre halvdel (lokk).
+module orient_mark_rib(dir) {
+    if (orient_mark) {
+        cx = bx(orient_mark_x);
+        z0 = (dir > 0) ? split_z - orient_mark_h/2 : split_z;
+        translate([cx - orient_mark_w/2, -orient_mark_d, z0])
+            cube([orient_mark_w, orient_mark_d + eps, orient_mark_h/2]);
     }
 }
 
