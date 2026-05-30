@@ -100,6 +100,16 @@ in their own local coordinate systems), so they are entered as editable constant
 Finished size with default values: ~**54.8 × 26.8 × 21.6 mm** (X incl. the 2 mm USB-C
 overhang, Z depends on `pcb_t`).
 
+## Orientation mark — `orient_mark`
+A small **raised rib** on the front wall (low Y) near the left corner, split across the
+seam: the base carries the lower half, the lid the upper half. When the lid is on the
+right way around the two halves line up into **one continuous vertical rib**; a lid put on
+180° wrong moves its half to the opposite corner, so the mismatch is obvious at a glance.
+It is raised (not a recessed groove) on purpose — a groove here would thin the 1 mm lap
+wall. Parameters: `orient_mark_x` (board-X of the mark, near the USB side), `orient_mark_w`
+(width), `orient_mark_d` (how far it sticks out), `orient_mark_h` (total height across the
+seam). Set `orient_mark = false` to remove it.
+
 ## Usage
 Open in OpenSCAD and use the **Customizer** (View → Customizer) – the parameters are
 grouped into sections. Change `part` to choose what is generated:
@@ -189,6 +199,11 @@ Two layers in the wall (outside in):
   case** – the same one used for reach there.
 - `usb_chamfer` = **0.0 (off)** by default – a clean outer face, like last year's design.
   Set > 0 for a 45° lead-in chamfer on the mouth if you want one.
+
+The opening's centre sits ~1.65 mm **above** the base/lid split, so the lower ~1.85 mm of
+the 7 mm-tall window falls below the seam. `cut_usb()` therefore runs in **both** `base()`
+and `lid()` — otherwise the base side wall would block the lower edge of the hole (only the
+upper part, cut from the lid, would be open).
 
 Measure your own charging cable and adjust if needed. Test with a print of just the left
 short end first.
