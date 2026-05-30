@@ -145,7 +145,24 @@ openscad case/openrz67-case.scad
 cd case
 ./export.sh            # closure=screw (default): base, lid, lightpipe, lidtext -> stl/
 ./export.sh snap       # the snap-fit variant
+./export.sh screw out  # custom output dir (arg 2)
 ```
+
+**Overrides** – any `.scad` parameter can be overridden at export time with OpenSCAD's
+`-D`. `export.sh` exposes the handy ones as environment variables (the `.scad` default
+applies when unset):
+
+```bash
+LID_TEXT="My text"   ./export.sh   # change the lid text string
+LID_TEXT_SHOW=false  ./export.sh   # turn the lid text off (or LID_TEXT="") - lidtext is skipped
+LID_TEXT_SIZE=4.0    ./export.sh   # cap height (mm)
+SCREW_ANCHOR=selftap ./export.sh   # heatset (default) | selftap
+PCB_T=1.0            ./export.sh   # PCB thickness (sets the base/lid split height)
+SCREW_ANCHOR=selftap LID_TEXT="v2" ./export.sh   # combine freely
+```
+
+Any other parameter works the same way by adding a `-D` flag manually (see below) or a new
+line to `export.sh`.
 
 Or manually, one part at a time:
 
