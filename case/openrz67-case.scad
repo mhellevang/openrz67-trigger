@@ -95,8 +95,8 @@ h_ph     = 6.0;     // JST PH 2-pin (BAT1, S3)
 
 /* [Battery bay] */
 batt_w   = 31;      // footprint X (~20% larger than the previous 26)
-batt_l   = 19;      // footprint Y (~20% larger than the previous 16)
-batt_pos = [8.5, 1.5]; // min-corner in board coords (centred; clear of USB1/U4/standoffs)
+batt_l   = 20;      // footprint Y (the narrow dimension; +1mm for a slightly roomier fit)
+batt_pos = [8.5, 1.0]; // min-corner in board coords (centred; clear of USB1/U4/standoffs)
 rib_h    = 2.5;     // height of the retaining ribs
 
 /* [Openings] */
