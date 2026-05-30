@@ -17,6 +17,10 @@ cmake-build-*/
 CMakeListsPrivate.txt
 CMakeLists.txt
 
+# Genererte STL-filer fra case/export.sh
+case/stl/
+*.stl
+
 # IDE files
 .idea/
 .vscode/
