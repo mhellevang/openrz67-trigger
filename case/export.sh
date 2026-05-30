@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
-# Export base + lid + light pipe + lid text to STL in one go.
+# Export base + lid + light pipe to STL in one go.
 # The light pipe (openrz67-lightpipe.stl) prints in CLEAR/transparent filament; base and
-# lid in normal opaque filament; the lid text (openrz67-lidtext.stl) in a 2nd colour.
+# lid in normal opaque filament. The lid text (off by default) is fused onto the lid and
+# coloured by a filament change at the top layer - it is not a separate part.
 #
 # Usage:
 #   ./export.sh                  # closure=screw (default)  -> stl/
@@ -10,13 +11,12 @@
 #
 # Optional overrides — any .scad parameter can be set with OpenSCAD's -D; these are the
 # handy ones, passed as environment variables (the .scad default applies when unset):
+#   LID_TEXT_SHOW=true   ./export.sh    # turn the lid text ON (off by default; final print)
 #   LID_TEXT="My text"   ./export.sh    # change the lid text string
-#   LID_TEXT=""          ./export.sh    # empty string turns the text off ...
-#   LID_TEXT_SHOW=false  ./export.sh    # ... or toggle it off explicitly
 #   LID_TEXT_SIZE=4.0    ./export.sh    # cap height (mm)
 #   SCREW_ANCHOR=selftap ./export.sh    # heatset (default) | selftap
 #   PCB_T=1.0            ./export.sh    # PCB thickness (sets the base/lid split height)
-# Combine freely, e.g.:  SCREW_ANCHOR=selftap LID_TEXT="v2" ./export.sh
+# Combine freely, e.g.:  LID_TEXT_SHOW=true LID_TEXT="v2" ./export.sh
 set -euo pipefail
 cd "$(dirname "$0")"
 
@@ -59,15 +59,4 @@ lp="$OUTDIR/openrz67-lightpipe.stl"
 echo "==> lightpipe (clear filament)  ->  ${lp}"
 run -o "$lp" -D "part=\"lightpipe\""
 
-# Lid text - text only, for 2-colour printing (load as a separate part/colour in the slicer).
-# Skipped gracefully if the text is disabled (empty geometry) so turning it off via
-# LID_TEXT_SHOW=false / LID_TEXT="" doesn't fail the whole export.
-lt="$OUTDIR/openrz67-lidtext.stl"
-if run -o "$lt" -D "part=\"lidtext\""; then
-  echo "==> lidtext (2nd filament colour)  ->  ${lt}"
-else
-  rm -f "$lt"
-  echo "==> lidtext: text disabled - no STL written"
-fi
-
-echo "Done. STLs are in ${OUTDIR}/ (lightpipe in clear filament, lidtext in a 2nd colour, the rest opaque)"
+echo "Done. STLs are in ${OUTDIR}/ (lightpipe in clear filament, the rest opaque)"

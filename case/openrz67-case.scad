@@ -219,12 +219,14 @@ orient_mark_h = 9.0;      // total height (half on each side of the seam)
 
 /* [Lid text] */
 // Raised text on the lid top, for printing in a second filament colour. The text stands
-// lid_text_h proud of the otherwise flat top face, so on a multi-material printer you
-// either insert a filament change at that top layer (printing the lid TEXT-UP) or load the
-// separate `part="lidtext"` solid as its own coloured part in the slicer (any orientation).
-// Centred on the top face; sits at mid-Y, clear of the LED window (back) and the two screw
-// counterbores (front-left / back-right corners). Set lid_text = "" to disable.
-lid_text_show  = true;
+// lid_text_h proud of the otherwise flat top face, so it is the only geometry above the top
+// and a single filament change at that top layer paints exactly the letters (print the lid
+// TEXT-UP). Centred on the top face at mid-Y, clear of the LED window (back) and the two
+// screw counterbores (front-left / back-right corners).
+// OFF by default: the text adds noticeable render time, so leave it off while prototyping
+// and turn it on for the final print (set lid_text_show = true, or LID_TEXT_SHOW=true via
+// export.sh). Set lid_text = "" to disable regardless.
+lid_text_show  = false;
 lid_text       = "Open RZ67 Trigger";
 lid_text_size  = 3.5;     // cap height (mm); ~43mm wide at this size, fits the 54.8mm top
 lid_text_h     = 0.6;     // how far the text stands proud of the top (the 2nd-colour layer)
@@ -461,8 +463,8 @@ module lid() {
     }
 }
 
-// Raised lid text (added to the lid; also exportable alone via part="lidtext" for the
-// load-as-separate-coloured-part workflow). Stands lid_text_h proud of the top face.
+// Raised lid text, fused onto the lid top (lid_text_h proud of the top face). Colour it by
+// a filament change at the top layer in the slicer; off by default (see lid_text_show).
 module lid_text_relief() {
     if (lid_text_show && lid_text != "")
         translate([outer_w/2 + lid_text_dx, outer_h/2 + lid_text_dy, total_h - eps])
@@ -719,7 +721,6 @@ module components() {
 /* ============================= RENDER ============================ */
 if (part == "base") base();
 else if (part == "lid") lid();
-else if (part == "lidtext") lid_text_relief();      // text only - second filament colour
 else if (part == "lightpipe") light_pipe();         // clear insert - print in clear filament
 else if (part == "both") { base(); translate([0, outer_h + 8, 0]) lid(); }
 else {                      // preview: assembled, lid translucent

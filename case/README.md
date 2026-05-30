@@ -119,16 +119,14 @@ the 54.8 mm top. Parameters: `lid_text` (string, `""` to disable), `lid_text_siz
 height), `lid_text_h` (relief height = the colour-change layer thickness), `lid_text_font`,
 `lid_text_dx/dy` (nudge from centre), `lid_text_angle`.
 
-Two ways to get the second colour:
-- **Filament change by height** – print the lid **text-up** (top plate up). The text is the
-  only geometry above the top face, so a single colour change at Z = the top face paints
-  exactly the letters. Simplest. Note this conflicts with the "print lid upside down"
-  recommendation below: text-up means the internal bosses/pillars need supports.
-- **Separate coloured part** – export `part="lidtext"` (`./export.sh` writes
-  `openrz67-lidtext.stl`) and load it into the slicer **as a part of the lid object** (Bambu
-  Studio / PrusaSlicer: right-click the lid → *Add part / Load as part*). Assign it its own
-  filament. The text solid coincides with the raised bump on the lid; the slicer prints that
-  region in the chosen colour. **Works in any print orientation** (incl. lid upside down).
+**Off by default** (`lid_text_show = false`) – the text adds noticeable render time, so
+leave it off while prototyping and turn it on for the final print (`lid_text_show = true`,
+or `LID_TEXT_SHOW=true ./export.sh`).
+
+Colour it by a **filament change by height**: print the lid **text-up** (top plate up); the
+text is the only geometry above the top face, so a single colour change at Z = the top face
+paints exactly the letters. Note this is the opposite of the "print lid upside down"
+recommendation below — text-up means the internal bosses/pillars need supports.
 
 ## Usage
 Open in OpenSCAD and use the **Customizer** (View → Customizer) – the parameters are
@@ -143,7 +141,7 @@ openscad case/openrz67-case.scad
 
 ```bash
 cd case
-./export.sh            # closure=screw (default): base, lid, lightpipe, lidtext -> stl/
+./export.sh            # closure=screw (default): base, lid, lightpipe -> stl/
 ./export.sh snap       # the snap-fit variant
 ./export.sh screw out  # custom output dir (arg 2)
 ```
@@ -153,12 +151,12 @@ cd case
 applies when unset):
 
 ```bash
+LID_TEXT_SHOW=true   ./export.sh   # turn the lid text ON (off by default; for the final print)
 LID_TEXT="My text"   ./export.sh   # change the lid text string
-LID_TEXT_SHOW=false  ./export.sh   # turn the lid text off (or LID_TEXT="") - lidtext is skipped
 LID_TEXT_SIZE=4.0    ./export.sh   # cap height (mm)
 SCREW_ANCHOR=selftap ./export.sh   # heatset (default) | selftap
 PCB_T=1.0            ./export.sh   # PCB thickness (sets the base/lid split height)
-SCREW_ANCHOR=selftap LID_TEXT="v2" ./export.sh   # combine freely
+LID_TEXT_SHOW=true LID_TEXT="v2" ./export.sh     # combine freely
 ```
 
 Any other parameter works the same way by adding a `-D` flag manually (see below) or a new
@@ -178,10 +176,9 @@ openscad -o lid.stl  -D 'part="lid"'  case/openrz67-case.scad
 - **Lid**: print **upside down** (top plate against the bed). That way the bosses/lip
   point upward with no overhang, the head counterbores (screw mode) come out as clean
   flats against the bed, and the LED window/counterbore gets a nice top surface.
-  - **With the raised lid text** in a second colour: either print **text-up** (top plate up)
-    and change filament at the top layer (the bosses/pillars then need supports), or keep the
-    upside-down orientation and colour the text via the separate `lidtext` part (see "Lid
-    text" above). The `lidtext` part method is the one that doesn't force the orientation.
+  - **With the raised lid text** in a second colour: print **text-up** (top plate up) and
+    change filament at the top layer (the internal bosses/pillars then need supports). Leave
+    the text off (the default) and print upside down for clean prototype lids.
 - **Light pipe** (`openrz67-lightpipe.stl`): **clear filament**. Print upright (head down
   against the bed) for the fewest layer lines across the light path, or lying down for
   smoother walls – both work for an indicator. For the clearest light: print at a fine
