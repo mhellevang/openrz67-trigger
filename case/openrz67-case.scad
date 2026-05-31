@@ -63,16 +63,20 @@ comp_keepouts = [
 // Guide fins along the FRONT and BACK edges that the PCB is set down between, so it isn't
 // pushed off the standoffs before the screws are in. There is only ~0.4mm clearance beside
 // the board, too thin for a printable fin. But the ship-lap has a ~1mm TONGUE CHANNEL just
-// outside the wall line: the fin stands in it (thick and well anchored in the wall), beside
-// the board edge, and a small NOTCH is cut in the lid tongue where the fins stand so they
-// clear. The fins are NEVER above the board (they hit no components). Open at the corners +
-// the left/right short edges (USB-C / XH cable).
+// outside the wall line: the fin stands in it, beside the board edge, and a small NOTCH is
+// cut in the lid tongue where the fins stand so they clear. Since the tongue is already gone
+// there, the fin's anchored side is run all the way OUT to the outer wall face, so it merges
+// with the outer wall across the full lap-zone height (a wall-backed rib, not a free blade).
+// The fins are NEVER above the board (they hit no components). Open at the corners + the
+// left/right short edges (USB-C / XH cable).
 pcb_frame   = true;
 frame_clr   = 0.2;     // clearance between the fin's catching face and the board edge (drop-in)
 frame_proud = 0.6;     // thin lead-in lip above the board top (toward the ceiling + alignment)
 frame_cham  = 0.4;     // chamfer on the lip
 frame_rib_l = 8.0;     // fin length along the edge
-frame_fin_reach = 0.7; // how far the fin reaches OUT into the tongue channel (stiffness/anchoring)
+frame_fin_reach = 2.0; // how far the anchored side reaches toward the outer wall; = wall fully
+                       // embeds the fin into the wall for the full lap-zone height (stiffness).
+                       // Clamped to the outer face, so larger values can't poke outside.
 frame_notch_clr = 0.3; // clearance where the lid tongue is cut away around the fin
 // Fin centre in board-X (bx() converts). Front = low Y, back = high Y.
 frame_ribs_front = [10, 38];
@@ -320,9 +324,10 @@ module pcb_frame_ribs() {
 }
 // One guide fin, dir=+1 front (low Y) / dir=-1 back (high Y). Stands in the ship-lap's
 // tongue channel beside the board edge:
-//   - THICK fin from the floor to the board top (split_z), Y from out-in-the-tongue-channel
-//     (anchored to the full wall below the lap zone) to the catching face frame_clr from the
-//     board edge. Catches the board edge laterally across the full board thickness.
+//   - THICK fin from the floor to the board top (split_z), Y from the OUTER wall face (so it
+//     merges with the outer wall across the whole lap zone, not just below it) to the catching
+//     face frame_clr from the board edge. Catches the board edge laterally across the full
+//     board thickness and is backed by the wall along its full height.
 //   - THIN lead-in lip above the board top (cavity side only, Y >= wall inner face, so it
 //     clears the lid wall), with a chamfer. The lid tongue is cut away where the fin stands
 //     (frame_tongue_notch) so the fin clears when the lid closes.
@@ -330,7 +335,8 @@ module frame_rib(cx, dir) {
     x0     = cx - frame_rib_l/2;
     w_in   = (dir > 0) ? wall : wall + inner_h;          // cavity-wall inner face
     ycap   = w_in + dir * (clr - frame_clr);             // catching face (frame_clr from board edge)
-    yreach = w_in - dir * frame_fin_reach;               // out into the tongue channel (anchoring)
+    yraw   = w_in - dir * frame_fin_reach;
+    yreach = (dir > 0) ? max(0, yraw) : min(outer_h, yraw);  // anchored side, clamped to the outer face
     z_cham = split_z + frame_proud - frame_cham;
     flo = min(yreach, ycap); fhi = max(yreach, ycap);    // thick-fin Y range
     clo = min(w_in, ycap);   chi = max(w_in, ycap);      // thin-lip Y range (cavity side)
@@ -360,7 +366,8 @@ module tongue_notch(cx, dir) {
     L      = frame_rib_l + 2*frame_notch_clr;
     w_in   = (dir > 0) ? wall : wall + inner_h;
     ycap   = w_in + dir * (clr - frame_clr);
-    yreach = w_in - dir * frame_fin_reach;
+    yraw   = w_in - dir * frame_fin_reach;
+    yreach = (dir > 0) ? max(0, yraw) : min(outer_h, yraw);
     nlo = min(yreach, ycap) - frame_notch_clr;
     nhi = max(yreach, ycap) + frame_notch_clr;
     translate([x0, nlo, split_z - lap - eps]) cube([L, nhi - nlo, lap + 2*eps]);
