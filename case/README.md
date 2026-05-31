@@ -70,6 +70,16 @@ in their own local coordinate systems), so they are entered as editable constant
   toward the RIGHT in the cavity (normal `clr = 0.4` against the right wall, `clr +
   overhang = 2.4 mm` against the left). The outer case width thus becomes ~**54.8 mm**.
 - **The battery** (250 mAh LiPo) sits at the bottom, under the PCB.
+  - **Battery cable riser** (`batt_cable`, `batt_cable_*`): the battery is under the PCB and
+    its cable has to come up to BAT1 on the PCB top, in the back-left corner by the left wall
+    (BAT1 ≈ board (3.3, 17)). The PCB-to-wall gap there is only ~2.4 mm and the ship-lap
+    tongue closes into it, so without help you can route the cable *or* close the lid, not
+    both. A rounded vertical channel (cut from **both** base and lid) runs from the floor up
+    into the lid at that corner: it scallops the inner wall by `batt_cable_depth` (leaving
+    ~1 mm of skin — no hole to the outside) and locally notches the lid tongue, giving the
+    cable a protected path through the seam. `batt_cable_y` positions it along the left wall
+    (default 17.6, between the USB-C recess and the back corner), `batt_cable_r` is the
+    channel radius. Set `batt_cable = false` to remove it.
 
 ## Closure — `closure`
 - `closure = "screw"` (default): **2 screws from the top** through the two real Ø2 holes.

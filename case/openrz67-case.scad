@@ -103,6 +103,19 @@ batt_l   = 20;      // footprint Y (the narrow dimension; +1mm for a slightly ro
 batt_pos = [8.5, 1.0]; // min-corner in board coords (centred; clear of USB1/U4/standoffs)
 rib_h    = 2.5;     // height of the retaining ribs
 
+/* [Battery cable riser] */
+// The battery lives under the PCB; its cable must come up to BAT1 on the PCB top, in the
+// back-left corner by the left wall (BAT1 at board ~(3.3, 17)). The PCB-to-wall gap there is
+// only ~2.4mm and the ship-lap tongue closes down into it, so the cable can't be routed AND
+// the lid closed. This carves a rounded vertical channel at that corner from the floor up
+// into the lid: it scallops the inner wall by batt_cable_depth (leaving wall - depth ~= 1mm)
+// and locally notches the lid tongue, giving the cable a protected path through the seam.
+// Cut from BOTH base and lid. Sits between the USB-C recess (front) and the back corner.
+batt_cable       = true;
+batt_cable_y     = 17.6;  // board-Y where the channel centre meets the LEFT wall (by BAT1)
+batt_cable_r     = 1.6;   // channel radius (cable conduit; ~3.2mm wide)
+batt_cable_depth = 1.0;   // how far it scallops INTO the inner wall (wall - this stays >= ~1mm)
+
 /* [Openings] */
 // USB-C (matches last year's design from the STEP file):
 //   - Outer face: 11x7 through-cut. This edge IS the lip that stops the
@@ -309,6 +322,8 @@ module base() {
         // blocked by the base side wall. Cut the same opening from the base so the whole
         // hole is open.
         cut_usb();
+        // channel for the battery cable to come up to BAT1 (also cut from the lid)
+        batt_cable_channel();
     }
 }
 
@@ -371,6 +386,21 @@ module tongue_notch(cx, dir) {
     nlo = min(yreach, ycap) - frame_notch_clr;
     nhi = max(yreach, ycap) + frame_notch_clr;
     translate([x0, nlo, split_z - lap - eps]) cube([L, nhi - nlo, lap + 2*eps]);
+}
+
+// Rounded vertical cable channel at the back-left corner (left wall) for the battery cable.
+// Cut from BOTH base and lid so it spans the split: it scallops the inner wall (leaving
+// wall - batt_cable_depth of skin) and removes the lid tongue locally, so the cable runs from
+// the under-PCB battery space up to BAT1 on the PCB top without being pinched by the closing
+// lid. Centred at the left inner wall face (X = wall) so it reaches X = wall - depth into the
+// wall and opens batt_cable_r into the cavity gap; runs floor -> lid ceiling.
+module batt_cable_channel() {
+    if (batt_cable) {
+        cx = wall - batt_cable_depth + batt_cable_r;   // leftmost point reaches wall - depth
+        cy = by(batt_cable_y);
+        translate([cx, cy, floor_t - eps])
+            cylinder(h = (total_h - lid_top_t) - floor_t + 2*eps, r = batt_cable_r);
+    }
 }
 
 // Solid support posts in the corners WITHOUT a screw hole. Same height as the standoffs,
@@ -464,6 +494,8 @@ module lid() {
         if (closure == "screw") boss_tongue_relief();
         // notch in the lid tongue where the PCB frame fins stand (else the lid won't go down)
         frame_tongue_notch();
+        // channel for the battery cable to come up to BAT1 (also cut from the base)
+        batt_cable_channel();
     }
     // raised text, added on top of the finished lid so the openings can't cut it
     lid_text_relief();
