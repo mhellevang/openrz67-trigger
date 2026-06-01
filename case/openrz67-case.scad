@@ -182,6 +182,15 @@ sw_boss_d       = 5.0;   // screw boss on the inner wall
 sw_boss_h       = 5.0;   // how far the boss sticks into the case
 sw_boss_pilot   = 1.5;   // pilot hole (M2 self-tapping)
 sw_ear_t        = 0.6;   // thickness of the switch ear - the boss is pulled back by this much
+// Wall anchoring: the boss pillars otherwise hang only from the lid ceiling, set back
+// sw_ear_t from the wall (a free-standing cantilever that flexes when the screw is tightened).
+// This fills that ear gap with a web that fuses the pillar to the wall over the boss
+// footprint, leaving a window (sw_ear_w x sw_ear_h, centred on the screw) for the switch's
+// mounting ear/tab. Much stiffer. If your switch has a LARGE front mounting plate (not small
+// tabs), enlarge the window to clear it, or set sw_boss_wall_anchor = false to revert.
+sw_boss_wall_anchor = true;
+sw_ear_w        = 4.0;   // ear/tab window width  (X) - must stay < sw_boss_d for side bracing
+sw_ear_h        = 4.5;   // ear/tab window height (Z)
 // The switch bosses' footprint (Ø5, X14.5 & X29.5, board-Y 0.2-5.2) sits OVER densely
 // packed components along the front edge: Q1 (SOT-23, ~1.1mm), C15/C26 (0603, ~0.9mm)
 // + 0402s. The boss bottom must clear the tallest, otherwise the lid is lifted. (Was 0.5mm
@@ -676,12 +685,15 @@ module switch_slot() {
 // 2 screw bosses flanking the actuator. Vertical rectangular PILLARS that run from the
 // screw centre ALL THE WAY UP into the lid ceiling -> the screw force is taken by the
 // ceiling, not by the thin wall. The pillar's outer face is sw_ear_t in from the wall, so
-// the switch ear is clamped into the gap. (Added to the lid solid.)
+// the switch ear is clamped into the gap. When sw_boss_wall_anchor is on, a web also fills
+// that gap (minus an ear window) so the pillar is braced against the wall too. (Added to the
+// lid solid.)
 module switch_bosses() {
     sx       = bx(sw_x);
     zc       = split_z + sw_z + sw_screw_dz;
     front    = (sw_wall == "front");
-    y_inner  = front ? wall + sw_ear_t : outer_h - wall - sw_ear_t;
+    y_pillar = front ? wall + sw_ear_t : outer_h - wall - sw_ear_t;  // pillar front face
+    y_wall   = front ? wall            : outer_h - wall;             // wall inner face
     pillar_w = sw_boss_d;                 // X width around the screw hole
     pillar_d = sw_boss_h;                 // Y depth inward from (almost) the wall
     // The PCB top is at split_z; the pillar starts sw_boss_gap above and runs up into the
@@ -692,12 +704,24 @@ module switch_bosses() {
     h_pillar = z_top - z_bot;
     for (s = [-1, 1]) {
         x = sx + s * sw_screw_pitch / 2;
+        // the pillar itself (hangs from the ceiling)
         if (front)
-            translate([x - pillar_w/2, y_inner,             z_bot])
+            translate([x - pillar_w/2, y_pillar,            z_bot])
                 cube([pillar_w, pillar_d, h_pillar]);
         else
-            translate([x - pillar_w/2, y_inner - pillar_d,  z_bot])
+            translate([x - pillar_w/2, y_pillar - pillar_d, z_bot])
                 cube([pillar_w, pillar_d, h_pillar]);
+        // wall-anchor web: bridges the ear gap (wall <-> pillar front) across the boss
+        // footprint, minus a window for the switch ear/tab. Braces the cantilever to the wall.
+        if (sw_boss_wall_anchor) {
+            ylo = min(y_pillar, y_wall);
+            yhi = max(y_pillar, y_wall);
+            difference() {
+                translate([x - pillar_w/2, ylo, z_bot]) cube([pillar_w, yhi - ylo, h_pillar]);
+                translate([x - sw_ear_w/2, ylo - eps, zc - sw_ear_h/2])
+                    cube([sw_ear_w, (yhi - ylo) + 2*eps, sw_ear_h]);
+            }
+        }
     }
 }
 

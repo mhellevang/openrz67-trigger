@@ -233,6 +233,19 @@ openscad -o lid.stl  -D 'part="lid"'  case/openrz67-case.scad
   pillar cross-section and pilot hole, `sw_ear_t` pulls the pillar's front face back so
   the ear thickness fits in the gap against the wall, `sw_screw_head_d/h` is the
   countersunk head pocket. `sw_slot_l/h` is the actuator slot.
+  - **Screw**: **M2 self-tapping**, ~**8 mm** long (M2×6 also fine). It goes from outside
+    through the wall (2 mm) + ear gap (`sw_ear_t` 0.6 mm) and threads `sw_screw_d`/`sw_boss_pilot`
+    into the pillar (up to `sw_boss_h` 5 mm engagement). The head sits in the
+    `sw_screw_head_d/h` counterbore on the outer face.
+  - **Wall anchoring** (`sw_boss_wall_anchor`, default on): the pillar otherwise hangs only
+    from the ceiling, set back `sw_ear_t` from the wall — a free-standing cantilever that
+    flexes when the screw is tightened (the gap you noticed). A **web now bridges that gap**,
+    fusing the pillar to the wall across the boss footprint, with a window (`sw_ear_w` ×
+    `sw_ear_h`, default 4.0 × 4.5, centred on the screw) left open for the switch's mounting
+    ear/tab. **Verify the window against your switch**: if it has a large flat front plate
+    rather than small tabs, enlarge `sw_ear_w/h` to clear it (less bracing) or set
+    `sw_boss_wall_anchor = false` to revert to the ceiling-only pillar. Keep `sw_ear_w` <
+    `sw_boss_d` so material remains on each side for bracing.
 
 ## USB-C opening
 Matches last year's design (confirmed from `3D_ESP32CamTrigger_PCB v2 2025-09-01.step`).
