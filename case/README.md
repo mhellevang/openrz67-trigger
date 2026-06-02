@@ -230,6 +230,12 @@ openscad -o lid.stl  -D 'part="lid"'  case/openrz67-case.scad
   ~1.1 mm, C15/C26 0603 ~0.9 mm); too small a gap pushed the pillars against them and held
   the lid ~0.5 mm open. `sw_screw_pitch` = 15.0 (centre spacing, ±7.5), `sw_screw_d` = 2.4
   (M2 clearance), `sw_boss_d/h/pilot` set the pillar cross-section and pilot hole.
+  - **Body keepout** (`sw_body_l × sw_body_h × sw_body_w` = **11 × 7 × 8 mm**, + `sw_body_clr`
+    0.4/side): the body that protrudes inside is ~11 mm wide, but the bosses (5 mm wide at
+    ±7.5) leave only a 10 mm gap, so each boss bit 0.5 mm into the body and stopped it short.
+    A keepout carves the body envelope out of the cavity, relieving the boss inner faces over
+    the body's Y/Z extent only — the screw region (±7.5) and the pillar above the body stay
+    full. Verify `sw_body_l/h/w` against your switch.
   - **Actuator opening** (`sw_slot_l × sw_slot_h`): **10.65 × 6.3 mm** through the wall,
     centred on `sw_x`/`sw_z`.
   - **Screw**: **M2 self-tapping**, ~**8 mm** long (M2×6 also fine). From outside through the

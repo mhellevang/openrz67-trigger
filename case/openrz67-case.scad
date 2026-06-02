@@ -168,7 +168,15 @@ sw_z      = 4.5;      // centre height above the PCB top
 // Actuator opening (through the wall). Measured from the switch: 10.65 x 6.3 mm.
 sw_slot_l = 10.65;    // along the wall (X, travel + actuator)
 sw_slot_h = 6.3;      // height (Z)
-sw_body_w = 8.0;      // how far the switch body sticks in from the wall (clearance)
+sw_body_w = 8.0;      // how far the switch body sticks in from the wall (Y depth into the case)
+// The switch body that enters the cavity (X x Z). The screw bosses (at +-7.5) are 5mm wide,
+// so their inner faces sit at +-5.0 -> a 10mm gap. The body is ~11mm wide, so each boss bit
+// 0.5mm into the body and stopped it short. A body-keepout (this footprint + sw_body_clr)
+// is cut from the cavity so the bosses give way over the body's envelope, leaving the screw
+// region (at +-7.5, well outside the body) and the upper pillar full for stiffness.
+sw_body_l   = 11.0;   // body width along the wall (X) - the part that protrudes inside
+sw_body_h   = 7.0;    // body height (Z)
+sw_body_clr = 0.4;    // clearance added around the body envelope (per side)
 // Screw mount: the ears sit against the inner wall, screws go in from outside -> through
 // the wall -> thread into bosses on the inside (the ears are Ø2.2 clearance holes in the
 // STEP file).
@@ -496,6 +504,7 @@ module lid() {
         if (sw_enable) switch_slot();
         if (sw_enable && sw_plate_recess) switch_plate_recess();
         if (sw_enable && sw_screw) switch_screws();
+        if (sw_enable) switch_body_clearance();   // bosses give way to the switch body envelope
         if (closure == "screw") screw_holes(); else holddown_pinholes();
         // clearance for component bodies above the PCB (bosses give way to the USB-C connector etc.)
         comp_keepout_volumes();
@@ -746,11 +755,32 @@ module switch_screws() {
     }
 }
 
+// Keepout for the switch BODY inside the cavity. The body (sw_body_l x sw_body_h, sw_body_w
+// deep) is wider than the gap between the screw bosses, so without this the boss inner faces
+// foul the body and stop it short. This carves the body envelope (+ sw_body_clr per side)
+// starting at the INNER wall face and running inward, removing only the intruding boss bits
+// over the body's Y/Z extent. The screw pilots (at +-7.5) and the pillar above the body stay
+// intact. Cut from the inner wall inward only, so the actuator opening (the slot) keeps its
+// measured width and the bracket still seats on the outer wall.
+module switch_body_clearance() {
+    sx = bx(sw_x);
+    zc = split_z + sw_z;
+    bw = sw_body_l + 2*sw_body_clr;
+    bh = sw_body_h + 2*sw_body_clr;
+    yd = sw_body_w + eps;
+    if (sw_wall == "front")
+        translate([sx - bw/2, wall, zc - bh/2])
+            cube([bw, yd, bh]);
+    else
+        translate([sx - bw/2, outer_h - wall - sw_body_w, zc - bh/2])
+            cube([bw, yd, bh]);
+}
+
 // simple proxy of the switch for preview (visual space check only)
 module switch_preview() {
     sx = bx(sw_x); zc = split_z + sw_z;
     color([0.12, 0.12, 0.12, 0.85]) {
-        translate([sx - 5.5, wall, zc - 3.5]) cube([11, sw_body_w, 7]);     // body
+        translate([sx - sw_body_l/2, wall, zc - sw_body_h/2]) cube([sw_body_l, sw_body_w, sw_body_h]);  // body
         translate([sx - 1.5, -2, zc - 1.5]) cube([3, wall + 2.5, 3]);       // actuator
         for (s = [-1, 1])
             translate([sx + s*sw_screw_pitch/2 - 3, wall, zc - 1]) cube([6, 0.6, 2]); // ear
