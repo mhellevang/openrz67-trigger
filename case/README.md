@@ -220,29 +220,28 @@ openscad -o lid.stl  -D 'part="lid"'  case/openrz67-case.scad
   switch with 15 mm boss spacing. `sw_x = 22` is practically centred (case centre is 23;
   shifted 1 mm left so the right boss clears the K1 relay at board-X 33.16 by ~1.2 mm).
   The wire from S3 runs across the board to the switch. Verify against your own components.
-- **Switch screw mount**: the switch has a flat mounting bracket that sits against the
-  **inner** wall; screws go from outside → through the wall → thread into two **rectangular
+- **Switch screw mount**: the switch's flat bracket mounts on the **outside** of the case;
+  screws go from outside → through the bracket and wall → thread into two **rectangular
   pillars** that hang from the lid ceiling down to `sw_boss_gap` (1.5 mm) above the PCB. The
-  pillars are anchored in the top plate, and their front sits at the inner wall plane right
-  behind the bracket, so tightening clamps **boss → bracket → recess floor (solid wall)** in
-  compression. The `sw_boss_gap` air gap is needed because the pillar footprint (board-X 14.5
-  and 29.5) sits over densely packed front components (Q1 SOT-23 ~1.1 mm, C15/C26 0603
-  ~0.9 mm); too small a gap pushed the pillars against them and held the lid ~0.5 mm open.
-  `sw_screw_pitch` = 15.0 (centre spacing, ±7.5), `sw_screw_d` = 2.4 (M2 clearance),
-  `sw_boss_d/h/pilot` set the pillar cross-section and pilot hole, `sw_screw_head_d/h` is the
-  head counterbore.
+  pillars are anchored in the top plate and their front sits at the inner wall plane against
+  the (now solid) inner wall, so tightening clamps **bracket → wall → boss** in compression —
+  no free-standing cantilever. The `sw_boss_gap` air gap is needed because the pillar
+  footprint (board-X 14.5 and 29.5) sits over densely packed front components (Q1 SOT-23
+  ~1.1 mm, C15/C26 0603 ~0.9 mm); too small a gap pushed the pillars against them and held
+  the lid ~0.5 mm open. `sw_screw_pitch` = 15.0 (centre spacing, ±7.5), `sw_screw_d` = 2.4
+  (M2 clearance), `sw_boss_d/h/pilot` set the pillar cross-section and pilot hole.
   - **Actuator opening** (`sw_slot_l × sw_slot_h`): **10.65 × 6.3 mm** through the wall,
     centred on `sw_x`/`sw_z`.
   - **Screw**: **M2 self-tapping**, ~**8 mm** long (M2×6 also fine). From outside through the
-    wall and bracket, threading `sw_boss_pilot` (1.5) into the pillar (up to `sw_boss_h` 5 mm
-    engagement). The head sits in the `sw_screw_head_d/h` counterbore on the outer face.
+    bracket (0.4) + wall (1.6 behind the recess), threading `sw_boss_pilot` (1.5) into the
+    pillar (up to `sw_boss_h` 5 mm engagement). The head sits on the external bracket, so the
+    case has no head counterbore.
   - **Bracket recess** (`sw_plate_recess`, default on): the flat bracket (`sw_plate_w ×
-    sw_plate_h × sw_plate_t` = **19.45 × 5.75 × 0.4 mm**) sits in a pocket `sw_plate_t` deep
-    cut into the inner wall, so it ends up **flush** with the inner wall surface and the
-    switch seats flat. This also gives the strength: the bracket bottoms against the solid
-    recess floor, so the boss no longer relies on a free-standing cantilever. `sw_plate_clr`
-    (0.3) adds fit clearance around the bracket. Verify `sw_plate_w/h/t` against your switch;
-    set `sw_plate_recess = false` to drop the pocket.
+    sw_plate_h × sw_plate_t` = **19.45 × 5.75 × 0.4 mm**) mounts on the **outside**, sitting
+    in a pocket `sw_plate_t` deep cut into the **outer** wall so it is **flush** with the
+    outside. The inner wall behind it stays solid, which is what the bosses bear against.
+    `sw_plate_clr` (0.3) adds fit clearance around the bracket. Verify `sw_plate_w/h/t`
+    against your switch; set `sw_plate_recess = false` to drop the pocket.
 
 ## USB-C opening
 Matches last year's design (confirmed from `3D_ESP32CamTrigger_PCB v2 2025-09-01.step`).

@@ -176,17 +176,15 @@ sw_screw        = true;
 sw_screw_pitch  = 15.0;  // centre spacing between the ears (from STEP: X = +-7.5)
 sw_screw_d      = 2.4;   // clearance hole through the wall (M2)
 sw_screw_dz     = 0.0;   // height offset from the slot centre
-sw_screw_head_d = 4.2;   // counterbore for the head on the outer face
-sw_screw_head_h = 1.4;
 sw_boss_d       = 5.0;   // screw boss on the inner wall
 sw_boss_h       = 5.0;   // how far the boss sticks into the case
 sw_boss_pilot   = 1.5;   // pilot hole (M2 self-tapping)
 // Mounting-plate recess: the switch's flat bracket (sw_plate_w x sw_plate_h, sw_plate_t
-// thick, carrying the Ø2.2 screw holes + the actuator opening) sits against the INNER wall.
-// A pocket sw_plate_t deep is carved into the inner wall over the plate footprint so the
-// plate is FLUSH with the inner wall surface. This also seats the switch flat against the
-// wall: the screw then clamps boss -> plate -> recess floor (solid wall) in compression, so
-// the boss no longer relies on a free-standing cantilever for stiffness.
+// thick, carrying the Ø2.2 screw holes + the actuator opening) mounts on the OUTSIDE of the
+// case. A pocket sw_plate_t deep is carved into the OUTER wall over the plate footprint so
+// the plate is FLUSH with the outside. Screws pass from outside through the bracket and the
+// wall and thread into the bosses inside; the inner wall behind the bracket stays solid, so
+// the screw clamps bracket -> wall -> boss in compression (no free-standing cantilever).
 sw_plate_recess = true;
 sw_plate_w      = 19.45;  // bracket width  (X, along the wall) - from the switch
 sw_plate_h      = 5.75;   // bracket height (Z)
@@ -712,9 +710,10 @@ module switch_bosses() {
     }
 }
 
-// Pocket in the INNER wall for the switch's flat mounting plate, so it sits flush. Cut from
-// the lid (the switch is on the lid portion of the wall). sw_plate_t deep, plate footprint
-// + clearance, centred on the screw height.
+// Pocket in the OUTER wall for the switch's flat mounting plate, so it sits flush with the
+// outside. Cut from the lid (the switch is on the lid portion of the wall). sw_plate_t deep,
+// plate footprint + clearance, centred on the screw height. The inner wall behind it stays
+// solid, so the screw bosses bear against full wall.
 module switch_plate_recess() {
     if (sw_plate_recess) {
         sx = bx(sw_x);
@@ -722,15 +721,15 @@ module switch_plate_recess() {
         w  = sw_plate_w + sw_plate_clr;
         h  = sw_plate_h + sw_plate_clr;
         if (sw_wall == "front")
-            translate([sx - w/2, wall - sw_plate_t, zc - h/2])
+            translate([sx - w/2, -eps, zc - h/2])                  // outer face at Y=0
                 cube([w, sw_plate_t + eps, h]);
         else
-            translate([sx - w/2, outer_h - wall - eps, zc - h/2])
+            translate([sx - w/2, outer_h - sw_plate_t, zc - h/2])  // outer face at Y=outer_h
                 cube([w, sw_plate_t + eps, h]);
     }
 }
 
-// clearance hole through the wall + countersunk head outside + pilot hole in the boss (cut)
+// clearance hole through the wall (the head sits on the external bracket) + pilot in the boss
 module switch_screws() {
     sx    = bx(sw_x);
     zc    = split_z + sw_z + sw_screw_dz;
@@ -738,12 +737,10 @@ module switch_screws() {
     for (s = [-1, 1]) {
         x = sx + s*sw_screw_pitch/2;
         if (front) {
-            translate([x, -1, zc])            rotate([-90,0,0]) cylinder(h = wall + 1, d = sw_screw_d);          // clearance to the inner wall plane
-            translate([x, -eps, zc])          rotate([-90,0,0]) cylinder(h = sw_screw_head_h + eps, d = sw_screw_head_d);  // head counterbore (outer face)
-            translate([x, wall - eps, zc])    rotate([-90,0,0]) cylinder(h = sw_boss_h + eps, d = sw_boss_pilot);          // pilot into the boss
+            translate([x, -1, zc])            rotate([-90,0,0]) cylinder(h = wall + 1, d = sw_screw_d);     // clearance through bracket + wall
+            translate([x, wall - eps, zc])    rotate([-90,0,0]) cylinder(h = sw_boss_h + eps, d = sw_boss_pilot);  // pilot into the boss
         } else {
             translate([x, outer_h - wall - 1, zc]) rotate([-90,0,0]) cylinder(h = wall + 1, d = sw_screw_d);
-            translate([x, outer_h - sw_screw_head_h, zc]) rotate([-90,0,0]) cylinder(h = sw_screw_head_h + eps, d = sw_screw_head_d);
             translate([x, outer_h - wall + eps, zc]) rotate([90,0,0]) cylinder(h = sw_boss_h + eps, d = sw_boss_pilot);
         }
     }
