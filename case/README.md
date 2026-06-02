@@ -181,6 +181,24 @@ openscad -o lid.stl  -D 'part="lid"'  case/openrz67-case.scad
 
 `part="both"` lays both parts side by side. STL output in `case/stl/` is git-ignored.
 
+### Slicer project (.3mf)
+
+After the STLs, `export.sh` (screw closure only) rebuilds `openrz67-case.3mf` — a
+**Bambu Studio / OrcaSlicer project** with the three parts arranged on the plate, the print
+profile, and the **per-part filament assignment** (base + lid on filament 1, light pipe on
+filament 4 = clear). It does this by swapping the fresh meshes into a hand-made template
+(`bambu-template.3mf`) via `make_3mf.py`, so all slicer settings are preserved — only the
+geometry changes. Skip it with `MAKE_3MF=false ./export.sh`, or run it standalone:
+
+```bash
+python3 make_3mf.py            # template + stl/ -> openrz67-case.3mf
+```
+
+To change the print settings, plate layout, or filament mapping, edit the project once in the
+slicer and re-save it over `bambu-template.3mf`; subsequent exports inherit the new setup.
+The plate thumbnails inside the .3mf are not regenerated (they show the template's geometry);
+the slicer refreshes them when you open or slice the project — purely cosmetic.
+
 ## Print orientation
 - **Base**: print as-is (floor down). No supports needed.
 - **Lid**: print **upside down** (top plate against the bed). That way the bosses/lip

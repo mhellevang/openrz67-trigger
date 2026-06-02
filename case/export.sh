@@ -60,3 +60,14 @@ echo "==> lightpipe (clear filament)  ->  ${lp}"
 run -o "$lp" -D "part=\"lightpipe\""
 
 echo "Done. STLs are in ${OUTDIR}/ (lightpipe in clear filament, the rest opaque)"
+
+# Rebuild the Bambu/Orca project .3mf by swapping these STLs into the hand-made template
+# (bambu-template.3mf), keeping the print profile + plate layout + filament assignment (the
+# light pipe stays on its clear filament). Only runs for the screw closure (the template's
+# part names are *-screw) and when the template + python are present. Disable with MAKE_3MF=false.
+MAKE_3MF="${MAKE_3MF:-true}"
+if [ "$MAKE_3MF" = "true" ] && [ "$CLOSURE" = "screw" ] \
+   && [ -f bambu-template.3mf ] && command -v python3 >/dev/null 2>&1; then
+  echo "==> project 3mf  ->  openrz67-case.3mf"
+  python3 make_3mf.py --stl-dir "$OUTDIR" --out openrz67-case.3mf
+fi

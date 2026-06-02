@@ -21,6 +21,9 @@ CMakeLists.txt
 case/stl/
 *.stl
 
+# Generert slicer-prosjekt fra case/export.sh (bygges fra bambu-template.3mf via make_3mf.py)
+case/openrz67-case.3mf
+
 # IDE files
 .idea/
 .vscode/
