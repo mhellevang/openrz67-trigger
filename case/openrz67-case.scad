@@ -74,8 +74,8 @@ frame_clr   = 0.2;     // clearance between the fin's catching face and the boar
 frame_proud = 0.6;     // thin lead-in lip above the board top (toward the ceiling + alignment)
 frame_cham  = 0.4;     // chamfer on the lip
 frame_rib_l = 8.0;     // fin length along the edge
-frame_fin_reach = 2.0; // how far the anchored side reaches toward the outer wall; = wall fully
-                       // embeds the fin into the wall for the full lap-zone height (stiffness).
+                       // (fins anchor through to the OUTER wall face, so they stay backed across
+                       // the lap zone and bridge the back_margin gutter on the back edge.)
                        // Clamped to the outer face, so larger values can't poke outside.
 frame_notch_clr = 0.3; // clearance where the lid tongue is cut away around the fin
 // Fin centre in board-X (bx() converts). Front = low Y, back = high Y.
@@ -105,17 +105,17 @@ rib_h    = 2.5;     // height of the retaining ribs
 
 /* [Battery cable riser] */
 // The battery lives under the PCB; its cable must come up to BAT1 on the PCB top (BAT1 at
-// board ~(3.3, 17)). The channel rides the LEFT wall on purpose: the PCB is shifted right by
-// pcb_overhang_left, so the LEFT gap is ~2.4mm while the back/right gaps are only clr (~0.4mm)
-// - too tight to pass a ~3.2mm cable behind the board there. Pushed back to the BACK-LEFT
-// CORNER (Y~20.5, vs the USB-C recess which ends ~Y15.2) so it clears USB-C by 5+mm; the
-// rounded PCB corner (R2) opens extra room here. The ship-lap tongue would otherwise close
-// down into this gap, so this carves a rounded vertical channel from the floor up into the
-// lid: it scallops the inner wall by batt_cable_depth (leaving wall - depth ~= 1mm) and
-// locally notches the lid tongue, giving the cable a protected path through the seam.
-// Cut from BOTH base and lid. The cable surfaces just behind BAT1 and plugs in with a short run.
+// board ~(3.3, 17)). A uniform widening of the LEFT wall is out: USB-C pins the PCB's left
+// edge to that wall (pcb_overhang_left positions the shell to reach the opening), so moving
+// the left wall out would leave the USB-C plug seating ~2mm shallower. Instead we add a
+// dedicated gutter BEHIND the board (back_margin) - this pushes only the back wall out, leaves
+// USB-C and the snug PCB fit untouched, and keeps the case a clean rectangle. The cable then
+// wraps the BACK edge and rises in the back-left corner straight behind BAT1. The channel
+// scallops the back wall by batt_cable_depth (leaving wall - depth ~= 1mm) and notches the lid
+// tongue locally, giving the cable a protected path through the seam. Cut from BOTH base and lid.
 batt_cable       = true;
-batt_cable_y     = 20.5;  // board-Y where the channel centre meets the LEFT wall (back-left corner, clear of USB-C)
+back_margin      = 2.0;   // extra cavity depth behind the board -> back gutter = clr + this (~2.4mm) for the cable
+batt_cable_x     = 3.3;   // board-X where the channel meets the BACK wall (aligned behind BAT1)
 batt_cable_r     = 1.6;   // channel radius (cable conduit; ~3.2mm wide)
 batt_cable_depth = 1.0;   // how far it scallops INTO the inner wall (wall - this stays >= ~1mm)
 
@@ -279,7 +279,7 @@ eps = 0.01;
 /* ============================ derived ============================ */
 off        = wall + clr;                    // board(0,0) -> case-Y; X-offset is bx()
 inner_w    = board_w + 2*clr + pcb_overhang_left;  // extra clearance on the left for the USB-C shell
-inner_h    = board_h + 2*clr;
+inner_h    = board_h + 2*clr + back_margin;   // back_margin adds a gutter behind the board (battery cable)
 inner_r    = board_r + clr;
 outer_w    = inner_w + 2*wall;
 outer_h    = inner_h + 2*wall;
@@ -367,20 +367,21 @@ module pcb_frame_ribs() {
 //     (frame_tongue_notch) so the fin clears when the lid closes.
 module frame_rib(cx, dir) {
     x0     = cx - frame_rib_l/2;
-    w_in   = (dir > 0) ? wall : wall + inner_h;          // cavity-wall inner face
-    ycap   = w_in + dir * (clr - frame_clr);             // catching face (frame_clr from board edge)
-    yraw   = w_in - dir * frame_fin_reach;
-    yreach = (dir > 0) ? max(0, yraw) : min(outer_h, yraw);  // anchored side, clamped to the outer face
+    bedge  = (dir > 0) ? off : off + board_h;            // board edge (front/back), case-Y
+    winlip = bedge - dir * clr;                          // nominal inner-wall face at the board edge (thin lip)
+    ycap   = bedge - dir * frame_clr;                    // catching face (frame_clr from the board edge)
+    yreach = (dir > 0) ? 0 : outer_h;                    // anchor at the OUTER face: stays backed across the lap zone
+                                                         // and bridges the back_margin gutter on the back side
     z_cham = split_z + frame_proud - frame_cham;
     flo = min(yreach, ycap); fhi = max(yreach, ycap);    // thick-fin Y range
-    clo = min(w_in, ycap);   chi = max(w_in, ycap);      // thin-lip Y range (cavity side)
+    clo = min(winlip, ycap); chi = max(winlip, ycap);    // thin-lip Y range (stays thin at the board edge)
     union() {
         // thick fin: floor -> board top (anchored in the wall below the lap zone)
         translate([x0, flo, floor_t]) cube([frame_rib_l, fhi - flo, split_z - floor_t]);
         // thin lead-in lip above the board (cavity side, clears the lid wall)
         translate([x0, clo, split_z - eps]) cube([frame_rib_l, chi - clo, z_cham - (split_z - eps)]);
         // chamfer on the lip, narrowing toward the wall inner face
-        y_top = (dir > 0) ? w_in : w_in - eps;
+        y_top = (dir > 0) ? winlip : winlip - eps;
         hull() {
             translate([x0, clo, z_cham])                        cube([frame_rib_l, chi - clo, eps]);
             translate([x0, y_top, split_z + frame_proud - eps]) cube([frame_rib_l, eps, eps]);
@@ -398,26 +399,25 @@ module frame_tongue_notch() {
 module tongue_notch(cx, dir) {
     x0     = cx - frame_rib_l/2 - frame_notch_clr;
     L      = frame_rib_l + 2*frame_notch_clr;
-    w_in   = (dir > 0) ? wall : wall + inner_h;
-    ycap   = w_in + dir * (clr - frame_clr);
-    yraw   = w_in - dir * frame_fin_reach;
-    yreach = (dir > 0) ? max(0, yraw) : min(outer_h, yraw);
+    bedge  = (dir > 0) ? off : off + board_h;            // board edge (matches frame_rib)
+    ycap   = bedge - dir * frame_clr;
+    yreach = (dir > 0) ? 0 : outer_h;
     nlo = min(yreach, ycap) - frame_notch_clr;
     nhi = max(yreach, ycap) + frame_notch_clr;
     translate([x0, nlo, split_z - lap - eps]) cube([L, nhi - nlo, lap + 2*eps]);
 }
 
-// Rounded vertical cable channel in the back-left corner (rides the left wall, where the
-// pcb_overhang_left gap is ~2.4mm) for the battery cable. Pushed to the back corner so it
-// clears the USB-C recess. Cut from BOTH base and lid so it spans the split: it scallops the inner wall (leaving
-// wall - batt_cable_depth of skin) and removes the lid tongue locally, so the cable runs from
-// the under-PCB battery space up to BAT1 on the PCB top without being pinched by the closing
-// lid. Centred at the left inner wall face (X = wall) so it reaches X = wall - depth into the
-// wall and opens batt_cable_r into the cavity gap; runs floor -> lid ceiling.
+// Rounded vertical cable channel in the BACK wall (back-left corner) for the battery cable.
+// Sits in the back gutter opened by back_margin, aligned behind BAT1 (batt_cable_x). Cut from
+// BOTH base and lid so it spans the split: it scallops the back inner wall (leaving
+// wall - batt_cable_depth of skin) and removes the lid tongue locally, so the cable wraps the
+// board's back edge and rises to BAT1 on the PCB top without being pinched by the closing lid.
+// Centred at the back inner wall face (Y = wall + inner_h) so it reaches Y = wall + inner_h +
+// depth into the wall and opens batt_cable_r into the cavity gap; runs floor -> lid ceiling.
 module batt_cable_channel() {
     if (batt_cable) {
-        cx = wall - batt_cable_depth + batt_cable_r;   // leftmost point reaches wall - depth
-        cy = by(batt_cable_y);
+        cx = bx(batt_cable_x);
+        cy = (wall + inner_h) + batt_cable_depth - batt_cable_r;  // rearmost point reaches inner wall + depth
         translate([cx, cy, floor_t - eps])
             cylinder(h = (total_h - lid_top_t) - floor_t + 2*eps, r = batt_cable_r);
     }

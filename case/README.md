@@ -70,16 +70,17 @@ in their own local coordinate systems), so they are entered as editable constant
   toward the RIGHT in the cavity (normal `clr = 0.4` against the right wall, `clr +
   overhang = 2.4 mm` against the left). The outer case width thus becomes ~**54.8 mm**.
 - **The battery** (250 mAh LiPo) sits at the bottom, under the PCB.
-  - **Battery cable riser** (`batt_cable`, `batt_cable_*`): the battery is under the PCB and
-    its cable has to come up to BAT1 on the PCB top, in the back-left corner by the left wall
-    (BAT1 ≈ board (3.3, 17)). The PCB-to-wall gap there is only ~2.4 mm and the ship-lap
-    tongue closes into it, so without help you can route the cable *or* close the lid, not
-    both. A rounded vertical channel (cut from **both** base and lid) runs from the floor up
-    into the lid at that corner: it scallops the inner wall by `batt_cable_depth` (leaving
-    ~1 mm of skin — no hole to the outside) and locally notches the lid tongue, giving the
-    cable a protected path through the seam. `batt_cable_y` positions it along the left wall
-    (default 17.6, between the USB-C recess and the back corner), `batt_cable_r` is the
-    channel radius. Set `batt_cable = false` to remove it.
+  - **Battery cable riser** (`batt_cable`, `batt_cable_*`, `back_margin`): the battery is under
+    the PCB and its cable has to come up to BAT1 on the PCB top (BAT1 ≈ board (3.3, 17)). USB-C
+    pins the PCB's left edge to the left wall, so widening *that* side would shallow the USB-C
+    plug seating. Instead `back_margin` (default **2 mm**) adds a dedicated gutter **behind** the
+    board — only the back wall moves out, USB-C and the snug PCB fit are untouched, and the case
+    stays a clean rectangle. The cable wraps the board's **back edge** and rises in the back-left
+    corner straight behind BAT1, through a rounded vertical channel (cut from **both** base and
+    lid) that scallops the back wall by `batt_cable_depth` (leaving ~1 mm of skin — no hole to
+    the outside) and locally notches the lid tongue. `batt_cable_x` positions it along the back
+    wall (default 3.3, aligned behind BAT1), `batt_cable_r` is the channel radius. Set
+    `back_margin = 0` for the old tight fit, or `batt_cable = false` to remove the channel.
 
 ## Closure — `closure`
 - `closure = "screw"` (default): **2 screws from the top** through the two real Ø2 holes.
@@ -107,8 +108,8 @@ in their own local coordinate systems), so they are entered as editable constant
 - Note: the M2 screw is tight through the real Ø2 PCB hole. Use M1.6 for roomier
   clearance, or drill the PCB holes out slightly.
 
-Finished size with default values: ~**54.8 × 26.8 × 21.6 mm** (X incl. the 2 mm USB-C
-overhang, Z depends on `pcb_t`).
+Finished size with default values: ~**54.8 × 28.8 × 21.6 mm** (X incl. the 2 mm USB-C
+overhang, Y incl. the 2 mm `back_margin` cable gutter, Z depends on `pcb_t`).
 
 ## Orientation mark — `orient_mark`
 A small **raised rib** on the front wall (low Y) near the left corner, split across the
