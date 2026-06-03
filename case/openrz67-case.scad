@@ -104,15 +104,18 @@ batt_pos = [8.5, 1.0]; // min-corner in board coords (centred; clear of USB1/U4/
 rib_h    = 2.5;     // height of the retaining ribs
 
 /* [Battery cable riser] */
-// The battery lives under the PCB; its cable must come up to BAT1 on the PCB top, in the
-// back-left corner by the left wall (BAT1 at board ~(3.3, 17)). The PCB-to-wall gap there is
-// only ~2.4mm and the ship-lap tongue closes down into it, so the cable can't be routed AND
-// the lid closed. This carves a rounded vertical channel at that corner from the floor up
-// into the lid: it scallops the inner wall by batt_cable_depth (leaving wall - depth ~= 1mm)
-// and locally notches the lid tongue, giving the cable a protected path through the seam.
-// Cut from BOTH base and lid. Sits between the USB-C recess (front) and the back corner.
+// The battery lives under the PCB; its cable must come up to BAT1 on the PCB top (BAT1 at
+// board ~(3.3, 17)). The channel rides the LEFT wall on purpose: the PCB is shifted right by
+// pcb_overhang_left, so the LEFT gap is ~2.4mm while the back/right gaps are only clr (~0.4mm)
+// - too tight to pass a ~3.2mm cable behind the board there. Pushed back to the BACK-LEFT
+// CORNER (Y~20.5, vs the USB-C recess which ends ~Y15.2) so it clears USB-C by 5+mm; the
+// rounded PCB corner (R2) opens extra room here. The ship-lap tongue would otherwise close
+// down into this gap, so this carves a rounded vertical channel from the floor up into the
+// lid: it scallops the inner wall by batt_cable_depth (leaving wall - depth ~= 1mm) and
+// locally notches the lid tongue, giving the cable a protected path through the seam.
+// Cut from BOTH base and lid. The cable surfaces just behind BAT1 and plugs in with a short run.
 batt_cable       = true;
-batt_cable_y     = 17.6;  // board-Y where the channel centre meets the LEFT wall (by BAT1)
+batt_cable_y     = 20.5;  // board-Y where the channel centre meets the LEFT wall (back-left corner, clear of USB-C)
 batt_cable_r     = 1.6;   // channel radius (cable conduit; ~3.2mm wide)
 batt_cable_depth = 1.0;   // how far it scallops INTO the inner wall (wall - this stays >= ~1mm)
 
@@ -404,8 +407,9 @@ module tongue_notch(cx, dir) {
     translate([x0, nlo, split_z - lap - eps]) cube([L, nhi - nlo, lap + 2*eps]);
 }
 
-// Rounded vertical cable channel at the back-left corner (left wall) for the battery cable.
-// Cut from BOTH base and lid so it spans the split: it scallops the inner wall (leaving
+// Rounded vertical cable channel in the back-left corner (rides the left wall, where the
+// pcb_overhang_left gap is ~2.4mm) for the battery cable. Pushed to the back corner so it
+// clears the USB-C recess. Cut from BOTH base and lid so it spans the split: it scallops the inner wall (leaving
 // wall - batt_cable_depth of skin) and removes the lid tongue locally, so the cable runs from
 // the under-PCB battery space up to BAT1 on the PCB top without being pinched by the closing
 // lid. Centred at the left inner wall face (X = wall) so it reaches X = wall - depth into the
