@@ -157,7 +157,13 @@ led_pipe_gap = 1.5;  // air gap between light-pipe bottom and LED top
 // only the thin wires are routed out through this small grommet/port.
 cable_port_w = 5.0;         // width (along Y)  -- set == _h for a round hole
 cable_port_h = 2.6;         // height (along Z)
-cable_port_z = 3.0;         // centre height above the PCB top
+// Centre height above the PCB top. The XH plug is top-entry: the wires leave the plug top
+// at h_xh (8mm) and dive down to this port over only a few mm of horizontal run. At the old
+// 3.0 that was a ~5mm drop right at the wall - too sharp an S-bend for the stiff wires and
+// it fought the lid going on. 5.5 puts the port mouth (top edge ~6.8) near the wire exit,
+// so the bundle only eases down ~2.5mm. Still entirely in the lid wall (bottom edge ~4.2,
+// well above the split).
+cable_port_z = 5.5;         // centre height above the PCB top
 
 /* [Slide switch SS12F15 (wired to S3)] */
 sw_enable = true;
