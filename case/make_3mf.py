@@ -10,10 +10,15 @@ assign the light pipe to the clear filament, save project). After that, run
 this script whenever the geometry changes instead of redoing that by hand.
 
 How placement is preserved: each object's mesh lives in its own local frame,
-centred by the slicer on import. The slicer records that centring as
-source_offset_{x,y,z} in model_settings.config. We re-apply it exactly
-(model_vertex = stl_vertex - source_offset), so the parts land in the same
-spot on the plate and inherit the same filament/extruder mapping.
+centred by the slicer on import (model_vertex = stl_vertex - bbox_centre). The
+slicer records that centre as source_offset_{x,y,z} in model_settings.config.
+We reproduce that import by recentring each fresh mesh on ITS OWN bounding-box
+centre and writing that centre back into source_offset. Recomputing (rather than
+reusing the template's stored offset) matters: if the SCAD geometry changes size
+later - e.g. back_margin grew the case in Y - the stored offset goes stale and
+the part would load shifted off its plate spot. A fresh centre keeps base, lid
+and light pipe aligned with each other and on the plate, and inherits the same
+filament/extruder mapping.
 
 Usage:
     python3 make_3mf.py [--template bambu-template.3mf] [--stl-dir stl]
@@ -63,6 +68,14 @@ def parse_ascii_stl(path):
     if cur:
         raise ValueError(f"{path}: dangling vertices (not a multiple of 3)")
     return verts, tris
+
+
+def bbox_center(verts):
+    """Centre of the mesh's axis-aligned bounding box (what the slicer centres on)."""
+    xs = [v[0] for v in verts]
+    ys = [v[1] for v in verts]
+    zs = [v[2] for v in verts]
+    return ((min(xs) + max(xs)) / 2, (min(ys) + max(ys)) / 2, (min(zs) + max(zs)) / 2)
 
 
 def mesh_xml(verts, tris, offset):
@@ -135,7 +148,10 @@ def main():
             if not os.path.isfile(stl):
                 sys.exit(f"STL missing for object {oid}: {stl}")
             verts, tris = parse_ascii_stl(stl)
-            block = mesh_xml(verts, tris, info["offset"])
+            # Recentre on THIS mesh's own bbox centre (a fresh slicer import), not the
+            # template's stored offset, which goes stale when the geometry changes size.
+            offset = bbox_center(verts)
+            block = mesh_xml(verts, tris, offset)
 
             mfile = os.path.join(work, info["model_path"])
             txt = open(mfile).read()
@@ -144,7 +160,8 @@ def main():
                 sys.exit(f"could not locate <mesh> in {info['model_path']}")
             open(mfile, "w").write(new_txt)
 
-            # keep the slicer's face-count metadata honest
+            # keep the slicer's metadata honest: face count AND the recorded source offset
+            # (the latter so it matches the centre we just recentred the mesh on)
             fc = len(tris)
             model_settings = re.sub(
                 rf'(<object id="{oid}">.*?face_count=")\d+(")',
@@ -154,7 +171,14 @@ def main():
                 rf'(<object id="{oid}">.*?<mesh_stat face_count=")\d+(")',
                 rf"\g<1>{fc}\g<2>", model_settings, count=1, flags=re.S,
             )
-            print(f"  {info['name']:30} {len(verts)} verts / {fc} tris  -> {info['model_path']}")
+            for axis, val in zip("xyz", offset):
+                model_settings = re.sub(
+                    rf'(<object id="{oid}">.*?source_offset_{axis}" value=")[-0-9.eE]+(")',
+                    rf"\g<1>{val:.8g}\g<2>", model_settings, count=1, flags=re.S,
+                )
+            cx, cy, cz = offset
+            print(f"  {info['name']:30} {len(verts)} verts / {fc} tris "
+                  f"@ ({cx:.3f},{cy:.3f},{cz:.3f})  -> {info['model_path']}")
 
         open(ms_path, "w").write(model_settings)
 
