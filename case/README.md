@@ -49,6 +49,11 @@ in their own local coordinate systems), so they are entered as editable constant
   joint) for alignment. Carries the USB-C opening (left), a small cable pass-through for
   the XH plug (right – the connector itself stays enclosed inside), the LED light-pipe
   window (top), and the slot + screw pillars for the SS12F15 slide switch.
+  - **XH cable exit — drop-in** (`cut_xh`): the XH port sits high (near the plug's 8 mm
+    top-entry wire exit, for a gentle bend) but is **open downward to the split** via a slit.
+    The pre-wired bundle **lays into** the slit as the lid closes instead of being threaded
+    through a blind hole, and the lid then **lifts straight off** without the wires tethering
+    it. `cable_port_w/h` size the mouth; `cable_port_z` is its height above the PCB.
   - **LED light pipe** (`led_*`, separate part): D3 (red) and D4 (blue) are top-emitting
     SMD LEDs ~8 mm below the lid. A separate **clear light pipe** is inserted from above
     as a top hat: a wide head in a top counterbore (flush with the top face) + a rod that
@@ -292,7 +297,9 @@ short end first.
 
 ## Known / to verify
 - Check that your charging cable reaches the port (see "USB-C opening" above).
-- Check that the wire bundle from the XH cable passes through `cable_port_*`.
+- Check that the wire bundle from the XH cable fits the `cable_port_*` mouth (it now drops
+  into the open-bottom slit rather than threading through — the lid lifts off without pulling
+  the wires back through).
 - **Light pipe**: verify the rod lands directly over D3/D4 (adjust `led_pos` if needed)
   and that the bottom clears the LEDs (`led_pipe_gap`). Print in clear filament; glue the
   head into the counterbore for a permanent/sealed fit.

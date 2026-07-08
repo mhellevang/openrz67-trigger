@@ -114,9 +114,11 @@ rib_h    = 2.5;     // height of the retaining ribs
 // scallops the back wall by batt_cable_depth (leaving wall - depth ~= 1mm) and notches the lid
 // tongue locally, giving the cable a protected path through the seam. Cut from BOTH base and lid.
 batt_cable       = true;
-back_margin      = 2.0;   // extra cavity depth behind the board -> back gutter = clr + this (~2.4mm) for the cable
+back_margin      = 3.5;   // extra cavity depth behind the board -> back gutter = clr + this (~3.9mm) for the cable
+                          // (was 2.0; roomier so the stiff battery lead has slack to sit in the gutter
+                          //  and wrap the back edge without being pinched — eases assembly)
 batt_cable_x     = 3.3;   // board-X where the channel meets the BACK wall (aligned behind BAT1)
-batt_cable_r     = 1.6;   // channel radius (cable conduit; ~3.2mm wide)
+batt_cable_r     = 2.0;   // channel radius (cable conduit; ~4mm wide, was 1.6 -> fatter/gentler)
 batt_cable_depth = 1.0;   // how far it scallops INTO the inner wall (wall - this stays >= ~1mm)
 
 /* [Openings] */
@@ -154,7 +156,9 @@ led_pipe_gap = 1.5;  // air gap between light-pipe bottom and LED top
 
 /* [Camera plug cable exit (XH)] */
 // The XH connector is plugged in BEFORE assembly and stays inside the enclosure;
-// only the thin wires are routed out through this small grommet/port.
+// only the thin wires are routed out through this small port. The port is OPEN DOWNWARD to
+// the split (a drop-in slit, see cut_xh): the bundle lays in as the lid closes and the lid
+// lifts off freely — no threading through a blind hole, no wires tethering the lid.
 cable_port_w = 5.0;         // width (along Y)  -- set == _h for a round hole
 cable_port_h = 2.6;         // height (along Z)
 // Centre height above the PCB top. The XH plug is top-entry: the wires leave the plug top
@@ -630,14 +634,32 @@ module cut_usb() {
     }
 }
 module cut_xh() {
-    // small rounded cable port in the right wall (not the whole connector)
+    // Small rounded cable port in the right wall (not the whole connector). The port sits HIGH
+    // (near the plug's 8mm top-entry wire exit) so the bundle only eases down gently. It used to
+    // be a blind hole cut from the LID only: you had to THREAD the loose wire ends through a
+    // 2.6mm hole while seating the lid, and the wires then TETHERED the lid (it couldn't lift off
+    // without pulling the bundle back through). Now the port is OPEN DOWNWARD to the split via a
+    // drop-in slit. The whole opening sits ABOVE the seam, so it stays a lid-only cut, but the
+    // slit reaches the lid's bottom mating face: the pre-wired bundle just LAYS into it as the lid
+    // closes, and the lid lifts straight off — the wire slides out the slit's open bottom instead
+    // of being threaded. Stiff wire no longer fights assembly (see the wire-management
+    // note: give the wire room, don't rely on it flexing). The port mouth stays the strain-bearing
+    // rest the wires sit in when closed.
     cy = by(22 - 11.0);                 // U4 centre
-    zc = pcb_top_z + cable_port_z;
+    zc = pcb_top_z + cable_port_z;      // port centre (high: gentle bend from the 8mm plug top)
     r  = cable_port_h / 2;
     dy = max((cable_port_w - cable_port_h) / 2, 0);
-    hull() for (s = [-1, 1])
-        translate([outer_w - wall - 1, cy + s*dy, zc])
-            rotate([0, 90, 0]) cylinder(h = wall + 2, r = r);
+    x0 = outer_w - wall - 1;
+    L  = wall + 2;
+    union() {
+        // rounded port mouth (where the wires rest when the lid is closed)
+        hull() for (s = [-1, 1])
+            translate([x0, cy + s*dy, zc]) rotate([0, 90, 0]) cylinder(h = L, r = r);
+        // drop-in slit: opens the mouth straight down to the split so the bundle lays in from
+        // below (no threading) and the lid isn't tethered. Only in the lid wall above the seam.
+        translate([x0, cy - cable_port_w/2, split_z])
+            cube([L, cable_port_w, zc - split_z + eps]);
+    }
 }
 // Lid cut-out for the light pipe: through-hole (stem) + top recess (head).
 module cut_led() {
