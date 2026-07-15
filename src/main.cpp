@@ -81,6 +81,9 @@ void endBulbMode() {
 
 void startCountdown(unsigned long durationMs) {
     endBulbMode();
+    // Clear stale button-1 state so the trigger timeout in loop()
+    // doesn't fight the countdown blink over the LED pin
+    incoming = 0;
     countdownActive = false;
     countdownDuration = durationMs;
     countdownStartTime = millis();
@@ -137,6 +140,9 @@ class BLECharacteristicCallback : public BLECharacteristicCallbacks {
                     Serial.println(value);
                     if (value == 1) {
                         // Button 1 PRESS - trigger shutter
+                        // A pending countdown would keep blinking the LED and
+                        // fire the shutter a second time, so cancel it first
+                        cancelCountdown();
                         digitalWrite(ledPin, HIGH);
                         timestampButton = now;
                         triggerShutter();
@@ -150,6 +156,9 @@ class BLECharacteristicCallback : public BLECharacteristicCallbacks {
                     Serial.println(value);
                     if (value == 1) {
                         // Start bulb mode
+                        // A pending countdown would end the bulb exposure when
+                        // it expires, so cancel it first
+                        cancelCountdown();
                         digitalWrite(ledPin, HIGH);
                         startBulbMode();
                     } else {
