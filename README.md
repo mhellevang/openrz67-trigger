@@ -1,31 +1,76 @@
 # openrz67-trigger
 
-openrz67-trigger is an arduino compatible project made for enabling remote triggering of the Mamiya RZ67 analog camera from an app. openrz67-trigger is made to run on a small ESP32 device (in this case Seeed XIAO ESP32C3) that is connected to the electrical input pins on the Mamiya RZ67 camera.
+ESP32 firmware for remote-triggering the Mamiya RZ67 analog camera over Bluetooth LE. It runs on an ESP32-C3 connected to the camera's electrical remote port and is controlled from the companion Android app, [openrz67-android](https://github.com/mhellevang/openrz67-android).
 
-There is also an android app made for communication with openrz67-trigger, see [openrz67-android](https://github.com/mhellevang/openrz67-android).
+## Features
+
+* Instant shutter release
+* Bulb mode — hold the shutter open for long exposures
+* Self-timer countdown with app-configurable duration
+* Power-optimized: 80 MHz CPU with light sleep and 0 dBm BLE TX power, running off a small LiPo
 
 ## Hardware
-Openrz67-trigger is made to run on an ESP32-C3, a single-core Wi-Fi and Bluetooth 5 (LE) microcontroller SoC from Espressif.
+
+The current prototype is a custom PCB (fabrication files in [`pcb/`](pcb/)):
 
 ![Custom PCB](pcb/3D_ESP32CamTrigger_PCB_2_2025-09-23.png)
 
-My current prototype is made up of a custom PCB with:
-* 1x ESP32-C3FH4
-* 2x G6K-2F-Y-DC3 relays to control the shutter release
-* All the other bibs and bobs required to run a ESP32C3 (see [BOM](pcb/BOM_ESP32CamTrigger_1_ESP32CamTrigger_PCB_2_2025-09-23.csv))
-* A small 250mah LiPo for power
-* SS12F15 power switch
-* 3d printed case with toggle embedded
+* 1× ESP32-C3FH4
+* 2× G6K-2F-Y-DC3 relays to control the shutter release
+* Supporting components per the [BOM](pcb/BOM_ESP32CamTrigger_1_ESP32CamTrigger_PCB_2_2025-09-23.csv)
+* 250 mAh LiPo for power
+* SS12F15 slide switch
 
-However, the solution is flexible and can be used with a standard ESP32-C3 development board + one or two relays or MOSFETs. Adjust pinout as needed.
+The solution is flexible: any ESP32-C3 development board (e.g. Seeed XIAO ESP32C3) plus one or two relays or MOSFETs works too. Adjust the pinout in `src/main.cpp` as needed.
+
+![Breadboard example with Seeed XIAO ESP32C3](assets/RZ67_Seeed_XIAO_ESP32C3_bb.png)
+
+### Pinout
+
+| GPIO | Function |
+|------|----------|
+| 3    | Shutter relay 1 |
+| 21   | Shutter relay 2 |
+| 20   | Status LED |
 
 ## Camera connection
 
-The camera has a four pin IO port in front. The pins are labeled as follows (left to right):
+The camera has a four-pin IO port in front, labeled left to right:
 
-* 1: 6v. Can be ignored, we don't need it for this project.
-* 2: GND (Ground)
-* 3: S1 switch
-* 4: S2 switch
+1. 6 V — not needed for this project
+2. GND
+3. S1 switch
+4. S2 switch
 
-To trigger the shutter release from the ESP32, we need to short S1/S2 to GND using our relays.
+To trigger the shutter release, the relays short S1/S2 to GND.
+
+## BLE protocol
+
+The device advertises as `OpenRZ67` with service UUID `c9239c9e-6fc9-4168-b3aa-53105eb990b0` and a writable characteristic `458d4dc9-349f-401d-b092-a2b1c55f5319`.
+
+**Single-byte commands** (value = button × 10 + state):
+
+| Value | Action |
+|-------|--------|
+| 11 / 10 | Trigger shutter / release |
+| 21 / 20 | Start / end bulb mode |
+| 31 / 30 | Start countdown (default 10 s) / cancel |
+
+**Three-byte commands** `[command, duration, action]`:
+
+| Bytes | Action |
+|-------|--------|
+| `[3, n, 1]` | Start countdown of *n* seconds |
+| `[3, _, 0]` | Cancel countdown |
+
+Starting a trigger or bulb exposure cancels any pending countdown.
+
+## Building
+
+The project uses [PlatformIO](https://platformio.org/):
+
+```bash
+pio run -t upload
+```
+
+Serial output is disabled by default to save power; set `VERBOSE` to `1` in `src/main.cpp` to enable it.
