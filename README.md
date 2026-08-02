@@ -5,7 +5,7 @@ ESP32 firmware for remote-triggering the Mamiya RZ67 analog camera over Bluetoot
 ## Features
 
 * Instant shutter release
-* Bulb mode — hold the shutter open for long exposures
+* Bulb mode for remote long exposures
 * Self-timer countdown with app-configurable duration
 * Power-optimized: 80 MHz CPU with light sleep and 0 dBm BLE TX power, running off a small LiPo
 
@@ -16,8 +16,9 @@ The current prototype is a custom PCB (fabrication files in [`pcb/`](pcb/)):
 ![Custom PCB](pcb/3D_ESP32CamTrigger_PCB_2_2025-09-23.png)
 
 * 1× ESP32-C3FH4
-* 2× G6K-2F-Y-DC3 relays to control the shutter release
+* 2× Omron G6K-2F-Y DC3 relays to control the shutter release
 * Supporting components per the [BOM](pcb/BOM_ESP32CamTrigger_1_ESP32CamTrigger_PCB_2_2025-09-23.csv)
+* 2.4 GHz antenna with U.FL connector
 * 250 mAh LiPo for power
 * SS12F15 slide switch
 
@@ -33,44 +34,67 @@ The solution is flexible: an ESP32-C3 development board such as the Seeed XIAO E
 | 21   | Shutter relay 2 |
 | 20   | Status LED |
 
+### Camera connector
+
+The custom PCB uses a JST B4B-XH-A four-pin header (`U4`):
+
+| U4 pin | Camera signal |
+|--------|---------------|
+| 1      | Not connected (camera 6 V) |
+| 2      | GND |
+| 3      | S1 |
+| 4      | S2 |
+
+Verify the pin 1 orientation before assembling the camera cable.
+
 ## Camera connection
 
-The camera has a four-pin IO port in front, labeled left to right:
+Viewed from the front, the camera's four-pin remote-control port is:
 
-1. 6 V — not needed for this project
+1. 6 V — do not connect
 2. GND
 3. S1 switch
 4. S2 switch
 
-To trigger the shutter release, the relays short S1/S2 to GND.
+To trigger the shutter release, the relays short S1/S2 to GND. For bulb exposures, set the camera's shutter-speed dial to `B`. The camera closes the shutter automatically after approximately 60 seconds even if the switches remain closed.
 
 ## BLE protocol
 
-The device advertises as `OpenRZ67` with service UUID `c9239c9e-6fc9-4168-b3aa-53105eb990b0` and a writable characteristic `458d4dc9-349f-401d-b092-a2b1c55f5319`.
+The device advertises as `OpenRZ67` with service UUID `c9239c9e-6fc9-4168-b3aa-53105eb990b0` and characteristic `458d4dc9-349f-401d-b092-a2b1c55f5319`. Send commands using Write Without Response.
 
 **Single-byte commands** (value = button × 10 + state):
 
 | Value | Action |
 |-------|--------|
-| 11 / 10 | Trigger shutter / release |
-| 21 / 20 | Start / end bulb mode |
-| 31 / 30 | Start countdown (default 10 s) / cancel |
+| 11 | Trigger shutter with a 100 ms pulse |
+| 10 | Clear status LED; no shutter action |
+| 21 | Start bulb mode |
+| 20 | End bulb mode |
+| 31 | Start countdown with the default duration of 10 s |
+| 30 | Cancel countdown |
 
 **Three-byte commands** `[command, duration, action]`:
 
 | Bytes | Action |
 |-------|--------|
-| `[3, n, 1]` | Start countdown of *n* seconds |
+| `[3, n, 1]` | Start countdown of *n* seconds (`1–255`) |
 | `[3, _, 0]` | Cancel countdown |
 
 Starting a trigger or bulb exposure cancels any pending countdown.
 
 ## Building
 
-The project uses [PlatformIO](https://platformio.org/):
+The project uses [PlatformIO](https://platformio.org/) and the `esp32-c3-devkitm-1` board definition:
 
 ```bash
+pio run
 pio run -t upload
 ```
 
-Serial output is disabled by default to save power; set `VERBOSE` to `1` in `src/main.cpp` to enable it.
+If uploading does not start, hold `BOOT`, press and release `EN`, then release `BOOT` and retry.
+
+Serial logging is disabled because UART0 uses GPIO 20 and GPIO 21, which are assigned to the status LED and a relay.
+
+## License
+
+[MIT](LICENSE)
