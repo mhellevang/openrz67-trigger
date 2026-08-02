@@ -21,7 +21,7 @@
 
   <rect width="1200" height="720" fill="#ffffff"/>
   <text x="54" y="55" class="title">ESP32-C3 to Mamiya RZ67</text>
-  <text x="54" y="83" class="small">Two isolated, normally-open contacts reproduce the camera's S1 and S2 switches.</text>
+  <text x="54" y="83" class="small">Reference circuit using two Omron G6K-2F-Y DC3 relays.</text>
 
   <text x="54" y="132" class="section">Controller</text>
   <rect x="54" y="150" width="280" height="420" rx="18" class="board"/>
@@ -44,10 +44,10 @@
   <text x="86" y="506" class="label">GND</text>
   <text x="141" y="506" class="small">control side</text>
 
-  <text x="398" y="132" class="section">Relay driver</text>
+  <text x="398" y="132" class="section">3 V relay driver</text>
   <rect x="398" y="150" width="320" height="420" rx="18" class="relay"/>
-  <text x="430" y="195" class="label">2 channels · active HIGH</text>
-  <text x="430" y="219" class="small">3 V coils, transistor drivers and flyback diodes</text>
+  <text x="430" y="195" class="label">2× G6K-2F-Y DC3 · active HIGH</text>
+  <text x="430" y="219" class="small">Transistor driver and flyback diode per relay</text>
 
   <rect x="430" y="250" width="120" height="50" rx="10" fill="#fff" stroke="#d88718" stroke-width="2"/>
   <text x="490" y="281" text-anchor="middle" class="label">IN1</text>

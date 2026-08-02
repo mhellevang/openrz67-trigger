@@ -21,7 +21,7 @@ The current prototype is a custom PCB (fabrication files in [`pcb/`](pcb/)):
 * 250 mAh LiPo for power
 * SS12F15 slide switch
 
-The solution is flexible: an ESP32-C3 development board such as the Seeed XIAO ESP32C3 and two relay channels work too. Assign two output-capable GPIOs in `src/main.cpp`. The diagram assumes active-high, 3.3 V relay drivers and normally-open (NO) contacts; adapt the output logic for an active-low module.
+The solution is flexible: an ESP32-C3 development board such as the Seeed XIAO ESP32C3 and two relay channels work too. Assign two output-capable GPIOs in `src/main.cpp`. The reference circuit uses two Omron G6K-2F-Y DC3 relays with active-high transistor drivers and flyback diodes. Other relays or modules may require a different supply voltage or inverted output logic.
 
 ![Wiring diagram for an ESP32-C3, two relay channels and the Mamiya RZ67 camera port](assets/wiring-diagram.svg)
 
