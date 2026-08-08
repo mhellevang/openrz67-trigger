@@ -65,46 +65,46 @@
   <text x="490" y="506" text-anchor="middle" class="label">GND</text>
   <path d="M 311 500 H 430" fill="none" stroke="#27323a" stroke-width="4" stroke-linecap="round"/>
 
-  <line x1="592" y1="274" x2="632" y2="258" stroke="#27323a" stroke-width="4" stroke-linecap="round"/>
-  <circle cx="585" cy="275" r="6" fill="#27323a"/>
-  <circle cx="645" cy="250" r="6" fill="#27323a"/>
-  <text x="585" y="308" text-anchor="middle" class="tiny">COM</text>
-  <text x="645" y="233" text-anchor="middle" class="tiny">NO</text>
-  <text x="681" y="281" text-anchor="end" class="label">K1</text>
+  <line x1="592" y1="409" x2="632" y2="393" stroke="#27323a" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="585" cy="410" r="6" fill="#27323a"/>
+  <circle cx="645" cy="385" r="6" fill="#27323a"/>
+  <text x="585" y="443" text-anchor="middle" class="tiny">COM</text>
+  <text x="645" y="368" text-anchor="middle" class="tiny">NO</text>
+  <text x="681" y="416" text-anchor="end" class="label">K1</text>
 
-  <line x1="592" y1="349" x2="632" y2="333" stroke="#27323a" stroke-width="4" stroke-linecap="round"/>
-  <circle cx="585" cy="350" r="6" fill="#27323a"/>
-  <circle cx="645" cy="325" r="6" fill="#27323a"/>
-  <text x="585" y="383" text-anchor="middle" class="tiny">COM</text>
-  <text x="645" y="308" text-anchor="middle" class="tiny">NO</text>
-  <text x="681" y="356" text-anchor="end" class="label">K2</text>
+  <line x1="592" y1="484" x2="632" y2="468" stroke="#27323a" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="585" cy="485" r="6" fill="#27323a"/>
+  <circle cx="645" cy="460" r="6" fill="#27323a"/>
+  <text x="585" y="518" text-anchor="middle" class="tiny">COM</text>
+  <text x="645" y="443" text-anchor="middle" class="tiny">NO</text>
+  <text x="681" y="491" text-anchor="end" class="label">K2</text>
 
   <text x="782" y="132" class="section">Camera port</text>
   <rect x="782" y="150" width="364" height="420" rx="18" class="camera"/>
   <text x="814" y="195" class="label">Mamiya RZ67</text>
-  <text x="814" y="219" class="small">Front view · pins read left to right</text>
+  <text x="814" y="219" class="small">Front view · listed in physical left-to-right order</text>
 
-  <circle cx="850" cy="300" r="25" fill="#fff" stroke="#9ba5ad" stroke-width="3"/>
-  <circle cx="930" cy="300" r="25" fill="#fff" stroke="#27323a" stroke-width="3"/>
-  <circle cx="1010" cy="300" r="25" fill="#fff" stroke="#337f9c" stroke-width="3"/>
-  <circle cx="1090" cy="300" r="25" fill="#fff" stroke="#337f9c" stroke-width="3"/>
-  <text x="850" y="306" text-anchor="middle" class="label">1</text>
-  <text x="930" y="306" text-anchor="middle" class="label">2</text>
-  <text x="1010" y="306" text-anchor="middle" class="label">3</text>
-  <text x="1090" y="306" text-anchor="middle" class="label">4</text>
-  <text x="850" y="348" text-anchor="middle" class="label">6 V</text>
-  <text x="930" y="348" text-anchor="middle" class="label">GND</text>
-  <text x="1010" y="348" text-anchor="middle" class="label">S1</text>
-  <text x="1090" y="348" text-anchor="middle" class="label">S2</text>
+  <circle cx="840" cy="260" r="18" fill="#fff" stroke="#9ba5ad" stroke-width="3"/>
+  <circle cx="840" cy="335" r="18" fill="#fff" stroke="#27323a" stroke-width="3"/>
+  <circle cx="840" cy="410" r="18" fill="#fff" stroke="#337f9c" stroke-width="3"/>
+  <circle cx="840" cy="485" r="18" fill="#fff" stroke="#337f9c" stroke-width="3"/>
+  <text x="840" y="266" text-anchor="middle" class="label">1</text>
+  <text x="840" y="341" text-anchor="middle" class="label">2</text>
+  <text x="840" y="416" text-anchor="middle" class="label">3</text>
+  <text x="840" y="491" text-anchor="middle" class="label">4</text>
+  <text x="875" y="266" class="label">6 V</text>
+  <text x="930" y="266" class="small">Do not connect</text>
+  <text x="875" y="341" class="label">GND</text>
+  <text x="930" y="341" class="small">K1 COM + K2 COM</text>
+  <text x="875" y="416" class="label">S1</text>
+  <text x="930" y="416" class="small">K1 NO</text>
+  <text x="875" y="491" class="label">S2</text>
+  <text x="930" y="491" class="small">K2 NO</text>
 
-  <path d="M 645 250 H 1010 V 275" fill="none" stroke="#337f9c" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M 645 325 H 1090" fill="none" stroke="#337f9c" stroke-width="4" stroke-linecap="round"/>
-  <path d="M 585 275 V 455 H 930 V 325" fill="none" stroke="#27323a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="585" cy="350" r="7" fill="#27323a"/>
-  <path d="M 850 325 V 385" fill="none" stroke="#9ba5ad" stroke-width="4" stroke-linecap="round" stroke-dasharray="8 7"/>
-  <line x1="838" y1="388" x2="862" y2="412" stroke="#9ba5ad" stroke-width="4"/>
-  <line x1="862" y1="388" x2="838" y2="412" stroke="#9ba5ad" stroke-width="4"/>
-  <text x="850" y="435" text-anchor="middle" class="small">Do not connect</text>
+  <path d="M 645 385 H 760 V 410 H 822" fill="none" stroke="#337f9c" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 645 460 H 740 V 485 H 822" fill="none" stroke="#337f9c" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 585 410 H 570 V 335 H 822" fill="none" stroke="#27323a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 585 485 H 570 V 410" fill="none" stroke="#27323a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
 
   <rect x="54" y="616" width="1092" height="62" rx="14" class="panel"/>
   <circle cx="85" cy="647" r="10" fill="#456bd1"/>
