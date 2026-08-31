@@ -1,8 +1,11 @@
-# Parametric enclosure (OpenSCAD)
+# Parametric enclosure (build123d)
 
-`openrz67-case.scad` is a parametric two-part enclosure for the ESP32CamTrigger PCB
-(rev. 2025-09-23). It is built from the actual production files in `../pcb/`, not from
-eyeballed measurements.
+`openrz67_case.py` is a parametric two-part enclosure for the ESP32CamTrigger PCB
+(rev. 2025-09-23), written in [build123d](https://build123d.readthedocs.io/) (Python).
+It is built from the actual production files in `../pcb/`, not from eyeballed
+measurements. (It started life as OpenSCAD — `openrz67-case.scad` in git history — and
+was ported 1:1; the port was verified against the OpenSCAD STLs by bounding box and
+volume, matching within tessellation error.)
 
 ## Source data
 | Measurement | Value | Source |
@@ -10,7 +13,7 @@ eyeballed measurements.
 | Board outline | 48.0 × 22.0 mm, R2.0 | `Gerber_BoardOutlineLayer.GKO` |
 | Mounting holes | 2× Ø2.0 at (2,2) and (46,20) | `Drill_PTH_Through.DRL` (tool T06) |
 | PCB thickness | 1.6 mm | `pcb_t` (as ordered) |
-| Component placement | see .scad | `PickAndPlace_…_2025-09-23.csv` |
+| Component placement | see openrz67_case.py | `PickAndPlace_…_2025-09-23.csv` |
 | USB-C connector | body 8.95 × 3.2 mm on the PCB, left edge 4.8 mm in from the PCB's left edge; the shell protrudes ~2 mm past the board edge | measured physically |
 | Total HW length | ~50 mm (PCB 48 + USB-C shell 2) | `pcb_overhang_left` |
 | Slide switch (SS12F15) | actuator opening 10.65×6.3; flat bracket 19.45×5.75×0.4; screw holes Ø2.2 at 15.0 mm spacing; body ~19.5×20×12.9 | `SS12F15.stp` + measured |
@@ -20,19 +23,25 @@ Component **heights** could not be read reliably from the STEP file (the 3D mode
 in their own local coordinate systems), so they are entered as editable constants
 (`h_relay`, `h_xh`, `h_usbc`, `h_ph`) based on datasheets. Check them against your own parts.
 
+The script carries **module-level assertions**: outer dimensions, plus probe checks that
+every opening actually breaks through (USB, XH port, LED window, locating-pin recesses,
+switch screws) and that the fit-critical keepouts (switch body envelope, USB-C body) stay open.
+They run on every export, so a parameter tweak that closes a hole or re-introduces a
+known collision fails loudly instead of surfacing in the print.
+
 ## Construction
-- **Base** (tub): floor, battery compartment with retaining ribs, standoffs that raise
-  the PCB ~7 mm at the two screw corners, and **solid support pillars at the other two
-  corners** (`pcb_supports = [[2,20],[46,2]]`) so the PCB rests evenly on all four
-  corners. Two Ø1.7 locating pins go up into the real mounting holes (snap mode only;
-  in screw mode the screws locate directly).
+- **Base** (tub): floor, a **battery bay beside the PCB** (behind its back edge, separated
+  by a divider wall), low standoffs that raise the PCB ~3.5 mm (only the
+  through-hole solder tails need clearance underneath), **solid support pillars** in all
+  four corners (`pcb_supports = [[2,20],[46,2]]` plus the two posts at the mounting
+  holes), and two **Ø1.7 locating pins** up into the real Ø2 mounting holes.
   - **Through-hole solder relief** (`th_keepouts`): the support pillar at (2,20) sits
     next to BAT1 (a through-hole connector). A small pocket is cut into the top of the
     pillar where BAT1's pin tails/solder stick down, so they don't press against the
     pillar. The list is `[board_x, board_y, relief_diameter]`; `th_keepout_depth` sets
     how far down (default 3 mm). Add more entries if other through-hole solder joints
     collide with a standoff/pillar.
-  - **PCB frame / guide fins** (`pcb_frame`, `frame_*`): the lap joint removes the inner
+  - **PCB frame / guide fins** (`frame_*`): the lap joint removes the inner
     wall at board height, so the PCB rests only on the four corner points and has nothing
     to hold it sideways before the lid is on. There is only ~0.4 mm of clearance beside
     the board (too thin for a printable fin), but the lap joint has a ~1 mm **tongue
@@ -40,11 +49,11 @@ in their own local coordinate systems), so they are entered as editable constant
     sit in that channel: a thick fin (anchored to the wall below the lap zone) beside the
     board edge with `frame_clr` (0.2 mm) clearance, plus a thin lead-in lip `frame_proud`
     (0.6 mm) above the board top. The lid tongue is cut away where the fins sit
-    (`frame_tongue_notch`) so they clear when the lid closes — the same trick as at the
-    screw corners. The board drops straight down between the fins and is captured in Y.
-    Open at the corners + left/right short sides (USB-C/XH). `frame_ribs_front/back` are
-    the fin centres in board-X (default `[10, 38]`); `frame_fin_reach` sets the anchoring
-    depth, `frame_notch_clr` the clearance in the tongue notch.
+    (`frame_tongue_notch`) so they clear when the lid closes. The board drops straight down and is captured in Y between the front
+    fins and the battery-bay **divider wall** (whose front face sits `frame_clr` from the
+    board's back edge, so no back fins are needed — `frame_ribs_back = []`).
+    `frame_ribs_front` are the fin centres in board-X (default `[10, 38]`);
+    `frame_notch_clr` is the clearance in the tongue notch.
 - **Lid**: telescopes down into the base via a perimeter tongue-and-groove edge (lap
   joint) for alignment. Carries the USB-C opening (left), a small cable pass-through for
   the XH plug (right – the connector itself stays enclosed inside), the LED light-pipe
@@ -74,47 +83,39 @@ in their own local coordinate systems), so they are entered as editable constant
   `pcb_overhang_left = 2.0` extends the cavity on the left; the PCB is therefore centred
   toward the RIGHT in the cavity (normal `clr = 0.4` against the right wall, `clr +
   overhang = 2.4 mm` against the left). The outer case width thus becomes ~**54.8 mm**.
-- **The battery** (250 mAh LiPo) sits at the bottom, under the PCB.
-  - **Battery cable riser** (`batt_cable`, `batt_cable_*`, `back_margin`): the battery is under
-    the PCB and its cable has to come up to BAT1 on the PCB top (BAT1 ≈ board (3.3, 17)). USB-C
-    pins the PCB's left edge to the left wall, so widening *that* side would shallow the USB-C
-    plug seating. Instead `back_margin` (default **2 mm**) adds a dedicated gutter **behind** the
-    board — only the back wall moves out, USB-C and the snug PCB fit are untouched, and the case
-    stays a clean rectangle. The cable wraps the board's **back edge** and rises in the back-left
-    corner straight behind BAT1, through a rounded vertical channel (cut from **both** base and
-    lid) that scallops the back wall by `batt_cable_depth` (leaving ~1 mm of skin — no hole to
-    the outside) and locally notches the lid tongue. `batt_cable_x` positions it along the back
-    wall (default 3.3, aligned behind BAT1), `batt_cable_r` is the channel radius. Set
-    `back_margin = 0` for the old tight fit, or `batt_cable = false` to remove the channel.
+- **The battery** (250 mAh LiPo) lies **beside the PCB** in its own bay behind the board's
+  back edge (it used to sit *under* the PCB, which forced a tall blind stack and a stiff-wire
+  riser channel up to BAT1 — in practice too cramped to assemble). The bay is bounded by the
+  **divider wall** (front, top flush with the split — it doubles as the PCB's back guide),
+  the case walls (back/sides), and two low ribs that stop the cell sliding in X. BAT1 sits at
+  board ≈ (3.3, 17) on the PCB top, so the lead just **drapes over the divider** and plugs
+  straight in — short and flat, no riser. Everything is assembled from above in one layer.
+  The bay is taller than the cell; fix it with a foam pad or a dab of glue.
+  Parameters: `batt_w/l/t` (cell), `batt_clr` (bay fit), `batt_dx` (X nudge), `divider_t`,
+  `rib_h`.
 
-## Closure — `closure`
-- `closure = "screw"` (default): **2 screws from the top** through the two real Ø2 holes.
-  Countersunk head in the lid → clearance through the lid boss → through the PCB hole →
-  down into the base pillar. Clamps lid + PCB + base together.
-- `closure = "snap"`: the original snap-fit variant (bead in groove). Kept as an
-  alternative.
+## Closure — snap-fit
+**No hardware at all.** A perimeter **bead** (`snap_bead` 0.5 mm, `bead_h` 1.4) on the lid
+tongue clicks into a matching **groove** in the base lip (0.5 taller / 0.25 deeper for
+lead-in), holding the whole rim down — including the battery-bay half, which a corner-screw
+pattern would leave unclamped. The PCB is located by two **Ø1.7 pins** in its real Ø2
+mounting holes and pressed onto the posts by the lid's hold-down bosses (blind pin recesses
+inside — no holes through the top). Open with a coin or fingernail in the **pry slot**
+(`pry_w/d/h`) on the back wall's lower lid edge, over the battery bay.
 
-### Screw anchoring in the base — `screw_anchor`
-- `"heatset"` (default): **brass insert** melted into the top of the base pillar.
-  Strongest and reusable – survives many open/close cycles without stripping. The pillar
-  is widened to **Ø6** (`heatset_boss_d`) with a blind **Ø2.6 × 4 mm** pocket
-  (`heatset_hole_d` / `heatset_depth`). **Check the dimensions against your own inserts**
-  – hole diameter and length vary between brands. Drive the insert in with a soldering
-  iron (ideally a dedicated insert tip) before assembly.
-  - Note: the widened Ø6 pillar protrudes ~0.6 mm past the cavity wall and into the lap
-    joint's tongue channel at the two screw corners. The lid tongue is therefore cut away
-    locally there (`boss_tongue_relief`), otherwise the lid won't go on. The screw holds
-    alignment at the corners anyway.
-  - Hardware: 2× M2 heat-set insert + 2× M2 screw (length ≈ 14–16 mm).
-- `"selftap"`: self-tapping M2 straight into a Ø4 plastic pillar (`screw_pilot` pilot
-  hole, `screw_engage` depth). Simplest, no extra parts, but the threads **strip** on
-  repeated opening. Fine if the case is rarely opened (charging goes through the USB-C
-  port anyway).
-- Note: the M2 screw is tight through the real Ø2 PCB hole. Use M1.6 for roomier
-  clearance, or drill the PCB holes out slightly.
+The case is rarely opened (charging is external via USB-C), so snap wear is not a concern
+with PLA; print the lid in PETG if you want extra flex margin. **Tune before the full
+print:** `SNAP_TEST=true ./export.sh` also exports a cropped front-left corner pair
+(`openrz67-snaptest-*`) — print those and adjust `snap_bead` (click strength) and
+`lap_gap` (sliding fit) until the corner snaps shut and pries open the way you like.
 
-Finished size with default values: ~**54.8 × 28.8 × 21.6 mm** (X incl. the 2 mm USB-C
-overhang, Y incl. the 2 mm `back_margin` cable gutter, Z depends on `pcb_t`).
+(The previous closure — M2 screws into heat-set inserts through the PCB holes — proved
+fiddly: tight M2-through-Ø2 clearance and annoying insert installation. It lives in git
+history.)
+
+Finished size with default values: ~**54.8 × 49.2 × 18.1 mm** (X incl. the 2 mm USB-C
+overhang, Y incl. the battery bay behind the board, Z depends on `pcb_t`). Flat-wide
+instead of the old tall-tight ~54.8 × 28.8 × 21.6 stack.
 
 ## Orientation mark — `orient_mark`
 A small **raised rib** on the front wall (low Y) near the left corner, split across the
@@ -124,72 +125,60 @@ right way around the two halves line up into **one continuous vertical rib**; a 
 It is raised (not a recessed groove) on purpose — a groove here would thin the 1 mm lap
 wall. Parameters: `orient_mark_x` (board-X of the mark, near the USB side), `orient_mark_w`
 (width), `orient_mark_d` (how far it sticks out), `orient_mark_h` (total height across the
-seam). Set `orient_mark = false` to remove it.
+seam). Delete the two `orient_mark_rib` lines to remove it.
 
-## Lid text — second colour (`lid_text`)
-**Raised text** on the lid top (default `"Open RZ67 Trigger"`), for printing in a second
-filament colour on a multi-material printer. The text stands `lid_text_h` (0.6 mm) proud of
-the otherwise flat top face and is centred at mid-Y, clear of the LED window (back) and the
-two screw counterbores (corners). At the default `lid_text_size = 3.5` it is ~43 mm wide on
-the 54.8 mm top. Parameters: `lid_text` (string, `""` to disable), `lid_text_size` (cap
-height), `lid_text_h` (relief height = the colour-change layer thickness), `lid_text_font`,
-`lid_text_dx/dy` (nudge from centre), `lid_text_angle`.
+## Lid text — second colour (`lid_texts`)
+**Debossed badge layout** around the LED window: **"OpenRZ67"** (9 mm caps) above it,
+**"Trigger"** (7 mm) below, both centred on the light pipe's X, cut `lid_text_depth`
+(0.6 mm) into the top face. Per the FDM rules: pockets, not raised letters, and well above
+the 4.4 mm legibility minimum for a 0.4 nozzle. Placement is enforced by assertions (each
+line must clear the LED recess, the walls and the face edges — an over-long string fails
+the export instead of the print).
 
-**Off by default** (`lid_text_show = false`) – the text adds noticeable render time, so
-leave it off while prototyping and turn it on for the final print (`lid_text_show = true`,
-or `LID_TEXT_SHOW=true ./export.sh`).
+Colour it with a **filament change by height**: the lid prints **upside down** as always
+(the pockets face the bed and come out crisp), so change filament at **Z = 0.6 mm** — the
+first three layers are the face colour, everything after is the letter colour showing
+through the pockets. No supports, single-extruder friendly.
 
-Colour it by a **filament change by height**: print the lid **text-up** (top plate up); the
-text is the only geometry above the top face, so a single colour change at Z = the top face
-paints exactly the letters. Note this is the opposite of the "print lid upside down"
-recommendation below — text-up means the internal bosses/pillars need supports.
+Edit the `lid_texts` constant to change strings/sizes/offsets; `LID_TEXT_SHOW=false`
+disables the text (on by default).
+
 
 ## Usage
-Open in OpenSCAD and use the **Customizer** (View → Customizer) – the parameters are
-grouped into sections. Change `part` to choose what is generated:
+The parameters are plain Python constants at the top of `openrz67_case.py`, grouped in
+the same sections as before. Requires [uv](https://docs.astral.sh/uv/) — the script
+carries its own dependency header, so there is no venv to manage.
 
-```bash
-# preview (assembled, translucent lid + PCB)  – GUI only
-openscad case/openrz67-case.scad
-```
-
-**Easiest export** – run the script, which builds both base and lid at once:
+**Easiest export** – run the script, which builds all three parts and the slicer project:
 
 ```bash
 cd case
-./export.sh            # closure=screw (default): base, lid, lightpipe -> stl/
-./export.sh snap       # the snap-fit variant
-./export.sh screw out  # custom output dir (arg 2)
+./export.sh            # base, lid, lightpipe -> stl/  + openrz67-case.3mf
+./export.sh out        # custom output dir (skips the .3mf)
 ```
 
-**Overrides** – any `.scad` parameter can be overridden at export time with OpenSCAD's
-`-D`. `export.sh` exposes the handy ones as environment variables (the `.scad` default
-applies when unset):
+**Overrides** – `openrz67_case.py` reads these from the environment (the in-file default
+applies when unset); anything else is a one-line edit of the constant:
 
 ```bash
 LID_TEXT_SHOW=true   ./export.sh   # turn the lid text ON (off by default; for the final print)
 LID_TEXT="My text"   ./export.sh   # change the lid text string
 LID_TEXT_SIZE=4.0    ./export.sh   # cap height (mm)
-SCREW_ANCHOR=selftap ./export.sh   # heatset (default) | selftap
+SNAP_TEST=true       ./export.sh   # also export the corner test pair for snap tuning
 PCB_T=1.0            ./export.sh   # PCB thickness (sets the base/lid split height)
 LID_TEXT_SHOW=true LID_TEXT="v2" ./export.sh     # combine freely
 ```
 
-Any other parameter works the same way by adding a `-D` flag manually (see below) or a new
-line to `export.sh`.
-
-Or manually, one part at a time:
-
-```bash
-openscad -o base.stl -D 'part="base"' case/openrz67-case.scad
-openscad -o lid.stl  -D 'part="lid"'  case/openrz67-case.scad
-```
-
-`part="both"` lays both parts side by side. STL output in `case/stl/` is git-ignored.
+Or run the script directly (same thing minus the .3mf step): `uv run openrz67_case.py`.
+For a plain interpreter (IDE run button etc.) there is a local venv:
+`.venv/bin/python openrz67_case.py` — recreate it anytime with
+`uv venv .venv && uv pip install -p .venv "build123d>=0.11.1"` (it is git-ignored).
+For an interactive 3D preview, open the file with an OCP viewer (e.g. `ocp_vscode`) or
+just inspect the exported STLs in the slicer. STL output in `case/stl/` is git-ignored.
 
 ### Slicer project (.3mf)
 
-After the STLs, `export.sh` (screw closure only) rebuilds `openrz67-case.3mf` — a
+After the STLs, `export.sh` rebuilds `openrz67-case.3mf` — a
 **Bambu Studio / OrcaSlicer project** with the three parts arranged on the plate, the print
 profile, and the **per-part filament assignment** (base + lid on filament 1, light pipe on
 filament 4 = clear). It does this by swapping the fresh meshes into a hand-made template
@@ -208,11 +197,7 @@ the slicer refreshes them when you open or slice the project — purely cosmetic
 ## Print orientation
 - **Base**: print as-is (floor down). No supports needed.
 - **Lid**: print **upside down** (top plate against the bed). That way the bosses/lip
-  point upward with no overhang, the head counterbores (screw mode) come out as clean
-  flats against the bed, and the LED window/counterbore gets a nice top surface.
-  - **With the raised lid text** in a second colour: print **text-up** (top plate up) and
-    change filament at the top layer (the internal bosses/pillars then need supports). Leave
-    the text off (the default) and print upside down for clean prototype lids.
+  point upward with no overhang and the LED window/counterbore gets a nice top surface.
 - **Light pipe** (`openrz67-lightpipe.stl`): **clear filament**. Print upright (head down
   against the bed) for the fewest layer lines across the light path, or lying down for
   smoother walls – both work for an indicator. For the clearest light: print at a fine
@@ -230,14 +215,10 @@ the slicer refreshes them when you open or slice the project — purely cosmetic
   `comp_clr` basis if your plug/cable is shorter.
 - `cable_port_w/h/z` – the cable pass-through for the XH. Set `cable_port_w ==
   cable_port_h` for a round hole. Plug in the XH connector before assembling.
-- `screw_anchor` / `heatset_hole_d` / `heatset_depth` / `heatset_boss_d` – see "Screw
-  anchoring" above. Print a test piece of a single base pillar and try melting in the
-  insert (tune `heatset_hole_d`) before printing the whole base.
-- `screw_d` / `head_d` / `head_h` – screw and counterbore in the lid.
-- `lap_gap` – sliding clearance in the tongue-and-groove edge (both modes).
-- `snap_bead` / `lap_gap` – fine-tune the snap tightness in snap mode.
-- `batt_w/l/pos` – fit your LiPo. The default footprint stays clear of the through-hole
-  pins (USB1, BAT1, U4, S3) and the standoffs.
+- `snap_bead` / `lap_gap` – snap click strength and sliding fit. Tune with the
+  `SNAP_TEST=true` corner pieces before printing the whole box.
+- `batt_w/l/t` / `batt_clr` – fit your LiPo in the bay; `batt_dx` nudges it in X if the
+  leads want a different exit point.
 - `sw_x` / `sw_z` / `sw_wall` – position of the slide switch. The **front wall**
   (`"front"`, low Y) is chosen deliberately: the back wall is blocked by the S3 connector
   (board-X 28.7) and the K2 relay (board-X 31–42), so there's no room there for a centred
@@ -284,8 +265,6 @@ Two layers in the wall (outside in):
   the wall so the USB-C receptacle's body/shell can poke slightly into the wall and bring
   the connector mouth close to the outer face. **This is the trick from the previous
   case** – the same one used for reach there.
-- `usb_chamfer` = **0.0 (off)** by default – a clean outer face, like last year's design.
-  Set > 0 for a 45° lead-in chamfer on the mouth if you want one.
 
 The opening's centre sits ~1.65 mm **above** the base/lid split, so the lower ~1.85 mm of
 the 7 mm-tall window falls below the seam. `cut_usb()` therefore runs in **both** `base()`
