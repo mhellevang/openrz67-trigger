@@ -7,3 +7,6 @@ _autosave-*
 openrz67.3dshapes/*.step
 out/openrz67.step
 .venv-tools/
+
+# Gerber-zip bygges av tools/regen.sh; de utpakkede filene er kilden i git
+out/openrz67-gerber.zip

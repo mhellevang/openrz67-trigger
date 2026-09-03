@@ -48,3 +48,7 @@ Thumbs.db
 *.backup
 projectFilesBackup/
 .venv/
+
+# Local tooling config (not part of the design)
+.mcp.json
+.claude/settings.local.json
