@@ -17,7 +17,7 @@ The current prototype is a custom PCB (design and fabrication files in [`pcb/`](
 
 The PCB source is the KiCad project in [`pcb/kicad/`](pcb/kicad/) (ported from EasyEDA Pro in September 2026). Generated Gerber/BOM/position files are in `pcb/kicad/out/`. The fabricated 2025-09-23 revision and the EasyEDA Pro exports are kept under [`pcb/archive/`](pcb/archive/).
 
-The current source is **rev 2, not yet fabricated**: it moves the battery connector to the underside and changes `U4` to a side-entry part. The board pictured above is rev 2; the enclosure in [`case/`](case/) still fits the fabricated rev 1. Connector part numbers and geometry are documented in [`pcb/kicad/README.md`](pcb/kicad/README.md), which is the authoritative source for them.
+The current source is **rev 2, not yet fabricated**: it moves the battery connector to the underside and changes `U4` to a side-entry part. The board pictured above is rev 2; the enclosure in [`case/`](case/) has been redrawn for it as a stacked box with the cell under the board, but is not print-tested yet. Connector part numbers and geometry are documented in [`pcb/kicad/README.md`](pcb/kicad/README.md), which is the authoritative source for them.
 
 * 1× ESP32-C3FH4
 * 2× Omron G6K-2F-Y DC3 relays to control the shutter release

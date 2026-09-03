@@ -2,11 +2,11 @@
 # requires-python = ">=3.12"
 # dependencies = ["build123d>=0.11.1"]
 # ///
-"""openrz67-trigger enclosure (build123d port of openrz67-case.scad).
+"""openrz67-trigger enclosure (build123d).
 
-Two-part snap-fit box for the ESP32CamTrigger PCB (rev. 2025-09-23), with
-the battery in its own bay beside the PCB. Dimensions come from the PCB
-production files in ../pcb/ — see README.md for the full design rationale.
+Two-part snap-fit box for the OpenRZ67 trigger PCB rev 2 (../pcb/kicad/), with
+the battery cell lying flat UNDER the PCB, across the board. Dimensions come
+from the KiCad board and its 3D models — see README.md for the design rationale.
 
 Parts: base (tub), lid (telescoping ship-lap edge), lightpipe (clear filament).
 Print orientation: base floor-down; lid upside-down (the debossed top text
@@ -14,8 +14,10 @@ faces the bed — filament change at Z = lid_text_depth colours the letters);
 lightpipe head-down. No supports.
 
 Coordinate system: case coords, origin at the outer box's front-left-bottom
-corner, Y toward the back. bx()/by() map board coords (board origin
-bottom-left, Y up) into case coords.
+corner, Y toward the back. bx()/by() map board coords into case coords. Board
+coords here are the enclosure's: origin at the board's front-left corner, Y
+toward the back — the KiCad board measures Y from the other long edge, so
+board_y_here = 22 - kicad_y (the two mounting holes are (2,2) and (46,20)).
 
 Run (exports STLs to stl/ and checks the assertions):
     uv run openrz67_case.py
@@ -35,34 +37,46 @@ from pathlib import Path
 
 from build123d import *
 
-# --- Board (from the PCB production files) ---------------------------------
+# --- Board (rev 2, from ../pcb/kicad/) ---------------------------------------
 board_w, board_h, board_r = 48.0, 22.0, 2.0
 pcb_t = float(os.environ.get("PCB_T", 1.6))
 mount_holes = [(2, 2), (46, 20)]     # the real Ø2 holes (board coords)
 hole_d = 2.0                         # their diameter (locating pins are hole_d - 0.3)
-pcb_supports = [(2, 20), (46, 2)]    # solid posts in the screwless corners
+pcb_supports = [(2, 20), (46, 2)]    # solid posts in the other two corners
 pcb_overhang_left = 2.0              # USB-C shell protrudes past the board edge
-# TH solder tails below the PCB: [board_x, board_y, relief_dia] (BAT1 pins)
-th_keepouts = [(3.275, 16.189, 3.2), (3.275, 18.189, 3.2)]
+# TH solder tails below the PCB that would land on a post: [board_x, board_y, relief_dia].
+# Rev 2 has none (the S3 and U4 tails hang over the cell gap, see under_clr).
+th_keepouts = []
 th_keepout_depth = 3.0
 # Component bodies above the PCB the lid bosses must clear: (x0, y0, x1, y1)
 comp_keepouts = [(0.0, 4.0, 8.0, 14.5)]   # USB-C connector body
+# Under the PCB: BAT1 (S2B-PH-SM4-TB, bottom side, mouth toward the board centre)
+# plus its PHR-2 plug and the wire exit, as one envelope (x0, y0, x1, y1), h_bat1 deep.
+bat1_env, h_bat1 = (5.4, 13.6, 19.0, 21.5), 5.5
+# THT tails under the PCB (S3 switch header, U4 camera connector), probed for clearance
+tht_tails = [(27.71, 19.96), (29.71, 19.96)] + [(44.3, y) for y in (7.25, 9.75, 12.25, 14.75)]
+tht_tail_len = 3.4
 
-# --- PCB frame (guide fins, front edge; the bay divider guides the back) ----
+# --- PCB guide fins (both long edges; the cavity is wider than the board) ---
 frame_clr, frame_proud, frame_cham = 0.2, 0.6, 0.4
-frame_rib_l, frame_notch_clr = 8.0, 0.3
-frame_ribs_front = [10, 38]          # fin centres in board-X
+frame_rib_l = 8.0
+frame_ribs = [10, 45]                # fin centres in board-X (outside the cell's X span)
 
 # --- Fit and walls ----------------------------------------------------------
 clr, wall, floor_t, lid_top_t = 0.4, 2.4, 2.0, 2.0   # wall 2.4: the lap halves must slice as real perimeters
 
-# --- Vertical stack ---------------------------------------------------------
-standoff_h = 3.5                     # >= th_keepout_depth + margin (no battery underneath)
-h_relay, h_xh, h_usbc, h_ph = 5.2, 8.0, 3.3, 6.0   # component heights above PCB
+# --- Battery: the cell lies flat under the PCB, ACROSS the board ------------
+batt_l, batt_w, batt_t = 31.0, 20.0, 6.0   # cell: long side (case Y), short side (case X), thickness
+batt_clr = 0.5                             # fit clearance around the cell (pocket 32 x 21, as before)
+batt_x0 = 20.0                             # cell's left edge in board-X: clear of BAT1 + plug + wire exit
+under_clr = 3.7                            # air between cell top and PCB bottom: THT tails 3.4 + margin.
+#                                            1.5 (a foam pad) if the S3/U4 tails are clipped flush.
+rib_h, rib_t = 2.5, 1.6                    # low ribs on the floor that stop the cell sliding in X
 
-# --- Battery bay (beside the PCB, behind its back edge) ---------------------
-batt_w, batt_l, batt_t = 31, 20, 6.0
-batt_clr, batt_dx, divider_t, rib_h = 0.5, 0, 1.6, 2.5
+# --- Vertical stack ---------------------------------------------------------
+standoff_h = batt_t + under_clr      # PCB underside above the floor
+h_relay, h_usbc, h_ph_plug, h_xh = 5.2, 3.3, 8.0, 6.1   # component heights above PCB
+# h_ph_plug: PHR-2 plug + wire in the top-entry S3 header; h_xh: S4B-XH-A body
 
 # --- Openings ---------------------------------------------------------------
 usb_open_w, usb_open_h, usb_open_r = 11.0, 7.0, 2.0     # outer lip (stops the cable body)
@@ -71,9 +85,11 @@ usb_recess_d = wall - 0.5            # keep a 0.5 lip so the plug still seats fu
 led_pos = [(22.514, 20.186), (24.224, 20.186)]           # D3, D4
 led_win_l, led_win_w, led_win_r = 6.0, 3.0, 1.2
 led_head_lip, led_head_t, led_pipe_clr, led_pipe_gap = 1.0, 1.0, 0.2, 1.5
-cable_port_w, cable_port_h, cable_port_z = 5.0, 2.6, 7.7  # XH drop-in slit port; mouth top
-# flush with the lid's interior ceiling (comp_clr) so the stiff wire passes at the plug's
-# 8 mm top-exit height with no down-bend — a lower mouth stops the lid from closing
+# U4 camera connector: side-entry S4B-XH-A on the board's right edge, mouth facing
+# out; the 12.4 x 6.1 body protrudes 2.4 past the board edge INTO the wall, so the
+# lid wall gets an opening the body sits in and the XHP plug passes through.
+xh_w, xh_h, xh_clr = 12.4, 6.1, 0.4
+xh_y = 22 - 11.0                     # connector centre, board-Y
 
 # --- Slide switch SS12F15 (front wall, wired to S3) --------------------------
 sw_x, sw_z = 22, 4.5
@@ -95,25 +111,29 @@ lap, lap_gap = 4.0, 0.15             # lap <= split_z - floor_t (lip must end ab
 orient_mark_x, orient_mark_w, orient_mark_d, orient_mark_h = 8.0, 2.5, 0.8, 9.0
 # Debossed (pocket) text in the lid top, per the FDM rules: prints upside-down
 # against the bed (crisp), and one filament change at Z = lid_text_depth colours
-# the letters. Badge layout around the LED window: "OpenRZ67" above it, "Trigger"
-# below, both centred on the light pipe's X. (text, cap size, Y offset from LED row)
+# the letters. The LED window sits near the back edge (the LEDs are on the board's
+# back edge), so both lines go in front of it, centred on the light pipe's X.
+# (text, cap size, Y offset from the LED row)
 lid_text_show = os.environ.get("LID_TEXT_SHOW", "true") == "true"
-lid_texts = [("OpenRZ67", 9.0, +11.5), ("Trigger", 7.0, -11.0)]
+lid_texts = [("OpenRZ67", 9.0, -10.5), ("Trigger", 7.0, -21.0)]
 lid_text_depth = 0.6              # pocket depth = the colour-change height (3 x 0.2 layers)
 eps = 0.01
 
 # --- Derived ------------------------------------------------------------------
-off = wall + clr
 inner_w = board_w + 2 * clr + pcb_overhang_left
-bay_d = batt_l + 2 * batt_clr
-inner_h = clr + board_h + frame_clr + divider_t + bay_d
+side_room = (batt_l + 2 * batt_clr - board_h) / 2   # cavity is this much wider than the board, each side
+assert side_room >= clr, "cell narrower than the board: make side_room at least clr"
+inner_h = board_h + 2 * side_room
 inner_r = board_r + clr
 outer_w, outer_h, outer_r = inner_w + 2 * wall, inner_h + 2 * wall, inner_r + wall
 standoff_d = 4.0
-comp_clr = max(h_relay, h_xh, h_ph) + 1.0
-assert cable_port_z + cable_port_h / 2 >= h_xh + 0.7, \
-    "XH mouth top below the wire's natural exit height — lid won't close over the cable"
-assert cable_port_z + cable_port_h / 2 <= comp_clr + eps, "XH mouth breaks the lid ceiling"
+comp_clr = max(h_relay, h_ph_plug, h_xh) + 1.0
+assert standoff_h >= h_bat1 + 0.5, "BAT1 body + plug do not fit under the PCB"
+assert under_clr >= tht_tail_len + 0.2 or under_clr >= 1.5, "under_clr too small"
+assert batt_x0 >= bat1_env[2] + batt_clr, "cell overlaps the BAT1 plug / wire exit"
+right_posts_x = min(x for x, _ in pcb_supports + mount_holes if x > board_w / 2)
+assert batt_x0 + batt_w + batt_clr + rib_t <= right_posts_x - standoff_d / 2, \
+    "cell / right rib run into the right-hand posts"
 pcb_z = floor_t + standoff_h
 pcb_top_z = pcb_z + pcb_t
 split_z = pcb_top_z
@@ -134,7 +154,7 @@ def bx(x):
 
 
 def by(y):
-    return off + y
+    return wall + side_room + y
 
 
 led_cx = (bx(led_pos[0][0]) + bx(led_pos[1][0])) / 2
@@ -185,23 +205,12 @@ cut_usb = xprism(Pos(usb_cy, usb_zc) * RectangleRounded(usb_open_w, usb_open_h, 
 cut_usb += xprism(Pos(usb_cy, usb_zc) * RectangleRounded(usb_recess_w, usb_recess_h, usb_recess_r),
                   wall - usb_recess_d, usb_recess_d + 1)
 
-# XH cable port (right wall): rounded mouth with its top at the lid's interior
-# ceiling, so the wires exit at the plug's 8mm top-entry height without bending,
-# + a drop-in slit down to the split, so the pre-wired bundle lays in as the lid
-# closes and the lid lifts off untethered. Lid-only cut.
-xh_cy, xh_zc = by(22 - 11.0), pcb_top_z + cable_port_z
-cut_xh = xprism(Pos(xh_cy, xh_zc) * SlotOverall(cable_port_w, cable_port_h),
-                outer_w - wall - 1, wall + 2)
-cut_xh += box(outer_w - wall - 1, xh_cy - cable_port_w / 2, split_z,
-              wall + 2, cable_port_w, xh_zc - split_z + eps)
-
-# Frame-fin tongue notches (cut from the lid tongue where the base fins stand)
-fin_ycap = off - frame_clr
-cut_fin_notches = Part() + [
-    box(bx(cx) - frame_rib_l / 2 - frame_notch_clr, -frame_notch_clr, split_z - lap - eps,
-        frame_rib_l + 2 * frame_notch_clr, fin_ycap + 2 * frame_notch_clr, lap + 2 * eps)
-    for cx in frame_ribs_front
-]
+# XH camera connector (right wall): opening for the S4B-XH-A body that protrudes
+# into the wall, from the board top up; the XHP plug goes in from outside. Lid-only
+# cut (everything is above the split).
+xh_cy = by(xh_y)
+cut_xh = box(outer_w - wall - 1, xh_cy - xh_w / 2 - xh_clr, split_z - eps,
+             wall + 2, xh_w + 2 * xh_clr, xh_h + xh_clr + eps)
 
 
 def orient_mark_rib(z0):
@@ -209,6 +218,23 @@ def orient_mark_rib(z0):
     line up only when the lid is on the right way around. Overlaps 0.2 into the wall."""
     return box(bx(orient_mark_x) - orient_mark_w / 2, -orient_mark_d, z0,
                orient_mark_w, orient_mark_d + 0.2, orient_mark_h / 2)
+
+
+def fin(cx, front):
+    """PCB guide fin: a block from the inner wall face to frame_clr off the board's
+    long edge, floor to frame_proud above the board top, with a chamfered lead-in on
+    the inner top edge. Front (low Y) or back (high Y) edge. Starts at the inner wall
+    face, so it never meets the lid tongue (no notches needed)."""
+    if front:
+        y_wall, y_cap, s = wall, by(0) - frame_clr, 1
+    else:
+        y_wall, y_cap, s = wall + inner_h, by(board_h) + frame_clr, -1
+    top = split_z + frame_proud
+    pts = [(y_wall, floor_t), (y_cap, floor_t), (y_cap, top - frame_cham),
+           (y_cap - s * frame_cham, top), (y_wall, top)]
+    # keep the polygon counter-clockwise, or the extrusion runs toward -X
+    profile = Polygon(*(pts if s > 0 else pts[::-1]), align=None)
+    return xprism(profile, bx(cx) - frame_rib_l / 2, frame_rib_l)
 
 
 # --- BASE ---------------------------------------------------------------------------
@@ -224,24 +250,18 @@ for hx, hy in mount_holes:
 for px, py in pcb_supports:
     base += cyl(bx(px), by(py), floor_t, standoff_d, standoff_h)
 
-# Battery bay: full-width divider (front face guides the PCB's back edge, top flush
-# with the split) + two low ribs that stop the cell sliding in X.
-bay_y0 = off + board_h + frame_clr
-bay_x0 = wall + (inner_w - batt_w) / 2 - batt_clr + batt_dx
-base += box(wall, bay_y0, floor_t, inner_w, divider_t, split_z - floor_t)
-for x in (bay_x0 - 1.6, bay_x0 + batt_w + 2 * batt_clr):
-    base += box(x, bay_y0 + divider_t, floor_t, 1.6, bay_d, rib_h)
+# Battery pocket: the cell lies on the floor across the whole cavity (the walls
+# hold it in Y); two low ribs stop it sliding in X. The left rib covers the front
+# half only, so the battery lead can loop from the BAT1 plug (back-left, under the
+# board) out into the back pocket and along it to the cell's tab end.
+cell_x0, cell_x1 = bx(batt_x0 - batt_clr), bx(batt_x0 + batt_w + batt_clr)
+base += box(cell_x0 - rib_t, wall, floor_t, rib_t, by(10) - wall, rib_h)
+base += box(cell_x1, wall, floor_t, rib_t, inner_h, rib_h)
 
-# Front guide fins: thick wall-backed fin beside the board edge + thin chamfered
-# lead-in lip above the board top. One YZ profile extruded along X.
-fin_profile = Polygon(
-    (0, floor_t), (fin_ycap, floor_t),
-    (fin_ycap, split_z + frame_proud - frame_cham),
-    (wall, split_z + frame_proud), (wall, split_z), (0, split_z),
-    align=None,
-)
-for cx in frame_ribs_front:
-    base += xprism(fin_profile, bx(cx) - frame_rib_l / 2, frame_rib_l)
+# Guide fins on both long edges (the cavity is side_room wider than the board)
+for cx in frame_ribs:
+    base += fin(cx, front=True)
+    base += fin(cx, front=False)
 
 base += orient_mark_rib(split_z - orient_mark_h / 2)
 
@@ -251,7 +271,7 @@ base += orient_mark_rib(split_z - orient_mark_h / 2)
 groove = prism(offset(mid_sk, snap_bead + 0.25) - offset(mid_sk, -lap_gap - 0.25),
                bead_z - (bead_h + 0.5) / 2, bead_h + 0.5)
 base -= chamfer(groove.edges().group_by(Axis.Z)[-1], 0.55)
-# TH solder-tail pockets in the post tops (BAT1 pins beside the (2,20) post)
+# TH solder-tail pockets in the post tops (none on rev 2; kept for other boards)
 for kx, ky, kd in th_keepouts:
     base -= cyl(bx(kx), by(ky), pcb_z - th_keepout_depth, kd, th_keepout_depth + eps)
 base -= cut_usb
@@ -268,9 +288,9 @@ bead_ends = bead.edges().group_by(Axis.Z)
 lid += chamfer(bead_ends[0] + bead_ends[-1], 0.4)
 lid -= prism(inner_sk, split_z - lap - eps, comp_clr + lap + eps)       # cavity
 
-# Switch screw bosses: rectangular pillars from sw_boss_gap above the PCB (clears
-# Q1/C15 beneath) up into the ceiling; front face at the inner wall plane so the
-# screw clamps bracket -> wall -> boss in compression.
+# Switch screw bosses: rectangular pillars from sw_boss_gap above the PCB up into
+# the ceiling; front face at the inner wall plane so the screw clamps bracket ->
+# wall -> boss in compression. (They now stand over the side pocket, not the board.)
 for s in (-1, 1):
     lid += box(sx + s * sw_screw_pitch / 2 - sw_boss_d / 2, wall, split_z + sw_boss_gap,
                sw_boss_d, sw_boss_h, (total_h - lid_top_t + 1) - (split_z + sw_boss_gap))
@@ -301,18 +321,17 @@ for s in (-1, 1):
 lid -= box(sx - sw_body_l / 2 - sw_body_clr, wall, swz - sw_body_h / 2 - sw_body_clr,
            sw_body_l + 2 * sw_body_clr, sw_body_w + eps, sw_body_h + 2 * sw_body_clr)
 # Blind recesses in the hold-down bosses for the locating pins (not through the
-# top plate — the .scad's snap variant cut them through, leaving holes in the lid)
+# top plate)
 for hx, hy in mount_holes:
     lid -= cyl(bx(hx), by(hy), pcb_top_z - eps, 2.6, pin_proud + 0.7 + eps)
-# Coin/fingernail pry slot in the lid's lower edge, back wall centre (over the
-# battery bay — nothing behind it). 1mm deep leaves 0.35 skin before the tongue.
+# Coin/fingernail pry slot in the lid's lower edge, back wall centre. 1mm deep
+# leaves 0.35 skin before the tongue.
 lid -= box(outer_w / 2 - pry_w / 2, outer_h - pry_d, split_z - eps,
            pry_w, pry_d + eps, pry_h + eps)
 # Component keepouts (USB-C body vs the (2,2) hold-down boss)
 for x0, y0, x1, y1 in comp_keepouts:
     lid -= box(bx(x0), by(y0), pcb_top_z - eps,
                x1 - x0, y1 - y0, (total_h - lid_top_t) - pcb_top_z + 2 * eps)
-lid -= cut_fin_notches
 
 if lid_text_show:
     # Each line must stay on its own side of the LED head recess (half-height 2.6 in Y)
@@ -350,8 +369,8 @@ def _open(solid, probe, what):
     assert v < 1e-6, f"{what} blocked (probe volume {v:.3f})"
 
 _open(base + lid, box(-0.5, usb_cy - 4, usb_zc - 2.5, wall + 1, 8, 5), "USB opening")
-_open(lid, box(outer_w - wall - 0.5, xh_cy - 1, split_z + eps, wall + 1, 2,
-               h_xh + 0.7), "XH port free from the seam up past the wire height")
+_open(base + lid, box(outer_w - wall - 0.5, xh_cy - xh_w / 2, split_z + eps, wall + 1, xh_w, xh_h),
+      "XH connector opening through the right wall")
 _open(lid, box(led_cx - 2, led_cy - 1, total_h - lid_top_t + eps, 4, 2, lid_top_t), "LED window")
 for hx, hy in mount_holes:
     _open(lid, cyl(bx(hx), by(hy), pcb_top_z + eps, 2.0, pin_proud), "locating-pin recess")
@@ -361,6 +380,18 @@ for s in (-1, 1):
 _open(lid, box(sx - sw_body_l / 2, wall + eps, swz - sw_body_h / 2,
                sw_body_l, sw_body_w - 2 * eps, sw_body_h), "switch body envelope")
 _open(lid, box(bx(0.5), by(4.5), pcb_top_z + eps, 7, 9.5, 2), "USB-C body keepout")
+# Under the PCB: the cell pocket, BAT1 + plug + wire exit, the THT tails, and the
+# lead's route from the plug into the back pocket
+_open(base, box(cell_x0 + eps, wall + eps, floor_t + eps, cell_x1 - cell_x0 - 2 * eps,
+                inner_h - 2 * eps, batt_t), "battery cell pocket")
+_open(base, box(bx(bat1_env[0]), by(bat1_env[1]), pcb_z - h_bat1, bat1_env[2] - bat1_env[0],
+                bat1_env[3] - bat1_env[1], h_bat1 - eps), "BAT1 + plug envelope under the PCB")
+for tx, ty in tht_tails:
+    _open(base, cyl(bx(tx), by(ty), pcb_z - tht_tail_len, 1.6, tht_tail_len - eps),
+          f"THT tail at board ({tx}, {ty})")
+_open(base, box(bx(bat1_env[2]) - 3, by(bat1_env[1]), floor_t + rib_h + eps,
+                bx(batt_x0 + batt_w) - bx(bat1_env[2]) + 3, wall + inner_h - by(bat1_env[1]) - eps,
+                pcb_z - floor_t - rib_h - 2 * eps), "battery lead route to the back pocket")
 
 # --- Export -------------------------------------------------------------------------------
 if __name__ == "__main__":

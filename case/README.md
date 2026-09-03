@@ -1,73 +1,92 @@
 # Parametric enclosure (build123d)
 
-`openrz67_case.py` is a parametric two-part enclosure for the ESP32CamTrigger PCB
-(rev. 2025-09-23), written in [build123d](https://build123d.readthedocs.io/) (Python).
-It is built from the actual production files of that revision, not from eyeballed
+`openrz67_case.py` is a parametric two-part enclosure for the OpenRZ67 trigger PCB
+**rev 2** (`../pcb/kicad/`), written in [build123d](https://build123d.readthedocs.io/)
+(Python). It is built from the board file and its 3D models, not from eyeballed
 measurements.
 
-> **This enclosure fits the fabricated 2025-09-23 board only.** The current PCB
-> source in `../pcb/kicad/` is rev 2, which keeps the 48 × 22 mm outline but moves
-> the battery connector (`BAT1`) to the **underside** of the board and changes `U4`
-> to a side-entry part. The cell therefore no longer lies beside the PCB but under
-> it, which this case does not model. A new revision is needed before rev 2 is
-> assembled. See `../pcb/kicad/README.md` for the rev-2 geometry.
+Rev 2 moved the battery connector `BAT1` to the **underside** of the board (SMD side-entry,
+mouth toward the board centre) and made the camera connector `U4` side-entry. The case is
+therefore a **stacked** box: the 31 × 20 × 6 mm cell lies flat on the floor **under the
+PCB, across the board**, and plugs into BAT1 from below. The previous revision (battery in a
+bay beside the board, for the fabricated 2025-09-23 rev-1 board) is in git history up to
+commit `8fe7b2d`.
+
+> **Not print-tested yet.** The geometry passes the built-in probe assertions, but this
+> revision has not been printed. Print the `SNAP_TEST` corner first as before, then the
+> base alone to check the cell, plug and lead against the real parts.
 
 ## Source data
 
-The rev-1 production files referenced below live in
-`../pcb/archive/2025-09-23-rev1/`; the outline and drill files are inside
-`Gerber_ESP32CamTrigger_PCB_2_2025-09-23.zip`.
-
 | Measurement | Value | Source |
 |-----|-------|-------|
-| Board outline | 48.0 × 22.0 mm, R2.0 | `Gerber_BoardOutlineLayer.GKO` |
-| Mounting holes | 2× Ø2.0 at (2,2) and (46,20) | `Drill_PTH_Through.DRL` (tool T06) |
+| Board outline | 48.0 × 22.0 mm, R2.0 | `../pcb/kicad/openrz67.kicad_pcb` (Edge.Cuts) |
+| Mounting holes | 2× Ø2.0 at (2,2) and (46,20) | `H1`, `H2` |
 | PCB thickness | 1.6 mm | `pcb_t` (as ordered) |
-| Component placement | see openrz67_case.py | `PickAndPlace_…_2025-09-23.csv` |
+| Component placement | see openrz67_case.py | footprint positions in the board file |
+| `BAT1` S2B-PH-SM4-TB (bottom) | body board-X 5.4–14.0, Y 13.6–21.5, 5.5 mm below the board, mouth toward +X | footprint + LCSC STEP (`../pcb/kicad/openrz67.3dshapes/`) |
+| `U4` S4B-XH-A (top, side-entry) | body 12.4 wide × 6.1 tall, protrudes 2.4 mm past the board's right edge, mouth facing out | LCSC STEP |
+| THT tails below the board | `S3` (27.7/29.7, 19.96), `U4` (44.3, 7.25–14.75): 3.4 mm unclipped | JST datasheets |
 | USB-C connector | body 8.95 × 3.2 mm on the PCB, left edge 4.8 mm in from the PCB's left edge; the shell protrudes ~2 mm past the board edge | measured physically |
 | Total HW length | ~50 mm (PCB 48 + USB-C shell 2) | `pcb_overhang_left` |
 | Slide switch (SS12F15) | actuator opening 10.65×6.3; flat bracket 19.45×5.75×0.4; screw holes Ø2.2 at 15.0 mm spacing; body ~19.5×20×12.9 | `SS12F15.stp` + measured |
-| LEDs | D3 red (22.5, 20.2), D4 blue (24.2, 20.2) – 0603 SMD, top-emitting, 1.7 mm apart | `PickAndPlace_…_2025-09-23.csv` |
+| LEDs | D3 red (22.5, 20.2), D4 blue (24.2, 20.2) – 0603 SMD, top-emitting, 1.7 mm apart | board file |
+| Battery cell | 31 × 20 × 6 mm LiPo, 250 mAh | measured |
 
-Component **heights** could not be read reliably from the STEP file, so they are entered
-as editable constants (`h_relay`, `h_xh`, `h_usbc`, `h_ph`) based on datasheets. Check
-them against your own parts.
+Board coordinates in this file and in the script are the **enclosure's**: origin at the
+board's front-left corner, Y toward the back (the switch wall). The KiCad board measures Y
+from the other long edge, so `board_y_here = 22 - kicad_y`; the mounting holes make the
+mapping easy to check.
+
+Component **heights** are entered as editable constants (`h_relay`, `h_usbc`, `h_ph_plug`,
+`h_xh`, `h_bat1`) from the datasheets and STEP models. Check them against your own parts.
 
 The script carries **module-level assertions**: outer dimensions, plus probe checks that
-every opening actually breaks through (USB, XH port, LED window, locating-pin recesses,
-switch screws) and that the fit-critical keepouts (switch body envelope, USB-C body) stay
-open. They run on every export, so a parameter tweak that closes a hole or re-introduces
-a known collision fails loudly instead of surfacing in the print.
+every opening actually breaks through (USB, XH connector opening, LED window, locating-pin
+recesses, switch screws) and that the fit-critical keepouts stay open: the switch body
+envelope, the USB-C body, and under the board the **cell pocket, the BAT1 + plug envelope,
+the six THT tails and the battery lead's route** into the back pocket. They run on every
+export, so a parameter tweak that closes a hole or re-introduces a known collision fails
+loudly instead of surfacing in the print.
 
 ## Construction
-- **Base** (tub): floor, a **battery bay beside the PCB** (behind its back edge, separated
-  by a divider wall), low standoffs that raise the PCB ~3.5 mm (only the through-hole
-  solder tails need clearance underneath), **solid support pillars** in all four corners
+- **Base** (tub): floor, the **battery pocket** on the floor under the board, standoffs
+  that raise the PCB `standoff_h` = cell 6.0 + `under_clr` 3.7 = **9.7 mm** (the cell plus
+  air for the unclipped S3/U4 solder tails), **solid support pillars** in all four corners
   (`pcb_supports = [[2,20],[46,2]]` plus the two posts at the mounting holes), and two
   **Ø1.7 locating pins** up into the real Ø2 mounting holes.
-  - **Through-hole solder relief** (`th_keepouts`): a small pocket in the top of a
-    pillar where a through-hole component's pin tails/solder stick down (the pillar at
-    (2,20) sits next to BAT1). The list is `[board_x, board_y, relief_diameter]`;
-    `th_keepout_depth` sets how far down (default 3 mm).
-  - **PCB frame / guide fins** (`frame_*`): the lap joint removes the inner wall at board
-    height, so **guide fins** in the ~1.2 mm tongue channel hold the PCB sideways: a thick
-    fin beside the board edge with `frame_clr` (0.2 mm) clearance, plus a thin lead-in
-    lip `frame_proud` (0.6 mm) above the board top. The lid tongue is cut away where the
-    fins sit (`frame_tongue_notch`, clearance `frame_notch_clr`). The board drops straight
-    down and is captured in Y between the front fins and the battery-bay **divider wall**
-    (whose front face sits `frame_clr` from the board's back edge — `frame_ribs_back = []`).
-    `frame_ribs_front` are the fin centres in board-X (default `[10, 38]`).
+  - **Cavity wider than the board.** The cell is 31 mm long and lies **across** the 22 mm
+    board, so the cavity is `side_room` = 5 mm wider than the board on **both** long sides.
+    The board sits centred; the two 5 mm **side pockets** hold the battery lead's slack and
+    give fingers somewhere to go.
+  - **Cell pocket:** the cell lies on the floor at board-X `batt_x0` 20 → 40, spanning the
+    whole cavity in Y (the walls hold it, `batt_clr` 0.5 each side: pocket 32 × 21, the same
+    as the old bay). Two low ribs (`rib_h` 2.5, `rib_t` 1.6) stop it sliding in X. The
+    **left rib covers the front half only**, so the lead can loop from the BAT1 plug out
+    into the back pocket. `batt_x0` keeps the cell clear of BAT1's mouth (board-X 14.0), the
+    PHR-2 plug and the wire exit (`bat1_env`, to X 19).
+  - **Under-board clearance** (`under_clr`): 3.7 mm by default, for the 3.4 mm solder tails
+    of S3 and U4 that hang over the cell. If you **clip the tails flush**, set it to 1.5 and
+    put a 1.5 mm foam pad between cell and board; the box gets 2.2 mm lower. BAT1's 5.5 mm
+    body plus plug fits under the 9.7 mm standoff either way (asserted).
+  - **Through-hole solder relief** (`th_keepouts`): pockets in a post top where a THT tail
+    would land on it. Rev 2 has none; the list is kept for other boards.
+  - **PCB guide fins** (`frame_*`): blocks from the inner wall face to `frame_clr` (0.2 mm)
+    off the board's long edges, floor to `frame_proud` (0.6 mm) above the board top with a
+    chamfered lead-in, at board-X `frame_ribs` = `[10, 45]` on **both** long edges (outside
+    the cell's X span). The board drops straight down between them onto the pins. Because
+    the fins start at the inner wall face they never meet the lid tongue, so the tongue
+    needs no notches.
 - **Lid**: telescopes down into the base via a perimeter tongue-and-groove edge (lap
-  joint) for alignment. Carries the USB-C opening (left), a small cable pass-through for
-  the XH plug (right – the connector itself stays enclosed inside), the LED light-pipe
+  joint) for alignment. Carries the USB-C opening (left), the opening the XH camera connector
+  sits in (right), the LED light-pipe
   window (top), and the slot + screw pillars for the SS12F15 slide switch.
-  - **XH cable exit — drop-in** (`cut_xh`): the mouth's top is flush with the lid's
-    interior ceiling, so the stiff wires pass at the plug's 8 mm top-entry exit height
-    **with no down-bend** (a lower mouth stops the lid from closing over the cable —
-    asserted in code), and it is **open downward to the split** via a slit. The pre-wired
-    bundle **lays into** the slit as the lid closes instead of being threaded through a
-    blind hole, and the lid then lifts straight off without the wires tethering it.
-    `cable_port_w/h` size the mouth; `cable_port_z` is its height above the PCB.
+  - **XH connector opening** (`cut_xh`): U4 is now a **side-entry** S4B-XH-A whose 12.4 ×
+    6.1 mm body protrudes 2.4 mm past the board edge, i.e. 2.0 mm **into the right wall**.
+    The lid wall gets a rectangular opening (`xh_w/h` + `xh_clr` 0.4) from the board top up
+    that the connector body sits in, its mouth 0.4 mm inside the outer face. The XHP-4 plug
+    goes in from **outside**, through the wall, so the cable is no longer inside the case and
+    the lid lifts off untethered without a slit. Lid-only cut (all of it is above the split).
   - **LED light pipe** (`led_*`, separate part): D3 (red) and D4 (blue) are top-emitting
     SMD LEDs ~8 mm below the lid. A separate **clear light pipe** is inserted from above
     as a top hat: a wide head in a top counterbore (flush with the top face) + a rod that
@@ -85,26 +104,25 @@ a known collision fails loudly instead of surfacing in the print.
   `pcb_overhang_left = 2.0` extends the cavity on the left; the PCB is therefore centred
   toward the RIGHT in the cavity (normal `clr = 0.4` against the right wall, `clr +
   overhang = 2.4 mm` against the left). The outer case width thus becomes ~**55.6 mm**.
-- **The battery** (250 mAh LiPo) lies **beside the PCB** — rev 1 only; rev 2 puts `BAT1`
-  on the board's underside and the cell under the board, see the note at the top — in its own bay behind the board's
-  back edge, bounded by the **divider wall** (front, top flush with the split — it doubles
-  as the PCB's back guide), the case walls (back/sides), and two low ribs that stop the
-  cell sliding in X. BAT1 sits at board ≈ (3.3, 17) on the PCB top, so the lead just
-  **drapes over the divider** and plugs straight in — short and flat. Everything is
-  assembled from above in one layer. The bay is taller than the cell; fix it with a foam
-  pad or a dab of glue. Parameters: `batt_w/l/t` (cell), `batt_clr` (bay fit), `batt_dx`
-  (X nudge), `divider_t`, `rib_h`.
+- **The battery** (250 mAh LiPo, 31 × 20 × 6) lies **under the PCB, across the board**, see
+  the base section above. BAT1 is on the board's underside at board ≈ (5.4–14, 13.6–21.5)
+  with its mouth toward the board centre, so the plug goes in horizontally from the right
+  while the board is in your hand; the lead then loops into the **back pocket** and along
+  it to the cell's tab end. Assembly order: cell onto the floor between the ribs (tabs
+  toward the back), plug the lead into BAT1, lower the board onto the pins with the lead
+  draping into the back pocket, lid on. The pocket is exactly the cell's height plus
+  `under_clr`; fix the cell with a foam pad or a dab of glue as before. Parameters:
+  `batt_l/w/t` (cell), `batt_clr` (fit), `batt_x0` (position in X), `under_clr`, `rib_h/t`.
 
 ## Closure — snap-fit
 **No hardware at all.** A perimeter **bead** (`snap_bead` 0.5 mm, `bead_h` 1.4, chamfered
 0.4 top and bottom — click-in/pry-out ramps, and the first printed bead layer isn't a ledge
 in mid-air) on the lid tongue clicks into a matching **groove** in the base lip (0.5 taller
 / 0.25 deeper for lead-in, ceiling chamfered so it prints without an overhang), holding the
-whole rim down — including the battery-bay half, which a corner-screw
-pattern would leave unclamped. The PCB is located by two **Ø1.7 pins** in its real Ø2
+whole rim down. The PCB is located by two **Ø1.7 pins** in its real Ø2
 mounting holes and pressed onto the posts by the lid's hold-down bosses (blind pin recesses
 inside — no holes through the top). Open with a coin or fingernail in the **pry slot**
-(`pry_w/d/h`) on the back wall's lower lid edge, over the battery bay.
+(`pry_w/d/h`) on the back wall's lower lid edge, over the back pocket.
 
 The case is rarely opened (charging is external via USB-C), so snap wear is not a concern
 with PLA; print the lid in PETG if you want extra flex margin. **Tune before the full
@@ -112,8 +130,9 @@ print:** `SNAP_TEST=true ./export.sh` also exports a cropped front-left corner p
 (`openrz67-snaptest-*`) — print those and adjust `snap_bead` (click strength) and
 `lap_gap` (sliding fit) until the corner snaps shut and pries open with reasonable force.
 
-Finished size with default values: ~**55.6 × 50.0 × 18.1 mm** (X incl. the 2 mm USB-C
-overhang, Y incl. the battery bay behind the board, Z depends on `pcb_t`).
+Finished size with default values: ~**55.6 × 37.6 × 24.3 mm** (X incl. the 2 mm USB-C
+overhang, Y incl. the two 5 mm side pockets and the 0.8 mm orientation rib, Z = floor 2 +
+cell 6 + `under_clr` 3.7 + PCB 1.6 + 9 mm component clearance + 2 mm top).
 
 ## Orientation mark — `orient_mark`
 A small **raised rib** on the front wall (low Y) near the left corner, split across the
@@ -126,8 +145,9 @@ wall. Parameters: `orient_mark_x` (board-X of the mark, near the USB side), `ori
 seam). Delete the two `orient_mark_rib` lines to remove it.
 
 ## Lid text — second colour (`lid_texts`)
-**Debossed badge layout** around the LED window: **"OpenRZ67"** (9 mm caps) above it,
-**"Trigger"** (7 mm) below, both centred on the light pipe's X, cut `lid_text_depth`
+**Debossed badge layout** in front of the LED window (the LEDs sit on the board's back
+edge, close to the back wall): **"OpenRZ67"** (9 mm caps) nearest the window, **"Trigger"**
+(7 mm) toward the front, both centred on the light pipe's X, cut `lid_text_depth`
 (0.6 mm) into the top face. Per the FDM rules: pockets, not raised letters, and well above
 the 4.4 mm legibility minimum for a 0.4 nozzle. Placement is enforced by assertions (each
 line must clear the LED recess, the walls and the face edges — an over-long string fails
@@ -216,15 +236,17 @@ the slicer refreshes them when you open or slice the project — purely cosmetic
   connector: distance from the PCB's left edge to the outermost point of the shell.
   Default 2.0.
 - `pcb_supports` – extra support-pillar coordinates (without screw) on the base. Default
-  is the two empty corners `[[2,20],[46,2]]`; add more if the board flexes.
-- `h_xh` – the tallest component (the XH plug) sets the total height. Lower the
-  `comp_clr` basis if your plug/cable is shorter.
-- `cable_port_w/h/z` – the cable pass-through for the XH. Set `cable_port_w ==
-  cable_port_h` for a round hole. Plug in the XH connector before assembling.
+  is the two empty corners `[[2,20],[46,2]]`; keep new ones outside the cell's X span.
+- `under_clr` – 3.7 with the S3/U4 tails as soldered, 1.5 if you clip them flush (then
+  add a 1.5 mm foam pad). Sets the box height together with `batt_t`.
+- `h_ph_plug` – the PHR-2 plug + wire standing in the top-entry S3 header is the tallest
+  thing above the board and sets `comp_clr`. Lower it if your plug/wire is shorter.
+- `xh_w/h/clr` – the opening the S4B-XH-A body sits in. Check that your XHP-4 plug passes
+  through it and that the latch can be pressed from outside.
 - `snap_bead` / `lap_gap` – snap click strength and sliding fit. Tune with the
   `SNAP_TEST=true` corner pieces before printing the whole box.
-- `batt_w/l/t` / `batt_clr` – fit your LiPo in the bay; `batt_dx` nudges it in X if the
-  leads want a different exit point.
+- `batt_l/w/t` / `batt_clr` – fit your LiPo; `batt_x0` moves it in X (asserted clear of
+  BAT1's plug and of the right-hand posts).
 - `sw_x` / `sw_z` / `sw_wall` – position of the slide switch. The **front wall**
   (`"front"`, low Y) is chosen deliberately: the back wall is blocked by the S3 connector
   (board-X 28.7) and the K2 relay (board-X 31–42), so there's no room there for a centred
@@ -277,9 +299,18 @@ short end first.
 
 ## Known / to verify
 - Check that your charging cable reaches the port (see "USB-C opening" above).
-- Check that the wire bundle from the XH cable fits the `cable_port_*` mouth.
+- **XH:** plug the XHP-4 into U4 through the wall opening with the lid on; check the plug's
+  latch clears the top of the opening and can be released from outside.
+- **Battery:** check the PHR-2 plug seats in BAT1 with the board on its pins, that the lead
+  reaches the cell in the pocket via the back pocket, and that nothing presses on the cell.
+  The `bat1_env` plug + wire-exit envelope (board-X to 19) is an estimate from the header
+  drawing, not measured with a real plug.
+- **THT tails:** with `under_clr` 3.7 the S3/U4 tails clear the cell by 0.3 mm. Clip them or
+  keep the foam pad if you want more.
 - **Light pipe**: verify the rod lands directly over D3/D4 (adjust `led_pos` if needed)
   and that the bottom clears the LEDs (`led_pipe_gap`). Print in clear filament; glue the
   head into the counterbore for a permanent/sealed fit.
-- The USB-C and switch openings are open out of necessity; the LED window is sealed by
+- The USB-C, XH and switch openings are open out of necessity; the LED window is sealed by
   the light pipe.
+- **Snap walls:** the 2.4 mm wall's lap halves held on the rev-1 print but felt thin for
+  repeated opening. Not changed in this revision; revisit if the box is opened often.
