@@ -72,6 +72,11 @@ Outline unchanged from rev 1: **48 × 22 mm**, 2 mm corner radius, mounting hole
   BAT+ reaches the bottom through a 0.6/0.3 via next to C22; GND is the bottom pour.
   JLCPCB two-sided assembly costs extra: BAT1 can also be left unplaced and hand-soldered.
   `BAT+` / `BAT-` are labelled on the bottom silkscreen at 1.067 mm.
+- **C5** moved to the analog supply: the 100 nF that sat on VCC next to the ferrite bead
+  L2 now sits on the far side of it, on the new **VDDA** net feeding U1 pins 31/32 (radio and
+  ADC supply). Before, nothing decoupled that net; the bead alone was just series impedance.
+  VCC reaches L2 pin 1 through a new via beside the pad. Same part, same position, no BOM
+  change. B.Cu ground under U1 stays one region (648.7 mm²).
 - **Under-board clearance** the enclosure has to provide, from the datasheets:
 
   | What | Height below the board |

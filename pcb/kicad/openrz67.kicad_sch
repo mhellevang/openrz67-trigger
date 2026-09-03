@@ -9000,7 +9000,7 @@
 		(uuid "286c8e7c-8829-4a1d-8243-62b3fa70b74f")
 	)
 	(junction
-		(at 119.38 140.97)
+		(at 142.24 140.97)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "2f19dfcc-3fa0-471a-8f82-718d9255dcdd")
@@ -9120,7 +9120,7 @@
 		(uuid "8ef57852-fdd4-4b6c-8ab9-63ac909031d9")
 	)
 	(junction
-		(at 119.38 151.13)
+		(at 142.24 151.13)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "95081b55-54fb-4a3f-9301-be9736a2d462")
@@ -9393,7 +9393,7 @@
 	)
 	(wire
 		(pts
-			(xy 119.38 140.97) (xy 128.27 140.97)
+			(xy 105.41 140.97) (xy 128.27 140.97)
 		)
 		(stroke
 			(width 0)
@@ -9853,7 +9853,7 @@
 	)
 	(wire
 		(pts
-			(xy 143.51 151.13) (xy 119.38 151.13)
+			(xy 143.51 151.13) (xy 105.41 151.13)
 		)
 		(stroke
 			(width 0)
@@ -10070,16 +10070,6 @@
 			(type default)
 		)
 		(uuid "5f05bfb8-dfad-4c89-80a1-03be8957868b")
-	)
-	(wire
-		(pts
-			(xy 119.38 151.13) (xy 105.41 151.13)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5fcc3dc9-eb05-41a9-8d2b-1da46197994c")
 	)
 	(wire
 		(pts
@@ -10560,16 +10550,6 @@
 			(type default)
 		)
 		(uuid "8f705034-f31c-4da2-b299-81bf5b106630")
-	)
-	(wire
-		(pts
-			(xy 119.38 140.97) (xy 105.41 140.97)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8f8fdbce-8c7b-4dcf-910d-1ce29b7db237")
 	)
 	(wire
 		(pts
@@ -11620,6 +11600,17 @@
 			(type default)
 		)
 		(uuid "fece8e4e-127f-4b3c-ae20-9431afb0c554")
+	)
+	(global_label "VDDA"
+		(shape passive)
+		(at 139.7 140.97 0)
+		(effects
+			(font
+				(size 1.5748 1.5748)
+			)
+			(justify left bottom)
+		)
+		(uuid "a38922cf-d8e4-4e5e-b468-afa604cff0fd")
 	)
 	(global_label "+5V"
 		(shape passive)
@@ -21713,7 +21704,7 @@
 	)
 	(symbol
 		(lib_id "openrz67:GRM155R71H104KE14D")
-		(at 119.38 146.05 270)
+		(at 142.24 146.05 270)
 		(unit 1)
 		(body_style 0)
 		(exclude_from_sim no)
@@ -21723,7 +21714,7 @@
 		(dnp no)
 		(uuid "ab7713aa-560c-4a92-944c-a8ccc6610694")
 		(property "Reference" "C5"
-			(at 123.19 146.05 90)
+			(at 146.05 146.05 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -21734,7 +21725,7 @@
 			)
 		)
 		(property "Value" "100nF"
-			(at 123.19 148.59 90)
+			(at 146.05 148.59 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -21745,7 +21736,7 @@
 			)
 		)
 		(property "Footprint" "openrz67:C0402"
-			(at 119.38 146.05 0)
+			(at 142.24 146.05 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -21756,7 +21747,7 @@
 			)
 		)
 		(property "Datasheet" "https://atta.szlcsc.com/upload/public/pdf/source/20180326/C77020_39BD49C951FF1AF0DB1F1FAC5AC1E401.pdf"
-			(at 119.38 146.05 0)
+			(at 142.24 146.05 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -21767,7 +21758,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 119.38 146.05 0)
+			(at 142.24 146.05 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -21778,7 +21769,7 @@
 			)
 		)
 		(property "Manufacturer Part" "GRM155R71H104KE14D"
-			(at 119.38 146.05 0)
+			(at 142.24 146.05 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -21789,7 +21780,7 @@
 			)
 		)
 		(property "Manufacturer" "muRata(村田)"
-			(at 119.38 146.05 0)
+			(at 142.24 146.05 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -21800,7 +21791,7 @@
 			)
 		)
 		(property "Supplier Part" "C77020"
-			(at 119.38 146.05 0)
+			(at 142.24 146.05 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -21811,7 +21802,7 @@
 			)
 		)
 		(property "Supplier" "LCSC"
-			(at 119.38 146.05 0)
+			(at 142.24 146.05 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -21822,7 +21813,7 @@
 			)
 		)
 		(property "LCSC Part Name" "100nF ±10% 50V"
-			(at 119.38 146.05 0)
+			(at 142.24 146.05 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
