@@ -29,7 +29,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ProPrj_ESP-easyedapro:R0402"
+		(property "Footprint" "openrz67:R0402"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -195,7 +195,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ProPrj_ESP-easyedapro:R0402"
+		(property "Footprint" "openrz67:R0402"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -361,7 +361,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ProPrj_ESP-easyedapro:R0603"
+		(property "Footprint" "openrz67:R0603"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -527,7 +527,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ProPrj_ESP-easyedapro:R0603"
+		(property "Footprint" "openrz67:R0603"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -692,7 +692,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ProPrj_ESP-easyedapro:SOD-523_L1.2-W0.8-LS1.6-RD"
+		(property "Footprint" "openrz67:SOD-523_L1.2-W0.8-LS1.6-RD"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -870,7 +870,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ProPrj_ESP-easyedapro:L0603"
+		(property "Footprint" "openrz67:L0603"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1080,7 +1080,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ProPrj_ESP-easyedapro:CONN-TH_B2B-PH-K-S"
+		(property "Footprint" "openrz67:CONN-TH_B2B-PH-K-S"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1245,7 +1245,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ProPrj_ESP-easyedapro:KEY-SMD_B3U-1000PM"
+		(property "Footprint" "openrz67:KEY-SMD_B3U-1000PM"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1448,7 +1448,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ProPrj_ESP-easyedapro:C0603"
+		(property "Footprint" "openrz67:C0603"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1651,7 +1651,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ProPrj_ESP-easyedapro:C0603"
+		(property "Footprint" "openrz67:C0603"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1854,7 +1854,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ProPrj_ESP-easyedapro:C0603"
+		(property "Footprint" "openrz67:C0603"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2056,7 +2056,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ProPrj_ESP-easyedapro:SOT-346_L2.9-W1.6-P1.90-LS2.8-TR-CW"
+		(property "Footprint" "openrz67:SOT-346_L2.9-W1.6-P1.90-LS2.8-TR-CW"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2317,7 +2317,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ProPrj_ESP-easyedapro:QFN-32_L5.0-W5.0-P0.50-TL-EP3.7"
+		(property "Footprint" "openrz67:QFN-32_L5.0-W5.0-P0.50-TL-EP3.7"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3051,7 +3051,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ProPrj_ESP-easyedapro:RELAY-SMD_G6K-2F-Y"
+		(property "Footprint" "openrz67:RELAY-SMD_G6K-2F-Y"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3727,7 +3727,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ProPrj_ESP-easyedapro:C0402"
+		(property "Footprint" "openrz67:C0402"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3930,7 +3930,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ProPrj_ESP-easyedapro:C0402"
+		(property "Footprint" "openrz67:C0402"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4140,7 +4140,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ProPrj_ESP-easyedapro:"
+		(property "Footprint" ""
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4270,7 +4270,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ProPrj_ESP-easyedapro:C0402"
+		(property "Footprint" "openrz67:C0402"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4473,7 +4473,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ProPrj_ESP-easyedapro:C0402"
+		(property "Footprint" "openrz67:C0402"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4683,7 +4683,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ProPrj_ESP-easyedapro:"
+		(property "Footprint" ""
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4784,7 +4784,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ProPrj_ESP-easyedapro:"
+		(property "Footprint" ""
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4913,7 +4913,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ProPrj_ESP-easyedapro:LED0603-RD"
+		(property "Footprint" "openrz67:LED0603-RD"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5139,7 +5139,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ProPrj_ESP-easyedapro:ESOP-8_L4.9-W3.9-P1.27-LS6.0-TL-EP3.3"
+		(property "Footprint" "openrz67:ESOP-8_L4.9-W3.9-P1.27-LS6.0-TL-EP3.3"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5442,7 +5442,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ProPrj_ESP-easyedapro:L0402"
+		(property "Footprint" "openrz67:L0402"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5654,7 +5654,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ProPrj_ESP-easyedapro:SOT-23-5_L3.0-W1.7-P0.95-LS2.8-BL"
+		(property "Footprint" "openrz67:SOT-23-5_L3.0-W1.7-P0.95-LS2.8-BL"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5873,7 +5873,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ProPrj_ESP-easyedapro:R0603"
+		(property "Footprint" "openrz67:R0603"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6058,7 +6058,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ProPrj_ESP-easyedapro:"
+		(property "Footprint" ""
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6171,7 +6171,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ProPrj_ESP-easyedapro:"
+		(property "Footprint" ""
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6277,7 +6277,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ProPrj_ESP-easyedapro:R0402"
+		(property "Footprint" "openrz67:R0402"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6443,7 +6443,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ProPrj_ESP-easyedapro:R0402"
+		(property "Footprint" "openrz67:R0402"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6608,7 +6608,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ProPrj_ESP-easyedapro:CONN-TH_S4B-XH-A-LF-SN"
+		(property "Footprint" "openrz67:CONN-TH_S4B-XH-A-LF-SN"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6821,7 +6821,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ProPrj_ESP-easyedapro:IND-SMD_L7.1-W6.5-P5.60"
+		(property "Footprint" "openrz67:IND-SMD_L7.1-W6.5-P5.60"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7032,7 +7032,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ProPrj_ESP-easyedapro:CRYSTAL-SMD_4P-L2.0-W1.6-BL-2"
+		(property "Footprint" "openrz67:CRYSTAL-SMD_4P-L2.0-W1.6-BL-2"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7303,7 +7303,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ProPrj_ESP-easyedapro:USB-C-SMD_TYPE-C-6PIN-2MD-073"
+		(property "Footprint" "openrz67:USB-C-SMD_TYPE-C-6PIN-2MD-073"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7695,7 +7695,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ProPrj_ESP-easyedapro:RF-SMD_FRF05002-JSS103M"
+		(property "Footprint" "openrz67:RF-SMD_FRF05002-JSS103M"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7887,7 +7887,7 @@
 				(justify bottom)
 			)
 		)
-		(property "Footprint" "ProPrj_ESP-easyedapro:"
+		(property "Footprint" ""
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7993,7 +7993,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ProPrj_ESP-easyedapro:CRYSTAL-SMD_L3.2-W1.5-1"
+		(property "Footprint" "openrz67:CRYSTAL-SMD_L3.2-W1.5-1"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8256,7 +8256,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ProPrj_ESP-easyedapro:LED0603-RD_BLUE"
+		(property "Footprint" "openrz67:LED0603-RD_BLUE"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8792,191 +8792,4 @@
 	      )
 	    )
 	  )
-	(symbol "Conn_01x03"
-			(pin_names
-				(offset 1.016)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "J"
-				(at 0 5.08 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "Conn_01x03"
-				(at 0 -5.08 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "connector"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_fp_filters" "Connector*:*_1x??_*"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "Conn_01x03_1_1"
-				(rectangle
-					(start -1.27 3.81)
-					(end 1.27 -3.81)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(rectangle
-					(start -1.27 2.667)
-					(end 0 2.413)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start -1.27 0.127)
-					(end 0 -0.127)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start -1.27 -2.413)
-					(end 0 -2.667)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(pin passive line
-					(at -5.08 2.54 0)
-					(length 3.81)
-					(name "Pin_1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "Pin_2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -5.08 -2.54 0)
-					(length 3.81)
-					(name "Pin_3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 )

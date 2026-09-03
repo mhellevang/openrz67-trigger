@@ -299,7 +299,7 @@
 		(uuid "d3fe5f11-ea5d-4fb5-81ce-2fbe38c7a12c")
 	)
 	(embedded_fonts no)
-	(model "${KIPRJMOD}/EASYEDA_MODELS/SOT-346-3P_L2.9-W1.7-H1.3-LS2.8-P0.95.step"
+	(model "${KIPRJMOD}/openrz67.3dshapes/SOT-346-3P_L2.9-W1.7-H1.3-LS2.8-P0.95.wrl"
 		(offset
 			(xyz 0 0 0)
 		)

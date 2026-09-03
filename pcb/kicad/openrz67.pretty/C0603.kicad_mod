@@ -288,7 +288,7 @@
 		(uuid "18a38a1e-2381-43b1-a531-d4821a39a22a")
 	)
 	(embedded_fonts no)
-	(model "${KIPRJMOD}/EASYEDA_MODELS/C0603_L1.6-W0.8-H0.8.step"
+	(model "${KIPRJMOD}/openrz67.3dshapes/C0603_L1.6-W0.8-H0.8.wrl"
 		(offset
 			(xyz 0 0 0)
 		)

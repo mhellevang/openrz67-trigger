@@ -380,7 +380,7 @@
 		(uuid "4ff0ff02-b393-4e40-a57a-2e52f7f4be38")
 	)
 	(embedded_fonts no)
-	(model "${KIPRJMOD}/EASYEDA_MODELS/LED0603-RD_BLUE.step"
+	(model "${KIPRJMOD}/openrz67.3dshapes/LED0603-RD_BLUE.wrl"
 		(offset
 			(xyz 0 0 0)
 		)

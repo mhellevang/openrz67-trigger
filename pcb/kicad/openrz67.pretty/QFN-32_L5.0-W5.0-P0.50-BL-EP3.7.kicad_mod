@@ -1528,7 +1528,7 @@
 		(uuid "b4dc510d-612c-4e41-a3f4-dc43e216ca96")
 	)
 	(embedded_fonts no)
-	(model "${KIPRJMOD}/EASYEDA_MODELS/QFN-32_L5.0-W5.0-H0.8-P0.50-BL-EP3.7.step"
+	(model "${KIPRJMOD}/openrz67.3dshapes/QFN-32_L5.0-W5.0-H0.9-P0.50-TL-EP3.7.wrl"
 		(offset
 			(xyz 0 0 0)
 		)

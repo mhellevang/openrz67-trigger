@@ -301,7 +301,7 @@
 		(uuid "85b79ad8-4836-4303-bb35-da9e79379dad")
 	)
 	(embedded_fonts no)
-	(model "${KIPRJMOD}/EASYEDA_MODELS/CRYSTAL-SMD_4P-L2.0-W1.6-BL-2.step"
+	(model "${KIPRJMOD}/openrz67.3dshapes/CRYSTAL-SMD_4P-L2.0-W1.6-BL-2.wrl"
 		(offset
 			(xyz 0 0 0)
 		)

@@ -1,5 +1,0 @@
-(version 1)
-# USB-C receptacle sits on the board edge by design; its pads may touch the outline.
-(rule usb_edge_pads
-  (condition "A.Reference == 'USB1'")
-  (constraint edge_clearance (min 0mm)))

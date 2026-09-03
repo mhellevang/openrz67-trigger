@@ -310,7 +310,7 @@
 		(uuid "0fd82c9d-e9d1-433c-8213-0464a029bd30")
 	)
 	(embedded_fonts no)
-	(model "${KIPRJMOD}/EASYEDA_MODELS/aef00b1603224fd68a96e37121ccc916{bar}0819f05c4eef4c71ace90d822a990e87.step"
+	(model "${KIPRJMOD}/openrz67.3dshapes/L0402_L1.0-W0.5-H0.5_BEAD.wrl"
 		(offset
 			(xyz 0 0 0)
 		)

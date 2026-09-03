@@ -1,33 +1,9 @@
-ERC report (2026-09-03T12:26:04, Encoding UTF8)
+ERC report (2026-09-03T22:39:00, Encoding UTF8)
 Report includes: Errors, Warnings, Exclusions
 
 ***** Sheet /
-[unconnected_wire_endpoint]: Unconnected wire endpoint
-    ; warning
-    @(195.58 mm, 139.70 mm): Horizontal Wire, length 39.37 mm
-[unconnected_wire_endpoint]: Unconnected wire endpoint
-    ; warning
-    @(350.52 mm, 107.95 mm): Horizontal Wire, length 20.32 mm
-[unconnected_wire_endpoint]: Unconnected wire endpoint
-    ; warning
-    @(351.79 mm, 204.47 mm): Horizontal Wire, length 20.32 mm
-[unconnected_wire_endpoint]: Unconnected wire endpoint
-    ; warning
-    @(378.46 mm, 148.59 mm): Horizontal Wire, length 7.62 mm
-[unconnected_wire_endpoint]: Unconnected wire endpoint
-    ; warning
-    @(378.46 mm, 151.13 mm): Horizontal Wire, length 7.62 mm
-[unconnected_wire_endpoint]: Unconnected wire endpoint
-    ; warning
-    @(386.08 mm, 146.05 mm): Horizontal Wire, length 6.35 mm
-[unconnected_wire_endpoint]: Unconnected wire endpoint
-    ; warning
-    @(378.46 mm, 148.59 mm): Horizontal Wire, length 7.62 mm
-[unconnected_wire_endpoint]: Unconnected wire endpoint
-    ; warning
-    @(378.46 mm, 151.13 mm): Horizontal Wire, length 7.62 mm
 
- ** ERC messages: 8  Errors 0  Warnings 8
+ ** ERC messages: 0  Errors 0  Warnings 0
 
  ** Ignored checks:
     - Global label only appears once in the schematic

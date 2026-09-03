@@ -5,17 +5,17 @@
       "Application": "Pcbnew",
       "Version": "10.0.6"
     },
-    "CreationDate": "2026-09-03T13:23:19+02:00"
+    "CreationDate": "2026-09-03T22:38:46+02:00"
   },
   "GeneralSpecs": {
     "ProjectId": {
       "Name": "openrz67",
       "GUID": "6f70656e-727a-4363-972e-6b696361645f",
-      "Revision": "rev?"
+      "Revision": "2"
     },
     "Size": {
       "X": 48.254,
-      "Y": 25.254
+      "Y": 22.254
     },
     "LayerNumber": 2,
     "BoardThickness": 1.6,
