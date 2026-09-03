@@ -2,10 +2,22 @@
 
 `openrz67_case.py` is a parametric two-part enclosure for the ESP32CamTrigger PCB
 (rev. 2025-09-23), written in [build123d](https://build123d.readthedocs.io/) (Python).
-It is built from the actual production files in `../pcb/`, not from eyeballed
+It is built from the actual production files of that revision, not from eyeballed
 measurements.
 
+> **This enclosure fits the fabricated 2025-09-23 board only.** The current PCB
+> source in `../pcb/kicad/` is rev 2, which keeps the 48 × 22 mm outline but moves
+> the battery connector (`BAT1`) to the **underside** of the board and changes `U4`
+> to a side-entry part. The cell therefore no longer lies beside the PCB but under
+> it, which this case does not model. A new revision is needed before rev 2 is
+> assembled. See `../pcb/kicad/README.md` for the rev-2 geometry.
+
 ## Source data
+
+The rev-1 production files referenced below live in
+`../pcb/archive/2025-09-23-rev1/`; the outline and drill files are inside
+`Gerber_ESP32CamTrigger_PCB_2_2025-09-23.zip`.
+
 | Measurement | Value | Source |
 |-----|-------|-------|
 | Board outline | 48.0 × 22.0 mm, R2.0 | `Gerber_BoardOutlineLayer.GKO` |
@@ -73,7 +85,8 @@ a known collision fails loudly instead of surfacing in the print.
   `pcb_overhang_left = 2.0` extends the cavity on the left; the PCB is therefore centred
   toward the RIGHT in the cavity (normal `clr = 0.4` against the right wall, `clr +
   overhang = 2.4 mm` against the left). The outer case width thus becomes ~**55.6 mm**.
-- **The battery** (250 mAh LiPo) lies **beside the PCB** in its own bay behind the board's
+- **The battery** (250 mAh LiPo) lies **beside the PCB** — rev 1 only; rev 2 puts `BAT1`
+  on the board's underside and the cell under the board, see the note at the top — in its own bay behind the board's
   back edge, bounded by the **divider wall** (front, top flush with the split — it doubles
   as the PCB's back guide), the case walls (back/sides), and two low ribs that stop the
   cell sliding in X. BAT1 sits at board ≈ (3.3, 17) on the PCB top, so the lead just

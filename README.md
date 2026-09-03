@@ -17,11 +17,13 @@ The current prototype is a custom PCB (design and fabrication files in [`pcb/`](
 
 The PCB source is the KiCad project in [`pcb/kicad/`](pcb/kicad/) (ported from EasyEDA Pro in September 2026). Generated Gerber/BOM/position files are in `pcb/kicad/out/`. The fabricated 2025-09-23 revision and the EasyEDA Pro exports are kept under [`pcb/archive/`](pcb/archive/).
 
+The current source is **rev 2, not yet fabricated**: it moves the battery connector to the underside and changes `U4` to a side-entry part. The board pictured above is rev 2; the enclosure in [`case/`](case/) still fits the fabricated rev 1. Connector part numbers and geometry are documented in [`pcb/kicad/README.md`](pcb/kicad/README.md), which is the authoritative source for them.
+
 * 1× ESP32-C3FH4
 * 2× Omron G6K-2F-Y DC3 relays to control the shutter release
 * Supporting components per the [BOM](pcb/kicad/out/openrz67-bom.csv)
 * 2.4 GHz antenna with U.FL connector
-* 250 mAh LiPo for power
+* 250 mAh LiPo for power, on a JST S2B-PH-SM4-TB side-entry connector (`BAT1`) on the board's underside
 * SS12F15 slide switch
 
 The solution is flexible: an ESP32-C3 development board such as the Seeed XIAO ESP32C3 and two relay channels work too. Assign two output-capable GPIOs in `src/main.cpp`. The reference circuit uses two Omron G6K-2F-Y DC3 relays with active-high transistor drivers and flyback diodes. Other relays or modules may require a different supply voltage or inverted output logic.
@@ -38,7 +40,7 @@ The solution is flexible: an ESP32-C3 development board such as the Seeed XIAO E
 
 ### Camera connector
 
-The custom PCB uses a JST B4B-XH-A four-pin header (`U4`):
+The custom PCB uses a JST S4B-XH-A four-pin header (`U4`), side-entry, opening out of the right board edge:
 
 | U4 pin | Camera signal |
 |--------|---------------|
@@ -99,4 +101,17 @@ Serial logging is disabled because UART0 uses GPIO 20 and GPIO 21, which are ass
 
 ## License
 
-[MIT](LICENSE)
+[MIT](LICENSE), covering the firmware in `src/`, the KiCad design files in `pcb/kicad/`
+and the enclosure sources in `case/`. MIT is written for software, but its grant is broad
+enough to serve a hardware design; if you need an instrument written for hardware, the
+closest equivalent is CERN-OHL-P.
+
+Two things in this repository are **not** covered, because they are not mine to license:
+
+* The footprints in `pcb/kicad/openrz67.pretty/` and the symbols in `openrz67.kicad_sym`
+  were imported from the EasyEDA/LCSC part libraries.
+* The 3D models in `pcb/kicad/openrz67.3dshapes/` were fetched per LCSC part number with
+  `easyeda2kicad`.
+
+Both are redistributed here for convenience under their originators' terms. Everything
+else is mine.
