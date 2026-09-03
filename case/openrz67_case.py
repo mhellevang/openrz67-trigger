@@ -54,7 +54,7 @@ frame_rib_l, frame_notch_clr = 8.0, 0.3
 frame_ribs_front = [10, 38]          # fin centres in board-X
 
 # --- Fit and walls ----------------------------------------------------------
-clr, wall, floor_t, lid_top_t = 0.4, 2.0, 2.0, 2.0
+clr, wall, floor_t, lid_top_t = 0.4, 2.4, 2.0, 2.0   # wall 2.4: the lap halves must slice as real perimeters
 
 # --- Vertical stack ---------------------------------------------------------
 standoff_h = 3.5                     # >= th_keepout_depth + margin (no battery underneath)
@@ -66,11 +66,14 @@ batt_clr, batt_dx, divider_t, rib_h = 0.5, 0, 1.6, 2.5
 
 # --- Openings ---------------------------------------------------------------
 usb_open_w, usb_open_h, usb_open_r = 11.0, 7.0, 2.0     # outer lip (stops the cable body)
-usb_recess_w, usb_recess_h, usb_recess_d, usb_recess_r = 13.0, 9.0, 1.5, 3.0
+usb_recess_w, usb_recess_h, usb_recess_r = 13.0, 9.0, 3.0
+usb_recess_d = wall - 0.5            # keep a 0.5 lip so the plug still seats fully
 led_pos = [(22.514, 20.186), (24.224, 20.186)]           # D3, D4
 led_win_l, led_win_w, led_win_r = 6.0, 3.0, 1.2
 led_head_lip, led_head_t, led_pipe_clr, led_pipe_gap = 1.0, 1.0, 0.2, 1.5
-cable_port_w, cable_port_h, cable_port_z = 5.0, 2.6, 5.5  # XH drop-in slit port
+cable_port_w, cable_port_h, cable_port_z = 5.0, 2.6, 7.7  # XH drop-in slit port; mouth top
+# flush with the lid's interior ceiling (comp_clr) so the stiff wire passes at the plug's
+# 8 mm top-exit height with no down-bend — a lower mouth stops the lid from closing
 
 # --- Slide switch SS12F15 (front wall, wired to S3) --------------------------
 sw_x, sw_z = 22, 4.5
@@ -108,6 +111,9 @@ inner_r = board_r + clr
 outer_w, outer_h, outer_r = inner_w + 2 * wall, inner_h + 2 * wall, inner_r + wall
 standoff_d = 4.0
 comp_clr = max(h_relay, h_xh, h_ph) + 1.0
+assert cable_port_z + cable_port_h / 2 >= h_xh + 0.7, \
+    "XH mouth top below the wire's natural exit height — lid won't close over the cable"
+assert cable_port_z + cable_port_h / 2 <= comp_clr + eps, "XH mouth breaks the lid ceiling"
 pcb_z = floor_t + standoff_h
 pcb_top_z = pcb_z + pcb_t
 split_z = pcb_top_z
@@ -117,6 +123,10 @@ bead_z = split_z - lap + 2.2            # bead centre height on the tongue
 assert lap <= split_z - floor_t, "lid lip would reach the floor"
 assert split_z - lap < bead_z - (bead_h + 0.5) / 2 and bead_z + (bead_h + 0.5) / 2 < split_z, \
     "snap bead/groove outside the lap zone"
+# Printability: the lap halves must slice as real perimeters (0.4 mm nozzle:
+# one line 0.42 mm, a two-line freestanding wall 0.87 mm)
+assert wall / 2 - (snap_bead + 0.25) >= 0.42, "base lip behind the snap groove under one line"
+assert wall / 2 - lap_gap >= 0.87, "lid tongue under two perimeter lines"
 
 
 def bx(x):
@@ -175,9 +185,10 @@ cut_usb = xprism(Pos(usb_cy, usb_zc) * RectangleRounded(usb_open_w, usb_open_h, 
 cut_usb += xprism(Pos(usb_cy, usb_zc) * RectangleRounded(usb_recess_w, usb_recess_h, usb_recess_r),
                   wall - usb_recess_d, usb_recess_d + 1)
 
-# XH cable port (right wall): rounded mouth high on the wall (near the plug's 8mm
-# top-entry wire exit) + a drop-in slit down to the split, so the pre-wired bundle
-# lays in as the lid closes and the lid lifts off untethered. Lid-only cut.
+# XH cable port (right wall): rounded mouth with its top at the lid's interior
+# ceiling, so the wires exit at the plug's 8mm top-entry height without bending,
+# + a drop-in slit down to the split, so the pre-wired bundle lays in as the lid
+# closes and the lid lifts off untethered. Lid-only cut.
 xh_cy, xh_zc = by(22 - 11.0), pcb_top_z + cable_port_z
 cut_xh = xprism(Pos(xh_cy, xh_zc) * SlotOverall(cable_port_w, cable_port_h),
                 outer_w - wall - 1, wall + 2)
@@ -234,9 +245,12 @@ for cx in frame_ribs_front:
 
 base += orient_mark_rib(split_z - orient_mark_h / 2)
 
-# Snap groove in the base lip: slightly taller and deeper than the bead (lead-in)
-base -= prism(offset(mid_sk, snap_bead + 0.25) - offset(mid_sk, -lap_gap - 0.25),
-              bead_z - (bead_h + 0.5) / 2, bead_h + 0.5)
+# Snap groove in the base lip: slightly taller and deeper than the bead (lead-in).
+# The cut's top edges are chamfered so the groove ceiling prints as a ~45° ramp
+# instead of an unsupported 0.75 mm overhang (base prints floor-down).
+groove = prism(offset(mid_sk, snap_bead + 0.25) - offset(mid_sk, -lap_gap - 0.25),
+               bead_z - (bead_h + 0.5) / 2, bead_h + 0.5)
+base -= chamfer(groove.edges().group_by(Axis.Z)[-1], 0.55)
 # TH solder-tail pockets in the post tops (BAT1 pins beside the (2,20) post)
 for kx, ky, kd in th_keepouts:
     base -= cyl(bx(kx), by(ky), pcb_z - th_keepout_depth, kd, th_keepout_depth + eps)
@@ -245,8 +259,13 @@ base -= cut_usb
 # --- LID ----------------------------------------------------------------------------
 lid = prism(outer_sk, split_z, lid_h)                        # top + walls
 lid += prism(offset(mid_sk, -lap_gap) - inner_sk, split_z - lap, lap)   # tongue
-lid += prism(offset(mid_sk, -lap_gap + snap_bead) - offset(mid_sk, -lap_gap - 0.4),
-             bead_z - bead_h / 2, bead_h)                    # snap bead on the tongue
+# Snap bead on the tongue, chamfered top and bottom: the lid prints upside-down,
+# so an unchamfered bead starts as a 0.5 mm ledge in mid-air; the ramps also ease
+# click-in and coin-open. (The inner edges' chamfers end up buried in the tongue.)
+bead = prism(offset(mid_sk, -lap_gap + snap_bead) - offset(mid_sk, -lap_gap - 0.4),
+             bead_z - bead_h / 2, bead_h)
+bead_ends = bead.edges().group_by(Axis.Z)
+lid += chamfer(bead_ends[0] + bead_ends[-1], 0.4)
 lid -= prism(inner_sk, split_z - lap - eps, comp_clr + lap + eps)       # cavity
 
 # Switch screw bosses: rectangular pillars from sw_boss_gap above the PCB (clears
@@ -286,7 +305,7 @@ lid -= box(sx - sw_body_l / 2 - sw_body_clr, wall, swz - sw_body_h / 2 - sw_body
 for hx, hy in mount_holes:
     lid -= cyl(bx(hx), by(hy), pcb_top_z - eps, 2.6, pin_proud + 0.7 + eps)
 # Coin/fingernail pry slot in the lid's lower edge, back wall centre (over the
-# battery bay — nothing behind it). 1mm deep leaves 0.15 skin before the tongue.
+# battery bay — nothing behind it). 1mm deep leaves 0.35 skin before the tongue.
 lid -= box(outer_w / 2 - pry_w / 2, outer_h - pry_d, split_z - eps,
            pry_w, pry_d + eps, pry_h + eps)
 # Component keepouts (USB-C body vs the (2,2) hold-down boss)
@@ -331,7 +350,8 @@ def _open(solid, probe, what):
     assert v < 1e-6, f"{what} blocked (probe volume {v:.3f})"
 
 _open(base + lid, box(-0.5, usb_cy - 4, usb_zc - 2.5, wall + 1, 8, 5), "USB opening")
-_open(lid, box(outer_w - wall - 0.5, xh_cy - 1, xh_zc - 0.9, wall + 1, 2, 1.8), "XH port")
+_open(lid, box(outer_w - wall - 0.5, xh_cy - 1, split_z + eps, wall + 1, 2,
+               h_xh + 0.7), "XH port free from the seam up past the wire height")
 _open(lid, box(led_cx - 2, led_cy - 1, total_h - lid_top_t + eps, 4, 2, lid_top_t), "LED window")
 for hx, hy in mount_holes:
     _open(lid, cyl(bx(hx), by(hy), pcb_top_z + eps, 2.0, pin_proud), "locating-pin recess")
