@@ -15,6 +15,8 @@ The current prototype is a custom PCB (fabrication files in [`pcb/`](pcb/)):
 
 ![Custom PCB](pcb/3D_ESP32CamTrigger_PCB_2_2025-09-23.png)
 
+The PCB source is the KiCad project in [`pcb/kicad/`](pcb/kicad/) (ported from EasyEDA Pro in September 2026; the EasyEDA export is archived alongside). Gerber/BOM/position exports for the fabricated 2025-09-23 revision are in `pcb/`.
+
 * 1× ESP32-C3FH4
 * 2× Omron G6K-2F-Y DC3 relays to control the shutter release
 * Supporting components per the [BOM](pcb/BOM_ESP32CamTrigger_1_ESP32CamTrigger_PCB_2_2025-09-23.csv)
