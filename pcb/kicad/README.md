@@ -2,13 +2,17 @@
 
 KiCad 10 project for the OpenRZ67 trigger board (48 × 22 mm, 2 layers, ESP32-C3,
 two G6K relays, LGS5500 charger/boost). This is now the **source**; the EasyEDA Pro
-project it was ported from is archived as `../ProPrj_*.epro` (v2) and `.epro2` (v3).
+project it was ported from is archived in `../archive/easyeda/` (v2 `.epro` and v3 `.epro2`);
+the fabricated 2025-09-23 revision (Gerber, BOM, PnP, STEP) is in `../archive/2025-09-23-rev1/`.
 
 | File | What |
 |---|---|
 | `openrz67.kicad_pro/.kicad_sch/.kicad_pcb` | project, schematic (1 sheet), board |
 | `openrz67.kicad_sym`, `openrz67.pretty/` | symbols and footprints as imported from EasyEDA/LCSC (project-local libs) |
 | `tools/post_import.py` | design rules, net classes, zone settings, layer names; idempotent, run with KiCad's bundled python |
+| `tools/fetch_3d.sh` | downloads STEP+WRL models for every LCSC part into `openrz67.3dshapes/` via easyeda2kicad |
+| `openrz67.3dshapes/` | 3D models; `.wrl` committed (render), `.step` gitignored (fetch when you need a board STEP) |
+| `openrz67.kicad_dru` | custom rule: USB-C pads exempt from copper-to-edge clearance |
 | `out/` | generated: Gerber+drill zip, position file, BOM (with LCSC numbers), schematic PDF, top render |
 
 ## Regenerate outputs
@@ -33,8 +37,8 @@ Clearance 0.127 mm (EasyEDA pour-to-track minimum; track-to-track was 0.152), mi
 0.127, default track 0.16, via 0.45/0.20 (min 0.40/0.20), hole-to-track 0.175,
 hole-to-hole 0.30, solder-mask expansion 0.051, thermal spoke 0.254 / gap 0.152.
 Net classes: `gnd` (GND, 0.13 track), `3v` (VCC, 0.20), `5v` (+5V, 0.254 track, 0.5/0.3 via).
-Copper-to-edge clearance is 0 because the original pours run to the outline;
-JLCPCB recommends 0.3 mm — tighten in a future revision and refill.
+Copper-to-edge clearance is 0.30 mm (JLCPCB recommendation; the original pours ran to the
+outline). `openrz67.kicad_dru` exempts the USB-C pads, which sit on the edge by design.
 
 ## Port notes (2026-09-03)
 
@@ -51,12 +55,18 @@ JLCPCB recommends 0.3 mm — tighten in a future revision and refill.
 - Schematic footprint fields for L2 (L0603→L0402), U1 (TL→BL QFN variant) and
   R18 (R0603→R0402) were corrected to what is actually on the board.
 - DRC: 0 errors, 0 unconnected, schematic parity clean. Remaining warnings are silk
-  overlaps/courtyards from the LCSC footprints, two dangling vias (+5V_VIN, VCC) and a
-  0.1 mm track stub inherited from the original layout.
+  overlaps/courtyards from the LCSC footprints. Two dangling vias (+5V_VIN, a duplicated
+  VCC via) and a 0.1 mm track stub from the original layout were removed. Two small USB1
+  polygons that the importer put on Edge.Cuts (not in the EasyEDA outline) moved to F.Fab.
 - Gerber check against the fabricated 2025-09-23 set: copper and mask match apart from
   U4 (now S4B-XH-A side-entry instead of B4B-XH-A) and pour-fill details after KiCad's
   refill (thermal shapes); silkscreen differs in font rendering only.
-- 3D models were not carried over (EasyEDA fetches them online); STEP export is therefore
-  bare. `../3D_*.step` is the last full model.
+- 3D models: the importer left dangling `EASYEDA_MODELS/…` references. Models were fetched
+  per LCSC number with `easyeda2kicad` (`tools/fetch_3d.sh`) and the footprints repointed to
+  `openrz67.3dshapes/<name>.wrl`, keeping the importer's offsets/rotations. Board STEP:
+  `kicad-cli pcb export step --subst-models -o out/openrz67.step openrz67.kicad_pcb`
+  (needs the `.step` files, run `tools/fetch_3d.sh` first).
+- Bottom silkscreen label changed from "EPS32-C3 Camera Trigger V1.0 / 2025-08-23" to
+  "OpenRZ67 Trigger v2 / 2026-09".
 - ERC severities for `pin_not_driven`/`power_pin_not_driven` are set to warning: pin
   electrical types come from LCSC symbols and are not reliable.

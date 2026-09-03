@@ -1,0 +1,174 @@
+** Drc report for openrz67.kicad_pcb **
+** Created on 2026-09-03T10:57:41 **
+** Report includes: Errors, Warnings, Exclusions **
+
+** Found 39 DRC violations **
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; warning
+    @(156.7600 mm, 95.6865 mm): Footprint K2
+    @(150.3275 mm, 99.4995 mm): Footprint Q2
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; warning
+    @(137.4590 mm, 91.3110 mm): Footprint R14
+    @(137.7020 mm, 95.0095 mm): Footprint U3
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; warning
+    @(147.7425 mm, 96.6405 mm): Footprint C14
+    @(145.5115 mm, 98.6145 mm): Footprint S2
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; warning
+    @(147.7425 mm, 96.6405 mm): Footprint C14
+    @(150.3275 mm, 99.4995 mm): Footprint Q2
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; warning
+    @(149.0610 mm, 104.8000 mm): Footprint LDO1
+    @(146.9395 mm, 106.4395 mm): Footprint R8
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; warning
+    @(149.0610 mm, 104.8000 mm): Footprint LDO1
+    @(146.3050 mm, 102.8670 mm): Footprint C6
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; warning
+    @(149.5655 mm, 96.2990 mm): Footprint C28
+    @(148.7135 mm, 92.0400 mm): Footprint S3
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; warning
+    @(129.0380 mm, 109.6345 mm): Footprint A1
+    @(131.0030 mm, 110.2575 mm): Footprint C1
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; warning
+    @(129.0380 mm, 109.6345 mm): Footprint A1
+    @(123.6070 mm, 103.2590 mm): Footprint USB1
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; warning
+    @(150.4080 mm, 110.1195 mm): Footprint Q1
+    @(156.6615 mm, 106.2415 mm): Footprint K1
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; warning
+    @(156.6615 mm, 106.2415 mm): Footprint K1
+    @(150.3275 mm, 99.4995 mm): Footprint Q2
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; warning
+    @(145.5115 mm, 98.6145 mm): Footprint S2
+    @(142.7110 mm, 98.6195 mm): Footprint S1
+[courtyards_overlap]: Courtyards overlap
+    Rule: board setup constraints courtyard; warning
+    @(137.7020 mm, 95.0095 mm): Footprint U3
+    @(142.7110 mm, 98.6195 mm): Footprint S1
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(168.0000 mm, 92.0000 mm): Segment on Edge.Cuts
+    @(173.5005 mm, 94.7500 mm): Segment of U4 on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(168.0000 mm, 92.0000 mm): Segment on Edge.Cuts
+    @(173.5005 mm, 107.2500 mm): Segment of U4 on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(120.0000 mm, 92.0000 mm): Segment on Edge.Cuts
+    @(118.6320 mm, 98.7590 mm): Segment of USB1 on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(120.0000 mm, 92.0000 mm): Segment on Edge.Cuts
+    @(118.7810 mm, 107.8310 mm): Segment of USB1 on F.Silkscreen
+[starved_thermal]: Thermal relief connection to zone incomplete (layer F.Cu; zone min spoke count 2; actual 1)
+    Local override; warning
+    @(118.1710 mm, 88.6790 mm): Zone [GND] on F.Cu, priority 498
+    @(133.5675 mm, 106.4225 mm): Pad 2 [GND] of X1 on F.Cu
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(141.8325 mm, 101.7705 mm): PCB text 'BOOT EN ' on F.Silkscreen
+    @(143.9570 mm, 101.7195 mm): Segment of U1 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(141.8325 mm, 101.7705 mm): PCB text 'BOOT EN ' on F.Silkscreen
+    @(143.9570 mm, 102.1245 mm): Segment of U1 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(151.7135 mm, 94.8400 mm): Segment of S3 on F.Silkscreen
+    @(149.1655 mm, 94.9090 mm): Segment of C28 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(151.7135 mm, 94.8400 mm): Segment of S3 on F.Silkscreen
+    @(149.1663 mm, 95.2194 mm): Arc of C28 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(149.9655 mm, 95.2190 mm): Arc of C28 on F.Silkscreen
+    @(151.7135 mm, 94.8400 mm): Segment of S3 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(146.4410 mm, 105.4955 mm): Segment of R8 on F.Silkscreen
+    @(147.5350 mm, 103.9490 mm): Segment of LDO1 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(147.4380 mm, 105.4955 mm): Segment of R8 on F.Silkscreen
+    @(147.5350 mm, 103.9490 mm): Segment of LDO1 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(132.7650 mm, 107.4885 mm): Segment of C8 on F.Silkscreen
+    @(130.9515 mm, 107.4045 mm): Segment of X1 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(130.9515 mm, 107.4045 mm): Segment of X1 on F.Silkscreen
+    @(131.9754 mm, 107.6414 mm): Arc of C8 on F.Silkscreen
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(141.8325 mm, 101.7705 mm): PCB text 'BOOT EN ' on F.Silkscreen
+    @(142.5070 mm, 101.8695 mm): Pad 18 [unconnected-(U1-VDD_SPI-Pad18)] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(141.8325 mm, 101.7705 mm): PCB text 'BOOT EN ' on F.Silkscreen
+    @(143.0070 mm, 101.8695 mm): Pad 17 [VCC] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(164.3005 mm, 104.9370 mm): Segment of U4 on F.Silkscreen
+    @(164.3005 mm, 104.7500 mm): PTH pad 1 [unconnected-(U4-Pad1)] of U4
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(164.3005 mm, 106.0800 mm): Segment of U4 on F.Silkscreen
+    @(164.3005 mm, 104.7500 mm): PTH pad 1 [unconnected-(U4-Pad1)] of U4
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(164.3005 mm, 95.8200 mm): Segment of U4 on F.Silkscreen
+    @(164.3005 mm, 97.2500 mm): PTH pad 4 [S2] of U4
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(166.0000 mm, 92.0000 mm): Reference field of H2
+    @(166.0000 mm, 92.0000 mm): PTH pad 1 [<no net>] of H2
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(141.8325 mm, 101.7705 mm): PCB text 'BOOT EN ' on F.Silkscreen
+    @(142.0070 mm, 101.8695 mm): Pad 19 [unconnected-(U1-SPIHD-Pad19)] of U1 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(118.6320 mm, 98.7590 mm): Segment of USB1 on F.Silkscreen
+    @(121.2320 mm, 98.9340 mm): PTH pad 13 [GND] of USB1
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(122.2130 mm, 98.7590 mm): Segment of USB1 on F.Silkscreen
+    @(121.2320 mm, 98.9340 mm): PTH pad 13 [GND] of USB1
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(118.7810 mm, 107.8310 mm): Segment of USB1 on F.Silkscreen
+    @(121.2320 mm, 107.5840 mm): PTH pad 14 [GND] of USB1
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(122.0000 mm, 110.0000 mm): Reference field of H1
+    @(122.0000 mm, 110.0000 mm): PTH pad 1 [<no net>] of H1
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(122.2100 mm, 107.8310 mm): Segment of USB1 on F.Silkscreen
+    @(121.2320 mm, 107.5840 mm): PTH pad 14 [GND] of USB1
+
+** Found 0 unconnected pads **
+
+** Found 0 Footprint errors **
+
+** Ignored checks **
+    - Footprint has no courtyard defined
+    - Track endpoint not centered on via
+    - Tuning profile track geometries
+    - Footprint doesn't match symbol's footprint filters
+    - Footprint component type doesn't match footprint pads
+
+** End of Report **

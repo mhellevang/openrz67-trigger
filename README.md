@@ -11,15 +11,15 @@ ESP32 firmware for remote-triggering the Mamiya RZ67 analog camera over Bluetoot
 
 ## Hardware
 
-The current prototype is a custom PCB (fabrication files in [`pcb/`](pcb/)):
+The current prototype is a custom PCB (design and fabrication files in [`pcb/`](pcb/)):
 
-![Custom PCB](pcb/3D_ESP32CamTrigger_PCB_2_2025-09-23.png)
+![Custom PCB](pcb/kicad/out/openrz67-top.png)
 
-The PCB source is the KiCad project in [`pcb/kicad/`](pcb/kicad/) (ported from EasyEDA Pro in September 2026; the EasyEDA export is archived alongside). Gerber/BOM/position exports for the fabricated 2025-09-23 revision are in `pcb/`.
+The PCB source is the KiCad project in [`pcb/kicad/`](pcb/kicad/) (ported from EasyEDA Pro in September 2026). Generated Gerber/BOM/position files are in `pcb/kicad/out/`. The fabricated 2025-09-23 revision and the EasyEDA Pro exports are kept under [`pcb/archive/`](pcb/archive/).
 
 * 1× ESP32-C3FH4
 * 2× Omron G6K-2F-Y DC3 relays to control the shutter release
-* Supporting components per the [BOM](pcb/BOM_ESP32CamTrigger_1_ESP32CamTrigger_PCB_2_2025-09-23.csv)
+* Supporting components per the [BOM](pcb/kicad/out/openrz67-bom.csv)
 * 2.4 GHz antenna with U.FL connector
 * 250 mAh LiPo for power
 * SS12F15 slide switch
