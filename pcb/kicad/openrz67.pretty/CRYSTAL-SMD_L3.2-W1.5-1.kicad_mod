@@ -112,17 +112,6 @@
 		(layer "F.SilkS")
 		(uuid "51c62336-3bdc-43ba-8fa4-b4f29470eebb")
 	)
-	(fp_rect
-		(start -2.05 -1.1)
-		(end 2.05 1.1)
-		(stroke
-			(width 0.05)
-			(type default)
-		)
-		(fill no)
-		(layer "F.CrtYd")
-		(uuid "573cc1a5-376c-4dd8-8908-4283e3822dbb")
-	)
 	(fp_line
 		(start -1.6 -0.75)
 		(end 1.6 -0.75)
@@ -210,6 +199,17 @@
 				(thickness 0.1)
 			)
 		)
+	)
+	(fp_rect
+		(start -1.850 -0.900)
+		(end 1.850 0.900)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "d85d510b-4f8a-4c92-8f50-397943d1478c")
 	)
 	(pad "1" smd rect
 		(at -1.275 0)

@@ -3,21 +3,23 @@
 	(generator "pcbnew")
 	(generator_version "10.0")
 	(layer "F.Cu")
-	(property "Reference" "REF**"
-		(at 0 0 0)
+	(property "Reference" "L3"
+		(at 5.2415 -0.625 90)
 		(layer "F.SilkS")
-		(uuid "e92a3131-e0b9-484d-bdd4-7dc90a3489b8")
+		(hide yes)
+		(uuid "935e4c69-8e1b-44fd-b02d-d9ebc54307e6")
 		(effects
 			(font
-				(size 1 1)
-				(thickness 0.15)
+				(size 0.686 0.6285)
+				(thickness 0.1525)
 			)
+			(justify left bottom)
 		)
 	)
-	(property "Value" ""
+	(property "Value" "2.2uH"
 		(at 0 0 0)
 		(layer "F.Fab")
-		(uuid "20bd76af-b374-4557-a5a2-e81ed76715d7")
+		(uuid "2e7758a1-c92f-497f-a8d0-e8c5f124f4d3")
 		(effects
 			(font
 				(size 1 1)
@@ -25,11 +27,11 @@
 			)
 		)
 	)
-	(property "Datasheet" ""
+	(property "Datasheet" "https://atta.szlcsc.com/upload/public/pdf/source/20160918/1474166942087.pdf"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "faed1a40-7db9-46ab-85ff-1557f2c490ca")
+		(uuid "591c88dc-d694-4ede-a1d5-3a28159ab8cf")
 		(effects
 			(font
 				(size 1 1)
@@ -41,7 +43,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "916cb7b0-9d78-42f6-a94c-e5f69bb55b8c")
+		(uuid "571b9f1c-0668-43d5-b952-ce366780041b")
 		(effects
 			(font
 				(size 1 1)
@@ -51,23 +53,85 @@
 	)
 	(property "JLC_3DModel_Q" "2ffcdbcae48941c4b91a41e093f6c1ef"
 		(at 0 0 0)
-		(layer "Cmts.User")
+		(layer "F.Fab")
 		(hide yes)
 		(uuid "dc425c2b-b9f5-48ee-8796-17582778d4fb")
 		(effects
 			(font
 				(size 1.27 1.27)
+				(thickness 0.15)
 			)
 		)
 	)
 	(property "JLC_3D_Size" "7.1 6.5"
 		(at 0 0 0)
-		(layer "Cmts.User")
+		(layer "F.Fab")
 		(hide yes)
 		(uuid "c3a5fb0b-f4e2-4c95-a01d-c397a06fd35c")
 		(effects
 			(font
 				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Manufacturer" "TDK"
+		(at 0 0 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "7c087e5f-b177-4890-b708-947d8c4898a7")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Manufacturer Part" "SPM6530T-2R2M"
+		(at 0 0 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "09bf56aa-8d3b-4fcc-87f4-cb2cca9e2958")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Supplier" "LCSC"
+		(at 0 0 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "8b6080ec-e5ca-4a03-92d6-69f70fae1da5")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Supplier Part" "C76855"
+		(at 0 0 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "6337e2a0-b61a-4bae-9b07-32fbab816110")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "LCSC Part Name" "2.2uH ±20% 8.4A"
+		(at 0 0 90)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "c9b699a0-e120-4a50-8334-72f7ad75d0cc")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -164,15 +228,15 @@
 		(uuid "09c149d9-0d1a-44cc-bf38-3d05f58616e7")
 	)
 	(fp_rect
-		(start -4.05 -3.5255)
-		(end 4.05 3.555433)
+		(start -4.55 -3.3)
+		(end 4.55 3.355)
 		(stroke
 			(width 0.05)
 			(type default)
 		)
 		(fill no)
 		(layer "F.CrtYd")
-		(uuid "6c4c6182-6c59-4c39-9272-c0690d1abdbf")
+		(uuid "af5d6cce-ad19-48ec-a412-ea4203f85987")
 	)
 	(fp_line
 		(start -3.55 -3.25)
@@ -275,7 +339,7 @@
 		(uuid "f4fd44ff-89cd-4186-9d52-a7f52afff2ee")
 	)
 	(embedded_fonts no)
-	(model "${KIPRJMOD}/EASYEDA_MODELS/IND-SMD_L7.1-W6.5-H3.0.step"
+	(model "${KIPRJMOD}/openrz67.3dshapes/IND-SMD_L7.1-W6.5-H3.0.wrl"
 		(offset
 			(xyz 0 0 0)
 		)

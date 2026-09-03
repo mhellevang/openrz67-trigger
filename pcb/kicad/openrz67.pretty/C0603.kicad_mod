@@ -79,7 +79,7 @@
 			(width 0.254)
 			(type default)
 		)
-		(layer "F.SilkS")
+		(layer "F.Fab")
 		(uuid "4de83f9e-ff24-4a9a-a06c-bc07332aaaff")
 	)
 	(fp_line
@@ -89,7 +89,7 @@
 			(width 0.254)
 			(type default)
 		)
-		(layer "F.SilkS")
+		(layer "F.Fab")
 		(uuid "30a27dc4-3479-4499-826a-a8326f01a4be")
 	)
 	(fp_line
@@ -99,7 +99,7 @@
 			(width 0.254)
 			(type default)
 		)
-		(layer "F.SilkS")
+		(layer "F.Fab")
 		(uuid "277c705d-e842-4e44-b315-b96f0ebdbe27")
 	)
 	(fp_line
@@ -109,7 +109,7 @@
 			(width 0.254)
 			(type default)
 		)
-		(layer "F.SilkS")
+		(layer "F.Fab")
 		(uuid "d3f83057-c17c-4d77-9730-468677651578")
 	)
 	(fp_line
@@ -119,7 +119,7 @@
 			(width 0.254)
 			(type default)
 		)
-		(layer "F.SilkS")
+		(layer "F.Fab")
 		(uuid "70191397-5872-4004-a8b4-89037b3ac887")
 	)
 	(fp_line
@@ -129,7 +129,7 @@
 			(width 0.254)
 			(type default)
 		)
-		(layer "F.SilkS")
+		(layer "F.Fab")
 		(uuid "04c28b08-dac7-48a9-ab49-1d78bb1c157c")
 	)
 	(fp_arc
@@ -140,7 +140,7 @@
 			(width 0.254)
 			(type default)
 		)
-		(layer "F.SilkS")
+		(layer "F.Fab")
 		(uuid "e277dca2-8aae-4ea8-9ceb-7a657e15430e")
 	)
 	(fp_arc
@@ -151,7 +151,7 @@
 			(width 0.254)
 			(type default)
 		)
-		(layer "F.SilkS")
+		(layer "F.Fab")
 		(uuid "d5bbe79f-ff3e-43b2-a094-bbbefc847e7f")
 	)
 	(fp_arc
@@ -162,7 +162,7 @@
 			(width 0.254)
 			(type default)
 		)
-		(layer "F.SilkS")
+		(layer "F.Fab")
 		(uuid "b7fbd90c-40e1-414d-acbb-513e0b6dd4a2")
 	)
 	(fp_arc
@@ -173,19 +173,8 @@
 			(width 0.254)
 			(type default)
 		)
-		(layer "F.SilkS")
+		(layer "F.Fab")
 		(uuid "5e59a300-6d4a-4fd7-b203-08361a911225")
-	)
-	(fp_rect
-		(start -1.35 -0.7)
-		(end 1.35 0.705433)
-		(stroke
-			(width 0.05)
-			(type default)
-		)
-		(fill no)
-		(layer "F.CrtYd")
-		(uuid "fdea7f73-d688-4eda-8f2d-8a87ae423f37")
 	)
 	(fp_line
 		(start -0.8 -0.4)
@@ -274,6 +263,17 @@
 				(thickness 0.1)
 			)
 		)
+	)
+	(fp_rect
+		(start -1.440 -0.760)
+		(end 1.440 0.760)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "8f8dc57e-58e8-4610-939d-a1ca163a98fa")
 	)
 	(pad "1" smd rect
 		(at -0.7 0)

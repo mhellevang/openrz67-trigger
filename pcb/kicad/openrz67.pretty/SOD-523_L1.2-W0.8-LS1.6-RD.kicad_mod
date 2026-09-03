@@ -3,21 +3,23 @@
 	(generator "pcbnew")
 	(generator_version "10.0")
 	(layer "F.Cu")
-	(property "Reference" "REF**"
-		(at 0 0 0)
+	(property "Reference" "D1"
+		(at 0.1525 -1.778 270)
 		(layer "F.SilkS")
-		(uuid "55f21ead-d787-429c-b218-b6422bbfb630")
+		(hide yes)
+		(uuid "c96ac3bf-bbe1-47af-9786-e3fc769282ce")
 		(effects
 			(font
-				(size 1 1)
-				(thickness 0.15)
+				(size 0.686 0.6285)
+				(thickness 0.1525)
 			)
+			(justify left bottom)
 		)
 	)
-	(property "Value" ""
+	(property "Value" "1N4148WT"
 		(at 0 0 0)
 		(layer "F.Fab")
-		(uuid "25c8c597-165d-415b-ba3e-96228f14d631")
+		(uuid "0116a8be-9d05-4b59-84b3-012619873053")
 		(effects
 			(font
 				(size 1 1)
@@ -25,11 +27,11 @@
 			)
 		)
 	)
-	(property "Datasheet" ""
+	(property "Datasheet" "https://item.szlcsc.com/datasheet/1N4148WT/232639.html"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "9d93e4b6-0437-42db-8c6f-5c7ca554a960")
+		(uuid "89ac1168-ad1d-442e-a2c7-011ca0493deb")
 		(effects
 			(font
 				(size 1 1)
@@ -41,7 +43,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "01d358a6-7439-4b87-bb95-0a2dd1d56f6e")
+		(uuid "55636a2d-38b0-4ecb-84e8-912ad2dc11d6")
 		(effects
 			(font
 				(size 1 1)
@@ -51,23 +53,85 @@
 	)
 	(property "JLC_3DModel_Q" "c9cd6b3de4464affa41bb10afbd29ee3"
 		(at 0 0 0)
-		(layer "Cmts.User")
+		(layer "F.Fab")
 		(hide yes)
 		(uuid "9b48c525-e50b-41f3-a98d-df01e8f01684")
 		(effects
 			(font
 				(size 1.27 1.27)
+				(thickness 0.15)
 			)
 		)
 	)
 	(property "JLC_3D_Size" "1.6 0.8"
 		(at 0 0 0)
-		(layer "Cmts.User")
+		(layer "F.Fab")
 		(hide yes)
 		(uuid "4e8a93a8-1e22-47b5-9b6a-eea85a2f5988")
 		(effects
 			(font
 				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Manufacturer" "onsemi(安森美)"
+		(at 0 0 270)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "2888b2b3-5589-4c52-af61-1e091519c0d0")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Manufacturer Part" "1N4148WT"
+		(at 0 0 270)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "aa70dc2e-6e18-47d5-a5bf-9ae54cd9be05")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Supplier" "LCSC"
+		(at 0 0 270)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "f08d8f12-963d-4042-9b3e-90790d3ee236")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Supplier Part" "C232841"
+		(at 0 0 270)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "a235b926-8468-4e50-927e-db64de169fb4")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "LCSC Part Name" "1N4148WT"
+		(at 0 0 270)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "354184f2-0ec7-4fe0-8f8a-086eb8d2b144")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -193,15 +257,15 @@
 		(uuid "597d0e8f-6614-4f3e-97eb-549a5aaa2b2b")
 	)
 	(fp_rect
-		(start -1.2 -0.6755)
-		(end 1.2 0.705433)
+		(start -0.905 -0.45)
+		(end 0.88 0.505)
 		(stroke
 			(width 0.05)
 			(type default)
 		)
 		(fill no)
 		(layer "F.CrtYd")
-		(uuid "4cb617f8-27a0-4352-b968-6ca30c10e670")
+		(uuid "2ee34c76-2e58-46be-94e3-b2a668ff0aab")
 	)
 	(fp_line
 		(start -0.6 -0.4)
@@ -304,7 +368,7 @@
 		(uuid "b5ffe64b-6f5f-4466-950a-068da57ecdab")
 	)
 	(embedded_fonts no)
-	(model "${KIPRJMOD}/EASYEDA_MODELS/SOD-523_L1.2-W0.8-H0.7-LS1.6.step"
+	(model "${KIPRJMOD}/openrz67.3dshapes/SOD-523_L1.2-W0.8-H0.7-LS1.6.wrl"
 		(offset
 			(xyz 0 0 0)
 		)

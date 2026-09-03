@@ -1,0 +1,11 @@
+(footprint "MountingHole_2.0mm_Pad3.0"
+	(version 20241229)
+	(generator "openrz67")
+	(layer "F.Cu")
+	(descr "Mounting hole, 2.0 mm drill, 3.0 mm plated pad (as on the EasyEDA board)")
+	(attr exclude_from_pos_files exclude_from_bom)
+	(property "Reference" "REF**" (at 0 -2.3 0) (layer "F.Fab") (effects (font (size 0.8 0.8) (thickness 0.12))))
+	(property "Value" "MountingHole" (at 0 2.3 0) (layer "F.Fab") (hide yes) (effects (font (size 0.8 0.8) (thickness 0.12))))
+	(fp_circle (center 0 0) (end 1.75 0) (stroke (width 0.05) (type default)) (fill no) (layer "F.CrtYd"))
+	(pad "1" thru_hole circle (at 0 0) (size 3 3) (drill 2) (layers "*.Cu" "*.Mask"))
+)

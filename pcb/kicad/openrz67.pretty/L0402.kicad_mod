@@ -79,7 +79,7 @@
 			(width 0.1525)
 			(type default)
 		)
-		(layer "F.SilkS")
+		(layer "F.Fab")
 		(uuid "aef80208-cdde-4ced-a0e2-157a2c618894")
 	)
 	(fp_line
@@ -89,7 +89,7 @@
 			(width 0.1525)
 			(type default)
 		)
-		(layer "F.SilkS")
+		(layer "F.Fab")
 		(uuid "f4386c0f-e461-45ba-a618-1cb590f72400")
 	)
 	(fp_line
@@ -99,7 +99,7 @@
 			(width 0.1525)
 			(type default)
 		)
-		(layer "F.SilkS")
+		(layer "F.Fab")
 		(uuid "f47a5b0c-bd71-4deb-94fb-7bd335c60432")
 	)
 	(fp_line
@@ -109,7 +109,7 @@
 			(width 0.1525)
 			(type default)
 		)
-		(layer "F.SilkS")
+		(layer "F.Fab")
 		(uuid "cef8cc16-675a-4e8f-a22a-32077f3ea064")
 	)
 	(fp_line
@@ -119,7 +119,7 @@
 			(width 0.1525)
 			(type default)
 		)
-		(layer "F.SilkS")
+		(layer "F.Fab")
 		(uuid "c7cd1b39-35ec-4d08-85cf-1262f84488d6")
 	)
 	(fp_line
@@ -129,7 +129,7 @@
 			(width 0.1525)
 			(type default)
 		)
-		(layer "F.SilkS")
+		(layer "F.Fab")
 		(uuid "488e08fb-39eb-4fc5-815c-132d47ea0e11")
 	)
 	(fp_line
@@ -139,7 +139,7 @@
 			(width 0.1525)
 			(type default)
 		)
-		(layer "F.SilkS")
+		(layer "F.Fab")
 		(uuid "b24f525a-d332-44f0-9af0-46fbcb123cc5")
 	)
 	(fp_line
@@ -149,7 +149,7 @@
 			(width 0.1525)
 			(type default)
 		)
-		(layer "F.SilkS")
+		(layer "F.Fab")
 		(uuid "a6421bfb-bebc-4c2c-9f72-8d3994e4f2ac")
 	)
 	(fp_line
@@ -159,7 +159,7 @@
 			(width 0.1525)
 			(type default)
 		)
-		(layer "F.SilkS")
+		(layer "F.Fab")
 		(uuid "5fb9f04d-9592-47b4-ba70-1aeb8d17c04e")
 	)
 	(fp_line
@@ -169,7 +169,7 @@
 			(width 0.1525)
 			(type default)
 		)
-		(layer "F.SilkS")
+		(layer "F.Fab")
 		(uuid "070f248b-6998-41f2-9e00-3b4937b35f56")
 	)
 	(fp_poly
@@ -197,17 +197,6 @@
 		(fill yes)
 		(layer "F.Paste")
 		(uuid "997258aa-5b89-42a2-9671-b6d7732d74dd")
-	)
-	(fp_rect
-		(start -1.19 -0.5255)
-		(end 1.19 0.555433)
-		(stroke
-			(width 0.05)
-			(type default)
-		)
-		(fill no)
-		(layer "F.CrtYd")
-		(uuid "969dc640-d26e-4b02-ad01-0b49e13d6ade")
 	)
 	(fp_line
 		(start -0.5 -0.25)
@@ -296,6 +285,17 @@
 				(thickness 0.1)
 			)
 		)
+	)
+	(fp_rect
+		(start -1.219 -0.548)
+		(end 1.219 0.548)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "df7d743c-89ec-4e41-9cd6-d4fc7c5d50bc")
 	)
 	(pad "1" smd rect
 		(at -0.545 0)

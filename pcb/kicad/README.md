@@ -10,10 +10,11 @@ the fabricated 2025-09-23 revision (Gerber, BOM, PnP, STEP) is in `../archive/20
 | `openrz67.kicad_pro/.kicad_sch/.kicad_pcb` | project, schematic (1 sheet), board |
 | `openrz67.kicad_sym`, `openrz67.pretty/` | symbols and footprints as imported from EasyEDA/LCSC (project-local libs) |
 | `tools/post_import.py` | design rules, net classes, zone settings, layer names; idempotent, run with KiCad's bundled python |
-| `tools/fetch_3d.sh` | downloads STEP+WRL models for every LCSC part into `openrz67.3dshapes/` via easyeda2kicad |
+| `tools/fetch_3d.sh` | downloads STEP+WRL models for every LCSC part into `openrz67.3dshapes/` (uses `easyeda2kicad`, `uvx`, `pipx` or a local venv, whichever exists) |
+| `tools/export_step.sh` | board STEP to `out/openrz67.step` (gitignored, ~20 MB); fetches missing part STEPs first |
 | `openrz67.3dshapes/` | 3D models; `.wrl` committed (render), `.step` gitignored (fetch when you need a board STEP) |
 | `openrz67.kicad_dru` | custom rule: USB-C pads exempt from copper-to-edge clearance |
-| `out/` | generated: Gerber+drill zip, position file, BOM (with LCSC numbers), schematic PDF, top render |
+| `out/` | generated: Gerber+drill zip, position file, BOM (with LCSC numbers), schematic PDF, top/bottom renders, ERC/DRC reports |
 
 ## Regenerate outputs
 
@@ -68,5 +69,15 @@ outline). `openrz67.kicad_dru` exempts the USB-C pads, which sit on the edge by 
   (needs the `.step` files, run `tools/fetch_3d.sh` first).
 - Bottom silkscreen label changed from "EPS32-C3 Camera Trigger V1.0 / 2025-08-23" to
   "OpenRZ67 Trigger v2 / 2026-09".
-- ERC severities for `pin_not_driven`/`power_pin_not_driven` are set to warning: pin
-  electrical types come from LCSC symbols and are not reliable.
+- Pin electrical types were set by hand for the ICs (ESP32-C3, LGS5500, ME6211, USB-C);
+  passives/connectors/relays are `passive`. Supply nets without a driver carry `PWR_FLAG`
+  (GND, AGND, BAT+, VBUS, +5V_VIN, VDDA). ERC runs at default severities: 0 errors, 8 warnings
+  (short dangling wire ends inherited from the EasyEDA drawing; harmless, left as-is).
+- The two mounting holes are real footprints (`MountingHole_2.0mm_Pad3.0`, plated 3.0 mm pad,
+  2.0 mm drill) with `MountingHole` symbols H1/H2 in the schematic (excluded from BOM/POS).
+- Courtyards were regenerated as pad/body bounding boxes (+0.05 mm) — the LCSC ones were
+  oversized. Silkscreen outlines of 0402/0603 parts and of the two overhanging connectors
+  (USB-C, U4) live on F.Fab now. DRC: 0 errors, 6 courtyard warnings where neighbours are
+  closer than 0.1 mm on the fabricated layout (C28/S3, C21/USB1, L3 vs C20/R9/R12, H1/USB1).
+- The library symbol file was pruned to the symbols in use; the schematic's embedded copies are
+  regenerated from it, so "symbol differs from library" warnings are gone.

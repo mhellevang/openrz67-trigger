@@ -38,7 +38,7 @@
 					)
 				)
 			)
-			(property "Footprint" "openrz67:R0402"
+			(property "Footprint" "ProPrj_ESP-easyedapro:R0402"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -138,7 +138,7 @@
 						(type none)
 					)
 				)
-				(pin input line
+				(pin passive line
 					(at -5.08 0 0)
 					(length 2.54)
 					(name "1"
@@ -156,7 +156,7 @@
 						)
 					)
 				)
-				(pin input line
+				(pin passive line
 					(at 5.08 0 180)
 					(length 2.54)
 					(name "2"
@@ -204,7 +204,7 @@
 					)
 				)
 			)
-			(property "Footprint" "openrz67:R0402"
+			(property "Footprint" "ProPrj_ESP-easyedapro:R0402"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -304,7 +304,7 @@
 						(type none)
 					)
 				)
-				(pin input line
+				(pin passive line
 					(at -5.08 0 0)
 					(length 2.54)
 					(name "1"
@@ -322,7 +322,7 @@
 						)
 					)
 				)
-				(pin input line
+				(pin passive line
 					(at 5.08 0 180)
 					(length 2.54)
 					(name "2"
@@ -370,7 +370,7 @@
 					)
 				)
 			)
-			(property "Footprint" "openrz67:R0603"
+			(property "Footprint" "ProPrj_ESP-easyedapro:R0603"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -470,7 +470,7 @@
 						(type none)
 					)
 				)
-				(pin input line
+				(pin passive line
 					(at -5.08 0 0)
 					(length 2.54)
 					(name "1"
@@ -488,7 +488,7 @@
 						)
 					)
 				)
-				(pin input line
+				(pin passive line
 					(at 5.08 0 180)
 					(length 2.54)
 					(name "2"
@@ -536,7 +536,7 @@
 					)
 				)
 			)
-			(property "Footprint" "openrz67:R0603"
+			(property "Footprint" "ProPrj_ESP-easyedapro:R0603"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -636,7 +636,7 @@
 						(type none)
 					)
 				)
-				(pin input line
+				(pin passive line
 					(at -5.08 0 0)
 					(length 2.54)
 					(name "1"
@@ -654,7 +654,7 @@
 						)
 					)
 				)
-				(pin input line
+				(pin passive line
 					(at 5.08 0 180)
 					(length 2.54)
 					(name "2"
@@ -701,7 +701,7 @@
 					)
 				)
 			)
-			(property "Footprint" "openrz67:SOD-523_L1.2-W0.8-LS1.6-RD"
+			(property "Footprint" "ProPrj_ESP-easyedapro:SOD-523_L1.2-W0.8-LS1.6-RD"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -814,7 +814,7 @@
 						(type none)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -5.08 0 0)
 					(length 3.81)
 					(name "C"
@@ -832,7 +832,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at 5.08 0 180)
 					(length 3.81)
 					(name "A"
@@ -879,7 +879,7 @@
 					)
 				)
 			)
-			(property "Footprint" "openrz67:L0603"
+			(property "Footprint" "ProPrj_ESP-easyedapro:L0603"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1024,7 +1024,7 @@
 						(type none)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -5.08 0 0)
 					(length 0.762)
 					(name "1"
@@ -1042,7 +1042,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at 5.08 0 180)
 					(length 0.762)
 					(name "2"
@@ -1089,7 +1089,7 @@
 					)
 				)
 			)
-			(property "Footprint" "openrz67:CONN-TH_B2B-PH-K-S"
+			(property "Footprint" "ProPrj_ESP-easyedapro:CONN-TH_B2B-PH-K-S"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1189,7 +1189,7 @@
 						(type none)
 					)
 				)
-				(pin input line
+				(pin passive line
 					(at 6.35 2.54 180)
 					(length 5.08)
 					(name "1"
@@ -1207,7 +1207,7 @@
 						)
 					)
 				)
-				(pin input line
+				(pin passive line
 					(at 6.35 -2.54 180)
 					(length 5.08)
 					(name "2"
@@ -1254,7 +1254,7 @@
 					)
 				)
 			)
-			(property "Footprint" "openrz67:KEY-SMD_B3U-1000PM"
+			(property "Footprint" "ProPrj_ESP-easyedapro:KEY-SMD_B3U-1000PM"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1391,7 +1391,7 @@
 						(type none)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -10.16 0 0)
 					(length 5.08)
 					(name "1"
@@ -1409,7 +1409,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at 7.62 0 180)
 					(length 5.08)
 					(name "2"
@@ -1457,7 +1457,7 @@
 					)
 				)
 			)
-			(property "Footprint" "openrz67:C0603"
+			(property "Footprint" "ProPrj_ESP-easyedapro:C0603"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1594,7 +1594,7 @@
 						(type none)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -5.08 0 0)
 					(length 2.54)
 					(name "1"
@@ -1612,7 +1612,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at 5.08 0 180)
 					(length 2.54)
 					(name "2"
@@ -1660,7 +1660,7 @@
 					)
 				)
 			)
-			(property "Footprint" "openrz67:C0603"
+			(property "Footprint" "ProPrj_ESP-easyedapro:C0603"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1797,7 +1797,7 @@
 						(type none)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -5.08 0 0)
 					(length 2.54)
 					(name "1"
@@ -1815,7 +1815,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at 5.08 0 180)
 					(length 2.54)
 					(name "2"
@@ -1863,7 +1863,7 @@
 					)
 				)
 			)
-			(property "Footprint" "openrz67:C0603"
+			(property "Footprint" "ProPrj_ESP-easyedapro:C0603"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -2000,7 +2000,7 @@
 						(type none)
 					)
 				)
-				(pin input line
+				(pin passive line
 					(at -5.08 0 0)
 					(length 2.54)
 					(name "1"
@@ -2018,7 +2018,7 @@
 						)
 					)
 				)
-				(pin input line
+				(pin passive line
 					(at 5.08 0 180)
 					(length 2.54)
 					(name "2"
@@ -2065,7 +2065,7 @@
 					)
 				)
 			)
-			(property "Footprint" "openrz67:SOT-346_L2.9-W1.6-P1.90-LS2.8-TR-CW"
+			(property "Footprint" "ProPrj_ESP-easyedapro:SOT-346_L2.9-W1.6-P1.90-LS2.8-TR-CW"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -2243,7 +2243,7 @@
 						(type none)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at 7.62 -8.89 90)
 					(length 5.08)
 					(name "E"
@@ -2261,7 +2261,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -7.62 1.27 0)
 					(length 5.08)
 					(name "B"
@@ -2279,7 +2279,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at 7.62 8.89 270)
 					(length 5.08)
 					(name "C"
@@ -2326,7 +2326,7 @@
 					)
 				)
 			)
-			(property "Footprint" "openrz67:QFN-32_L5.0-W5.0-P0.50-TL-EP3.7"
+			(property "Footprint" "ProPrj_ESP-easyedapro:QFN-32_L5.0-W5.0-P0.50-TL-EP3.7"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -2437,7 +2437,7 @@
 						(type none)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -21.59 8.89 0)
 					(length 2.54)
 					(name "LNA_IN"
@@ -2455,7 +2455,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin power_in line
 					(at -21.59 6.35 0)
 					(length 2.54)
 					(name "VDD3P3"
@@ -2473,7 +2473,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin power_in line
 					(at -21.59 3.81 0)
 					(length 2.54)
 					(name "VDD3P3"
@@ -2491,7 +2491,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -21.59 1.27 0)
 					(length 2.54)
 					(name "XTAL_32K_P"
@@ -2509,7 +2509,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -21.59 -1.27 0)
 					(length 2.54)
 					(name "XTAL_32K_N"
@@ -2527,7 +2527,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin bidirectional line
 					(at -21.59 -3.81 0)
 					(length 2.54)
 					(name "GPIO2"
@@ -2545,7 +2545,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin input line
 					(at -21.59 -6.35 0)
 					(length 2.54)
 					(name "CHIP_EN"
@@ -2563,7 +2563,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin bidirectional line
 					(at -21.59 -8.89 0)
 					(length 2.54)
 					(name "GPIO3"
@@ -2581,7 +2581,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin bidirectional line
 					(at -8.89 -26.67 90)
 					(length 2.54)
 					(name "MTMS"
@@ -2599,7 +2599,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin bidirectional line
 					(at -6.35 -26.67 90)
 					(length 2.54)
 					(name "MTDI"
@@ -2617,7 +2617,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin power_in line
 					(at -3.81 -26.67 90)
 					(length 2.54)
 					(name "VDD3P3_RTC"
@@ -2635,7 +2635,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin bidirectional line
 					(at -1.27 -26.67 90)
 					(length 2.54)
 					(name "MTCK"
@@ -2653,7 +2653,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin bidirectional line
 					(at 1.27 -26.67 90)
 					(length 2.54)
 					(name "MTDO"
@@ -2671,7 +2671,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin bidirectional line
 					(at 3.81 -26.67 90)
 					(length 2.54)
 					(name "GPIO8"
@@ -2689,7 +2689,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin bidirectional line
 					(at 6.35 -26.67 90)
 					(length 2.54)
 					(name "GPIO9"
@@ -2707,7 +2707,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin bidirectional line
 					(at 8.89 -26.67 90)
 					(length 2.54)
 					(name "GPIO10"
@@ -2725,7 +2725,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin power_in line
 					(at 21.59 -8.89 180)
 					(length 2.54)
 					(name "VDD3P3_CPU"
@@ -2743,7 +2743,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin power_out line
 					(at 21.59 -6.35 180)
 					(length 2.54)
 					(name "VDD_SPI"
@@ -2761,7 +2761,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin bidirectional line
 					(at 21.59 -3.81 180)
 					(length 2.54)
 					(name "SPIHD"
@@ -2779,7 +2779,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin bidirectional line
 					(at 21.59 -1.27 180)
 					(length 2.54)
 					(name "SPIWP"
@@ -2797,7 +2797,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin bidirectional line
 					(at 21.59 1.27 180)
 					(length 2.54)
 					(name "SPICS0"
@@ -2815,7 +2815,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin bidirectional line
 					(at 21.59 3.81 180)
 					(length 2.54)
 					(name "SPICLK"
@@ -2833,7 +2833,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin bidirectional line
 					(at 21.59 6.35 180)
 					(length 2.54)
 					(name "SPID"
@@ -2851,7 +2851,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin bidirectional line
 					(at 21.59 8.89 180)
 					(length 2.54)
 					(name "SPIQ"
@@ -2869,7 +2869,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin bidirectional line
 					(at 8.89 26.67 270)
 					(length 2.54)
 					(name "GPIO18"
@@ -2887,7 +2887,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin bidirectional line
 					(at 6.35 26.67 270)
 					(length 2.54)
 					(name "GPIO19"
@@ -2905,7 +2905,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin bidirectional line
 					(at 3.81 26.67 270)
 					(length 2.54)
 					(name "U0RXD"
@@ -2923,7 +2923,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin bidirectional line
 					(at 1.27 26.67 270)
 					(length 2.54)
 					(name "U0TXD"
@@ -2941,7 +2941,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -1.27 26.67 270)
 					(length 2.54)
 					(name "XTAL_N"
@@ -2959,7 +2959,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -3.81 26.67 270)
 					(length 2.54)
 					(name "XTAL_P"
@@ -2977,7 +2977,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin power_in line
 					(at -6.35 26.67 270)
 					(length 2.54)
 					(name "VDDA"
@@ -2995,7 +2995,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin power_in line
 					(at -8.89 26.67 270)
 					(length 2.54)
 					(name "VDDA"
@@ -3013,7 +3013,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin power_in line
 					(at -11.43 26.67 270)
 					(length 2.54)
 					(name "EP"
@@ -3060,7 +3060,7 @@
 					)
 				)
 			)
-			(property "Footprint" "openrz67:RELAY-SMD_G6K-2F-Y"
+			(property "Footprint" "ProPrj_ESP-easyedapro:RELAY-SMD_G6K-2F-Y"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -3562,7 +3562,7 @@
 						(type none)
 					)
 				)
-				(pin input line
+				(pin passive line
 					(at -8.89 -10.16 90)
 					(length 5.08)
 					(name "1"
@@ -3580,7 +3580,7 @@
 						)
 					)
 				)
-				(pin input line
+				(pin passive line
 					(at -3.81 -10.16 90)
 					(length 5.08)
 					(name "2"
@@ -3598,7 +3598,7 @@
 						)
 					)
 				)
-				(pin input line
+				(pin passive line
 					(at 3.81 -10.16 90)
 					(length 5.08)
 					(name "3"
@@ -3616,7 +3616,7 @@
 						)
 					)
 				)
-				(pin input line
+				(pin passive line
 					(at 11.43 -10.16 90)
 					(length 5.08)
 					(name "4"
@@ -3634,7 +3634,7 @@
 						)
 					)
 				)
-				(pin input line
+				(pin passive line
 					(at 11.43 10.16 270)
 					(length 5.08)
 					(name "5"
@@ -3652,7 +3652,7 @@
 						)
 					)
 				)
-				(pin input line
+				(pin passive line
 					(at 3.81 10.16 270)
 					(length 5.08)
 					(name "6"
@@ -3670,7 +3670,7 @@
 						)
 					)
 				)
-				(pin input line
+				(pin passive line
 					(at -3.81 10.16 270)
 					(length 5.08)
 					(name "7"
@@ -3688,7 +3688,7 @@
 						)
 					)
 				)
-				(pin input line
+				(pin passive line
 					(at -8.89 10.16 270)
 					(length 5.08)
 					(name "8"
@@ -3736,7 +3736,7 @@
 					)
 				)
 			)
-			(property "Footprint" "openrz67:C0402"
+			(property "Footprint" "ProPrj_ESP-easyedapro:C0402"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -3873,7 +3873,7 @@
 						(type none)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at 0 -5.08 90)
 					(length 2.54)
 					(name "1"
@@ -3891,7 +3891,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at 0 5.08 270)
 					(length 2.54)
 					(name "2"
@@ -3939,7 +3939,7 @@
 					)
 				)
 			)
-			(property "Footprint" "openrz67:C0402"
+			(property "Footprint" "ProPrj_ESP-easyedapro:C0402"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -4076,7 +4076,7 @@
 						(type none)
 					)
 				)
-				(pin input line
+				(pin passive line
 					(at -2.54 0 0)
 					(length 1.27)
 					(name "1"
@@ -4094,7 +4094,7 @@
 						)
 					)
 				)
-				(pin input line
+				(pin passive line
 					(at 2.54 0 180)
 					(length 1.27)
 					(name "2"
@@ -4149,7 +4149,7 @@
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "ProPrj_ESP-easyedapro:"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -4234,7 +4234,7 @@
 				(pin power_in line
 					(at 0 0 270)
 					(length 2.54)
-					(name "AGND"
+					(name ""
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4279,7 +4279,7 @@
 					)
 				)
 			)
-			(property "Footprint" "openrz67:C0402"
+			(property "Footprint" "ProPrj_ESP-easyedapro:C0402"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -4416,7 +4416,7 @@
 						(type none)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -5.08 0 0)
 					(length 2.54)
 					(name "1"
@@ -4434,7 +4434,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at 5.08 0 180)
 					(length 2.54)
 					(name "2"
@@ -4482,7 +4482,7 @@
 					)
 				)
 			)
-			(property "Footprint" "openrz67:C0402"
+			(property "Footprint" "ProPrj_ESP-easyedapro:C0402"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -4619,7 +4619,7 @@
 						(type none)
 					)
 				)
-				(pin input line
+				(pin passive line
 					(at -5.08 0 0)
 					(length 2.54)
 					(name "1"
@@ -4637,7 +4637,7 @@
 						)
 					)
 				)
-				(pin input line
+				(pin passive line
 					(at 5.08 0 180)
 					(length 2.54)
 					(name "2"
@@ -4692,7 +4692,7 @@
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "ProPrj_ESP-easyedapro:"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -4793,7 +4793,7 @@
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "ProPrj_ESP-easyedapro:"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -4922,7 +4922,7 @@
 					)
 				)
 			)
-			(property "Footprint" "openrz67:LED0603-RD"
+			(property "Footprint" "ProPrj_ESP-easyedapro:LED0603-RD"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -5083,7 +5083,7 @@
 						(type none)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -5.08 0 0)
 					(length 3.81)
 					(name "K"
@@ -5101,7 +5101,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at 5.08 0 180)
 					(length 3.81)
 					(name "A"
@@ -5148,7 +5148,7 @@
 					)
 				)
 			)
-			(property "Footprint" "openrz67:ESOP-8_L4.9-W3.9-P1.27-LS6.0-TL-EP3.3"
+			(property "Footprint" "ProPrj_ESP-easyedapro:ESOP-8_L4.9-W3.9-P1.27-LS6.0-TL-EP3.3"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -5259,7 +5259,7 @@
 						(type none)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -15.24 2.54 0)
 					(length 2.54)
 					(name "ISET"
@@ -5277,7 +5277,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin power_in line
 					(at -15.24 0 0)
 					(length 2.54)
 					(name "VIN"
@@ -5295,7 +5295,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -15.24 -2.54 0)
 					(length 2.54)
 					(name "VL"
@@ -5313,7 +5313,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -15.24 -5.08 0)
 					(length 2.54)
 					(name "LX"
@@ -5331,7 +5331,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin power_out line
 					(at 15.24 -5.08 180)
 					(length 2.54)
 					(name "VH"
@@ -5349,7 +5349,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin no_connect line
 					(at 15.24 -2.54 180)
 					(length 2.54)
 					(name "NC"
@@ -5367,7 +5367,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at 15.24 0 180)
 					(length 2.54)
 					(name "VSET_(LED)"
@@ -5385,7 +5385,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin input line
 					(at 15.24 2.54 180)
 					(length 2.54)
 					(name "NTC"
@@ -5403,7 +5403,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin power_in line
 					(at 15.24 5.08 180)
 					(length 2.54)
 					(name "EP"
@@ -5451,7 +5451,7 @@
 					)
 				)
 			)
-			(property "Footprint" "openrz67:L0402"
+			(property "Footprint" "ProPrj_ESP-easyedapro:L0402"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -5598,7 +5598,7 @@
 						(type none)
 					)
 				)
-				(pin input line
+				(pin passive line
 					(at -5.08 0 0)
 					(length 0.762)
 					(name "1"
@@ -5616,7 +5616,7 @@
 						)
 					)
 				)
-				(pin input line
+				(pin passive line
 					(at 5.08 0 180)
 					(length 0.762)
 					(name "2"
@@ -5663,7 +5663,7 @@
 					)
 				)
 			)
-			(property "Footprint" "openrz67:SOT-23-5_L3.0-W1.7-P0.95-LS2.8-BL"
+			(property "Footprint" "ProPrj_ESP-easyedapro:SOT-23-5_L3.0-W1.7-P0.95-LS2.8-BL"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -5763,7 +5763,7 @@
 						(type none)
 					)
 				)
-				(pin unspecified line
+				(pin power_in line
 					(at -12.7 2.54 0)
 					(length 2.54)
 					(name "VIN"
@@ -5781,7 +5781,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin power_in line
 					(at -12.7 0 0)
 					(length 2.54)
 					(name "VSS"
@@ -5799,7 +5799,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin input line
 					(at -12.7 -2.54 0)
 					(length 2.54)
 					(name "CE"
@@ -5817,7 +5817,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin no_connect line
 					(at 12.7 -2.54 180)
 					(length 2.54)
 					(name "NC"
@@ -5835,7 +5835,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin power_out line
 					(at 12.7 2.54 180)
 					(length 2.54)
 					(name "VOUT"
@@ -5882,7 +5882,7 @@
 					)
 				)
 			)
-			(property "Footprint" "openrz67:R0603"
+			(property "Footprint" "ProPrj_ESP-easyedapro:R0603"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -5994,7 +5994,7 @@
 						(type none)
 					)
 				)
-				(pin input line
+				(pin passive line
 					(at -5.08 0 0)
 					(length 2.54)
 					(name "1"
@@ -6012,7 +6012,7 @@
 						)
 					)
 				)
-				(pin input line
+				(pin passive line
 					(at 5.08 0 180)
 					(length 2.54)
 					(name "2"
@@ -6026,132 +6026,6 @@
 						(effects
 							(font
 								(size 0.0254 0.0254)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "openrz67:NetPort"
-			(power global)
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "#PWR"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" ""
-				(at 0 2.54 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.0414 1.0414)
-					)
-					(justify bottom)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "NetPort_1_0"
-				(polyline
-					(pts
-						(xy 0 2.54) (xy -1.016 1.016)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 2.54) (xy 0 0)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 2.54) (xy 1.016 1.016)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(pin power_in line
-					(at 0 0 0)
-					(length 0)
-					(name "S1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 0 0)
 							)
 						)
 					)
@@ -6193,7 +6067,7 @@
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "ProPrj_ESP-easyedapro:"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -6254,7 +6128,7 @@
 				(pin power_in line
 					(at 0 0 90)
 					(length 1.27)
-					(name "VBUS"
+					(name ""
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -6306,7 +6180,7 @@
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "ProPrj_ESP-easyedapro:"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -6367,7 +6241,7 @@
 				(pin power_in line
 					(at 0 0 90)
 					(length 1.27)
-					(name "VCC"
+					(name ""
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -6412,7 +6286,7 @@
 					)
 				)
 			)
-			(property "Footprint" "openrz67:R0402"
+			(property "Footprint" "ProPrj_ESP-easyedapro:R0402"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -6512,7 +6386,7 @@
 						(type none)
 					)
 				)
-				(pin input line
+				(pin passive line
 					(at -5.08 0 0)
 					(length 2.54)
 					(name "1"
@@ -6530,7 +6404,7 @@
 						)
 					)
 				)
-				(pin input line
+				(pin passive line
 					(at 5.08 0 180)
 					(length 2.54)
 					(name "2"
@@ -6578,7 +6452,7 @@
 					)
 				)
 			)
-			(property "Footprint" "openrz67:R0402"
+			(property "Footprint" "ProPrj_ESP-easyedapro:R0402"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -6678,7 +6552,7 @@
 						(type none)
 					)
 				)
-				(pin input line
+				(pin passive line
 					(at -5.08 0 0)
 					(length 2.54)
 					(name "1"
@@ -6696,7 +6570,7 @@
 						)
 					)
 				)
-				(pin input line
+				(pin passive line
 					(at 5.08 0 180)
 					(length 2.54)
 					(name "2"
@@ -6743,7 +6617,7 @@
 					)
 				)
 			)
-			(property "Footprint" "openrz67:CONN-TH_S4B-XH-A-LF-SN"
+			(property "Footprint" "ProPrj_ESP-easyedapro:CONN-TH_S4B-XH-A-LF-SN"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -6854,7 +6728,7 @@
 						(type none)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -6.35 3.81 0)
 					(length 2.54)
 					(name "1"
@@ -6872,7 +6746,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -6.35 1.27 0)
 					(length 2.54)
 					(name "2"
@@ -6890,7 +6764,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -6.35 -1.27 0)
 					(length 2.54)
 					(name "3"
@@ -6908,7 +6782,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -6.35 -3.81 0)
 					(length 2.54)
 					(name "4"
@@ -6956,7 +6830,7 @@
 					)
 				)
 			)
-			(property "Footprint" "openrz67:IND-SMD_L7.1-W6.5-P5.60"
+			(property "Footprint" "ProPrj_ESP-easyedapro:IND-SMD_L7.1-W6.5-P5.60"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -7101,7 +6975,7 @@
 						(type none)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -5.08 0 0)
 					(length 0.762)
 					(name "1"
@@ -7119,7 +6993,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at 5.08 0 180)
 					(length 0.762)
 					(name "2"
@@ -7167,7 +7041,7 @@
 					)
 				)
 			)
-			(property "Footprint" "openrz67:CRYSTAL-SMD_4P-L2.0-W1.6-BL-2"
+			(property "Footprint" "ProPrj_ESP-easyedapro:CRYSTAL-SMD_4P-L2.0-W1.6-BL-2"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -7337,7 +7211,7 @@
 						(type none)
 					)
 				)
-				(pin input line
+				(pin passive line
 					(at -7.62 -2.54 0)
 					(length 2.54)
 					(name "1"
@@ -7355,7 +7229,7 @@
 						)
 					)
 				)
-				(pin input line
+				(pin passive line
 					(at 7.62 -2.54 180)
 					(length 2.54)
 					(name "GND"
@@ -7373,7 +7247,7 @@
 						)
 					)
 				)
-				(pin input line
+				(pin passive line
 					(at 7.62 2.54 180)
 					(length 2.54)
 					(name "3"
@@ -7391,7 +7265,7 @@
 						)
 					)
 				)
-				(pin input line
+				(pin passive line
 					(at -7.62 2.54 0)
 					(length 2.54)
 					(name "GND"
@@ -7438,7 +7312,7 @@
 					)
 				)
 			)
-			(property "Footprint" "openrz67:USB-C-SMD_TYPE-C-6PIN-2MD-073"
+			(property "Footprint" "ProPrj_ESP-easyedapro:USB-C-SMD_TYPE-C-6PIN-2MD-073"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -7549,7 +7423,7 @@
 						(type none)
 					)
 				)
-				(pin unspecified line
+				(pin power_in line
 					(at -11.43 13.97 0)
 					(length 2.54)
 					(name "GND"
@@ -7567,7 +7441,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -11.43 11.43 0)
 					(length 2.54)
 					(name "VBUS"
@@ -7585,7 +7459,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -11.43 8.89 0)
 					(length 2.54)
 					(name "SBU2"
@@ -7603,7 +7477,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -11.43 6.35 0)
 					(length 2.54)
 					(name "CC1"
@@ -7621,7 +7495,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin bidirectional line
 					(at -11.43 3.81 0)
 					(length 2.54)
 					(name "DN2"
@@ -7639,7 +7513,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin bidirectional line
 					(at -11.43 1.27 0)
 					(length 2.54)
 					(name "DP1"
@@ -7657,7 +7531,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin bidirectional line
 					(at -11.43 -1.27 0)
 					(length 2.54)
 					(name "DN1"
@@ -7675,7 +7549,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin bidirectional line
 					(at -11.43 -3.81 0)
 					(length 2.54)
 					(name "DP2"
@@ -7693,7 +7567,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -11.43 -6.35 0)
 					(length 2.54)
 					(name "SBU1"
@@ -7711,7 +7585,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -11.43 -8.89 0)
 					(length 2.54)
 					(name "CC2"
@@ -7729,7 +7603,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -11.43 -11.43 0)
 					(length 2.54)
 					(name "VBUS"
@@ -7747,7 +7621,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin power_in line
 					(at -11.43 -13.97 0)
 					(length 2.54)
 					(name "GND"
@@ -7765,7 +7639,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at 10.16 -13.97 180)
 					(length 2.54)
 					(name "SHELL"
@@ -7783,7 +7657,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at 10.16 13.97 180)
 					(length 2.54)
 					(name "SHELL"
@@ -7830,7 +7704,7 @@
 					)
 				)
 			)
-			(property "Footprint" "openrz67:RF-SMD_FRF05002-JSS103M"
+			(property "Footprint" "ProPrj_ESP-easyedapro:RF-SMD_FRF05002-JSS103M"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -7930,7 +7804,7 @@
 						(type none)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at 0 -5.08 90)
 					(length 5.08)
 					(name "SIG"
@@ -7948,7 +7822,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -12.7 2.54 0)
 					(length 5.08)
 					(name "GND"
@@ -7966,7 +7840,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at 12.7 2.54 180)
 					(length 5.08)
 					(name "GND"
@@ -8022,7 +7896,7 @@
 					(justify bottom)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "ProPrj_ESP-easyedapro:"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -8083,7 +7957,7 @@
 				(pin power_in line
 					(at 0 0 0)
 					(length 0)
-					(name "+5V"
+					(name ""
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -8128,7 +8002,7 @@
 					)
 				)
 			)
-			(property "Footprint" "openrz67:CRYSTAL-SMD_L3.2-W1.5-1"
+			(property "Footprint" "ProPrj_ESP-easyedapro:CRYSTAL-SMD_L3.2-W1.5-1"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -8326,7 +8200,7 @@
 						(type none)
 					)
 				)
-				(pin input line
+				(pin passive line
 					(at -5.08 0 0)
 					(length 2.54)
 					(name "OSC1"
@@ -8344,7 +8218,7 @@
 						)
 					)
 				)
-				(pin input line
+				(pin passive line
 					(at 5.08 0 180)
 					(length 2.54)
 					(name "OSC2"
@@ -8391,7 +8265,7 @@
 					)
 				)
 			)
-			(property "Footprint" "openrz67:LED0603-RD_BLUE"
+			(property "Footprint" "ProPrj_ESP-easyedapro:LED0603-RD_BLUE"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -8576,7 +8450,7 @@
 						(type none)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at -5.08 0 0)
 					(length 2.54)
 					(name "K"
@@ -8594,7 +8468,7 @@
 						)
 					)
 				)
-				(pin unspecified line
+				(pin passive line
 					(at 5.08 0 180)
 					(length 2.54)
 					(name "A"
@@ -8610,6 +8484,220 @@
 								(size 0.0254 0.0254)
 							)
 						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "openrz67:MountingHole"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom no)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "H"
+				(at 0 5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "MountingHole"
+				(at 0 3.175 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Mounting Hole without connection"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "mounting hole"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "MountingHole*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "MountingHole_0_1"
+				(circle
+					(center 0 0)
+					(radius 1.27)
+					(stroke
+						(width 1.27)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "openrz67:PWR_FLAG"
+			(power global)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "#FLG"
+				(at 0 1.905 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "PWR_FLAG"
+				(at 0 3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Special symbol for telling ERC where power comes from"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "flag power"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "PWR_FLAG_0_0"
+				(pin power_out line
+					(at 0 0 90)
+					(length 0)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "PWR_FLAG_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 1.27) (xy -1.016 1.905) (xy 0 2.54) (xy 1.016 1.905) (xy 0 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
 					)
 				)
 			)
@@ -12233,83 +12321,16 @@
 			)
 		)
 	)
-	(symbol
-		(lib_id "openrz67:NetPort")
+	(global_label "S2"
+		(shape passive)
 		(at 201.93 287.02 0)
-		(unit 1)
-		(body_style 0)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "02c4ed00-f9b5-4fe9-acb0-309b3ca978d8")
-		(property "Reference" "#PWR003"
-			(at 201.93 287.02 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
+		(effects
+			(font
+				(size 1.27 1.27)
 			)
+			(justify left)
 		)
-		(property "Value" "S2"
-			(at 201.93 284.48 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.0414 1.0414)
-				)
-				(justify bottom)
-			)
-		)
-		(property "Footprint" ""
-			(at 201.93 287.02 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 201.93 287.02 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 201.93 287.02 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "c1d9dcb3-0bfd-4be0-b31f-b06fbf2958fe")
-		)
-		(instances
-			(project "openrz67"
-				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
-					(reference "#PWR003")
-					(unit 1)
-				)
-			)
-		)
+		(uuid "9e917b7b-2770-4187-80e6-1323e8147696")
 	)
 	(symbol
 		(lib_id "openrz67:U.FL-R-SMT-1(80)")
@@ -15033,83 +15054,16 @@
 			)
 		)
 	)
-	(symbol
-		(lib_id "openrz67:NetPort")
+	(global_label "S1"
+		(shape passive)
 		(at 201.93 271.78 0)
-		(unit 1)
-		(body_style 0)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "21414bd1-f8b3-4820-a4ff-8c3093e71949")
-		(property "Reference" "#PWR017"
-			(at 201.93 271.78 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
+		(effects
+			(font
+				(size 1.27 1.27)
 			)
+			(justify left)
 		)
-		(property "Value" "S1"
-			(at 201.93 269.24 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.0414 1.0414)
-				)
-				(justify bottom)
-			)
-		)
-		(property "Footprint" ""
-			(at 201.93 271.78 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 201.93 271.78 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 201.93 271.78 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "121f9af2-2bfa-42a2-a514-a8acfd229299")
-		)
-		(instances
-			(project "openrz67"
-				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
-					(reference "#PWR017")
-					(unit 1)
-				)
-			)
-		)
+		(uuid "ed3cf442-897b-42c0-8218-84057f82e97d")
 	)
 	(symbol
 		(lib_id "openrz67:GRM1555C1H180FA01D")
@@ -25300,6 +25254,508 @@
 	(no_connect
 		(at 212.09 274.32)
 		(uuid "293363ef-f8c8-441b-890f-0ed89e33d0a5")
+	)
+	(symbol
+		(lib_id "openrz67:PWR_FLAG")
+		(at 78.74 210.82 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim yes)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "824fcc05-c76b-4d3d-8a5a-4f86c5a03831")
+		(property "Reference" "#FLG01"
+			(at 78.74 207.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 78.74 205.73999999999998 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 78.74 210.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 78.74 210.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 78.74 210.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "openrz67"
+				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
+					(reference "#FLG01")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "openrz67:PWR_FLAG")
+		(at 354.33 105.41 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim yes)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "23f08671-0bca-447e-a959-e2cad20550d4")
+		(property "Reference" "#FLG02"
+			(at 354.33 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 354.33 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 354.33 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 354.33 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 354.33 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "openrz67"
+				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
+					(reference "#FLG02")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "openrz67:PWR_FLAG")
+		(at 306.07 27.94 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim yes)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "92f7b679-f624-48a0-8e4e-8a56348edaf2")
+		(property "Reference" "#FLG03"
+			(at 306.07 24.130000000000003 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 306.07 22.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 306.07 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 306.07 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 306.07 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "openrz67"
+				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
+					(reference "#FLG03")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "openrz67:PWR_FLAG")
+		(at 118.11 67.31 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim yes)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "1281dec8-3d20-4622-adac-4708c595d153")
+		(property "Reference" "#FLG04"
+			(at 118.11 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 120.65 62.230000000000004 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 118.11 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 118.11 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 118.11 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "openrz67"
+				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
+					(reference "#FLG04")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "openrz67:MountingHole")
+		(at 400.05 30.48 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files no)
+		(dnp no)
+		(uuid "ec6bb66d-0d8d-40d7-a646-4803e99c4854")
+		(property "Reference" "H1"
+			(at 400.05 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				
+			)
+		)
+		(property "Value" "MountingHole"
+			(at 400.05 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				
+			)
+		)
+		(property "Footprint" "openrz67:MountingHole_2.0mm_Pad3.0"
+			(at 400.05 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 400.05 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 400.05 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "openrz67"
+				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
+					(reference "H1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "openrz67:MountingHole")
+		(at 400.05 43.18 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files no)
+		(dnp no)
+		(uuid "7df30016-9417-4624-8507-2091a9fd80ac")
+		(property "Reference" "H2"
+			(at 400.05 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				
+			)
+		)
+		(property "Value" "MountingHole"
+			(at 400.05 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				
+			)
+		)
+		(property "Footprint" "openrz67:MountingHole_2.0mm_Pad3.0"
+			(at 400.05 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 400.05 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 400.05 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "openrz67"
+				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
+					(reference "H2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "openrz67:PWR_FLAG")
+		(at 43.18 29.21 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim yes)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "4343d882-9fa5-49bc-9880-e87e0a65115b")
+		(property "Reference" "#FLG05"
+			(at 43.18 25.400000000000002 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 43.18 24.130000000000003 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 43.18 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 43.18 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "openrz67"
+				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
+					(reference "#FLG05")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "openrz67:PWR_FLAG")
+		(at 148.59 153.67 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim yes)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "b5bc2ace-104d-450a-ae0d-89fa314e325b")
+		(property "Reference" "#FLG06"
+			(at 148.59 149.85999999999999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 148.59 148.58999999999997 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 148.59 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 148.59 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "openrz67"
+				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
+					(reference "#FLG06")
+					(unit 1)
+				)
+			)
+		)
 	)
 	(embedded_fonts no)
 )
