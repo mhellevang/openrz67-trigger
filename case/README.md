@@ -269,4 +269,4 @@ short end first.
   and that the bottom clears the LEDs (`led_pipe_gap`). Print in clear filament; glue the
   head into the counterbore for a permanent/sealed fit.
 - The USB-C and switch openings are open out of necessity; the LED window is sealed by
-  the light pipe. The enclosure is dust-resistant, not waterproof.
+  the light pipe.
