@@ -1,6 +1,6 @@
 # openrz67 PCB — KiCad project
 
-KiCad 10 project for the OpenRZ67 trigger board (48 × 22 mm, 2 layers, ESP32-C3,
+KiCad 10 project for the OpenRZ67 trigger board (48 × 25 mm, 2 layers, ESP32-C3,
 two G6K relays, LGS5500 charger/boost). This is now the **source**; the EasyEDA Pro
 project it was ported from is archived in `../archive/easyeda/` (v2 `.epro` and v3 `.epro2`);
 the fabricated 2025-09-23 revision (Gerber, BOM, PnP, STEP) is in `../archive/2025-09-23-rev1/`.
@@ -51,6 +51,16 @@ outline). `openrz67.kicad_dru` exempts the USB-C pads, which sit on the edge by 
   the cell and the PCB (through-hole tails of USB1/U4 protrude ~1 mm). Pin 1 = BAT+ as before.
   BAT+ reaches the bottom through a 0.6/0.3 via next to C22; GND is the bottom pour.
   JLCPCB two-sided assembly costs extra: BAT1 can also be left unplaced and hand-soldered.
+- **Board widened 22 → 25 mm** (new strip along the back edge, y 22–25 mm from the front edge).
+- **J1 expansion header** in that strip: 1×3 × 2.54 mm through-hole pads, **not populated**
+  (excluded from BOM/POS). Pin 1 = **GPIO4** (ADC1_CH4, I2C/UART capable), pin 2 = **3V3**,
+  pin 3 = **GND**. Pin 1 is 33 mm from the left edge, 1.5 mm from the back edge. Only one GPIO
+  is routed: the free ESP32-C3 pins (GPIO4–7, GPIO10) all sit on the QFN's right column and
+  share a single escape between existing traces; a second signal would need the VCC/D1/CHIP_EN
+  tracks around U1 moved. GPIO4 runs F.Cu stub → via → B.Cu around the west end of the VCC
+  track → along the new strip. A handful of GND/AGND stitching vias in its way were removed.
+- **S3** stays through-hole (B2B-PH-K-S): the side-entry SMD variant collides with C14/C28 and
+  the vertical SMD one with D4/C28 unless parts are moved.
 
 ## Port notes (2026-09-03)
 

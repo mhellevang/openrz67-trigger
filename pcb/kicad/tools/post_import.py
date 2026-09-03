@@ -63,6 +63,7 @@ for z in b.Zones():
     z.SetThermalReliefGap(MM(0.152))        # EasyEDA copperRegion rule: gap 6 mil
     z.SetThermalReliefSpokeWidth(MM(0.254))  # spoke 10 mil
     z.SetMinThickness(MM(0.127))
+    z.SetIslandRemovalMode(pcbnew.ISLAND_REMOVAL_MODE_AREA); z.SetMinIslandArea(int(10 * 1e12))   # drop pour scraps < 10 mm2
     if z.GetNetname() == "VBUS":              # small power pour at USB1: solid connection, spokes don't fit
         z.SetPadConnection(pcbnew.ZONE_CONNECTION_FULL)
 pcbnew.ZONE_FILLER(b).Fill(b.Zones())
