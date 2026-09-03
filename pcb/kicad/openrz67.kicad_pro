@@ -240,7 +240,7 @@
       "internal_id": "",
       "mfg": "",
       "mpn": "",
-      "sch_revision": ""
+      "sch_revision": "2"
     },
     "layer_pairs": [],
     "layer_presets": [],
@@ -737,7 +737,7 @@
   "sheets": [
     [
       "608428cc-ede5-4359-a9e7-0ca7713b40fb",
-      "ESP32CamTrigger"
+      "openrz67"
     ]
   ],
   "text_variables": {},

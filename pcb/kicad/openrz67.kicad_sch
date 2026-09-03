@@ -5,297 +5,11 @@
 	(uuid "608428cc-ede5-4359-a9e7-0ca7713b40fb")
 	(paper "User" 420.624 297.434)
 	(title_block
-		(title "OpenRZ67 camera trigger")
+		(title "openrz67-trigger")
 		(date "2026-09-03")
 		(rev "2")
-		(comment 1 "Ported from EasyEDA Pro project ESP32C3CameraTrigger 2026-09-02 (rev with side-entry U4)")
 	)
 	(lib_symbols
-		(symbol "openrz67:Conn_01x03"
-				(pin_names
-					(offset 1.016)
-					(hide yes)
-				)
-				(exclude_from_sim no)
-				(in_bom yes)
-				(on_board yes)
-				(in_pos_files yes)
-				(duplicate_pin_numbers_are_jumpers no)
-				(property "Reference" "J"
-					(at 0 5.08 0)
-					(show_name no)
-					(do_not_autoplace no)
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(property "Value" "Conn_01x03"
-					(at 0 -5.08 0)
-					(show_name no)
-					(do_not_autoplace no)
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(property "Footprint" ""
-					(at 0 0 0)
-					(show_name no)
-					(do_not_autoplace no)
-					(hide yes)
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(property "Datasheet" ""
-					(at 0 0 0)
-					(show_name no)
-					(do_not_autoplace no)
-					(hide yes)
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(property "Description" "Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)"
-					(at 0 0 0)
-					(show_name no)
-					(do_not_autoplace no)
-					(hide yes)
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(property "ki_keywords" "connector"
-					(at 0 0 0)
-					(show_name no)
-					(do_not_autoplace no)
-					(hide yes)
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(property "ki_fp_filters" "Connector*:*_1x??_*"
-					(at 0 0 0)
-					(show_name no)
-					(do_not_autoplace no)
-					(hide yes)
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(symbol "Conn_01x03_1_1"
-					(rectangle
-						(start -1.27 3.81)
-						(end 1.27 -3.81)
-						(stroke
-							(width 0.254)
-							(type default)
-						)
-						(fill
-							(type background)
-						)
-					)
-					(rectangle
-						(start -1.27 2.667)
-						(end 0 2.413)
-						(stroke
-							(width 0.1524)
-							(type default)
-						)
-						(fill
-							(type none)
-						)
-					)
-					(rectangle
-						(start -1.27 0.127)
-						(end 0 -0.127)
-						(stroke
-							(width 0.1524)
-							(type default)
-						)
-						(fill
-							(type none)
-						)
-					)
-					(rectangle
-						(start -1.27 -2.413)
-						(end 0 -2.667)
-						(stroke
-							(width 0.1524)
-							(type default)
-						)
-						(fill
-							(type none)
-						)
-					)
-					(pin passive line
-						(at -5.08 2.54 0)
-						(length 3.81)
-						(name "Pin_1"
-							(effects
-								(font
-									(size 1.27 1.27)
-								)
-							)
-						)
-						(number "1"
-							(effects
-								(font
-									(size 1.27 1.27)
-								)
-							)
-						)
-					)
-					(pin passive line
-						(at -5.08 0 0)
-						(length 3.81)
-						(name "Pin_2"
-							(effects
-								(font
-									(size 1.27 1.27)
-								)
-							)
-						)
-						(number "2"
-							(effects
-								(font
-									(size 1.27 1.27)
-								)
-							)
-						)
-					)
-					(pin passive line
-						(at -5.08 -2.54 0)
-						(length 3.81)
-						(name "Pin_3"
-							(effects
-								(font
-									(size 1.27 1.27)
-								)
-							)
-						)
-						(number "3"
-							(effects
-								(font
-									(size 1.27 1.27)
-								)
-							)
-						)
-					)
-				)
-				(embedded_fonts no)
-			)
-		(symbol "openrz67:S2B-PH-SM4-TB"
-		    (in_bom yes)
-		    (on_board yes)
-		    (property
-		      "Reference"
-		      "CN"
-		      (id 0)
-		      (at 0 11.43 0)
-		      (effects (font (size 1.27 1.27) ) )
-		    )
-		    (property
-		      "Value"
-		      "S2B-PH-SM4-TB"
-		      (id 1)
-		      (at 0 -11.43 0)
-		      (effects (font (size 1.27 1.27) ) )
-		    )
-		    (property
-		      "Footprint"
-		      "openrz67:CONN-SMD_P2.00_S2B-PH-SM4-TB-LF-SN"
-		      (id 2)
-		      (at 0 -13.97 0)
-		      (effects (font (size 1.27 1.27) ) hide)
-		    )
-		    (property
-		      "Datasheet"
-		      "https://lcsc.com/product-detail/_JST-Sales-America_S2B-PH-SM4-TB-LF-SN_JST-Sales-America-S2B-PH-SM4-TB-LF-SN_C295747.html"
-		      (id 3)
-		      (at 0 -16.51 0)
-		      (effects (font (size 1.27 1.27) ) hide)
-		    )
-		    (property
-		      "Manufacturer"
-		      "JST"
-		      (id 4)
-		      (at 0 -19.05 0)
-		      (effects (font (size 1.27 1.27) ) hide)
-		    )
-		    (property
-		      "MPN"
-		      "S2B-PH-SM4-TB(LF)(SN)"
-		      (id 5)
-		      (at 0 -21.59 0)
-		      (effects (font (size 1.27 1.27) ) hide)
-		    )
-		    (property
-		      "LCSC Part"
-		      "C295747"
-		      (id 6)
-		      (at 0 -24.13 0)
-		      (effects (font (size 1.27 1.27) ) hide)
-		    )
-		    (property
-		      "ki_keywords"
-		      "Wire To Board / Wire To Wire Connector"
-		      (id 8)
-		      (at 0 -26.67 0)
-		      (effects (font (size 1.27 1.27) ) hide)
-		    )
-		    (symbol "S2B-PH-SM4-TB_0_1"
-		      (rectangle
-		        (start -1.27 3.81)
-		        (end 5.08 -3.81)
-		        (stroke (width 0) (type default))
-		        (fill (type background))
-		      )
-		      (circle
-		        (center 0.00 2.54)
-		        (radius 0.38)
-		        (stroke (width 0) (type default))
-		        (fill (type none))
-		      )
-		      (pin passive line
-		        (at -3.81 1.27 0)
-		        (length 2.54)
-		        (name "1" (effects (font (size 1.27 1.27))))
-		        (number "1" (effects (font (size 1.27 1.27))))
-		      )
-		      (pin passive line
-		        (at -3.81 -1.27 0)
-		        (length 2.54)
-		        (name "2" (effects (font (size 1.27 1.27))))
-		        (number "2" (effects (font (size 1.27 1.27))))
-		      )
-		      (pin no_connect line
-		        (at 3.81 -6.35 90)
-		        (length 2.54)
-		        (name "3" (effects (font (size 1.27 1.27))))
-		        (number "3" (effects (font (size 1.27 1.27))))
-		      )
-		      (pin no_connect line
-		        (at 3.81 6.35 270)
-		        (length 2.54)
-		        (name "4" (effects (font (size 1.27 1.27))))
-		        (number "4" (effects (font (size 1.27 1.27))))
-		      )
-		    )
-		  )
 		(symbol "openrz67:0402WGF1003TCE"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -2317,6 +2031,193 @@
 						(effects
 							(font
 								(size 0.0254 0.0254)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "openrz67:Conn_01x03"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "J"
+				(at 0 5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Conn_01x03"
+				(at 0 -5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "connector"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "Connector*:*_1x??_*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Conn_01x03_1_1"
+				(rectangle
+					(start -1.27 3.81)
+					(end 1.27 -3.81)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(rectangle
+					(start -1.27 2.667)
+					(end 0 2.413)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 0.127)
+					(end 0 -0.127)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 -2.413)
+					(end 0 -2.667)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -5.08 2.54 0)
+					(length 3.81)
+					(name "Pin_1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 0 0)
+					(length 3.81)
+					(name "Pin_2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -2.54 0)
+					(length 3.81)
+					(name "Pin_3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
 							)
 						)
 					)
@@ -6141,6 +6042,105 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "openrz67:MountingHole"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom no)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "H"
+				(at 0 5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "MountingHole"
+				(at 0 3.175 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Mounting Hole without connection"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "mounting hole"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "MountingHole*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "MountingHole_0_1"
+				(circle
+					(center 0 0)
+					(radius 1.27)
+					(stroke
+						(width 1.27)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "openrz67:NCP18XH103F03RB"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -6313,6 +6313,121 @@
 								(size 0.0254 0.0254)
 							)
 						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "openrz67:PWR_FLAG"
+			(power global)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "#FLG"
+				(at 0 1.905 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "PWR_FLAG"
+				(at 0 3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Special symbol for telling ERC where power comes from"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "flag power"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "PWR_FLAG_0_0"
+				(pin power_out line
+					(at 0 0 90)
+					(length 0)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "PWR_FLAG_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 1.27) (xy -1.016 1.905) (xy 0 2.54) (xy 1.016 1.905) (xy 0 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
 					)
 				)
 			)
@@ -6869,6 +6984,207 @@
 						(effects
 							(font
 								(size 0.0254 0.0254)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "openrz67:S2B-PH-SM4-TB"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "CN"
+				(at 0 11.43 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "S2B-PH-SM4-TB"
+				(at 0 -11.43 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "openrz67:CONN-SMD_P2.00_S2B-PH-SM4-TB-LF-SN"
+				(at 0 -13.97 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://lcsc.com/product-detail/_JST-Sales-America_S2B-PH-SM4-TB-LF-SN_JST-Sales-America-S2B-PH-SM4-TB-LF-SN_C295747.html"
+				(at 0 -16.51 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "JST"
+				(at 0 -19.05 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "S2B-PH-SM4-TB(LF)(SN)"
+				(at 0 -21.59 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "LCSC Part" "C295747"
+				(at 0 -24.13 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "Wire To Board / Wire To Wire Connector"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "S2B-PH-SM4-TB_0_1"
+				(rectangle
+					(start -1.27 3.81)
+					(end 5.08 -3.81)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(circle
+					(center 0 2.54)
+					(radius 0.38)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -3.81 1.27 0)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -3.81 -1.27 0)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin no_connect line
+					(at 3.81 -6.35 90)
+					(length 2.54)
+					(name "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin no_connect line
+					(at 3.81 6.35 270)
+					(length 2.54)
+					(name "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
 							)
 						)
 					)
@@ -8774,220 +9090,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "openrz67:MountingHole"
-			(pin_names
-				(offset 1.016)
-			)
-			(exclude_from_sim no)
-			(in_bom no)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "H"
-				(at 0 5.08 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "MountingHole"
-				(at 0 3.175 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "Mounting Hole without connection"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "mounting hole"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_fp_filters" "MountingHole*"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "MountingHole_0_1"
-				(circle
-					(center 0 0)
-					(radius 1.27)
-					(stroke
-						(width 1.27)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "openrz67:PWR_FLAG"
-			(power global)
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "#FLG"
-				(at 0 1.905 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "PWR_FLAG"
-				(at 0 3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "Special symbol for telling ERC where power comes from"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "flag power"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "PWR_FLAG_0_0"
-				(pin power_out line
-					(at 0 0 90)
-					(length 0)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(symbol "PWR_FLAG_0_1"
-				(polyline
-					(pts
-						(xy 0 0) (xy 0 1.27) (xy -1.016 1.905) (xy 0 2.54) (xy 1.016 1.905) (xy 0 1.27)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 	)
 	(rectangle
 		(start 3.81 80.01)
@@ -9425,6 +9527,10 @@
 		(uuid "23a9af99-eb41-4f2a-aa5c-82be9f43d0b0")
 	)
 	(no_connect
+		(at 212.09 274.32)
+		(uuid "293363ef-f8c8-441b-890f-0ed89e33d0a5")
+	)
+	(no_connect
 		(at 153.67 207.01)
 		(uuid "3d66f77c-65c7-414f-93d1-3984902d5920")
 	)
@@ -9507,16 +9613,6 @@
 	(no_connect
 		(at 158.75 207.01)
 		(uuid "fd8cf969-98f8-4f79-8cc0-47a09d30473e")
-	)
-	(wire
-		(pts
-			(xy 118.11 69.85) (xy 118.11 72.39)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7802cbae-3437-4a60-a81f-f8ad0bcbcbfd")
 	)
 	(wire
 		(pts
@@ -10557,6 +10653,16 @@
 			(type default)
 		)
 		(uuid "777dd50b-a624-4c67-a7ae-6246d17cfcfe")
+	)
+	(wire
+		(pts
+			(xy 118.11 69.85) (xy 118.11 72.39)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7802cbae-3437-4a60-a81f-f8ad0bcbcbfd")
 	)
 	(wire
 		(pts
@@ -11848,6 +11954,17 @@
 			(justify left bottom)
 		)
 		(uuid "049b9279-1a56-4a78-9167-78f2c497fc88")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 175.26 43.18 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 	)
 	(global_label "+5V_VIN"
 		(shape passive)
@@ -11859,6 +11976,17 @@
 			(justify left bottom)
 		)
 		(uuid "0e3bb30b-c668-432d-a596-67b53b889d7e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 289.56 45.72 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 	)
 	(global_label "S2"
 		(shape passive)
@@ -11870,6 +11998,17 @@
 			(justify left bottom)
 		)
 		(uuid "0ee53359-4f69-4def-80eb-c5e073c3cdc7")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 379.73 151.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 	)
 	(global_label "D6"
 		(shape passive)
@@ -11881,138 +12020,17 @@
 			(justify left bottom)
 		)
 		(uuid "19718e01-5495-4ae0-8cae-3326e8dceb80")
-	)
-	(global_label "S1"
-		(shape passive)
-		(at 201.93 275.59 90)
-		(effects
-			(font
-				(size 1.5748 1.5748)
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 260.35 147.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
-			(justify left bottom)
 		)
-		(uuid "4526c9a8-8cd3-46e1-8bc2-a30e663da37d")
-	)
-	(global_label "S2"
-		(shape passive)
-		(at 201.93 290.83 90)
-		(effects
-			(font
-				(size 1.5748 1.5748)
-			)
-			(justify left bottom)
-		)
-		(uuid "56205fdc-7b44-4d0a-8ef0-4ebdd51fcd17")
-	)
-	(global_label "D1"
-		(shape passive)
-		(at 257.81 215.9 0)
-		(effects
-			(font
-				(size 1.5748 1.5748)
-			)
-			(justify left bottom)
-		)
-		(uuid "80facb72-28d0-4bcd-8230-b57a34175f8c")
-	)
-	(global_label "+5V"
-		(shape passive)
-		(at 284.48 45.72 90)
-		(effects
-			(font
-				(size 1.5748 1.5748)
-			)
-			(justify left bottom)
-		)
-		(uuid "8366aa4a-1315-4ce9-b6ba-f6de0f6ad7f4")
-	)
-	(global_label "BAT+"
-		(shape passive)
-		(at 120.65 67.31 0)
-		(effects
-			(font
-				(size 1.5748 1.5748)
-			)
-			(justify left bottom)
-		)
-		(uuid "88c3a3a4-9342-4b83-a988-394811540a79")
-	)
-	(global_label "D7"
-		(shape passive)
-		(at 160.02 142.24 0)
-		(effects
-			(font
-				(size 1.5748 1.5748)
-			)
-			(justify left bottom)
-		)
-		(uuid "9fadc688-afe8-4ed6-b662-a543f582cf10")
-	)
-	(global_label "D6"
-		(shape passive)
-		(at 160.02 139.7 0)
-		(effects
-			(font
-				(size 1.5748 1.5748)
-			)
-			(justify left bottom)
-		)
-		(uuid "b86f8d0c-231c-4e9e-aa55-6f9b7e35e1a4")
-	)
-	(global_label "S2"
-		(shape passive)
-		(at 345.44 204.47 0)
-		(effects
-			(font
-				(size 1.5748 1.5748)
-			)
-			(justify left top)
-		)
-		(uuid "bf492be1-4648-4d4c-9077-4cb844272f23")
-	)
-	(global_label "S1"
-		(shape passive)
-		(at 344.17 107.95 0)
-		(effects
-			(font
-				(size 1.5748 1.5748)
-			)
-			(justify left bottom)
-		)
-		(uuid "cf086aad-90bb-4964-99ac-c5a7ed490a5e")
-	)
-	(global_label "S1"
-		(shape passive)
-		(at 379.73 148.59 0)
-		(effects
-			(font
-				(size 1.5748 1.5748)
-			)
-			(justify left bottom)
-		)
-		(uuid "d736ea15-b3bd-423b-ae35-3d4dc562c46f")
-	)
-	(global_label "AGND"
-		(shape passive)
-		(at 201.93 256.54 90)
-		(effects
-			(font
-				(size 1.5748 1.5748)
-			)
-			(justify left bottom)
-		)
-		(uuid "e9188ece-80f3-4d13-ace2-351b5385d858")
-	)
-	(global_label "D1"
-		(shape passive)
-		(at 128.27 189.23 0)
-		(effects
-			(font
-				(size 1.5748 1.5748)
-			)
-			(justify left bottom)
-		)
-		(uuid "ee70aa41-5545-4797-a9b9-6882b5279ea5")
 	)
 	(global_label "D+"
 		(shape input)
@@ -12026,6 +12044,28 @@
 		(uuid "21515899-69da-47d6-abc8-6eb10a21c708")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 194.31 147.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "GPIO4"
+		(shape passive)
+		(at 146.05 207.01 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "24a050a4-2588-4290-ab89-4e09f243dd9b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 146.05 207.01 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12058,6 +12098,28 @@
 			)
 		)
 	)
+	(global_label "S1"
+		(shape passive)
+		(at 201.93 275.59 90)
+		(effects
+			(font
+				(size 1.5748 1.5748)
+			)
+			(justify left bottom)
+		)
+		(uuid "4526c9a8-8cd3-46e1-8bc2-a30e663da37d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 201.93 275.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
 	(global_label "32K_P"
 		(shape input)
 		(at 69.85 233.68 0)
@@ -12080,6 +12142,116 @@
 			)
 		)
 	)
+	(global_label "S2"
+		(shape passive)
+		(at 201.93 290.83 90)
+		(effects
+			(font
+				(size 1.5748 1.5748)
+			)
+			(justify left bottom)
+		)
+		(uuid "56205fdc-7b44-4d0a-8ef0-4ebdd51fcd17")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 201.93 290.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "VCC"
+		(shape passive)
+		(at 393.7 80.01 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "75a2d214-b9bf-4bfa-adc8-033465050338")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 393.7 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "D1"
+		(shape passive)
+		(at 257.81 215.9 0)
+		(effects
+			(font
+				(size 1.5748 1.5748)
+			)
+			(justify left bottom)
+		)
+		(uuid "80facb72-28d0-4bcd-8230-b57a34175f8c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 257.81 215.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "+5V"
+		(shape passive)
+		(at 284.48 45.72 90)
+		(effects
+			(font
+				(size 1.5748 1.5748)
+			)
+			(justify left bottom)
+		)
+		(uuid "8366aa4a-1315-4ce9-b6ba-f6de0f6ad7f4")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 284.48 45.72 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "BAT+"
+		(shape passive)
+		(at 120.65 67.31 0)
+		(effects
+			(font
+				(size 1.5748 1.5748)
+			)
+			(justify left bottom)
+		)
+		(uuid "88c3a3a4-9342-4b83-a988-394811540a79")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 120.65 67.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
 	(global_label "32K_N"
 		(shape input)
 		(at 130.81 181.61 180)
@@ -12092,6 +12264,94 @@
 		(uuid "9cf558a5-9d7b-42a1-9142-82100ed25569")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 130.81 181.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "S2"
+		(shape passive)
+		(at 201.93 287.02 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "9e917b7b-2770-4187-80e6-1323e8147696")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 201.93 287.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "D7"
+		(shape passive)
+		(at 160.02 142.24 0)
+		(effects
+			(font
+				(size 1.5748 1.5748)
+			)
+			(justify left bottom)
+		)
+		(uuid "9fadc688-afe8-4ed6-b662-a543f582cf10")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 160.02 142.24 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "D6"
+		(shape passive)
+		(at 160.02 139.7 0)
+		(effects
+			(font
+				(size 1.5748 1.5748)
+			)
+			(justify left bottom)
+		)
+		(uuid "b86f8d0c-231c-4e9e-aa55-6f9b7e35e1a4")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 160.02 139.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "S2"
+		(shape passive)
+		(at 345.44 204.47 0)
+		(effects
+			(font
+				(size 1.5748 1.5748)
+			)
+			(justify left top)
+		)
+		(uuid "bf492be1-4648-4d4c-9077-4cb844272f23")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 345.44 204.47 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12168,6 +12428,72 @@
 			)
 		)
 	)
+	(global_label "S1"
+		(shape passive)
+		(at 344.17 107.95 0)
+		(effects
+			(font
+				(size 1.5748 1.5748)
+			)
+			(justify left bottom)
+		)
+		(uuid "cf086aad-90bb-4964-99ac-c5a7ed490a5e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 344.17 107.95 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "S1"
+		(shape passive)
+		(at 379.73 148.59 0)
+		(effects
+			(font
+				(size 1.5748 1.5748)
+			)
+			(justify left bottom)
+		)
+		(uuid "d736ea15-b3bd-423b-ae35-3d4dc562c46f")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 379.73 148.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape passive)
+		(at 393.7 82.55 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "dbdfe242-c7eb-4ed7-a35a-c77d60c0e601")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 393.7 82.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
 	(global_label "32K_P"
 		(shape input)
 		(at 130.81 179.07 180)
@@ -12180,6 +12506,94 @@
 		(uuid "de9a3ce1-550e-4e71-849d-c6c45059e2b6")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 130.81 179.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "AGND"
+		(shape passive)
+		(at 201.93 256.54 90)
+		(effects
+			(font
+				(size 1.5748 1.5748)
+			)
+			(justify left bottom)
+		)
+		(uuid "e9188ece-80f3-4d13-ace2-351b5385d858")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 201.93 256.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "S1"
+		(shape passive)
+		(at 201.93 271.78 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "ed3cf442-897b-42c0-8218-84057f82e97d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 201.93 271.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "D1"
+		(shape passive)
+		(at 128.27 189.23 0)
+		(effects
+			(font
+				(size 1.5748 1.5748)
+			)
+			(justify left bottom)
+		)
+		(uuid "ee70aa41-5545-4797-a9b9-6882b5279ea5")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 128.27 189.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "GPIO4"
+		(shape passive)
+		(at 393.7 77.47 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "f8021e2e-0b20-411c-9666-4604b134bde1")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 393.7 77.47 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12492,7 +12906,7 @@
 		(dnp no)
 		(uuid "02a412fa-a359-450a-b097-a3f546abd707")
 		(property "Reference" "BAT1"
-			(at 115.57 63.50 0)
+			(at 115.57 63.5 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -12503,7 +12917,7 @@
 			)
 		)
 		(property "Value" "S2B-PH-SM4-TB(LF)(SN)"
-			(at 115.57 76.20 0)
+			(at 115.57 76.2 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -12607,6 +13021,12 @@
 		(pin "2"
 			(uuid "26d0fe1f-fec2-4eb4-9ed8-2ce5b4430e7f")
 		)
+		(pin "4"
+			(uuid "e910ac2e-cedb-42b7-a07a-5da0030e0524")
+		)
+		(pin "3"
+			(uuid "da79eec6-ee72-4f43-8ae6-43f46772a9a0")
+		)
 		(instances
 			(project "openrz67"
 				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
@@ -12615,17 +13035,6 @@
 				)
 			)
 		)
-	)
-	(global_label "S2"
-		(shape passive)
-		(at 201.93 287.02 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "9e917b7b-2770-4187-80e6-1323e8147696")
 	)
 	(symbol
 		(lib_id "openrz67:U.FL-R-SMT-1(80)")
@@ -13727,6 +14136,84 @@
 			(project "openrz67"
 				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
 					(reference "#PWR010")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "openrz67:PWR_FLAG")
+		(at 118.11 67.31 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim yes)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "1281dec8-3d20-4622-adac-4708c595d153")
+		(property "Reference" "#FLG04"
+			(at 118.11 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 120.65 62.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 118.11 67.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 118.11 67.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 118.11 67.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "b0cb7a83-18fa-4adc-b5e7-2e2dbe4429e1")
+		)
+		(instances
+			(project "openrz67"
+				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
+					(reference "#FLG04")
 					(unit 1)
 				)
 			)
@@ -15349,16 +15836,83 @@
 			)
 		)
 	)
-	(global_label "S1"
-		(shape passive)
-		(at 201.93 271.78 0)
-		(effects
-			(font
-				(size 1.27 1.27)
+	(symbol
+		(lib_id "openrz67:PWR_FLAG")
+		(at 354.33 105.41 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim yes)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "23f08671-0bca-447e-a959-e2cad20550d4")
+		(property "Reference" "#FLG02"
+			(at 354.33 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
-			(justify left)
 		)
-		(uuid "ed3cf442-897b-42c0-8218-84057f82e97d")
+		(property "Value" "PWR_FLAG"
+			(at 354.33 100.33 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 354.33 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 354.33 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 354.33 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "0a006951-1d8e-4bf4-9311-5a5f6a4030b8")
+		)
+		(instances
+			(project "openrz67"
+				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
+					(reference "#FLG02")
+					(unit 1)
+				)
+			)
+		)
 	)
 	(symbol
 		(lib_id "openrz67:GRM1555C1H180FA01D")
@@ -16343,6 +16897,83 @@
 			(project "openrz67"
 				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
 					(reference "#PWR021")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "openrz67:PWR_FLAG")
+		(at 43.18 29.21 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim yes)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "4343d882-9fa5-49bc-9880-e87e0a65115b")
+		(property "Reference" "#FLG05"
+			(at 43.18 25.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 43.18 24.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 43.18 29.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 43.18 29.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 43.18 29.21 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "dee5323b-7d94-4046-b8e9-600631156281")
+		)
+		(instances
+			(project "openrz67"
+				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
+					(reference "#FLG05")
 					(unit 1)
 				)
 			)
@@ -19976,6 +20607,79 @@
 		)
 	)
 	(symbol
+		(lib_id "openrz67:MountingHole")
+		(at 400.05 43.18 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files no)
+		(dnp no)
+		(uuid "7df30016-9417-4624-8507-2091a9fd80ac")
+		(property "Reference" "H2"
+			(at 400.05 40.64 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "MountingHole"
+			(at 400.05 45.72 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "openrz67:MountingHole_2.0mm_Pad3.0"
+			(at 400.05 43.18 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 400.05 43.18 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 400.05 43.18 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "openrz67"
+				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
+					(reference "H2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "openrz67:Power-VCC")
 		(at 58.42 176.53 90)
 		(unit 1)
@@ -20047,6 +20751,84 @@
 			(project "openrz67"
 				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
 					(reference "#PWR040")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "openrz67:PWR_FLAG")
+		(at 78.74 210.82 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim yes)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "824fcc05-c76b-4d3d-8a5a-4f86c5a03831")
+		(property "Reference" "#FLG01"
+			(at 78.74 207.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 78.74 205.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 78.74 210.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 78.74 210.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 78.74 210.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "554b8408-bfaf-4768-9ce8-722fcee0afe4")
+		)
+		(instances
+			(project "openrz67"
+				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
+					(reference "#FLG01")
 					(unit 1)
 				)
 			)
@@ -20800,6 +21582,84 @@
 			(project "openrz67"
 				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
 					(reference "#PWR044")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "openrz67:PWR_FLAG")
+		(at 306.07 27.94 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim yes)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "92f7b679-f624-48a0-8e4e-8a56348edaf2")
+		(property "Reference" "#FLG03"
+			(at 306.07 24.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 306.07 22.86 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 306.07 27.94 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 306.07 27.94 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 306.07 27.94 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "c81e6965-3a11-47b8-859b-b750ec0478d5")
+		)
+		(instances
+			(project "openrz67"
+				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
+					(reference "#FLG03")
 					(unit 1)
 				)
 			)
@@ -22626,6 +23486,165 @@
 			(project "openrz67"
 				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
 					(reference "L3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "openrz67:Conn_01x03")
+		(at 398.78 80.01 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files no)
+		(dnp no)
+		(uuid "b52e0b07-4793-4193-8440-007f1e4b30ed")
+		(property "Reference" "J1"
+			(at 401.32 71.12 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "EXP (not populated)"
+			(at 401.32 88.9 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "openrz67:PinHeader_1x03_P2.54mm_Vertical"
+			(at 398.78 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 398.78 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Expansion header, not populated by default: GPIO4 3V3 GND"
+			(at 398.78 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "d46b86af-7f66-4f6b-aa2d-c1b75773f727")
+		)
+		(pin "2"
+			(uuid "2f3efbc0-6775-4c5f-95f6-3fcd3c97fca2")
+		)
+		(pin "3"
+			(uuid "b6cabee0-b2de-4cc9-8aee-f5d95d678593")
+		)
+		(instances
+			(project "openrz67"
+				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
+					(reference "J1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "openrz67:PWR_FLAG")
+		(at 148.59 153.67 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim yes)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "b5bc2ace-104d-450a-ae0d-89fa314e325b")
+		(property "Reference" "#FLG06"
+			(at 148.59 149.86 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 148.59 148.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 148.59 153.67 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 148.59 153.67 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 148.59 153.67 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "87bfee68-42ed-4bdb-a484-7b4c08d6de58")
+		)
+		(instances
+			(project "openrz67"
+				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
+					(reference "#FLG06")
 					(unit 1)
 				)
 			)
@@ -24461,6 +25480,79 @@
 		)
 	)
 	(symbol
+		(lib_id "openrz67:MountingHole")
+		(at 400.05 30.48 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files no)
+		(dnp no)
+		(uuid "ec6bb66d-0d8d-40d7-a646-4803e99c4854")
+		(property "Reference" "H1"
+			(at 400.05 27.94 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "MountingHole"
+			(at 400.05 33.02 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "openrz67:MountingHole_2.0mm_Pad3.0"
+			(at 400.05 30.48 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 400.05 30.48 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 400.05 30.48 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "openrz67"
+				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
+					(reference "H1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "openrz67:Ground-GND")
 		(at 278.13 195.58 0)
 		(unit 1)
@@ -25546,618 +26638,10 @@
 			)
 		)
 	)
-	(no_connect
-		(at 212.09 274.32)
-		(uuid "293363ef-f8c8-441b-890f-0ed89e33d0a5")
-	)
-	(symbol
-		(lib_id "openrz67:PWR_FLAG")
-		(at 78.74 210.82 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim yes)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "824fcc05-c76b-4d3d-8a5a-4f86c5a03831")
-		(property "Reference" "#FLG01"
-			(at 78.74 207.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
+	(sheet_instances
+		(path "/"
+			(page "1")
 		)
-		(property "Value" "PWR_FLAG"
-			(at 78.74 205.73999999999998 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" ""
-			(at 78.74 210.82 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 78.74 210.82 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 78.74 210.82 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "openrz67"
-				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
-					(reference "#FLG01")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "openrz67:PWR_FLAG")
-		(at 354.33 105.41 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim yes)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "23f08671-0bca-447e-a959-e2cad20550d4")
-		(property "Reference" "#FLG02"
-			(at 354.33 101.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "PWR_FLAG"
-			(at 354.33 100.33 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" ""
-			(at 354.33 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 354.33 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 354.33 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "openrz67"
-				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
-					(reference "#FLG02")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "openrz67:PWR_FLAG")
-		(at 306.07 27.94 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim yes)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "92f7b679-f624-48a0-8e4e-8a56348edaf2")
-		(property "Reference" "#FLG03"
-			(at 306.07 24.130000000000003 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "PWR_FLAG"
-			(at 306.07 22.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" ""
-			(at 306.07 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 306.07 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 306.07 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "openrz67"
-				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
-					(reference "#FLG03")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "openrz67:PWR_FLAG")
-		(at 118.11 67.31 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim yes)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "1281dec8-3d20-4622-adac-4708c595d153")
-		(property "Reference" "#FLG04"
-			(at 118.11 63.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "PWR_FLAG"
-			(at 120.65 62.230000000000004 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" ""
-			(at 118.11 67.31 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 118.11 67.31 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 118.11 67.31 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "openrz67"
-				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
-					(reference "#FLG04")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "openrz67:MountingHole")
-		(at 400.05 30.48 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim yes)
-		(in_bom no)
-		(on_board yes)
-		(in_pos_files no)
-		(dnp no)
-		(uuid "ec6bb66d-0d8d-40d7-a646-4803e99c4854")
-		(property "Reference" "H1"
-			(at 400.05 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				
-			)
-		)
-		(property "Value" "MountingHole"
-			(at 400.05 33.02 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				
-			)
-		)
-		(property "Footprint" "openrz67:MountingHole_2.0mm_Pad3.0"
-			(at 400.05 30.48 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 400.05 30.48 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 400.05 30.48 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "openrz67"
-				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
-					(reference "H1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "openrz67:MountingHole")
-		(at 400.05 43.18 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim yes)
-		(in_bom no)
-		(on_board yes)
-		(in_pos_files no)
-		(dnp no)
-		(uuid "7df30016-9417-4624-8507-2091a9fd80ac")
-		(property "Reference" "H2"
-			(at 400.05 40.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				
-			)
-		)
-		(property "Value" "MountingHole"
-			(at 400.05 45.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				
-			)
-		)
-		(property "Footprint" "openrz67:MountingHole_2.0mm_Pad3.0"
-			(at 400.05 43.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 400.05 43.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 400.05 43.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "openrz67"
-				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
-					(reference "H2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "openrz67:PWR_FLAG")
-		(at 43.18 29.21 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim yes)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "4343d882-9fa5-49bc-9880-e87e0a65115b")
-		(property "Reference" "#FLG05"
-			(at 43.18 25.400000000000002 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "PWR_FLAG"
-			(at 43.18 24.130000000000003 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" ""
-			(at 43.18 29.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 43.18 29.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "openrz67"
-				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
-					(reference "#FLG05")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "openrz67:PWR_FLAG")
-		(at 148.59 153.67 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim yes)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "b5bc2ace-104d-450a-ae0d-89fa314e325b")
-		(property "Reference" "#FLG06"
-			(at 148.59 149.85999999999999 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "PWR_FLAG"
-			(at 148.59 148.58999999999997 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" ""
-			(at 148.59 153.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 148.59 153.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "openrz67"
-				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
-					(reference "#FLG06")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "openrz67:Conn_01x03")
-		(at 398.78 80.01 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim yes)
-		(in_bom no)
-		(on_board yes)
-		(in_pos_files no)
-		(dnp no)
-		(uuid "b52e0b07-4793-4193-8440-007f1e4b30ed")
-		(property "Reference" "J1"
-			(at 401.32 71.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "EXP (not populated)"
-			(at 401.32 88.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "openrz67:PinHeader_1x03_P2.54mm_Vertical"
-			(at 398.78 80.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 398.78 80.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Expansion header, not populated by default: GPIO4 3V3 GND"
-			(at 398.78 80.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "openrz67"
-				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
-					(reference "J1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(global_label "GPIO4"
-		(shape passive)
-		(at 393.7 77.47 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "f8021e2e-0b20-411c-9666-4604b134bde1")
-	)
-	(global_label "VCC"
-		(shape passive)
-		(at 393.7 80.01 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "75a2d214-b9bf-4bfa-adc8-033465050338")
-	)
-	(global_label "GND"
-		(shape passive)
-		(at 393.7 82.55 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "dbdfe242-c7eb-4ed7-a35a-c77d60c0e601")
-	)
-	(global_label "GPIO4"
-		(shape passive)
-		(at 146.05 207.01 270)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "24a050a4-2588-4290-ab89-4e09f243dd9b")
 	)
 	(embedded_fonts no)
 )

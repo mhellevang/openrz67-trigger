@@ -54,7 +54,8 @@ outline). `openrz67.kicad_dru` exempts the USB-C pads, which sit on the edge by 
 - **Board widened 22 → 25 mm** (new strip along the back edge, y 22–25 mm from the front edge).
 - **J1 expansion header** in that strip: 1×3 × 2.54 mm through-hole pads, **not populated**
   (excluded from BOM/POS). Pin 1 = **GPIO4** (ADC1_CH4, I2C/UART capable), pin 2 = **3V3**,
-  pin 3 = **GND**. Pin 1 is 33 mm from the left edge, 1.5 mm from the back edge. Only one GPIO
+  pin 3 = **GND**, each labelled in silkscreen on both sides so wires can be soldered straight in.
+  Pin 1 is 33 mm from the left edge, 1.5 mm from the back edge. Only one GPIO
   is routed: the free ESP32-C3 pins (GPIO4–7, GPIO10) all sit on the QFN's right column and
   share a single escape between existing traces; a second signal would need the VCC/D1/CHIP_EN
   tracks around U1 moved. GPIO4 runs F.Cu stub → via → B.Cu around the west end of the VCC

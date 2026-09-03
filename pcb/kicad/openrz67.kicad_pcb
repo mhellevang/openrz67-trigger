@@ -19636,12 +19636,12 @@
 		(descr "Through hole straight pin header, 1x03, 2.54mm pitch, single row")
 		(tags "Through hole pin header THT 1x03 2.54mm single row")
 		(property "Reference" "J1"
-			(at 0 -2.38 90)
+			(at 0 -2 90)
 			(layer "F.SilkS")
 			(uuid "18f7eba7-2427-42db-a72d-5ac5753b71b8")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.7 0.7)
 					(thickness 0.15)
 				)
 			)
@@ -19694,66 +19694,6 @@
 		)
 		(attr through_hole exclude_from_pos_files exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
-		(fp_line
-			(start -1.38 -1.38)
-			(end 0 -1.38)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "8a9ba80c-4b36-44ed-8624-40fd54e9c916")
-		)
-		(fp_line
-			(start -1.38 0)
-			(end -1.38 -1.38)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "9a265fb1-5b20-4066-908e-edf3d8c57c53")
-		)
-		(fp_line
-			(start 1.38 1.27)
-			(end 1.38 6.46)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "b133c0dc-612c-4065-899b-e61b016ed3a6")
-		)
-		(fp_line
-			(start -1.38 1.27)
-			(end 1.38 1.27)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "d095f947-a00f-49e3-b2ed-ea30690d4230")
-		)
-		(fp_line
-			(start -1.38 1.27)
-			(end -1.38 6.46)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "0b975b30-7852-48d0-ae30-f493360949f7")
-		)
-		(fp_line
-			(start -1.38 6.46)
-			(end 1.38 6.46)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "efd3be9c-f80e-4753-9779-4c77b0faa4ac")
-		)
 		(fp_rect
 			(start -1.77 -1.77)
 			(end 1.77 6.85)
@@ -19764,6 +19704,16 @@
 			(fill no)
 			(layer "F.CrtYd")
 			(uuid "5e7d0d69-2337-4108-a8a1-71f590b74315")
+		)
+		(fp_line
+			(start -1.38 -1.38)
+			(end 0 -1.38)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "8a9ba80c-4b36-44ed-8624-40fd54e9c916")
 		)
 		(fp_line
 			(start 1.27 -1.27)
@@ -19796,6 +19746,46 @@
 			(uuid "159d47ca-3b6a-49c6-8ae9-6313e39210be")
 		)
 		(fp_line
+			(start -1.38 0)
+			(end -1.38 -1.38)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "9a265fb1-5b20-4066-908e-edf3d8c57c53")
+		)
+		(fp_line
+			(start 1.38 1.27)
+			(end 1.38 6.46)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "b133c0dc-612c-4065-899b-e61b016ed3a6")
+		)
+		(fp_line
+			(start -1.38 1.27)
+			(end 1.38 1.27)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "d095f947-a00f-49e3-b2ed-ea30690d4230")
+		)
+		(fp_line
+			(start -1.38 1.27)
+			(end -1.38 6.46)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "0b975b30-7852-48d0-ae30-f493360949f7")
+		)
+		(fp_line
 			(start 1.27 6.35)
 			(end -1.27 6.35)
 			(stroke
@@ -19814,6 +19804,16 @@
 			)
 			(layer "F.Fab")
 			(uuid "d492ac96-4471-44af-bdda-c8d90ff59482")
+		)
+		(fp_line
+			(start -1.38 6.46)
+			(end 1.38 6.46)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "efd3be9c-f80e-4753-9779-4c77b0faa4ac")
 		)
 		(fp_text user "${REFERENCE}"
 			(at 0 2.54 180)
@@ -26798,6 +26798,39 @@
 			(justify left bottom)
 		)
 	)
+	(gr_text "GPIO4"
+		(at 152.9 112.2 0)
+		(layer "F.SilkS")
+		(uuid "be46a418-10e1-4b9a-8219-e1141f55f1ff")
+		(effects
+			(font
+				(size 0.6 0.6)
+				(thickness 0.12)
+			)
+		)
+	)
+	(gr_text "3V3"
+		(at 155.44 112.2 0)
+		(layer "F.SilkS")
+		(uuid "016ff235-a73d-4dc5-a170-af9d2982b8fd")
+		(effects
+			(font
+				(size 0.6 0.6)
+				(thickness 0.12)
+			)
+		)
+	)
+	(gr_text "GND"
+		(at 157.98 112.2 0)
+		(layer "F.SilkS")
+		(uuid "565e8e0d-cfcf-48f8-ac13-ae561b8913a9")
+		(effects
+			(font
+				(size 0.6 0.6)
+				(thickness 0.12)
+			)
+		)
+	)
 	(gr_text "-"
 		(at 123.354 98.9025 0)
 		(layer "F.SilkS")
@@ -26808,6 +26841,42 @@
 				(thickness 0.203)
 			)
 			(justify left bottom)
+		)
+	)
+	(gr_text "GPIO4"
+		(at 152.9 112.2 0)
+		(layer "B.SilkS")
+		(uuid "07c0d7c9-0fe6-4d4c-9309-60638da8840e")
+		(effects
+			(font
+				(size 0.6 0.6)
+				(thickness 0.12)
+			)
+			(justify mirror)
+		)
+	)
+	(gr_text "3V3"
+		(at 155.44 112.2 0)
+		(layer "B.SilkS")
+		(uuid "353fb26b-4779-41e7-93c2-c721afcfd308")
+		(effects
+			(font
+				(size 0.6 0.6)
+				(thickness 0.12)
+			)
+			(justify mirror)
+		)
+	)
+	(gr_text "GND"
+		(at 157.98 112.2 0)
+		(layer "B.SilkS")
+		(uuid "df4668e1-2d25-423f-af19-09a4ee300bd7")
+		(effects
+			(font
+				(size 0.6 0.6)
+				(thickness 0.12)
+			)
+			(justify mirror)
 		)
 	)
 	(gr_text "BAT+"
