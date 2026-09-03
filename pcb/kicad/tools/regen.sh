@@ -1,0 +1,78 @@
+#!/bin/sh
+# Regenerate everything under out/ from the KiCad sources, in one go.
+#
+# Run this after any change to openrz67.kicad_pcb or openrz67.kicad_sch, so the
+# committed outputs and the check reports always describe the committed sources.
+# Close KiCad first: tools/post_import.py rewrites the board and the project file
+# in place.
+#
+# Override the tool paths if KiCad lives elsewhere:
+#   KICAD_CLI=/usr/bin/kicad-cli KICAD_PY=/usr/bin/python3 tools/regen.sh
+set -eu
+cd "$(dirname "$0")/.."
+
+APP=/Applications/KiCad/KiCad.app/Contents
+KICAD_CLI=${KICAD_CLI:-$(command -v kicad-cli || echo "$APP/MacOS/kicad-cli")}
+KICAD_PY=${KICAD_PY:-$APP/Frameworks/Python.framework/Versions/Current/bin/python3}
+[ -x "$KICAD_CLI" ] || { echo "kicad-cli not found; set KICAD_CLI" >&2; exit 1; }
+[ -x "$KICAD_PY" ]  || { echo "KiCad python not found; set KICAD_PY" >&2; exit 1; }
+
+PCB=openrz67.kicad_pcb
+SCH=openrz67.kicad_sch
+mkdir -p out/gerber
+
+echo "==> design rules, net classes, zone fill"
+"$KICAD_PY" tools/post_import.py "$PCB" >/dev/null
+
+echo "==> gerbers + drill"
+rm -f out/gerber/*.gbr out/gerber/*.gbl out/gerber/*.gtl out/gerber/*.gbs out/gerber/*.gts \
+      out/gerber/*.gbp out/gerber/*.gtp out/gerber/*.gbo out/gerber/*.gto out/gerber/*.gm1 \
+      out/gerber/*.drl out/gerber/*.gbrjob
+"$KICAD_CLI" pcb export gerbers \
+  --layers F.Cu,B.Cu,F.Mask,B.Mask,F.Paste,B.Paste,F.SilkS,B.SilkS,Edge.Cuts \
+  --subtract-soldermask -o out/gerber/ "$PCB" >/dev/null
+"$KICAD_CLI" pcb export drill --format excellon --excellon-units mm \
+  --excellon-separate-th --generate-map --map-format gerberx2 -o out/gerber/ "$PCB" >/dev/null
+
+echo "==> gerber zip"
+rm -f out/openrz67-gerber.zip
+( cd out && zip -qrX openrz67-gerber.zip gerber )
+
+echo "==> position file"
+"$KICAD_CLI" pcb export pos --format csv --units mm --side both --exclude-dnp \
+  --use-drill-file-origin -o out/openrz67-pos.csv "$PCB" >/dev/null
+
+echo "==> bill of materials"
+# --ref-range-delimiter '' lists every designator explicitly, which is the form
+# JLCPCB accepted for the rev-1 order; ranges like "C3-C7" are not documented as
+# supported by their BOM parser.
+"$KICAD_CLI" sch export bom \
+  --fields 'Reference,${QUANTITY},Value,Footprint,Manufacturer,Manufacturer Part,Supplier Part' \
+  --labels 'Designator,Qty,Value,Footprint,Manufacturer,MPN,LCSC' \
+  --group-by 'Value,Footprint,Supplier Part' --ref-range-delimiter '' --exclude-dnp \
+  -o out/openrz67-bom.csv "$SCH" >/dev/null
+
+echo "==> schematic pdf"
+"$KICAD_CLI" sch export pdf -o out/openrz67-schematic.pdf "$SCH" >/dev/null
+
+echo "==> renders"
+"$KICAD_CLI" pcb render --side top    --width 1768 --height 984 --quality high \
+  -o out/openrz67-top.png "$PCB" >/dev/null
+"$KICAD_CLI" pcb render --side bottom --width 1768 --height 984 --quality high \
+  -o out/openrz67-bottom.png "$PCB" >/dev/null
+
+echo "==> checks"
+"$KICAD_CLI" pcb drc --schematic-parity --severity-all -o out/drc.rpt "$PCB" >/dev/null
+"$KICAD_CLI" sch erc --severity-all -o out/erc.rpt "$SCH" >/dev/null
+grep -hE '\*\* (Found|ERC)' out/drc.rpt out/erc.rpt || true
+
+# Gate on errors only. The remaining warnings are accepted and listed above:
+# courtyard overlaps inherited from the fabricated rev-1 layout, and dangling
+# wire ends inherited from the EasyEDA drawing. Note that --exit-code-violations
+# counts warnings as violations too, so it cannot serve as this gate.
+fail=0
+grep -q '^\*\* Found 0 unconnected pads' out/drc.rpt || { echo "FAIL: unconnected pads" >&2; fail=1; }
+grep -qE '^ \*\* ERC messages: [0-9]+  Errors 0' out/erc.rpt || { echo "FAIL: ERC errors" >&2; fail=1; }
+if grep -q '; error$' out/drc.rpt; then echo "FAIL: DRC errors" >&2; fail=1; fi
+if [ "$fail" -eq 0 ]; then echo "==> out/ regenerated, no errors"; fi
+exit "$fail"
