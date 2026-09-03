@@ -41,6 +41,17 @@ Net classes: `gnd` (GND, 0.13 track), `3v` (VCC, 0.20), `5v` (+5V, 0.254 track, 
 Copper-to-edge clearance is 0.30 mm (JLCPCB recommendation; the original pours ran to the
 outline). `openrz67.kicad_dru` exempts the USB-C pads, which sit on the edge by design.
 
+## Rev 2 layout changes (2026-09-03)
+
+- **U4** camera connector: side-entry S4B-XH-A, opening out of the right board edge.
+- **BAT1** battery connector: SMD side-entry **S2B-PH-SM4-TB** (LCSC C295747) on the **bottom**
+  side at the left end (centre 9.7 mm from the left edge, 4.4 mm from the top edge), opening
+  toward the board centre. The battery lies flat under the board and plugs in without bending
+  the leads. Under-board height needed: 6.0 mm for the connector; keep a ~1.5 mm foam pad between
+  the cell and the PCB (through-hole tails of USB1/U4 protrude ~1 mm). Pin 1 = BAT+ as before.
+  BAT+ reaches the bottom through a 0.6/0.3 via next to C22; GND is the bottom pour.
+  JLCPCB two-sided assembly costs extra: BAT1 can also be left unplaced and hand-soldered.
+
 ## Port notes (2026-09-03)
 
 - Import path: EasyEDA Pro **v2** `.epro` → KiCad "Import Non-KiCad Project". The v3

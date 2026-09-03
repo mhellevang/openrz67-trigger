@@ -11,6 +11,104 @@
 		(comment 1 "Ported from EasyEDA Pro project ESP32C3CameraTrigger 2026-09-02 (rev with side-entry U4)")
 	)
 	(lib_symbols
+		(symbol "openrz67:S2B-PH-SM4-TB"
+		    (in_bom yes)
+		    (on_board yes)
+		    (property
+		      "Reference"
+		      "CN"
+		      (id 0)
+		      (at 0 11.43 0)
+		      (effects (font (size 1.27 1.27) ) )
+		    )
+		    (property
+		      "Value"
+		      "S2B-PH-SM4-TB"
+		      (id 1)
+		      (at 0 -11.43 0)
+		      (effects (font (size 1.27 1.27) ) )
+		    )
+		    (property
+		      "Footprint"
+		      "openrz67:CONN-SMD_P2.00_S2B-PH-SM4-TB-LF-SN"
+		      (id 2)
+		      (at 0 -13.97 0)
+		      (effects (font (size 1.27 1.27) ) hide)
+		    )
+		    (property
+		      "Datasheet"
+		      "https://lcsc.com/product-detail/_JST-Sales-America_S2B-PH-SM4-TB-LF-SN_JST-Sales-America-S2B-PH-SM4-TB-LF-SN_C295747.html"
+		      (id 3)
+		      (at 0 -16.51 0)
+		      (effects (font (size 1.27 1.27) ) hide)
+		    )
+		    (property
+		      "Manufacturer"
+		      "JST"
+		      (id 4)
+		      (at 0 -19.05 0)
+		      (effects (font (size 1.27 1.27) ) hide)
+		    )
+		    (property
+		      "MPN"
+		      "S2B-PH-SM4-TB(LF)(SN)"
+		      (id 5)
+		      (at 0 -21.59 0)
+		      (effects (font (size 1.27 1.27) ) hide)
+		    )
+		    (property
+		      "LCSC Part"
+		      "C295747"
+		      (id 6)
+		      (at 0 -24.13 0)
+		      (effects (font (size 1.27 1.27) ) hide)
+		    )
+		    (property
+		      "ki_keywords"
+		      "Wire To Board / Wire To Wire Connector"
+		      (id 8)
+		      (at 0 -26.67 0)
+		      (effects (font (size 1.27 1.27) ) hide)
+		    )
+		    (symbol "S2B-PH-SM4-TB_0_1"
+		      (rectangle
+		        (start -1.27 3.81)
+		        (end 5.08 -3.81)
+		        (stroke (width 0) (type default))
+		        (fill (type background))
+		      )
+		      (circle
+		        (center 0.00 2.54)
+		        (radius 0.38)
+		        (stroke (width 0) (type default))
+		        (fill (type none))
+		      )
+		      (pin passive line
+		        (at -3.81 1.27 0)
+		        (length 2.54)
+		        (name "1" (effects (font (size 1.27 1.27))))
+		        (number "1" (effects (font (size 1.27 1.27))))
+		      )
+		      (pin passive line
+		        (at -3.81 -1.27 0)
+		        (length 2.54)
+		        (name "2" (effects (font (size 1.27 1.27))))
+		        (number "2" (effects (font (size 1.27 1.27))))
+		      )
+		      (pin no_connect line
+		        (at 3.81 -6.35 90)
+		        (length 2.54)
+		        (name "3" (effects (font (size 1.27 1.27))))
+		        (number "3" (effects (font (size 1.27 1.27))))
+		      )
+		      (pin no_connect line
+		        (at 3.81 6.35 270)
+		        (length 2.54)
+		        (name "4" (effects (font (size 1.27 1.27))))
+		        (number "4" (effects (font (size 1.27 1.27))))
+		      )
+		    )
+		  )
 		(symbol "openrz67:0402WGF1003TCE"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -9225,6 +9323,16 @@
 	)
 	(wire
 		(pts
+			(xy 118.11 69.85) (xy 118.11 72.39)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7802cbae-3437-4a60-a81f-f8ad0bcbcbfd")
+	)
+	(wire
+		(pts
 			(xy 146.05 153.67) (xy 146.05 140.97)
 		)
 		(stroke
@@ -12186,8 +12294,8 @@
 		)
 	)
 	(symbol
-		(lib_id "openrz67:B2B-PH-K-S(LF)(SN)")
-		(at 111.76 69.85 0)
+		(lib_id "openrz67:S2B-PH-SM4-TB")
+		(at 121.92 68.58 0)
 		(unit 1)
 		(body_style 0)
 		(exclude_from_sim no)
@@ -12197,7 +12305,7 @@
 		(dnp no)
 		(uuid "02a412fa-a359-450a-b097-a3f546abd707")
 		(property "Reference" "BAT1"
-			(at 105.41 64.77 0)
+			(at 115.57 63.50 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -12207,8 +12315,8 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "B2B-PH-K-S(LF)(SN)"
-			(at 105.41 77.47 0)
+		(property "Value" "S2B-PH-SM4-TB(LF)(SN)"
+			(at 115.57 76.20 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -12218,8 +12326,8 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "openrz67:CONN-TH_B2B-PH-K-S"
-			(at 111.76 69.85 0)
+		(property "Footprint" "openrz67:CONN-SMD_P2.00_S2B-PH-SM4-TB-LF-SN"
+			(at 121.92 68.58 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12230,7 +12338,7 @@
 			)
 		)
 		(property "Datasheet" "https://atta.szlcsc.com/upload/public/pdf/source/20171026/C131342_15089839687311058815.pdf"
-			(at 111.76 69.85 0)
+			(at 121.92 68.58 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12241,7 +12349,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 111.76 69.85 0)
+			(at 121.92 68.58 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12251,8 +12359,8 @@
 				)
 			)
 		)
-		(property "Manufacturer Part" "B2B-PH-K-S(LF)(SN)"
-			(at 111.76 69.85 0)
+		(property "Manufacturer Part" "S2B-PH-SM4-TB(LF)(SN)"
+			(at 121.92 68.58 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12263,7 +12371,7 @@
 			)
 		)
 		(property "Manufacturer" "JST"
-			(at 111.76 69.85 0)
+			(at 121.92 68.58 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12273,8 +12381,8 @@
 				)
 			)
 		)
-		(property "Supplier Part" "C131337"
-			(at 111.76 69.85 0)
+		(property "Supplier Part" "C295747"
+			(at 121.92 68.58 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12285,7 +12393,7 @@
 			)
 		)
 		(property "Supplier" "LCSC"
-			(at 111.76 69.85 0)
+			(at 121.92 68.58 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12295,8 +12403,8 @@
 				)
 			)
 		)
-		(property "LCSC Part Name" "1x2P 间距:2mm 直插 系列:PH"
-			(at 111.76 69.85 0)
+		(property "LCSC Part Name" "2P PH SMD side-entry 2.0mm"
+			(at 121.92 68.58 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
