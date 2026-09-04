@@ -26,8 +26,8 @@ static NullStream nullSerial;
 #endif
 
 constexpr int ledPin = 20; // GPIO20 (U0RXD)
-constexpr int shutterPinD1 = 3; // GPIO03
-constexpr int shutterPinD6 = 21; // GPIO21 (U0TXD)
+constexpr int shutterPinS2 = 3; // GPIO3, drives U6 (camera S2)
+constexpr int shutterPinS1 = 4; // GPIO4, drives U5 (camera S1); rev 1 used GPIO21 (U0TXD)
 
 int incoming;
 unsigned long now;
@@ -48,14 +48,14 @@ void cancelCountdown();
 
 void openShutter() {
     Serial.println("Setting shutterPins HIGH...");
-    digitalWrite(shutterPinD1, HIGH);
-    digitalWrite(shutterPinD6, HIGH);
+    digitalWrite(shutterPinS2, HIGH);
+    digitalWrite(shutterPinS1, HIGH);
 }
 
 void closeShutter() {
     Serial.println("Setting shutterPins LOW...");
-    digitalWrite(shutterPinD1, LOW);
-    digitalWrite(shutterPinD6, LOW);
+    digitalWrite(shutterPinS2, LOW);
+    digitalWrite(shutterPinS1, LOW);
 }
 
 void triggerShutter() {
@@ -314,14 +314,14 @@ void setup() {
 
     Serial.println("Configuring GPIO pins...");
     pinMode(ledPin, OUTPUT);
-    pinMode(shutterPinD6, OUTPUT);
-    pinMode(shutterPinD1, OUTPUT);
+    pinMode(shutterPinS1, OUTPUT);
+    pinMode(shutterPinS2, OUTPUT);
     Serial.print("LED pin configured: GPIO");
     Serial.println(ledPin);
     Serial.print("Shutter pin configured: GPIO");
-    Serial.println(shutterPinD1);
+    Serial.println(shutterPinS2);
     Serial.print("Shutter pin configured: GPIO");
-    Serial.println(shutterPinD6);
+    Serial.println(shutterPinS1);
 
     // Configure power management for frequency scaling
     configurePowerManagement();

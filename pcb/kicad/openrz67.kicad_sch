@@ -8020,7 +8020,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(symbol "openrz67:0402WGF3300TCE"
+	(symbol "openrz67:0402WGF2200TCE"
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -8058,7 +8058,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C25104.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C25091.html"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8080,7 +8080,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part" "0402WGF3300TCE"
+		(property "Manufacturer Part" "0402WGF2200TCE"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8102,7 +8102,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" "C25104"
+		(property "Supplier Part" "C25091"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8124,7 +8124,7 @@
 				)
 			)
 		)
-		(property "LCSC Part Name" "330Ω ±1% 62.5mW 厚膜电阻"
+		(property "LCSC Part Name" "220Ω ±1% 62.5mW 厚膜电阻"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8135,7 +8135,7 @@
 				)
 			)
 		)
-		(symbol "0402WGF3300TCE_1_0"
+		(symbol "0402WGF2200TCE_1_0"
 			(rectangle
 				(start -2.54 1.016)
 				(end 2.54 -1.016)
@@ -8301,7 +8301,7 @@
 		)
 		(uuid "f80aa0d7-6ccb-4aec-baba-04f813739e84")
 	)
-	(text "const int shutterPin = D6; // Pin for trigger"
+	(text "S1_DRV = GPIO4, S2_DRV = GPIO3 (src/main.cpp)"
 		(exclude_from_sim no)
 		(at 245.11 170.18 0)
 		(effects
@@ -8611,10 +8611,6 @@
 		(uuid "b2b681bf-08b0-4fd0-8cf9-e7a3f9bcff75")
 	)
 	(no_connect
-		(at 146.05 207.01)
-		(uuid "c09b9bfc-4041-47ca-afdd-aecbc3bd4e88")
-	)
-	(no_connect
 		(at 34.29 49.53)
 		(uuid "cd5e549e-3d28-4c3c-9d08-c921040a70c2")
 	)
@@ -8747,16 +8743,6 @@
 			(type default)
 		)
 		(uuid "0d4db9ad-eb2e-4638-a28c-8b535e0240b9")
-	)
-	(wire
-		(pts
-			(xy 160.02 139.7) (xy 156.21 139.7)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0dc888c1-0afa-47e0-b27f-b0ad597c43cc")
 	)
 	(wire
 		(pts
@@ -10190,16 +10176,6 @@
 	)
 	(wire
 		(pts
-			(xy 156.21 153.67) (xy 156.21 139.7)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d791b6d1-4a78-499b-9bab-cbaa096f3d3b")
-	)
-	(wire
-		(pts
 			(xy 53.34 233.68) (xy 62.23 233.68)
 		)
 		(stroke
@@ -10651,7 +10627,7 @@
 		)
 		(uuid "0e3bb30b-c668-432d-a596-67b53b889d7e")
 	)
-	(global_label "D6"
+	(global_label "S1_DRV"
 		(shape passive)
 		(at 260.35 147.32 0)
 		(effects
@@ -10684,7 +10660,7 @@
 		)
 		(uuid "56205fdc-7b44-4d0a-8ef0-4ebdd51fcd17")
 	)
-	(global_label "D1"
+	(global_label "S2_DRV"
 		(shape passive)
 		(at 257.81 215.9 0)
 		(effects
@@ -10728,17 +10704,6 @@
 		)
 		(uuid "9fadc688-afe8-4ed6-b662-a543f582cf10")
 	)
-	(global_label "D6"
-		(shape passive)
-		(at 160.02 139.7 0)
-		(effects
-			(font
-				(size 1.5748 1.5748)
-			)
-			(justify left bottom)
-		)
-		(uuid "b86f8d0c-231c-4e9e-aa55-6f9b7e35e1a4")
-	)
 	(global_label "AGND"
 		(shape passive)
 		(at 201.93 256.54 90)
@@ -10750,7 +10715,7 @@
 		)
 		(uuid "e9188ece-80f3-4d13-ace2-351b5385d858")
 	)
-	(global_label "D1"
+	(global_label "S2_DRV"
 		(shape passive)
 		(at 128.27 189.23 0)
 		(effects
@@ -22909,8 +22874,8 @@
 		)
 	)
 	(embedded_fonts no)
-		(symbol
-		(lib_id "openrz67:0402WGF3300TCE")
+	(symbol
+		(lib_id "openrz67:0402WGF2200TCE")
 		(at 278.13 147.32 180)
 		(unit 1)
 		(body_style 0)
@@ -22931,7 +22896,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "330Ω"
+		(property "Value" "220Ω"
 			(at 275.59 150.622 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -22953,7 +22918,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C25104.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C25091.html"
 			(at 278.13 147.32 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -22975,7 +22940,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part" "0402WGF3300TCE"
+		(property "Manufacturer Part" "0402WGF2200TCE"
 			(at 278.13 147.32 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -22997,7 +22962,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" "C25104"
+		(property "Supplier Part" "C25091"
 			(at 278.13 147.32 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23019,7 +22984,7 @@
 				)
 			)
 		)
-		(property "LCSC Part Name" "330Ω ±1% 62.5mW 厚膜电阻"
+		(property "LCSC Part Name" "220Ω ±1% 62.5mW 厚膜电阻"
 			(at 278.13 147.32 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23045,7 +23010,7 @@
 			)
 		)
 	)
-		(symbol
+	(symbol
 		(lib_id "openrz67:TLP172GM")
 		(at 300.99 149.86 0)
 		(unit 1)
@@ -23185,7 +23150,7 @@
 			)
 		)
 	)
-		(wire
+	(wire
 		(pts
 			(xy 283.21 147.32) (xy 289.56 147.32)
 		)
@@ -23195,7 +23160,7 @@
 		)
 		(uuid "41a8cad3-966e-4914-8980-44f86564d39e")
 	)
-		(wire
+	(wire
 		(pts
 			(xy 289.56 152.4) (xy 289.56 157.48)
 		)
@@ -23205,7 +23170,7 @@
 		)
 		(uuid "8349285d-ff7a-4165-b4f7-c6d329cd1fd1")
 	)
-		(symbol
+	(symbol
 		(lib_id "openrz67:Ground-GND")
 		(at 289.56 157.48 0)
 		(unit 1)
@@ -23282,7 +23247,7 @@
 			)
 		)
 	)
-		(wire
+	(wire
 		(pts
 			(xy 312.42 147.32) (xy 320.04 147.32)
 		)
@@ -23292,7 +23257,7 @@
 		)
 		(uuid "af9d5d3c-d5be-4ba6-9a30-e11d9ad36f47")
 	)
-		(global_label "S1"
+	(global_label "S1"
 		(shape passive)
 		(at 320.04 147.32 0)
 		(effects
@@ -23303,7 +23268,7 @@
 		)
 		(uuid "e6802758-1c4a-4aed-955e-336351ef2d2d")
 	)
-		(wire
+	(wire
 		(pts
 			(xy 312.42 152.4) (xy 312.42 157.48)
 		)
@@ -23313,7 +23278,7 @@
 		)
 		(uuid "888be251-fd0f-4508-ac97-05ff1f6a5b30")
 	)
-		(symbol
+	(symbol
 		(lib_id "openrz67:Ground-AGND")
 		(at 312.42 157.48 0)
 		(unit 1)
@@ -23390,7 +23355,7 @@
 			)
 		)
 	)
-		(symbol
+	(symbol
 		(lib_id "openrz67:PWR_FLAG")
 		(at 312.42 157.48 0)
 		(unit 1)
@@ -23468,8 +23433,8 @@
 			)
 		)
 	)
-		(symbol
-		(lib_id "openrz67:0402WGF3300TCE")
+	(symbol
+		(lib_id "openrz67:0402WGF2200TCE")
 		(at 279.4 215.9 180)
 		(unit 1)
 		(body_style 0)
@@ -23490,7 +23455,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "330Ω"
+		(property "Value" "220Ω"
 			(at 276.86 219.202 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23512,7 +23477,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C25104.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C25091.html"
 			(at 279.4 215.9 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23534,7 +23499,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part" "0402WGF3300TCE"
+		(property "Manufacturer Part" "0402WGF2200TCE"
 			(at 279.4 215.9 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23556,7 +23521,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" "C25104"
+		(property "Supplier Part" "C25091"
 			(at 279.4 215.9 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23578,7 +23543,7 @@
 				)
 			)
 		)
-		(property "LCSC Part Name" "330Ω ±1% 62.5mW 厚膜电阻"
+		(property "LCSC Part Name" "220Ω ±1% 62.5mW 厚膜电阻"
 			(at 279.4 215.9 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23604,7 +23569,7 @@
 			)
 		)
 	)
-		(symbol
+	(symbol
 		(lib_id "openrz67:TLP172GM")
 		(at 302.26 218.44 0)
 		(unit 1)
@@ -23744,7 +23709,7 @@
 			)
 		)
 	)
-		(wire
+	(wire
 		(pts
 			(xy 284.48 215.9) (xy 290.83 215.9)
 		)
@@ -23754,7 +23719,7 @@
 		)
 		(uuid "6cd37600-e14d-492a-b64a-e9d21db05d31")
 	)
-		(wire
+	(wire
 		(pts
 			(xy 290.83 220.98) (xy 290.83 226.06)
 		)
@@ -23764,7 +23729,7 @@
 		)
 		(uuid "be375c44-f4ae-4f7e-a68c-d3d4b6835269")
 	)
-		(symbol
+	(symbol
 		(lib_id "openrz67:Ground-GND")
 		(at 290.83 226.06 0)
 		(unit 1)
@@ -23841,7 +23806,7 @@
 			)
 		)
 	)
-		(wire
+	(wire
 		(pts
 			(xy 313.69 215.9) (xy 321.31 215.9)
 		)
@@ -23851,7 +23816,7 @@
 		)
 		(uuid "de4c0383-492c-48a4-87ce-dd24814512b4")
 	)
-		(global_label "S2"
+	(global_label "S2"
 		(shape passive)
 		(at 321.31 215.9 0)
 		(effects
@@ -23862,7 +23827,7 @@
 		)
 		(uuid "80a426f3-b5a2-4b33-8197-2910f10a4417")
 	)
-		(wire
+	(wire
 		(pts
 			(xy 313.69 220.98) (xy 313.69 226.06)
 		)
@@ -23872,7 +23837,7 @@
 		)
 		(uuid "c05e4efc-5c41-4bde-8137-f5d7cbcf4a3e")
 	)
-		(symbol
+	(symbol
 		(lib_id "openrz67:Ground-AGND")
 		(at 313.69 226.06 0)
 		(unit 1)
@@ -23948,5 +23913,30 @@
 				)
 			)
 		)
+	)
+		(no_connect
+		(at 156.21 153.67)
+		(uuid "42c4d183-f36e-469e-b615-afb9fa777aa2")
+	)
+		(wire
+		(pts
+			(xy 146.05 207.01) (xy 146.05 214.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8e80c29e-50a6-4b31-8c2a-7d24fbdfdc7f")
+	)
+		(global_label "S1_DRV"
+		(shape passive)
+		(at 146.05 214.63 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "e91bcc48-2167-44bb-8c3b-228fb45a80e5")
 	)
 )

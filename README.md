@@ -26,7 +26,7 @@ The current source is **rev 2, not yet fabricated**: it moves the battery connec
 * 250 mAh LiPo for power, on a JST S2B-PH-SM4-TB side-entry connector (`BAT1`) on the board's underside
 * SS12F15 slide switch
 
-The solution is flexible: an ESP32-C3 development board such as the Seeed XIAO ESP32C3 and two isolated switch channels work too. Assign two output-capable GPIOs in `src/main.cpp`. On the PCB each channel is a TLP172GM PhotoMOS relay whose LED is driven directly from the GPIO through 330 Ω; the output closes S1 or S2 to camera ground while the GPIO is HIGH. The earlier reference circuit with two Omron G6K-2F-Y DC3 relays, active-high transistor drivers and flyback diodes (rev 1, diagram below) works the same way; relay modules may need a different supply voltage or inverted logic.
+The solution is flexible: an ESP32-C3 development board such as the Seeed XIAO ESP32C3 and two isolated switch channels work too. Assign two output-capable GPIOs in `src/main.cpp`. On the PCB each channel is a TLP172GM PhotoMOS relay whose LED is driven directly from the GPIO through 220 Ω; the output closes S1 or S2 to camera ground while the GPIO is HIGH. The earlier reference circuit with two Omron G6K-2F-Y DC3 relays, active-high transistor drivers and flyback diodes (rev 1, diagram below) works the same way; relay modules may need a different supply voltage or inverted logic.
 
 ![Wiring diagram for an ESP32-C3, two relay channels and the Mamiya RZ67 camera port (rev-1 reference circuit)](assets/wiring-diagram.svg)
 
@@ -34,8 +34,8 @@ The solution is flexible: an ESP32-C3 development board such as the Seeed XIAO E
 
 | GPIO | Function |
 |------|----------|
-| 3    | Shutter output S2 (U6) |
-| 21   | Shutter output S1 (U5) |
+| 3    | Shutter output S2 (U6), net `S2_DRV` |
+| 4    | Shutter output S1 (U5), net `S1_DRV` |
 | 20   | Status LED |
 
 ### Camera connector
@@ -97,7 +97,7 @@ pio run -t upload
 
 If uploading does not start, hold `BOOT`, press and release `EN`, then release `BOOT` and retry.
 
-Serial logging is disabled because UART0 uses GPIO 20 and GPIO 21, which are assigned to the status LED and a shutter output.
+Serial logging is disabled because UART0 RX is GPIO 20, which drives the status LED. Rev 1 also used GPIO 21 (UART0 TX) for a shutter output; rev 2 moved that output to GPIO 4, so TX-only logging is possible again.
 
 ## License
 

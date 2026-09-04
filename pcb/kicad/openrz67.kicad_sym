@@ -8011,7 +8011,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(symbol "0402WGF3300TCE"
+	(symbol "0402WGF2200TCE"
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -8049,7 +8049,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/product-detail/C25104.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C25091.html"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8071,7 +8071,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part" "0402WGF3300TCE"
+		(property "Manufacturer Part" "0402WGF2200TCE"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8093,7 +8093,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" "C25104"
+		(property "Supplier Part" "C25091"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8115,7 +8115,7 @@
 				)
 			)
 		)
-		(property "LCSC Part Name" "330Ω ±1% 62.5mW 厚膜电阻"
+		(property "LCSC Part Name" "220Ω ±1% 62.5mW 厚膜电阻"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8126,7 +8126,7 @@
 				)
 			)
 		)
-		(symbol "0402WGF3300TCE_1_0"
+		(symbol "0402WGF2200TCE_1_0"
 			(rectangle
 				(start -2.54 1.016)
 				(end 2.54 -1.016)

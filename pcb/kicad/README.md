@@ -75,9 +75,12 @@ Outline unchanged from rev 1: **48 × 22 mm**, 2 mm corner radius, mounting hole
 - **Shutter outputs are PhotoMOS, not relays (2026-09-04).** K1/K2 (G6K-2F-Y), their DTC114E
   drivers Q1/Q2, flyback diodes D1/D2 and coil decoupling C27/C28 are gone. Each channel is one
   **TLP172GM** (Toshiba, LCSC C261926, 4-pin SO6): the ESP32 GPIO drives the LED through a
-  **330 Ω** 0402 (R21/R22, C25104), 6 mA against the datasheet's 5 to 25 mA recommendation, and
-  the MOSFET output closes S1/S2 to camera ground. U5 = S1 (GPIO21, net `D6`), U6 = S2 (GPIO3,
-  net `D1`). Isolation is kept: camera ground `AGND` still touches only U4 pin 2 and the two
+  **220 Ω** 0402 (R21/R22, C25091), 9 mA typical and 5.6 mA at worst-case VOH/VF, inside the
+  datasheet's 5 to 25 mA recommendation, and the MOSFET output closes S1/S2 to camera ground.
+  U5 = S1 (net `S1_DRV`, **GPIO4**, U1 pin 9), U6 = S2 (net `S2_DRV`, GPIO3, U1 pin 8). Rev 1
+  drove S1 from GPIO21, which is U0TXD: the ROM boot log leaves it high until `setup()` runs,
+  so S1 was closed during every boot. Harmless alone, since the camera needs S1 and S2 together,
+  but GPIO4 is a plain input at reset and GPIO21 is now free for serial logging. Isolation is kept: camera ground `AGND` still touches only U4 pin 2 and the two
   output pins, and the AGND pours (both layers) were pulled in from x = 32.1 to x = 34.6 so the
   LED side of each part sits in the GND domain. Eight parts became four, the tallest top-side part
   went from 5.2 mm (relay) to 2.2 mm, and the coil current (about 67 mA while an exposure is
