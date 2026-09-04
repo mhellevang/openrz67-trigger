@@ -66,14 +66,11 @@ Outline unchanged from rev 1: **48 × 22 mm**, 2 mm corner radius, mounting hole
 
 - **U4** camera connector: side-entry S4B-XH-A (LCSC C157925) at (44.3, 11.0), opening
   out of the camera end.
-- **BAT1** battery connector: back on the **top** side (2026-09-04), vertical through-hole
-  **B2B-PH-K-S** (LCSC C131337) at (3.4, 4.9), opening toward the S3 edge, exactly where
-  rev 1 had it. Pin 1 = BAT+. It briefly moved to the bottom as an SMD side-entry
-  S2B-PH-SM4-TB, which put the cell flat under the board with no lead bend, but it was the
-  only bottom-side part and JLCPCB charges a second assembly setup for that side. Every part
-  is on the top side now, and BAT1 shares one BOM line with S3, which is the same connector.
-  The cost is mechanical: a vertical connector means the cell leads have to bend, and the
-  enclosure has to route the plug up over the board instead of flat underneath.
+- **BAT1** battery connector: SMD side-entry **S2B-PH-SM4-TB** (LCSC C295747) on the
+  **bottom** side, centre at (9.6, 4.45), opening toward the board centre. The cell lies
+  flat under the board and plugs in without bending the leads. Pin 1 = BAT+ as before.
+  BAT+ reaches the bottom through a 0.6/0.3 via next to C22; GND is the bottom pour.
+  JLCPCB two-sided assembly costs extra: BAT1 can also be left unplaced and hand-soldered.
   `BAT+` / `BAT-` are labelled on the bottom silkscreen at 1.067 mm.
 - **Shutter outputs are PhotoMOS, not relays (2026-09-04).** K1/K2 (G6K-2F-Y), their DTC114E
   drivers Q1/Q2, flyback diodes D1/D2 and coil decoupling C27/C28 are gone. Each channel is one
@@ -100,14 +97,14 @@ Outline unchanged from rev 1: **48 × 22 mm**, 2 mm corner radius, mounting hole
 
   | What | Height below the board |
   |---|---|
-  | BAT1 through-hole tails, B2B-PH-K-S | 3.4 mm unclipped |
+  | BAT1 body, S2B-PH-SM4-TB (JST ePH p.4) | 5.5 mm, plus the PHR-2 plug |
   | S3 through-hole tails, B2B-PH-K-S | 3.4 mm unclipped |
   | U4 through-hole tails, S4B-XH-A | 3.4 mm unclipped |
   | USB1 shell posts | ~1 mm |
 
-  Nothing on the bottom is taller than a clipped through-hole tail now. The cell can only
-  sit against the board if those tails are **clipped flush**. Budget 3.4 mm otherwise. A foam
-  pad between cell and board is still wanted, but 1.5 mm of it only fits after clipping.
+  The cell can only sit against the board if those tails are **clipped flush**. Budget
+  3.4 mm otherwise. A foam pad between cell and board is still wanted, but 1.5 mm of it
+  only fits after clipping.
 
 **Removed again:** an earlier attempt widened the board to 25 mm for an unpopulated 1×3
 expansion header (GPIO4 / 3V3 / GND) along the switch edge. It was reverted. Reaching the
@@ -116,8 +113,7 @@ ground under U1 and LDO1 into two islands and displaced three stitching vias nex
 antenna trace. One GPIO, on a header that was not going to be populated, did not pay for
 that. There is no room on this outline for a through-hole header: a hole needs both layers
 clear at once, and only two isolated spots on the whole board qualify. Bottom-side solder
-pads do fit, and the bottom is free again now that BAT1 is back on top. Revisit it together
-with the enclosure.
+pads do fit, but the cell now occupies the bottom. Revisit it together with the enclosure.
 
 ## Ordering
 
@@ -140,10 +136,12 @@ JLCPCB's uploader asks you to map columns; the exports do not use its header nam
 The position file is rewritten by `regen.sh` into JLCPCB's CPL layout (`Designator, Mid X,
 Mid Y, Layer, Rotation`, mm suffix); their parser rejects KiCad's native header with
 "Failed processing the CPL file". Origin is the drill-file origin at the board's top-left
-corner, the same convention JLCPCB accepted for rev 1, and rotations are unchanged since
-that order. **Every part is on the top side**, so the order is single-sided assembly with no
-second setup fee. BAT1, S3 and U4 are through-hole and are charged per joint, or can be left
-unplaced and hand-soldered.
+corner, the same convention JLCPCB accepted for rev 1, and rotations for the top-side
+parts are unchanged since that order. **BAT1 is the one part on the bottom side**: check its orientation in
+the fab's assembly preview before confirming, since bottom-side rotation conventions
+differ between tools.
+
+Two-sided assembly costs extra. BAT1 can be left unplaced and hand-soldered instead.
 
 ## Port notes (2026-09-03)
 

@@ -17,13 +17,13 @@ The current prototype is a custom PCB (design and fabrication files in [`pcb/`](
 
 The PCB source is the KiCad project in [`pcb/kicad/`](pcb/kicad/) (ported from EasyEDA Pro in September 2026). Generated Gerber/BOM/position files are in `pcb/kicad/out/`. The fabricated 2025-09-23 revision and the EasyEDA Pro exports are kept under [`pcb/archive/`](pcb/archive/).
 
-The current source is **rev 2, not yet fabricated**: it changes `U4` to a side-entry part and replaces the relays with PhotoMOS. Every part is on the top side, so it is a single-sided assembly order. The board pictured above is rev 2; the enclosure in [`case/`](case/) still fits the fabricated rev 1. Connector part numbers and geometry are documented in [`pcb/kicad/README.md`](pcb/kicad/README.md), which is the authoritative source for them.
+The current source is **rev 2, not yet fabricated**: it moves the battery connector to the underside and changes `U4` to a side-entry part. The board pictured above is rev 2; the enclosure in [`case/`](case/) still fits the fabricated rev 1. Connector part numbers and geometry are documented in [`pcb/kicad/README.md`](pcb/kicad/README.md), which is the authoritative source for them.
 
 * 1× ESP32-C3FH4
 * 2× Toshiba TLP172GM PhotoMOS relays (solid-state, isolated) to close the shutter contacts
 * Supporting components per the [BOM](pcb/kicad/out/openrz67-bom.csv)
 * 2.4 GHz antenna with U.FL connector
-* 250 mAh LiPo for power, on a JST B2B-PH-K-S vertical connector (`BAT1`) on the top side
+* 250 mAh LiPo for power, on a JST S2B-PH-SM4-TB side-entry connector (`BAT1`) on the board's underside
 * SS12F15 slide switch
 
 The solution is flexible: an ESP32-C3 development board such as the Seeed XIAO ESP32C3 and two isolated switch channels work too. Assign two output-capable GPIOs in `src/main.cpp`. On the PCB each channel is a TLP172GM PhotoMOS relay whose LED is driven directly from the GPIO through 220 Ω; the output closes S1 or S2 to camera ground while the GPIO is HIGH. The earlier reference circuit with two Omron G6K-2F-Y DC3 relays, active-high transistor drivers and flyback diodes (rev 1, diagram below) works the same way; relay modules may need a different supply voltage or inverted logic.
