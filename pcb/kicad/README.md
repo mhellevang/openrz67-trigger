@@ -150,8 +150,8 @@ Two-sided assembly costs extra. BAT1 can be left unplaced and hand-soldered inst
 - Removed the "JeefunPCB" A3 sheet-frame symbol that came with the EasyEDA template
   and replaced it with a KiCad title block. Annotated the 62 power flags (`#PWR001…`),
   deleted two floating GND flags, added a no-connect on U4 pin 1.
-- EasyEDA local labels became global labels so net names match the board (`BAT+`, `D1`,
-  `D6`, `D7`); EasyEDA auto-nets (`$1N…`) were renamed to KiCad's `Net-(…)` names.
+- EasyEDA local labels became global labels so net names match the board (`BAT+`, `D7`, and the
+  Wemos-style `D1`/`D6`, renamed `S2_DRV`/`S1_DRV` on 2026-09-04); EasyEDA auto-nets (`$1N…`) were renamed to KiCad's `Net-(…)` names.
   Connectivity was verified pad-for-pad against the schematic netlist before renaming.
 - USB-C shell pads 13/14 are GND in the schematic; the EasyEDA board had them net-less.
   They are GND now (they sit in the GND pour).
@@ -173,7 +173,7 @@ Two-sided assembly costs extra. BAT1 can be left unplaced and hand-soldered inst
 - Bottom silkscreen label changed from "EPS32-C3 Camera Trigger V1.0 / 2025-08-23" to
   "OpenRZ67 Trigger v2 / 2026-09".
 - Pin electrical types were set by hand for the ICs (ESP32-C3, LGS5500, ME6211, USB-C);
-  passives/connectors/relays are `passive`. Supply nets without a driver carry `PWR_FLAG`
+  passives, connectors and the PhotoMOS pins are `passive`. Supply nets without a driver carry `PWR_FLAG`
   (GND, AGND, BAT+, VBUS, +5V_VIN, VDDA). ERC runs at default severities: 0 errors, 0
   warnings. The eight dangling wire ends inherited from the EasyEDA drawing were removed
   (an orphan S1/S2/AGND label cluster and three over-long wire tails); the netlist is
