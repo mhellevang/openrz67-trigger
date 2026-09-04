@@ -666,184 +666,6 @@
 		)
 		(embedded_fonts no)
 	)
-	(symbol "1N4148WT_C232841"
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(duplicate_pin_numbers_are_jumpers no)
-		(property "Reference" "D"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" ""
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "openrz67:SOD-523_L1.2-W0.8-LS1.6-RD"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://item.szlcsc.com/datasheet/1N4148WT/232639.html"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer Part" "1N4148WT"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "onsemi(安森美)"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Supplier Part" "C232841"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Supplier" "LCSC"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC Part Name" "1N4148WT"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(symbol "1N4148WT_C232841_1_0"
-			(polyline
-				(pts
-					(xy -1.27 -2.032) (xy -1.27 2.032)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 1.27 1.524) (xy -1.27 0) (xy -1.27 0) (xy 1.27 -1.778) (xy 1.27 -1.778) (xy 1.27 1.524)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(pin passive line
-				(at -5.08 0 0)
-				(length 3.81)
-				(name "C"
-					(effects
-						(font
-							(size 0.0254 0.0254)
-						)
-					)
-				)
-				(number "1"
-					(effects
-						(font
-							(size 0.0254 0.0254)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 5.08 0 180)
-				(length 3.81)
-				(name "A"
-					(effects
-						(font
-							(size 0.0254 0.0254)
-						)
-					)
-				)
-				(number "2"
-					(effects
-						(font
-							(size 0.0254 0.0254)
-						)
-					)
-				)
-			)
-		)
-		(embedded_fonts no)
-	)
 	(symbol "ACMS160808A3012A"
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -2030,267 +1852,6 @@
 		)
 		(embedded_fonts no)
 	)
-	(symbol "DTC114EKAT146"
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(duplicate_pin_numbers_are_jumpers no)
-		(property "Reference" "Q"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" ""
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "openrz67:SOT-346_L2.9-W1.6-P1.90-LS2.8-TR-CW"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://atta.szlcsc.com/upload/public/pdf/source/20170818/C79971_1503051322827895391.pdf"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer Part" "DTC114EKAT146"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "ROHM(罗姆)"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Supplier Part" "C79971"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Supplier" "LCSC"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC Part Name" "耐压:50V 电流:50mA"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(symbol "DTC114EKAT146_1_0"
-			(polyline
-				(pts
-					(xy -2.54 1.27) (xy -1.524 1.27) (xy -1.524 1.27) (xy -1.27 0.508) (xy -1.27 0.508) (xy -0.762 2.032)
-					(xy -0.762 2.032) (xy -0.254 0.508) (xy -0.254 0.508) (xy 0.254 2.032) (xy 0.254 2.032) (xy 0.762 0.508)
-					(xy 0.762 0.508) (xy 1.27 2.032) (xy 1.27 2.032) (xy 1.524 1.27) (xy 1.524 1.27) (xy 2.54 1.27)
-					(xy 2.54 1.27) (xy 5.08 1.27)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 2.54 -3.81) (xy 2.54 -2.794) (xy 2.54 -2.794) (xy 3.302 -2.54) (xy 3.302 -2.54) (xy 1.778 -2.032)
-					(xy 1.778 -2.032) (xy 3.302 -1.524) (xy 3.302 -1.524) (xy 1.778 -1.016) (xy 1.778 -1.016) (xy 3.302 -0.508)
-					(xy 3.302 -0.508) (xy 1.778 0) (xy 1.778 0) (xy 2.54 0.254) (xy 2.54 0.254) (xy 2.54 1.27)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 5.08 2.032) (xy 7.62 3.81)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 5.08 -1.016) (xy 5.08 3.556)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 5.842 0) (xy 5.08 0.508)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 5.842 0) (xy 7.62 -1.27) (xy 7.62 -1.27) (xy 7.62 -3.81) (xy 7.62 -3.81) (xy 2.54 -3.81)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 7.62 -1.27) (xy 6.096 -1.016) (xy 6.096 -1.016) (xy 6.858 0) (xy 6.858 0) (xy 7.62 -1.27)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(pin passive line
-				(at 7.62 -8.89 90)
-				(length 5.08)
-				(name "E"
-					(effects
-						(font
-							(size 0.0254 0.0254)
-						)
-					)
-				)
-				(number "1"
-					(effects
-						(font
-							(size 0.0254 0.0254)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at -7.62 1.27 0)
-				(length 5.08)
-				(name "B"
-					(effects
-						(font
-							(size 0.0254 0.0254)
-						)
-					)
-				)
-				(number "2"
-					(effects
-						(font
-							(size 0.0254 0.0254)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 7.62 8.89 270)
-				(length 5.08)
-				(name "C"
-					(effects
-						(font
-							(size 0.0254 0.0254)
-						)
-					)
-				)
-				(number "3"
-					(effects
-						(font
-							(size 0.0254 0.0254)
-						)
-					)
-				)
-			)
-		)
-		(embedded_fonts no)
-	)
 	(symbol "ESP32-C3"
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3015,681 +2576,6 @@
 					)
 				)
 				(number "33"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-		)
-		(embedded_fonts no)
-	)
-	(symbol "G6K-2F-Y3VDC"
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(duplicate_pin_numbers_are_jumpers no)
-		(property "Reference" "K"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" ""
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "openrz67:RELAY-SMD_G6K-2F-Y"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://atta.szlcsc.com/upload/public/pdf/source/20220125/C1876770_53E5491D4B68F29C4BBD8118E9BAE0E8.pdf"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer Part" "G6K-2F-Y DC3"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "OMRON(欧姆龙)"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Supplier Part" "C93168"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Supplier" "LCSC"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC Part Name" "G6K-2F-Y 3VDC"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(symbol "G6K-2F-Y3VDC_1_0"
-			(rectangle
-				(start -13.97 5.08)
-				(end 13.97 -5.08)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy -12.954 2.286) (xy -11.938 2.286)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy -12.954 1.524) (xy -11.938 1.524)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy -12.954 0.762) (xy -11.938 0.762)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy -12.954 0.254) (xy -11.938 0.254)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy -12.954 -0.254) (xy -11.938 -0.254)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy -12.954 -1.016) (xy -11.938 -1.016)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy -12.954 -1.778) (xy -11.938 -1.778)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy -12.954 -2.286) (xy -11.938 -2.286)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy -12.7 3.048) (xy -12.192 3.048)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy -12.7 -3.048) (xy -12.192 -3.048)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy -12.319 -3.7338) (xy -12.319 -3.7592) (xy -12.319 -3.7592) (xy -12.3444 -3.7592) (xy -12.3444 -3.7592)
-					(xy -12.3444 -3.7592) (xy -12.3444 -3.7592) (xy -12.3444 -3.7592) (xy -12.3444 -3.7592) (xy -12.3444 -3.7592)
-					(xy -12.3444 -3.7592) (xy -12.3444 -3.7592) (xy -12.3444 -3.7592) (xy -12.3444 -3.7592) (xy -12.3444 -3.7592)
-					(xy -12.3444 -3.7592) (xy -12.3444 -3.7592) (xy -12.3444 -3.7592) (xy -12.3444 -3.7592) (xy -12.3444 -3.7592)
-					(xy -12.3444 -3.7592) (xy -12.3698 -3.7592) (xy -12.3698 -3.7592) (xy -12.3698 -3.7846) (xy -12.3698 -3.7846)
-					(xy -12.3698 -3.7846) (xy -12.3698 -3.7846) (xy -12.3698 -3.7846) (xy -12.3698 -3.7846) (xy -12.3698 -3.7846)
-					(xy -12.3698 -3.7846) (xy -12.3698 -3.7846) (xy -12.3698 -3.7846) (xy -12.3698 -3.7846) (xy -12.3698 -3.7846)
-					(xy -12.3698 -3.7846) (xy -12.3698 -3.7846) (xy -12.3698 -3.7846) (xy -12.3698 -3.7846) (xy -12.3698 -3.7846)
-					(xy -12.3698 -3.7846) (xy -12.3698 -3.7846) (xy -12.3698 -3.7846) (xy -12.3952 -3.7846) (xy -12.3952 -3.7846)
-					(xy -12.3952 -3.7846) (xy -12.3952 -3.7846) (xy -12.3952 -3.7846) (xy -12.3952 -3.7846) (xy -12.3952 -3.7846)
-					(xy -12.3952 -3.7846) (xy -12.3952 -3.7846) (xy -12.3952 -3.7846) (xy -12.3952 -3.7846) (xy -12.3952 -3.7846)
-					(xy -12.3952 -3.7846) (xy -12.3952 -3.7846) (xy -12.3952 -3.7846) (xy -12.3952 -3.7846) (xy -12.3952 -3.7846)
-					(xy -12.3952 -3.7846) (xy -12.3952 -3.7846) (xy -12.3952 -3.7846) (xy -12.3952 -3.7846) (xy -12.3952 -3.7846)
-					(xy -12.3952 -3.7846) (xy -12.3952 -3.7846) (xy -12.3952 -3.7846) (xy -12.3952 -3.7846) (xy -12.4206 -3.7846)
-					(xy -12.4206 -3.7846) (xy -12.4206 -3.7846) (xy -12.4206 -3.7846) (xy -12.4206 -3.7846) (xy -12.4206 -3.7846)
-					(xy -12.4206 -3.7846) (xy -12.4206 -3.7846) (xy -12.4206 -3.7846) (xy -12.4206 -3.7846) (xy -12.4206 -3.7846)
-					(xy -12.4206 -3.7846) (xy -12.4206 -3.7846) (xy -12.4206 -3.7846) (xy -12.4206 -3.7846) (xy -12.4206 -3.7846)
-					(xy -12.4206 -3.7846) (xy -12.4206 -3.7846) (xy -12.4206 -3.7846) (xy -12.4206 -3.7846) (xy -12.4206 -3.7846)
-					(xy -12.4206 -3.7846) (xy -12.4206 -3.7846) (xy -12.4206 -3.7846) (xy -12.4206 -3.7846) (xy -12.4206 -3.7846)
-					(xy -12.4206 -3.7846) (xy -12.4206 -3.7846) (xy -12.4206 -3.7846) (xy -12.4206 -3.7846) (xy -12.446 -3.81)
-					(xy -12.446 -3.81) (xy -12.446 -3.7846) (xy -12.446 -3.7846) (xy -12.446 -3.7846) (xy -12.446 -3.7846)
-					(xy -12.446 -3.7846) (xy -12.446 -3.7846) (xy -12.446 -3.7846) (xy -12.446 -3.7846) (xy -12.446 -3.7846)
-					(xy -12.446 -3.7846) (xy -12.446 -3.7846) (xy -12.446 -3.7846) (xy -12.446 -3.7846) (xy -12.446 -3.7846)
-					(xy -12.446 -3.7846) (xy -12.446 -3.7846) (xy -12.446 -3.7846) (xy -12.446 -3.7846) (xy -12.446 -3.7846)
-					(xy -12.446 -3.7846) (xy -12.446 -3.7846) (xy -12.446 -3.7846) (xy -12.446 -3.7846) (xy -12.446 -3.7846)
-					(xy -12.446 -3.7846) (xy -12.446 -3.7846) (xy -12.446 -3.7846) (xy -12.446 -3.7846) (xy -12.4714 -3.7846)
-					(xy -12.4714 -3.7846) (xy -12.4714 -3.7846) (xy -12.4714 -3.7846) (xy -12.4714 -3.7846) (xy -12.4714 -3.7846)
-					(xy -12.4714 -3.7846) (xy -12.4714 -3.7846) (xy -12.4714 -3.7846) (xy -12.4714 -3.7846) (xy -12.4714 -3.7846)
-					(xy -12.4714 -3.7846) (xy -12.4714 -3.7846) (xy -12.4714 -3.7846) (xy -12.4714 -3.7846) (xy -12.4714 -3.7846)
-					(xy -12.4714 -3.7846) (xy -12.4714 -3.7846) (xy -12.4714 -3.7846) (xy -12.4714 -3.7846) (xy -12.4714 -3.7846)
-					(xy -12.4714 -3.7846) (xy -12.4714 -3.7846) (xy -12.4714 -3.7846) (xy -12.4714 -3.7846) (xy -12.4714 -3.7846)
-					(xy -12.4968 -3.7846) (xy -12.4968 -3.7846) (xy -12.4968 -3.7846) (xy -12.4968 -3.7846) (xy -12.4968 -3.7846)
-					(xy -12.4968 -3.7846) (xy -12.4968 -3.7846) (xy -12.4968 -3.7846) (xy -12.4968 -3.7846) (xy -12.4968 -3.7846)
-					(xy -12.4968 -3.7846) (xy -12.4968 -3.7846) (xy -12.4968 -3.7846) (xy -12.4968 -3.7846) (xy -12.4968 -3.7846)
-					(xy -12.4968 -3.7846) (xy -12.4968 -3.7846) (xy -12.4968 -3.7846) (xy -12.4968 -3.7846) (xy -12.4968 -3.7846)
-					(xy -12.4968 -3.7592) (xy -12.4968 -3.7592) (xy -12.4968 -3.7592) (xy -12.4968 -3.7592) (xy -12.5222 -3.7592)
-					(xy -12.5222 -3.7592) (xy -12.5222 -3.7592) (xy -12.5222 -3.7592) (xy -12.5222 -3.7592) (xy -12.5222 -3.7592)
-					(xy -12.5222 -3.7592) (xy -12.5222 -3.7592) (xy -12.5222 -3.7592) (xy -12.5222 -3.7592) (xy -12.5222 -3.7592)
-					(xy -12.5222 -3.7592) (xy -12.5222 -3.7592) (xy -12.5222 -3.7592) (xy -12.5222 -3.7592) (xy -12.5222 -3.7592)
-					(xy -12.5222 -3.7592) (xy -12.5222 -3.7592) (xy -12.5476 -3.7338) (xy -12.5476 -3.7338) (xy -12.5476 -3.7338)
-					(xy -12.5476 -3.7338) (xy -12.5476 -3.7338) (xy -12.5476 -3.7338) (xy -12.5476 -3.7338) (xy -12.5476 -3.7338)
-					(xy -12.5476 -3.7338) (xy -12.5476 -3.7338) (xy -12.5476 -3.7338) (xy -12.5476 -3.7338) (xy -12.5476 -3.7338)
-					(xy -12.5476 -3.7338) (xy -12.573 -3.7084) (xy -12.573 -3.7084) (xy -12.573 -3.7084) (xy -12.573 -3.7084)
-					(xy -12.573 -3.7084) (xy -12.573 -3.7084) (xy -12.573 -3.7084) (xy -12.573 -3.7084) (xy -12.573 -3.683)
-					(xy -12.573 -3.683) (xy -12.573 -3.683) (xy -12.573 -3.683) (xy -12.5984 -3.683) (xy -12.5984 -3.683)
-					(xy -12.5984 -3.6576) (xy -12.5984 -3.6576) (xy -12.5984 -3.6576) (xy -12.5984 -3.6576) (xy -12.5984 -3.6576)
-					(xy -12.5984 -3.6576) (xy -12.6238 -3.6322) (xy -12.6238 -3.6322) (xy -12.6238 -3.6322) (xy -12.6238 -3.6322)
-					(xy -12.6238 -3.6068) (xy -12.6238 -3.6068) (xy -12.6238 -3.6068) (xy -12.6238 -3.6068) (xy -12.6492 -3.5814)
-					(xy -12.6492 -3.5814) (xy -12.6492 -3.5814) (xy -12.6492 -3.5814) (xy -12.6492 -3.556) (xy -12.6492 -3.556)
-					(xy -12.6746 -3.5306) (xy -12.6746 -3.5306) (xy -12.6746 -3.5052) (xy -12.6746 -3.5052) (xy -12.6746 -3.4798)
-					(xy -12.6746 -3.4798) (xy -12.7 -3.4544) (xy -12.7 -3.4544) (xy -12.7 -3.429) (xy -12.7 -3.429)
-					(xy -12.7254 -3.3782) (xy -12.7254 -3.3782) (xy -12.7254 -3.3274) (xy -12.7254 -3.3274) (xy -12.7508 -3.2766)
-					(xy -12.7508 -3.2766) (xy -12.7762 -3.2258) (xy -12.7762 -3.2258) (xy -12.7762 -3.175) (xy -12.7762 -3.175)
-					(xy -12.8016 -3.0988) (xy -12.8016 -3.0988) (xy -12.827 -2.9972) (xy -12.827 -2.9972) (xy -12.8524 -2.8956)
-					(xy -12.8524 -2.8956) (xy -12.8778 -2.7686) (xy -12.8778 -2.7686) (xy -12.9032 -2.6162) (xy -12.9032 -2.6162)
-					(xy -12.9286 -2.4384) (xy -12.9286 -2.4384) (xy -12.954 -2.2098) (xy -12.954 -2.2098) (xy -12.9794 -1.9304)
-					(xy -12.9794 -1.9304) (xy -13.0048 -1.5748) (xy -13.0048 -1.5748) (xy -13.0302 -1.1684) (xy -13.0302 -1.1684)
-					(xy -13.0556 -0.6096) (xy -13.0556 -0.6096) (xy -13.0556 0.0254) (xy -13.0556 0.0254) (xy -13.0556 0.8128)
-					(xy -13.0556 0.8128) (xy -13.0048 1.7018) (xy -13.0048 1.7018) (xy -12.9032 2.6162) (xy -12.9032 2.6162)
-					(xy -12.7254 3.3782) (xy -12.7254 3.3782) (xy -12.4968 3.7846) (xy -12.4968 3.7846) (xy -12.2682 3.6576)
-					(xy -12.2682 3.6576) (xy -12.065 3.0734) (xy -12.065 3.0734) (xy -11.9126 2.2098) (xy -11.9126 2.2098)
-					(xy -11.8364 1.27) (xy -11.8364 1.27) (xy -11.811 0.4318) (xy -11.811 0.4318) (xy -11.811 -0.2794)
-					(xy -11.811 -0.2794) (xy -11.811 -0.889) (xy -11.811 -0.889) (xy -11.8364 -1.3716) (xy -11.8364 -1.3716)
-					(xy -11.8618 -1.7526) (xy -11.8618 -1.7526) (xy -11.9126 -2.0574) (xy -11.9126 -2.0574) (xy -11.938 -2.3114)
-					(xy -11.938 -2.3114) (xy -11.9634 -2.5146) (xy -11.9634 -2.5146) (xy -11.9888 -2.6924) (xy -11.9888 -2.6924)
-					(xy -12.0142 -2.8194) (xy -12.0142 -2.8194) (xy -12.0396 -2.9464) (xy -12.0396 -2.9464) (xy -12.065 -3.048)
-					(xy -12.065 -3.048) (xy -12.065 -3.1242) (xy -12.065 -3.1242) (xy -12.0904 -3.2004) (xy -12.0904 -3.2004)
-					(xy -12.1158 -3.2512) (xy -12.1158 -3.2512) (xy -12.1158 -3.302) (xy -12.1158 -3.302) (xy -12.1412 -3.3528)
-					(xy -12.1412 -3.3528) (xy -12.1412 -3.4036) (xy -12.1412 -3.4036) (xy -12.1666 -3.429) (xy -12.1666 -3.429)
-					(xy -12.1666 -3.4544) (xy -12.1666 -3.4544) (xy -12.192 -3.5052) (xy -12.192 -3.5052) (xy -12.192 -3.5052)
-					(xy -12.192 -3.5052) (xy -12.192 -3.5306) (xy -12.192 -3.5306) (xy -12.2174 -3.556) (xy -12.2174 -3.556)
-					(xy -12.2174 -3.5814) (xy -12.2174 -3.5814) (xy -12.2174 -3.6068) (xy -12.2174 -3.6068) (xy -12.2428 -3.6068)
-					(xy -12.2428 -3.6068) (xy -12.2428 -3.6322) (xy -12.2428 -3.6322) (xy -12.2428 -3.6322) (xy -12.2428 -3.6322)
-					(xy -12.2682 -3.6576) (xy -12.2682 -3.6576) (xy -12.2682 -3.6576) (xy -12.2682 -3.6576) (xy -12.2682 -3.6576)
-					(xy -12.2682 -3.6576) (xy -12.2682 -3.683) (xy -12.2682 -3.683) (xy -12.2682 -3.683) (xy -12.2682 -3.683)
-					(xy -12.2936 -3.683) (xy -12.2936 -3.683) (xy -12.2936 -3.7084) (xy -12.2936 -3.7084) (xy -12.2936 -3.7084)
-					(xy -12.2936 -3.7084) (xy -12.2936 -3.7084) (xy -12.2936 -3.7084) (xy -12.2936 -3.7084) (xy -12.2936 -3.7084)
-					(xy -12.2936 -3.7084) (xy -12.2936 -3.7084) (xy -12.319 -3.7338) (xy -12.319 -3.7338) (xy -12.319 -3.7338)
-					(xy -12.319 -3.7338) (xy -12.319 -3.7338) (xy -12.319 -3.7338) (xy -12.319 -3.7338) (xy -12.319 -3.7338)
-					(xy -12.319 -3.7338) (xy -12.319 -3.7338) (xy -12.319 -3.7338)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(rectangle
-				(start -10.16 0.508)
-				(end -7.62 -0.762)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy -8.89 5.334) (xy -8.89 0.762)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy -8.89 -0.762) (xy -8.89 -5.08)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy -7.366 1.524) (xy -6.35 1.524)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy -7.366 -2.032) (xy -6.35 -2.032)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy -6.858 -2.54) (xy -6.858 -1.524)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy -3.81 5.08) (xy -3.81 2.54) (xy -3.81 2.54) (xy 2.54 2.54) (xy 2.54 2.54) (xy 1.27 3.048)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy -3.81 -5.08) (xy -3.81 -1.27) (xy -3.81 -1.27) (xy 2.54 -1.27) (xy 2.54 -1.27) (xy 1.27 -0.762)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 2.54 2.54) (xy 1.27 2.032)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 2.54 1.27) (xy 3.81 3.81) (xy 3.81 3.81) (xy 3.81 5.08)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 2.54 0) (xy 3.81 -2.54) (xy 3.81 -2.54) (xy 3.81 -5.08)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 2.54 -1.27) (xy 1.27 -1.778)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 5.08 2.54) (xy 6.35 3.048)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 5.08 -1.27) (xy 6.35 -0.762)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 11.43 5.08) (xy 11.43 2.54) (xy 11.43 2.54) (xy 5.08 2.54) (xy 5.08 2.54) (xy 6.35 2.032)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 11.43 -5.08) (xy 11.43 -1.27) (xy 11.43 -1.27) (xy 5.08 -1.27) (xy 5.08 -1.27) (xy 6.35 -1.778)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(pin passive line
-				(at -8.89 -10.16 90)
-				(length 5.08)
-				(name "1"
-					(effects
-						(font
-							(size 0.0254 0.0254)
-						)
-					)
-				)
-				(number "1"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at -3.81 -10.16 90)
-				(length 5.08)
-				(name "2"
-					(effects
-						(font
-							(size 0.0254 0.0254)
-						)
-					)
-				)
-				(number "2"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 3.81 -10.16 90)
-				(length 5.08)
-				(name "3"
-					(effects
-						(font
-							(size 0.0254 0.0254)
-						)
-					)
-				)
-				(number "3"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 11.43 -10.16 90)
-				(length 5.08)
-				(name "4"
-					(effects
-						(font
-							(size 0.0254 0.0254)
-						)
-					)
-				)
-				(number "4"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 11.43 10.16 270)
-				(length 5.08)
-				(name "5"
-					(effects
-						(font
-							(size 0.0254 0.0254)
-						)
-					)
-				)
-				(number "5"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 3.81 10.16 270)
-				(length 5.08)
-				(name "6"
-					(effects
-						(font
-							(size 0.0254 0.0254)
-						)
-					)
-				)
-				(number "6"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at -3.81 10.16 270)
-				(length 5.08)
-				(name "7"
-					(effects
-						(font
-							(size 0.0254 0.0254)
-						)
-					)
-				)
-				(number "7"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at -8.89 10.16 270)
-				(length 5.08)
-				(name "8"
-					(effects
-						(font
-							(size 0.0254 0.0254)
-						)
-					)
-				)
-				(number "8"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -6416,7 +5302,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(symbol "RC0402JR-0722RL"
+	(symbol "0402WGF220JTCE"
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -6454,7 +5340,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://atta.szlcsc.com/upload/public/pdf/source/20180821/C275644_0D56F95EFF785E7D9A1FEF436B37DA78.pdf"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C25092.html"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6476,7 +5362,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part" "RC0402JR-0722RL"
+		(property "Manufacturer Part" "0402WGF220JTCE"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6487,7 +5373,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "YAGEO(国巨)"
+		(property "Manufacturer" "UNI-ROYAL(厚声)"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6498,7 +5384,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" "C93929"
+		(property "Supplier Part" "C25092"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6520,7 +5406,7 @@
 				)
 			)
 		)
-		(property "LCSC Part Name" "厚膜电阻 22Ω ±5% 62.5mW"
+		(property "LCSC Part Name" "22Ω ±1% 62.5mW 厚膜电阻"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6531,7 +5417,7 @@
 				)
 			)
 		)
-		(symbol "RC0402JR-0722RL_1_0"
+		(symbol "0402WGF220JTCE_1_0"
 			(rectangle
 				(start -2.54 1.016)
 				(end 2.54 -1.016)
@@ -8792,4 +7678,503 @@
 	      )
 	    )
 	  )
+		(symbol "TLP172GM"
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "U"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "openrz67:SMD-4_L4.6-W3.7-P2.54-LS7.0-BR"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://toshiba.semicon-storage.com/info/TLP172GM_datasheet_en_20230525.pdf"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "PhotoMOS relay, 1-Form-A, 350 V / 110 mA, 4-pin SO6"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer Part" "TLP172GM(TPL,E"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "TOSHIBA(东芝)"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Supplier Part" "C261926"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Supplier" "LCSC"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part Name" "TLP172GM(TPL,E"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "TLP172GM_1_0"
+			(rectangle
+				(start -7.62 5.08)
+				(end 7.62 -5.08)
+				(stroke
+					(width 0.254)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -7.62 2.54) (xy -4.445 2.54) (xy -4.445 1.27)
+				)
+				(stroke
+					(width 0.254)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -5.08 1.27) (xy -3.81 1.27) (xy -4.445 -0.635) (xy -5.08 1.27)
+				)
+				(stroke
+					(width 0.254)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -5.08 -0.635) (xy -3.81 -0.635)
+				)
+				(stroke
+					(width 0.254)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -4.445 -0.635) (xy -4.445 -2.54) (xy -7.62 -2.54)
+				)
+				(stroke
+					(width 0.254)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -2.54 0.762) (xy -0.762 0.762)
+				)
+				(stroke
+					(width 0.254)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -1.27 1.143) (xy -0.762 0.762) (xy -1.27 0.381)
+				)
+				(stroke
+					(width 0.254)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -2.54 -0.762) (xy -0.762 -0.762)
+				)
+				(stroke
+					(width 0.254)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -1.27 -0.381) (xy -0.762 -0.762) (xy -1.27 -1.143)
+				)
+				(stroke
+					(width 0.254)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 7.62 2.54) (xy 3.81 2.54) (xy 3.81 0.762)
+				)
+				(stroke
+					(width 0.254)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 3.81 -0.762) (xy 3.81 -2.54) (xy 7.62 -2.54)
+				)
+				(stroke
+					(width 0.254)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 3.81 -0.762) (xy 5.207 1.016)
+				)
+				(stroke
+					(width 0.254)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(pin passive line
+				(at -11.43 2.54 0)
+				(length 3.81)
+				(name "A"
+					(effects
+						(font
+							(size 0.0254 0.0254)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 0.0254 0.0254)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -11.43 -2.54 0)
+				(length 3.81)
+				(name "K"
+					(effects
+						(font
+							(size 0.0254 0.0254)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 0.0254 0.0254)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 11.43 -2.54 180)
+				(length 3.81)
+				(name "D"
+					(effects
+						(font
+							(size 0.0254 0.0254)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 0.0254 0.0254)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 11.43 2.54 180)
+				(length 3.81)
+				(name "D"
+					(effects
+						(font
+							(size 0.0254 0.0254)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 0.0254 0.0254)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+	(symbol "0402WGF3300TCE"
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "R"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100kΩ"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "openrz67:R0402"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C25104.html"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer Part" "0402WGF3300TCE"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "UNI-ROYAL(厚声)"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Supplier Part" "C25104"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Supplier" "LCSC"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part Name" "330Ω ±1% 62.5mW 厚膜电阻"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "0402WGF3300TCE_1_0"
+			(rectangle
+				(start -2.54 1.016)
+				(end 2.54 -1.016)
+				(stroke
+					(width 0.254)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(pin passive line
+				(at -5.08 0 0)
+				(length 2.54)
+				(name "1"
+					(effects
+						(font
+							(size 0.0254 0.0254)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 0.0254 0.0254)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 5.08 0 180)
+				(length 2.54)
+				(name "2"
+					(effects
+						(font
+							(size 0.0254 0.0254)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 0.0254 0.0254)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
 )

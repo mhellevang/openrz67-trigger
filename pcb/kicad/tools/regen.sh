@@ -41,6 +41,19 @@ rm -f out/openrz67-gerber.zip
 echo "==> position file"
 "$KICAD_CLI" pcb export pos --format csv --units mm --side both --exclude-dnp \
   --use-drill-file-origin -o out/openrz67-pos.csv "$PCB" >/dev/null
+# JLCPCB's CPL parser wants its own header names and rejects KiCad's; rewrite in
+# place to the layout of the rev-1 file it accepted (same origin, same Y sign).
+"$KICAD_PY" - out/openrz67-pos.csv <<'PY'
+import csv, sys
+p = sys.argv[1]
+rows = list(csv.DictReader(open(p, newline="")))
+with open(p, "w", newline="") as f:
+    w = csv.writer(f)
+    w.writerow(["Designator", "Mid X", "Mid Y", "Layer", "Rotation"])
+    for r in rows:
+        w.writerow([r["Ref"], f'{float(r["PosX"]):.3f}mm', f'{float(r["PosY"]):.3f}mm',
+                    r["Side"].capitalize(), f'{float(r["Rot"]):g}'])
+PY
 
 echo "==> bill of materials"
 # --ref-range-delimiter '' lists every designator explicitly, which is the form

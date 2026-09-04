@@ -1,7 +1,7 @@
 # openrz67 PCB — KiCad project
 
 KiCad 10 project for the OpenRZ67 trigger board (48 × 22 mm, 2 layers, ESP32-C3,
-two G6K relays, LGS5500 charger/boost). This is now the **source**; the EasyEDA Pro
+two TLP172GM PhotoMOS relays, LGS5500 charger/boost). This is now the **source**; the EasyEDA Pro
 project it was ported from is archived in `../archive/easyeda/` (v2 `.epro` and v3 `.epro2`);
 the fabricated 2025-09-23 revision (Gerber, BOM, PnP, STEP) is in `../archive/2025-09-23-rev1/`.
 
@@ -54,8 +54,8 @@ out. No DRC or ERC exclusions are configured.
 
 | Check | Count | What |
 |---|---|---|
-| `courtyards_overlap` | 6 | Neighbours closer than 0.1 mm on the fabricated rev-1 layout: C28/S3, C21/USB1, L3 against C20/R9/R12, H1/USB1. |
-| `text_height`, `text_thickness` | 2 | The `BOOT EN` label on F.SilkS is 0.5 mm / 0.10 mm, under JLCPCB's 1.0 mm / 0.15 mm. Enlarged in place it runs over the R18 and C28 pads, where the fab clips silkscreen against solder mask. Splitting it into separate `BOOT` and `EN` labels does not help: the free band above the S1 pads is 0.85 mm and the one below the switches is 0.7 mm, both under the 1.0 mm the text needs. Fixing it means moving parts. Every other silkscreen text is at or above 1.067 mm. |
+| `courtyards_overlap` | 5 | Neighbours closer than 0.1 mm on the fabricated rev-1 layout: C21/USB1, L3 against C20/R9/R12, H1/USB1. |
+| `text_height`, `text_thickness` | 2 | The `BOOT EN` label on F.SilkS is 0.5 mm / 0.10 mm, under JLCPCB's 1.0 mm / 0.15 mm. Enlarged in place it runs over the R18 pads and the S3 body, where the fab clips silkscreen against solder mask. Splitting it into separate `BOOT` and `EN` labels does not help: the free band above the S1 pads is 0.85 mm and the one below the switches is 0.7 mm, both under the 1.0 mm the text needs. Fixing it means moving parts. Every other silkscreen text is at or above 1.067 mm. |
 
 ## Rev 2 layout changes (2026-09-03)
 
@@ -72,6 +72,19 @@ Outline unchanged from rev 1: **48 × 22 mm**, 2 mm corner radius, mounting hole
   BAT+ reaches the bottom through a 0.6/0.3 via next to C22; GND is the bottom pour.
   JLCPCB two-sided assembly costs extra: BAT1 can also be left unplaced and hand-soldered.
   `BAT+` / `BAT-` are labelled on the bottom silkscreen at 1.067 mm.
+- **Shutter outputs are PhotoMOS, not relays (2026-09-04).** K1/K2 (G6K-2F-Y), their DTC114E
+  drivers Q1/Q2, flyback diodes D1/D2 and coil decoupling C27/C28 are gone. Each channel is one
+  **TLP172GM** (Toshiba, LCSC C261926, 4-pin SO6): the ESP32 GPIO drives the LED through a
+  **330 Ω** 0402 (R21/R22, C25104), 6 mA against the datasheet's 5 to 25 mA recommendation, and
+  the MOSFET output closes S1/S2 to camera ground. U5 = S1 (GPIO21, net `D6`), U6 = S2 (GPIO3,
+  net `D1`). Isolation is kept: camera ground `AGND` still touches only U4 pin 2 and the two
+  output pins, and the AGND pours (both layers) were pulled in from x = 32.1 to x = 34.6 so the
+  LED side of each part sits in the GND domain. Eight parts became four, the tallest top-side part
+  went from 5.2 mm (relay) to 2.2 mm, and the coil current (about 67 mA while an exposure is
+  held) is gone. Footprint `SMD-4_L4.6-W3.7-P2.54-LS7.0-BR` and the 3D model came from
+  `easyeda2kicad` for C261926; the unused relay/SOT-346/SOD-523 footprints, models and symbols
+  were removed from the project libraries. R4/R5 (USB 22 Ω) are UNI-ROYAL 0402WGF220JTCE
+  (C25092, JLCPCB Basic) since JLCPCB had 2 of the Yageo part in stock.
 - **C5** moved to the analog supply: the 100 nF that sat on VCC next to the ferrite bead
   L2 now sits on the far side of it, on the new **VDDA** net feeding U1 pins 31/32 (radio and
   ADC supply). Before, nothing decoupled that net; the bead alone was just series impedance.
@@ -117,9 +130,11 @@ JLCPCB's uploader asks you to map columns; the exports do not use its header nam
 | Footprint | `Footprint` |
 | LCSC Part # | `LCSC` |
 
-The position file uses the drill-file origin at the board's top-left corner, the same
-convention JLCPCB accepted for rev 1, and rotations for the top-side parts are unchanged
-since that order. **BAT1 is the one part on the bottom side**: check its orientation in
+The position file is rewritten by `regen.sh` into JLCPCB's CPL layout (`Designator, Mid X,
+Mid Y, Layer, Rotation`, mm suffix); their parser rejects KiCad's native header with
+"Failed processing the CPL file". Origin is the drill-file origin at the board's top-left
+corner, the same convention JLCPCB accepted for rev 1, and rotations for the top-side
+parts are unchanged since that order. **BAT1 is the one part on the bottom side**: check its orientation in
 the fab's assembly preview before confirming, since bottom-side rotation conventions
 differ between tools.
 

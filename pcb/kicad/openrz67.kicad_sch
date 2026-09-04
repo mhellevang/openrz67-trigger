@@ -109,7 +109,7 @@
 		      )
 		    )
 		  )
-		(symbol "openrz67:0402WGF1003TCE"
+	(symbol "openrz67:0402WGF1003TCE"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -275,7 +275,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "openrz67:0402WGF5101TCE"
+	(symbol "openrz67:0402WGF5101TCE"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -441,7 +441,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "openrz67:0603WAF3001T5E"
+	(symbol "openrz67:0603WAF3001T5E"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -607,7 +607,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "openrz67:0603WAJ0102T5E"
+	(symbol "openrz67:0603WAJ0102T5E"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -773,185 +773,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "openrz67:1N4148WT_C232841"
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "D"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "openrz67:SOD-523_L1.2-W0.8-LS1.6-RD"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" "https://item.szlcsc.com/datasheet/1N4148WT/232639.html"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Manufacturer Part" "1N4148WT"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Manufacturer" "onsemi(安森美)"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Supplier Part" "C232841"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Supplier" "LCSC"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "LCSC Part Name" "1N4148WT"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "1N4148WT_C232841_1_0"
-				(polyline
-					(pts
-						(xy -1.27 -2.032) (xy -1.27 2.032)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 1.524) (xy -1.27 0) (xy -1.27 0) (xy 1.27 -1.778) (xy 1.27 -1.778) (xy 1.27 1.524)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "C"
-						(effects
-							(font
-								(size 0.0254 0.0254)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 0.0254 0.0254)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 5.08 0 180)
-					(length 3.81)
-					(name "A"
-						(effects
-							(font
-								(size 0.0254 0.0254)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 0.0254 0.0254)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "openrz67:ACMS160808A3012A"
+	(symbol "openrz67:ACMS160808A3012A"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -1161,7 +983,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "openrz67:B2B-PH-K-S(LF)(SN)"
+	(symbol "openrz67:B2B-PH-K-S(LF)(SN)"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -1326,7 +1148,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "openrz67:B3U-1000P"
+	(symbol "openrz67:B3U-1000P"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -1528,7 +1350,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "openrz67:CGA0603X5R105K500JT"
+	(symbol "openrz67:CGA0603X5R105K500JT"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -1731,7 +1553,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "openrz67:CGA0603X5R106K100JT"
+	(symbol "openrz67:CGA0603X5R106K100JT"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -1934,7 +1756,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "openrz67:CL10A106MA8NRNC"
+	(symbol "openrz67:CL10A106MA8NRNC"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -2137,268 +1959,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "openrz67:DTC114EKAT146"
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "Q"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "openrz67:SOT-346_L2.9-W1.6-P1.90-LS2.8-TR-CW"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" "https://atta.szlcsc.com/upload/public/pdf/source/20170818/C79971_1503051322827895391.pdf"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Manufacturer Part" "DTC114EKAT146"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Manufacturer" "ROHM(罗姆)"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Supplier Part" "C79971"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Supplier" "LCSC"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "LCSC Part Name" "耐压:50V 电流:50mA"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "DTC114EKAT146_1_0"
-				(polyline
-					(pts
-						(xy -2.54 1.27) (xy -1.524 1.27) (xy -1.524 1.27) (xy -1.27 0.508) (xy -1.27 0.508) (xy -0.762 2.032)
-						(xy -0.762 2.032) (xy -0.254 0.508) (xy -0.254 0.508) (xy 0.254 2.032) (xy 0.254 2.032) (xy 0.762 0.508)
-						(xy 0.762 0.508) (xy 1.27 2.032) (xy 1.27 2.032) (xy 1.524 1.27) (xy 1.524 1.27) (xy 2.54 1.27)
-						(xy 2.54 1.27) (xy 5.08 1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 -3.81) (xy 2.54 -2.794) (xy 2.54 -2.794) (xy 3.302 -2.54) (xy 3.302 -2.54) (xy 1.778 -2.032)
-						(xy 1.778 -2.032) (xy 3.302 -1.524) (xy 3.302 -1.524) (xy 1.778 -1.016) (xy 1.778 -1.016) (xy 3.302 -0.508)
-						(xy 3.302 -0.508) (xy 1.778 0) (xy 1.778 0) (xy 2.54 0.254) (xy 2.54 0.254) (xy 2.54 1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 5.08 2.032) (xy 7.62 3.81)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 5.08 -1.016) (xy 5.08 3.556)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 5.842 0) (xy 5.08 0.508)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 5.842 0) (xy 7.62 -1.27) (xy 7.62 -1.27) (xy 7.62 -3.81) (xy 7.62 -3.81) (xy 2.54 -3.81)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 7.62 -1.27) (xy 6.096 -1.016) (xy 6.096 -1.016) (xy 6.858 0) (xy 6.858 0) (xy 7.62 -1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(pin passive line
-					(at 7.62 -8.89 90)
-					(length 5.08)
-					(name "E"
-						(effects
-							(font
-								(size 0.0254 0.0254)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 0.0254 0.0254)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -7.62 1.27 0)
-					(length 5.08)
-					(name "B"
-						(effects
-							(font
-								(size 0.0254 0.0254)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 0.0254 0.0254)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 7.62 8.89 270)
-					(length 5.08)
-					(name "C"
-						(effects
-							(font
-								(size 0.0254 0.0254)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 0.0254 0.0254)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "openrz67:ESP32-C3"
+	(symbol "openrz67:ESP32-C3"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -3132,682 +2693,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "openrz67:G6K-2F-Y3VDC"
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "K"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "openrz67:RELAY-SMD_G6K-2F-Y"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" "https://atta.szlcsc.com/upload/public/pdf/source/20220125/C1876770_53E5491D4B68F29C4BBD8118E9BAE0E8.pdf"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Manufacturer Part" "G6K-2F-Y DC3"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Manufacturer" "OMRON(欧姆龙)"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Supplier Part" "C93168"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Supplier" "LCSC"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "LCSC Part Name" "G6K-2F-Y 3VDC"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "G6K-2F-Y3VDC_1_0"
-				(rectangle
-					(start -13.97 5.08)
-					(end 13.97 -5.08)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -12.954 2.286) (xy -11.938 2.286)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -12.954 1.524) (xy -11.938 1.524)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -12.954 0.762) (xy -11.938 0.762)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -12.954 0.254) (xy -11.938 0.254)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -12.954 -0.254) (xy -11.938 -0.254)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -12.954 -1.016) (xy -11.938 -1.016)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -12.954 -1.778) (xy -11.938 -1.778)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -12.954 -2.286) (xy -11.938 -2.286)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -12.7 3.048) (xy -12.192 3.048)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -12.7 -3.048) (xy -12.192 -3.048)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -12.319 -3.7338) (xy -12.319 -3.7592) (xy -12.319 -3.7592) (xy -12.3444 -3.7592) (xy -12.3444 -3.7592)
-						(xy -12.3444 -3.7592) (xy -12.3444 -3.7592) (xy -12.3444 -3.7592) (xy -12.3444 -3.7592) (xy -12.3444 -3.7592)
-						(xy -12.3444 -3.7592) (xy -12.3444 -3.7592) (xy -12.3444 -3.7592) (xy -12.3444 -3.7592) (xy -12.3444 -3.7592)
-						(xy -12.3444 -3.7592) (xy -12.3444 -3.7592) (xy -12.3444 -3.7592) (xy -12.3444 -3.7592) (xy -12.3444 -3.7592)
-						(xy -12.3444 -3.7592) (xy -12.3698 -3.7592) (xy -12.3698 -3.7592) (xy -12.3698 -3.7846) (xy -12.3698 -3.7846)
-						(xy -12.3698 -3.7846) (xy -12.3698 -3.7846) (xy -12.3698 -3.7846) (xy -12.3698 -3.7846) (xy -12.3698 -3.7846)
-						(xy -12.3698 -3.7846) (xy -12.3698 -3.7846) (xy -12.3698 -3.7846) (xy -12.3698 -3.7846) (xy -12.3698 -3.7846)
-						(xy -12.3698 -3.7846) (xy -12.3698 -3.7846) (xy -12.3698 -3.7846) (xy -12.3698 -3.7846) (xy -12.3698 -3.7846)
-						(xy -12.3698 -3.7846) (xy -12.3698 -3.7846) (xy -12.3698 -3.7846) (xy -12.3952 -3.7846) (xy -12.3952 -3.7846)
-						(xy -12.3952 -3.7846) (xy -12.3952 -3.7846) (xy -12.3952 -3.7846) (xy -12.3952 -3.7846) (xy -12.3952 -3.7846)
-						(xy -12.3952 -3.7846) (xy -12.3952 -3.7846) (xy -12.3952 -3.7846) (xy -12.3952 -3.7846) (xy -12.3952 -3.7846)
-						(xy -12.3952 -3.7846) (xy -12.3952 -3.7846) (xy -12.3952 -3.7846) (xy -12.3952 -3.7846) (xy -12.3952 -3.7846)
-						(xy -12.3952 -3.7846) (xy -12.3952 -3.7846) (xy -12.3952 -3.7846) (xy -12.3952 -3.7846) (xy -12.3952 -3.7846)
-						(xy -12.3952 -3.7846) (xy -12.3952 -3.7846) (xy -12.3952 -3.7846) (xy -12.3952 -3.7846) (xy -12.4206 -3.7846)
-						(xy -12.4206 -3.7846) (xy -12.4206 -3.7846) (xy -12.4206 -3.7846) (xy -12.4206 -3.7846) (xy -12.4206 -3.7846)
-						(xy -12.4206 -3.7846) (xy -12.4206 -3.7846) (xy -12.4206 -3.7846) (xy -12.4206 -3.7846) (xy -12.4206 -3.7846)
-						(xy -12.4206 -3.7846) (xy -12.4206 -3.7846) (xy -12.4206 -3.7846) (xy -12.4206 -3.7846) (xy -12.4206 -3.7846)
-						(xy -12.4206 -3.7846) (xy -12.4206 -3.7846) (xy -12.4206 -3.7846) (xy -12.4206 -3.7846) (xy -12.4206 -3.7846)
-						(xy -12.4206 -3.7846) (xy -12.4206 -3.7846) (xy -12.4206 -3.7846) (xy -12.4206 -3.7846) (xy -12.4206 -3.7846)
-						(xy -12.4206 -3.7846) (xy -12.4206 -3.7846) (xy -12.4206 -3.7846) (xy -12.4206 -3.7846) (xy -12.446 -3.81)
-						(xy -12.446 -3.81) (xy -12.446 -3.7846) (xy -12.446 -3.7846) (xy -12.446 -3.7846) (xy -12.446 -3.7846)
-						(xy -12.446 -3.7846) (xy -12.446 -3.7846) (xy -12.446 -3.7846) (xy -12.446 -3.7846) (xy -12.446 -3.7846)
-						(xy -12.446 -3.7846) (xy -12.446 -3.7846) (xy -12.446 -3.7846) (xy -12.446 -3.7846) (xy -12.446 -3.7846)
-						(xy -12.446 -3.7846) (xy -12.446 -3.7846) (xy -12.446 -3.7846) (xy -12.446 -3.7846) (xy -12.446 -3.7846)
-						(xy -12.446 -3.7846) (xy -12.446 -3.7846) (xy -12.446 -3.7846) (xy -12.446 -3.7846) (xy -12.446 -3.7846)
-						(xy -12.446 -3.7846) (xy -12.446 -3.7846) (xy -12.446 -3.7846) (xy -12.446 -3.7846) (xy -12.4714 -3.7846)
-						(xy -12.4714 -3.7846) (xy -12.4714 -3.7846) (xy -12.4714 -3.7846) (xy -12.4714 -3.7846) (xy -12.4714 -3.7846)
-						(xy -12.4714 -3.7846) (xy -12.4714 -3.7846) (xy -12.4714 -3.7846) (xy -12.4714 -3.7846) (xy -12.4714 -3.7846)
-						(xy -12.4714 -3.7846) (xy -12.4714 -3.7846) (xy -12.4714 -3.7846) (xy -12.4714 -3.7846) (xy -12.4714 -3.7846)
-						(xy -12.4714 -3.7846) (xy -12.4714 -3.7846) (xy -12.4714 -3.7846) (xy -12.4714 -3.7846) (xy -12.4714 -3.7846)
-						(xy -12.4714 -3.7846) (xy -12.4714 -3.7846) (xy -12.4714 -3.7846) (xy -12.4714 -3.7846) (xy -12.4714 -3.7846)
-						(xy -12.4968 -3.7846) (xy -12.4968 -3.7846) (xy -12.4968 -3.7846) (xy -12.4968 -3.7846) (xy -12.4968 -3.7846)
-						(xy -12.4968 -3.7846) (xy -12.4968 -3.7846) (xy -12.4968 -3.7846) (xy -12.4968 -3.7846) (xy -12.4968 -3.7846)
-						(xy -12.4968 -3.7846) (xy -12.4968 -3.7846) (xy -12.4968 -3.7846) (xy -12.4968 -3.7846) (xy -12.4968 -3.7846)
-						(xy -12.4968 -3.7846) (xy -12.4968 -3.7846) (xy -12.4968 -3.7846) (xy -12.4968 -3.7846) (xy -12.4968 -3.7846)
-						(xy -12.4968 -3.7592) (xy -12.4968 -3.7592) (xy -12.4968 -3.7592) (xy -12.4968 -3.7592) (xy -12.5222 -3.7592)
-						(xy -12.5222 -3.7592) (xy -12.5222 -3.7592) (xy -12.5222 -3.7592) (xy -12.5222 -3.7592) (xy -12.5222 -3.7592)
-						(xy -12.5222 -3.7592) (xy -12.5222 -3.7592) (xy -12.5222 -3.7592) (xy -12.5222 -3.7592) (xy -12.5222 -3.7592)
-						(xy -12.5222 -3.7592) (xy -12.5222 -3.7592) (xy -12.5222 -3.7592) (xy -12.5222 -3.7592) (xy -12.5222 -3.7592)
-						(xy -12.5222 -3.7592) (xy -12.5222 -3.7592) (xy -12.5476 -3.7338) (xy -12.5476 -3.7338) (xy -12.5476 -3.7338)
-						(xy -12.5476 -3.7338) (xy -12.5476 -3.7338) (xy -12.5476 -3.7338) (xy -12.5476 -3.7338) (xy -12.5476 -3.7338)
-						(xy -12.5476 -3.7338) (xy -12.5476 -3.7338) (xy -12.5476 -3.7338) (xy -12.5476 -3.7338) (xy -12.5476 -3.7338)
-						(xy -12.5476 -3.7338) (xy -12.573 -3.7084) (xy -12.573 -3.7084) (xy -12.573 -3.7084) (xy -12.573 -3.7084)
-						(xy -12.573 -3.7084) (xy -12.573 -3.7084) (xy -12.573 -3.7084) (xy -12.573 -3.7084) (xy -12.573 -3.683)
-						(xy -12.573 -3.683) (xy -12.573 -3.683) (xy -12.573 -3.683) (xy -12.5984 -3.683) (xy -12.5984 -3.683)
-						(xy -12.5984 -3.6576) (xy -12.5984 -3.6576) (xy -12.5984 -3.6576) (xy -12.5984 -3.6576) (xy -12.5984 -3.6576)
-						(xy -12.5984 -3.6576) (xy -12.6238 -3.6322) (xy -12.6238 -3.6322) (xy -12.6238 -3.6322) (xy -12.6238 -3.6322)
-						(xy -12.6238 -3.6068) (xy -12.6238 -3.6068) (xy -12.6238 -3.6068) (xy -12.6238 -3.6068) (xy -12.6492 -3.5814)
-						(xy -12.6492 -3.5814) (xy -12.6492 -3.5814) (xy -12.6492 -3.5814) (xy -12.6492 -3.556) (xy -12.6492 -3.556)
-						(xy -12.6746 -3.5306) (xy -12.6746 -3.5306) (xy -12.6746 -3.5052) (xy -12.6746 -3.5052) (xy -12.6746 -3.4798)
-						(xy -12.6746 -3.4798) (xy -12.7 -3.4544) (xy -12.7 -3.4544) (xy -12.7 -3.429) (xy -12.7 -3.429)
-						(xy -12.7254 -3.3782) (xy -12.7254 -3.3782) (xy -12.7254 -3.3274) (xy -12.7254 -3.3274) (xy -12.7508 -3.2766)
-						(xy -12.7508 -3.2766) (xy -12.7762 -3.2258) (xy -12.7762 -3.2258) (xy -12.7762 -3.175) (xy -12.7762 -3.175)
-						(xy -12.8016 -3.0988) (xy -12.8016 -3.0988) (xy -12.827 -2.9972) (xy -12.827 -2.9972) (xy -12.8524 -2.8956)
-						(xy -12.8524 -2.8956) (xy -12.8778 -2.7686) (xy -12.8778 -2.7686) (xy -12.9032 -2.6162) (xy -12.9032 -2.6162)
-						(xy -12.9286 -2.4384) (xy -12.9286 -2.4384) (xy -12.954 -2.2098) (xy -12.954 -2.2098) (xy -12.9794 -1.9304)
-						(xy -12.9794 -1.9304) (xy -13.0048 -1.5748) (xy -13.0048 -1.5748) (xy -13.0302 -1.1684) (xy -13.0302 -1.1684)
-						(xy -13.0556 -0.6096) (xy -13.0556 -0.6096) (xy -13.0556 0.0254) (xy -13.0556 0.0254) (xy -13.0556 0.8128)
-						(xy -13.0556 0.8128) (xy -13.0048 1.7018) (xy -13.0048 1.7018) (xy -12.9032 2.6162) (xy -12.9032 2.6162)
-						(xy -12.7254 3.3782) (xy -12.7254 3.3782) (xy -12.4968 3.7846) (xy -12.4968 3.7846) (xy -12.2682 3.6576)
-						(xy -12.2682 3.6576) (xy -12.065 3.0734) (xy -12.065 3.0734) (xy -11.9126 2.2098) (xy -11.9126 2.2098)
-						(xy -11.8364 1.27) (xy -11.8364 1.27) (xy -11.811 0.4318) (xy -11.811 0.4318) (xy -11.811 -0.2794)
-						(xy -11.811 -0.2794) (xy -11.811 -0.889) (xy -11.811 -0.889) (xy -11.8364 -1.3716) (xy -11.8364 -1.3716)
-						(xy -11.8618 -1.7526) (xy -11.8618 -1.7526) (xy -11.9126 -2.0574) (xy -11.9126 -2.0574) (xy -11.938 -2.3114)
-						(xy -11.938 -2.3114) (xy -11.9634 -2.5146) (xy -11.9634 -2.5146) (xy -11.9888 -2.6924) (xy -11.9888 -2.6924)
-						(xy -12.0142 -2.8194) (xy -12.0142 -2.8194) (xy -12.0396 -2.9464) (xy -12.0396 -2.9464) (xy -12.065 -3.048)
-						(xy -12.065 -3.048) (xy -12.065 -3.1242) (xy -12.065 -3.1242) (xy -12.0904 -3.2004) (xy -12.0904 -3.2004)
-						(xy -12.1158 -3.2512) (xy -12.1158 -3.2512) (xy -12.1158 -3.302) (xy -12.1158 -3.302) (xy -12.1412 -3.3528)
-						(xy -12.1412 -3.3528) (xy -12.1412 -3.4036) (xy -12.1412 -3.4036) (xy -12.1666 -3.429) (xy -12.1666 -3.429)
-						(xy -12.1666 -3.4544) (xy -12.1666 -3.4544) (xy -12.192 -3.5052) (xy -12.192 -3.5052) (xy -12.192 -3.5052)
-						(xy -12.192 -3.5052) (xy -12.192 -3.5306) (xy -12.192 -3.5306) (xy -12.2174 -3.556) (xy -12.2174 -3.556)
-						(xy -12.2174 -3.5814) (xy -12.2174 -3.5814) (xy -12.2174 -3.6068) (xy -12.2174 -3.6068) (xy -12.2428 -3.6068)
-						(xy -12.2428 -3.6068) (xy -12.2428 -3.6322) (xy -12.2428 -3.6322) (xy -12.2428 -3.6322) (xy -12.2428 -3.6322)
-						(xy -12.2682 -3.6576) (xy -12.2682 -3.6576) (xy -12.2682 -3.6576) (xy -12.2682 -3.6576) (xy -12.2682 -3.6576)
-						(xy -12.2682 -3.6576) (xy -12.2682 -3.683) (xy -12.2682 -3.683) (xy -12.2682 -3.683) (xy -12.2682 -3.683)
-						(xy -12.2936 -3.683) (xy -12.2936 -3.683) (xy -12.2936 -3.7084) (xy -12.2936 -3.7084) (xy -12.2936 -3.7084)
-						(xy -12.2936 -3.7084) (xy -12.2936 -3.7084) (xy -12.2936 -3.7084) (xy -12.2936 -3.7084) (xy -12.2936 -3.7084)
-						(xy -12.2936 -3.7084) (xy -12.2936 -3.7084) (xy -12.319 -3.7338) (xy -12.319 -3.7338) (xy -12.319 -3.7338)
-						(xy -12.319 -3.7338) (xy -12.319 -3.7338) (xy -12.319 -3.7338) (xy -12.319 -3.7338) (xy -12.319 -3.7338)
-						(xy -12.319 -3.7338) (xy -12.319 -3.7338) (xy -12.319 -3.7338)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start -10.16 0.508)
-					(end -7.62 -0.762)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -8.89 5.334) (xy -8.89 0.762)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -8.89 -0.762) (xy -8.89 -5.08)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -7.366 1.524) (xy -6.35 1.524)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -7.366 -2.032) (xy -6.35 -2.032)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -6.858 -2.54) (xy -6.858 -1.524)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -3.81 5.08) (xy -3.81 2.54) (xy -3.81 2.54) (xy 2.54 2.54) (xy 2.54 2.54) (xy 1.27 3.048)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -3.81 -5.08) (xy -3.81 -1.27) (xy -3.81 -1.27) (xy 2.54 -1.27) (xy 2.54 -1.27) (xy 1.27 -0.762)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 2.54) (xy 1.27 2.032)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 1.27) (xy 3.81 3.81) (xy 3.81 3.81) (xy 3.81 5.08)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 0) (xy 3.81 -2.54) (xy 3.81 -2.54) (xy 3.81 -5.08)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 -1.27) (xy 1.27 -1.778)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 5.08 2.54) (xy 6.35 3.048)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 5.08 -1.27) (xy 6.35 -0.762)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 11.43 5.08) (xy 11.43 2.54) (xy 11.43 2.54) (xy 5.08 2.54) (xy 5.08 2.54) (xy 6.35 2.032)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 11.43 -5.08) (xy 11.43 -1.27) (xy 11.43 -1.27) (xy 5.08 -1.27) (xy 5.08 -1.27) (xy 6.35 -1.778)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(pin passive line
-					(at -8.89 -10.16 90)
-					(length 5.08)
-					(name "1"
-						(effects
-							(font
-								(size 0.0254 0.0254)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -3.81 -10.16 90)
-					(length 5.08)
-					(name "2"
-						(effects
-							(font
-								(size 0.0254 0.0254)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 3.81 -10.16 90)
-					(length 5.08)
-					(name "3"
-						(effects
-							(font
-								(size 0.0254 0.0254)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 11.43 -10.16 90)
-					(length 5.08)
-					(name "4"
-						(effects
-							(font
-								(size 0.0254 0.0254)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 11.43 10.16 270)
-					(length 5.08)
-					(name "5"
-						(effects
-							(font
-								(size 0.0254 0.0254)
-							)
-						)
-					)
-					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 3.81 10.16 270)
-					(length 5.08)
-					(name "6"
-						(effects
-							(font
-								(size 0.0254 0.0254)
-							)
-						)
-					)
-					(number "6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -3.81 10.16 270)
-					(length 5.08)
-					(name "7"
-						(effects
-							(font
-								(size 0.0254 0.0254)
-							)
-						)
-					)
-					(number "7"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -8.89 10.16 270)
-					(length 5.08)
-					(name "8"
-						(effects
-							(font
-								(size 0.0254 0.0254)
-							)
-						)
-					)
-					(number "8"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "openrz67:GCM1555C1H1R0BA16D"
+	(symbol "openrz67:GCM1555C1H1R0BA16D"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -4010,7 +2896,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "openrz67:GJM1555C1H150FB01D"
+	(symbol "openrz67:GJM1555C1H150FB01D"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -4213,7 +3099,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "openrz67:GND"
+	(symbol "openrz67:GND"
 			(power global)
 			(pin_numbers
 				(hide yes)
@@ -4350,7 +3236,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "openrz67:GRM1555C1H180FA01D"
+	(symbol "openrz67:GRM1555C1H180FA01D"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -4553,7 +3439,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "openrz67:GRM155R71H104KE14D"
+	(symbol "openrz67:GRM155R71H104KE14D"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -4756,7 +3642,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "openrz67:Ground-AGND"
+	(symbol "openrz67:Ground-AGND"
 			(power global)
 			(pin_numbers
 				(hide yes)
@@ -4857,7 +3743,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "openrz67:Ground-GND"
+	(symbol "openrz67:Ground-GND"
 			(power global)
 			(pin_numbers
 				(hide yes)
@@ -4994,7 +3880,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "openrz67:KT-0603R"
+	(symbol "openrz67:KT-0603R"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -5220,7 +4106,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "openrz67:LGS5500EP"
+	(symbol "openrz67:LGS5500EP"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -5522,7 +4408,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "openrz67:LQG15HS3N9S02D"
+	(symbol "openrz67:LQG15HS3N9S02D"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -5735,7 +4621,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "openrz67:ME6211C33M5G-N"
+	(symbol "openrz67:ME6211C33M5G-N"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -5954,7 +4840,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "openrz67:NCP18XH103F03RB"
+	(symbol "openrz67:NCP18XH103F03RB"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -6131,7 +5017,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "openrz67:Power-5V"
+	(symbol "openrz67:Power-5V"
 			(power global)
 			(pin_numbers
 				(hide yes)
@@ -6244,7 +5130,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "openrz67:Power-VCC"
+	(symbol "openrz67:Power-VCC"
 			(power global)
 			(pin_numbers
 				(hide yes)
@@ -6357,7 +5243,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "openrz67:RC0402FR-0710KL"
+	(symbol "openrz67:RC0402FR-0710KL"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -6523,7 +5409,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "openrz67:RC0402JR-0722RL"
+	(symbol "openrz67:0402WGF220JTCE"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -6561,7 +5447,7 @@
 					)
 				)
 			)
-			(property "Datasheet" "https://atta.szlcsc.com/upload/public/pdf/source/20180821/C275644_0D56F95EFF785E7D9A1FEF436B37DA78.pdf"
+			(property "Datasheet" "https://www.lcsc.com/product-detail/C25092.html"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -6583,7 +5469,7 @@
 					)
 				)
 			)
-			(property "Manufacturer Part" "RC0402JR-0722RL"
+			(property "Manufacturer Part" "0402WGF220JTCE"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -6594,7 +5480,7 @@
 					)
 				)
 			)
-			(property "Manufacturer" "YAGEO(国巨)"
+			(property "Manufacturer" "UNI-ROYAL(厚声)"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -6605,7 +5491,7 @@
 					)
 				)
 			)
-			(property "Supplier Part" "C93929"
+			(property "Supplier Part" "C25092"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -6627,7 +5513,7 @@
 					)
 				)
 			)
-			(property "LCSC Part Name" "厚膜电阻 22Ω ±5% 62.5mW"
+			(property "LCSC Part Name" "22Ω ±1% 62.5mW 厚膜电阻"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -6638,7 +5524,7 @@
 					)
 				)
 			)
-			(symbol "RC0402JR-0722RL_1_0"
+			(symbol "0402WGF220JTCE_1_0"
 				(rectangle
 					(start -2.54 1.016)
 					(end 2.54 -1.016)
@@ -6689,7 +5575,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "openrz67:S4B-XH-A (LF)(SN)"
+	(symbol "openrz67:S4B-XH-A (LF)(SN)"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -6901,7 +5787,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "openrz67:SPM6530T-2R2M"
+	(symbol "openrz67:SPM6530T-2R2M"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -7112,7 +5998,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "openrz67:T201640MFBDE2X"
+	(symbol "openrz67:T201640MFBDE2X"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -7384,7 +6270,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "openrz67:TYPE-C 16PIN 2MD(073)"
+	(symbol "openrz67:TYPE-C 16PIN 2MD(073)"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -7776,7 +6662,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "openrz67:U.FL-R-SMT-1(80)"
+	(symbol "openrz67:U.FL-R-SMT-1(80)"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -7959,7 +6845,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "openrz67:VCC"
+	(symbol "openrz67:VCC"
 			(power global)
 			(pin_numbers
 				(hide yes)
@@ -8073,7 +6959,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "openrz67:XKXGI-SUA-32.768K"
+	(symbol "openrz67:XKXGI-SUA-32.768K"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -8337,7 +7223,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "openrz67:XL-1608UBC-04"
+	(symbol "openrz67:XL-1608UBC-04"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -8587,7 +7473,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "openrz67:MountingHole"
+	(symbol "openrz67:MountingHole"
 			(pin_names
 				(offset 1.016)
 			)
@@ -8686,7 +7572,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "openrz67:PWR_FLAG"
+	(symbol "openrz67:PWR_FLAG"
 			(power global)
 			(pin_numbers
 				(hide yes)
@@ -8801,6 +7687,505 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "openrz67:TLP172GM"
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "U"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "openrz67:SMD-4_L4.6-W3.7-P2.54-LS7.0-BR"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://toshiba.semicon-storage.com/info/TLP172GM_datasheet_en_20230525.pdf"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "PhotoMOS relay, 1-Form-A, 350 V / 110 mA, 4-pin SO6"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer Part" "TLP172GM(TPL,E"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "TOSHIBA(东芝)"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Supplier Part" "C261926"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Supplier" "LCSC"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part Name" "TLP172GM(TPL,E"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "TLP172GM_1_0"
+			(rectangle
+				(start -7.62 5.08)
+				(end 7.62 -5.08)
+				(stroke
+					(width 0.254)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -7.62 2.54) (xy -4.445 2.54) (xy -4.445 1.27)
+				)
+				(stroke
+					(width 0.254)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -5.08 1.27) (xy -3.81 1.27) (xy -4.445 -0.635) (xy -5.08 1.27)
+				)
+				(stroke
+					(width 0.254)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -5.08 -0.635) (xy -3.81 -0.635)
+				)
+				(stroke
+					(width 0.254)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -4.445 -0.635) (xy -4.445 -2.54) (xy -7.62 -2.54)
+				)
+				(stroke
+					(width 0.254)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -2.54 0.762) (xy -0.762 0.762)
+				)
+				(stroke
+					(width 0.254)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -1.27 1.143) (xy -0.762 0.762) (xy -1.27 0.381)
+				)
+				(stroke
+					(width 0.254)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -2.54 -0.762) (xy -0.762 -0.762)
+				)
+				(stroke
+					(width 0.254)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -1.27 -0.381) (xy -0.762 -0.762) (xy -1.27 -1.143)
+				)
+				(stroke
+					(width 0.254)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 7.62 2.54) (xy 3.81 2.54) (xy 3.81 0.762)
+				)
+				(stroke
+					(width 0.254)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 3.81 -0.762) (xy 3.81 -2.54) (xy 7.62 -2.54)
+				)
+				(stroke
+					(width 0.254)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 3.81 -0.762) (xy 5.207 1.016)
+				)
+				(stroke
+					(width 0.254)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(pin passive line
+				(at -11.43 2.54 0)
+				(length 3.81)
+				(name "A"
+					(effects
+						(font
+							(size 0.0254 0.0254)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 0.0254 0.0254)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -11.43 -2.54 0)
+				(length 3.81)
+				(name "K"
+					(effects
+						(font
+							(size 0.0254 0.0254)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 0.0254 0.0254)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 11.43 -2.54 180)
+				(length 3.81)
+				(name "D"
+					(effects
+						(font
+							(size 0.0254 0.0254)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 0.0254 0.0254)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 11.43 2.54 180)
+				(length 3.81)
+				(name "D"
+					(effects
+						(font
+							(size 0.0254 0.0254)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 0.0254 0.0254)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+	(symbol "openrz67:0402WGF3300TCE"
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "R"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100kΩ"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "openrz67:R0402"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C25104.html"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer Part" "0402WGF3300TCE"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "UNI-ROYAL(厚声)"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Supplier Part" "C25104"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Supplier" "LCSC"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part Name" "330Ω ±1% 62.5mW 厚膜电阻"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "0402WGF3300TCE_1_0"
+			(rectangle
+				(start -2.54 1.016)
+				(end 2.54 -1.016)
+				(stroke
+					(width 0.254)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(pin passive line
+				(at -5.08 0 0)
+				(length 2.54)
+				(name "1"
+					(effects
+						(font
+							(size 0.0254 0.0254)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 0.0254 0.0254)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 5.08 0 180)
+				(length 2.54)
+				(name "2"
+					(effects
+						(font
+							(size 0.0254 0.0254)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 0.0254 0.0254)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
 	)
 	(rectangle
 		(start 3.81 80.01)
@@ -8894,7 +8279,7 @@
 		)
 		(uuid "bac6d504-cfce-46ee-8f29-420d331d0e58")
 	)
-	(text "2x Relays"
+	(text "2x PhotoMOS"
 		(exclude_from_sim no)
 		(at 241.3 90.17 0)
 		(effects
@@ -8918,7 +8303,7 @@
 	)
 	(text "const int shutterPin = D6; // Pin for trigger"
 		(exclude_from_sim no)
-		(at 245.11 160.02 0)
+		(at 245.11 170.18 0)
 		(effects
 			(font
 				(size 1.5748 1.5748)
@@ -8944,12 +8329,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "03fe61e4-1b0a-40b5-921d-7f6d6a684a47")
-	)
-	(junction
-		(at 288.29 107.95)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "04c412f8-d951-4df4-91dc-4a0f643231ad")
 	)
 	(junction
 		(at 48.26 142.24)
@@ -9042,12 +8421,6 @@
 		(uuid "4c401add-2784-4e05-9026-8b53fefbbb46")
 	)
 	(junction
-		(at 289.56 176.53)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "4f973ed3-0b84-4786-ad6c-79910e1a4cb7")
-	)
-	(junction
 		(at 198.12 48.26)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -9082,12 +8455,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "59a951dc-cf96-4c13-b3bd-4d2c7ebcc937")
-	)
-	(junction
-		(at 288.29 134.62)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "5da6a395-1b99-4327-8fad-fd2b18569ae8")
 	)
 	(junction
 		(at 222.25 41.91)
@@ -9162,24 +8529,6 @@
 		(uuid "b3ee92a1-e34a-4d56-bcc9-88d70b5b9f16")
 	)
 	(junction
-		(at 276.86 107.95)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "b4857cd6-3dc2-4691-8c6d-aa956ae46a9f")
-	)
-	(junction
-		(at 278.13 176.53)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "b6150b80-ac46-4e11-8fce-bf8581fcf691")
-	)
-	(junction
-		(at 289.56 203.2)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "b9b512b9-1585-40bb-8ed9-b58494162969")
-	)
-	(junction
 		(at 105.41 140.97)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -9222,20 +8571,8 @@
 		(uuid "efc43e5b-42e6-4476-a660-ec6620671d8d")
 	)
 	(no_connect
-		(at 316.23 200.66)
-		(uuid "01caa80d-fa5f-4931-887f-7e256bc42de8")
-	)
-	(no_connect
-		(at 314.96 111.76)
-		(uuid "086ff623-7d53-4a5d-8cae-8d687c44819f")
-	)
-	(no_connect
 		(at 347.98 35.56)
 		(uuid "1d3d41dc-910a-4c71-a52a-7001a2609df7")
-	)
-	(no_connect
-		(at 322.58 132.08)
-		(uuid "23a9af99-eb41-4f2a-aa5c-82be9f43d0b0")
 	)
 	(no_connect
 		(at 153.67 207.01)
@@ -9244,10 +8581,6 @@
 	(no_connect
 		(at 176.53 176.53)
 		(uuid "4661d4dd-5eff-4e4c-a7e5-f152d7fc90ff")
-	)
-	(no_connect
-		(at 323.85 180.34)
-		(uuid "57c6c165-b1fb-410a-be72-b644f95b69d5")
 	)
 	(no_connect
 		(at 176.53 171.45)
@@ -9266,16 +8599,8 @@
 		(uuid "8657f525-a081-4bf1-a6b9-ddca529b4f7f")
 	)
 	(no_connect
-		(at 314.96 132.08)
-		(uuid "8e2bff32-3cb8-49e1-bd9a-5380904de93d")
-	)
-	(no_connect
 		(at 148.59 207.01)
 		(uuid "8f08a6c4-4b3d-4456-b206-66b3addf28ba")
-	)
-	(no_connect
-		(at 330.2 132.08)
-		(uuid "94a334f4-0d8b-472c-b0a2-a0032aae4a95")
 	)
 	(no_connect
 		(at 176.53 173.99)
@@ -9284,14 +8609,6 @@
 	(no_connect
 		(at 156.21 207.01)
 		(uuid "b2b681bf-08b0-4fd0-8cf9-e7a3f9bcff75")
-	)
-	(no_connect
-		(at 331.47 180.34)
-		(uuid "b3e7e565-f7f8-4cf1-9a41-229b45ca3cd3")
-	)
-	(no_connect
-		(at 316.23 180.34)
-		(uuid "b6d2eeb5-239b-4cfe-a36c-960709a43aa1")
 	)
 	(no_connect
 		(at 146.05 207.01)
@@ -9473,16 +8790,6 @@
 	)
 	(wire
 		(pts
-			(xy 322.58 105.41) (xy 322.58 111.76)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "153f2f3a-1d00-4730-86c4-caf14f876508")
-	)
-	(wire
-		(pts
 			(xy 34.29 39.37) (xy 38.1 39.37)
 		)
 		(stroke
@@ -9530,16 +8837,6 @@
 			(type default)
 		)
 		(uuid "1913e227-b844-4b3d-a6d5-59f701f99c0f")
-	)
-	(wire
-		(pts
-			(xy 276.86 116.84) (xy 276.86 107.95)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "192b22d8-f2b6-47b0-b22e-f96ff6fce976")
 	)
 	(wire
 		(pts
@@ -9743,16 +9040,6 @@
 	)
 	(wire
 		(pts
-			(xy 323.85 212.09) (xy 323.85 200.66)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "375faeeb-17fd-49cf-89aa-72d57b90a9ed")
-	)
-	(wire
-		(pts
 			(xy 146.05 140.97) (xy 138.43 140.97)
 		)
 		(stroke
@@ -9803,16 +9090,6 @@
 	)
 	(wire
 		(pts
-			(xy 289.56 195.58) (xy 289.56 203.2)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "43e4b4a2-8bcb-4aff-b0b3-7591a06cc018")
-	)
-	(wire
-		(pts
 			(xy 306.07 30.48) (xy 306.07 35.56)
 		)
 		(stroke
@@ -9860,16 +9137,6 @@
 			(type default)
 		)
 		(uuid "4a82ca8e-ae0d-4fd3-a35a-c2b87868e6cd")
-	)
-	(wire
-		(pts
-			(xy 311.15 176.53) (xy 311.15 180.34)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4c6e9188-7334-4d48-b745-528279d660d1")
 	)
 	(wire
 		(pts
@@ -9930,16 +9197,6 @@
 			(type default)
 		)
 		(uuid "5070fd26-8f1e-486a-8d96-5a882a066133")
-	)
-	(wire
-		(pts
-			(xy 309.88 107.95) (xy 309.88 111.76)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "50d899c1-e896-4969-93f5-26b613ff60fa")
 	)
 	(wire
 		(pts
@@ -10103,16 +9360,6 @@
 	)
 	(wire
 		(pts
-			(xy 289.56 185.42) (xy 289.56 176.53)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6316a3d7-721c-4a57-a8b4-ae8c4a7f1d72")
-	)
-	(wire
-		(pts
 			(xy 207.01 294.64) (xy 207.01 281.94)
 		)
 		(stroke
@@ -10120,16 +9367,6 @@
 			(type default)
 		)
 		(uuid "637021aa-7335-4192-a395-059a58b16711")
-	)
-	(wire
-		(pts
-			(xy 288.29 134.62) (xy 309.88 134.62)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "63f25a16-5116-4ba4-8b45-7835fd2e9ebe")
 	)
 	(wire
 		(pts
@@ -10163,16 +9400,6 @@
 	)
 	(wire
 		(pts
-			(xy 354.33 105.41) (xy 322.58 105.41)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "68dc3840-c056-4734-8c53-c977dda1ea7f")
-	)
-	(wire
-		(pts
 			(xy 147.32 59.69) (xy 142.24 59.69)
 		)
 		(stroke
@@ -10190,26 +9417,6 @@
 			(type default)
 		)
 		(uuid "69d1bd46-2ffa-4cf4-9d37-8e16f976d3ef")
-	)
-	(wire
-		(pts
-			(xy 351.79 212.09) (xy 323.85 212.09)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6a4983eb-dc75-4f1b-8168-cb9df05aeffc")
-	)
-	(wire
-		(pts
-			(xy 288.29 157.48) (xy 288.29 161.29)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6a9d4637-5368-4a3c-9340-b29bbdbbcf53")
 	)
 	(wire
 		(pts
@@ -10280,16 +9487,6 @@
 			(type default)
 		)
 		(uuid "724bb91e-0adb-4463-a147-81af920d818e")
-	)
-	(wire
-		(pts
-			(xy 309.88 134.62) (xy 309.88 132.08)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "73eb7036-7db0-4077-8b17-e9a42f43708a")
 	)
 	(wire
 		(pts
@@ -10380,16 +9577,6 @@
 			(type default)
 		)
 		(uuid "7be47a9d-cad5-4cb4-87b9-87a238102831")
-	)
-	(wire
-		(pts
-			(xy 288.29 116.84) (xy 288.29 107.95)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7c8f8310-e8db-42be-a2e7-3d3a3b1aa5d9")
 	)
 	(wire
 		(pts
@@ -10523,16 +9710,6 @@
 	)
 	(wire
 		(pts
-			(xy 278.13 176.53) (xy 278.13 175.26)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8c7eca1c-ee9c-4ea6-933a-a078c9f51ac2")
-	)
-	(wire
-		(pts
 			(xy 58.42 176.53) (xy 66.04 176.53)
 		)
 		(stroke
@@ -10653,16 +9830,6 @@
 	)
 	(wire
 		(pts
-			(xy 345.44 204.47) (xy 331.47 204.47)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "982938c3-f151-49d2-9c0a-b3baeb1ce58f")
-	)
-	(wire
-		(pts
 			(xy 175.26 137.16) (xy 175.26 111.76)
 		)
 		(stroke
@@ -10670,16 +9837,6 @@
 			(type default)
 		)
 		(uuid "9893943e-b6de-4340-a0df-e6fe6424e83f")
-	)
-	(wire
-		(pts
-			(xy 289.56 208.28) (xy 289.56 203.2)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9af3e2b3-2a5f-43a8-a3a9-0ac1e29fa3f6")
 	)
 	(wire
 		(pts
@@ -10733,16 +9890,6 @@
 	)
 	(wire
 		(pts
-			(xy 330.2 107.95) (xy 330.2 111.76)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a215dda2-ef19-4799-96d5-ddfb9f36d00d")
-	)
-	(wire
-		(pts
 			(xy 133.35 181.61) (xy 130.81 181.61)
 		)
 		(stroke
@@ -10750,16 +9897,6 @@
 			(type default)
 		)
 		(uuid "a22ab840-938b-4f7f-9078-895fd742e8ef")
-	)
-	(wire
-		(pts
-			(xy 289.56 226.06) (xy 289.56 229.87)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a36a5834-f968-4141-8856-36585c154f78")
 	)
 	(wire
 		(pts
@@ -10790,16 +9927,6 @@
 			(type default)
 		)
 		(uuid "a9461f7c-1fd0-44c3-9971-aae58b83b8b0")
-	)
-	(wire
-		(pts
-			(xy 289.56 203.2) (xy 311.15 203.2)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ab2f1e05-d024-4dcb-9a3d-62e5cd2a2032")
 	)
 	(wire
 		(pts
@@ -10923,16 +10050,6 @@
 	)
 	(wire
 		(pts
-			(xy 331.47 204.47) (xy 331.47 200.66)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bc85b773-c375-4623-9dda-88f1d5cf24a0")
-	)
-	(wire
-		(pts
 			(xy 69.85 243.84) (xy 62.23 243.84)
 		)
 		(stroke
@@ -10970,16 +10087,6 @@
 			(type default)
 		)
 		(uuid "c3b6ad1f-1acc-4e80-9915-129f71d92f54")
-	)
-	(wire
-		(pts
-			(xy 278.13 185.42) (xy 278.13 176.53)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c634c519-d26b-4e61-a42e-db441bf97ad5")
 	)
 	(wire
 		(pts
@@ -11123,16 +10230,6 @@
 	)
 	(wire
 		(pts
-			(xy 289.56 176.53) (xy 311.15 176.53)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "dc75eb03-d656-428f-a657-ced60dbed147")
-	)
-	(wire
-		(pts
 			(xy 320.04 33.02) (xy 322.58 33.02)
 		)
 		(stroke
@@ -11180,16 +10277,6 @@
 			(type default)
 		)
 		(uuid "e050872f-aad9-4ba5-92eb-36d2363ddf89")
-	)
-	(wire
-		(pts
-			(xy 344.17 107.95) (xy 330.2 107.95)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e06f597b-71be-458e-be6d-29dc6295a786")
 	)
 	(wire
 		(pts
@@ -11250,16 +10337,6 @@
 			(type default)
 		)
 		(uuid "e43e032d-4fc9-4068-b827-4087ae0ab1cd")
-	)
-	(wire
-		(pts
-			(xy 311.15 203.2) (xy 311.15 200.66)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e444b91a-c7b1-41b9-9ff0-3fb38ff24128")
 	)
 	(wire
 		(pts
@@ -11393,26 +10470,6 @@
 	)
 	(wire
 		(pts
-			(xy 288.29 139.7) (xy 288.29 134.62)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "eea15c7d-cbc5-4403-bf49-d4502b68f8cd")
-	)
-	(wire
-		(pts
-			(xy 288.29 107.95) (xy 309.88 107.95)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "efaad7e0-8b0b-40f8-bab7-2775e7ec3816")
-	)
-	(wire
-		(pts
 			(xy 181.61 48.26) (xy 198.12 48.26)
 		)
 		(stroke
@@ -11440,16 +10497,6 @@
 			(type default)
 		)
 		(uuid "f0badacd-1590-4bf3-bfbc-e10697603379")
-	)
-	(wire
-		(pts
-			(xy 288.29 107.95) (xy 276.86 107.95)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f0c029df-fd5a-45db-bbe7-9f4f984bbf8f")
 	)
 	(wire
 		(pts
@@ -11523,16 +10570,6 @@
 	)
 	(wire
 		(pts
-			(xy 288.29 127) (xy 288.29 134.62)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f94e2f69-0a02-44f4-9ace-daafd6f2f357")
-	)
-	(wire
-		(pts
 			(xy 260.35 147.32) (xy 273.05 147.32)
 		)
 		(stroke
@@ -11580,26 +10617,6 @@
 			(type default)
 		)
 		(uuid "fc4c9465-b097-4e12-b775-4d7fab128cba")
-	)
-	(wire
-		(pts
-			(xy 276.86 107.95) (xy 276.86 106.68)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fdba4d18-5c84-4e26-863e-7b1134c61603")
-	)
-	(wire
-		(pts
-			(xy 289.56 176.53) (xy 278.13 176.53)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fece8e4e-127f-4b3c-ae20-9431afb0c554")
 	)
 	(global_label "VDDA"
 		(shape passive)
@@ -11721,28 +10738,6 @@
 			(justify left bottom)
 		)
 		(uuid "b86f8d0c-231c-4e9e-aa55-6f9b7e35e1a4")
-	)
-	(global_label "S2"
-		(shape passive)
-		(at 345.44 204.47 0)
-		(effects
-			(font
-				(size 1.5748 1.5748)
-			)
-			(justify left top)
-		)
-		(uuid "bf492be1-4648-4d4c-9077-4cb844272f23")
-	)
-	(global_label "S1"
-		(shape passive)
-		(at 344.17 107.95 0)
-		(effects
-			(font
-				(size 1.5748 1.5748)
-			)
-			(justify left bottom)
-		)
-		(uuid "cf086aad-90bb-4964-99ac-c5a7ed490a5e")
 	)
 	(global_label "AGND"
 		(shape passive)
@@ -12963,83 +11958,6 @@
 		)
 	)
 	(symbol
-		(lib_id "openrz67:Ground-GND")
-		(at 289.56 229.87 0)
-		(unit 1)
-		(body_style 0)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "0c05693b-581a-476c-b41c-44c3b4e37776")
-		(property "Reference" "#PWR008"
-			(at 289.56 229.87 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 289.56 236.22 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.5748 1.5748)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 289.56 229.87 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 289.56 229.87 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 289.56 229.87 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "fd84b26c-6147-48d1-9e44-f4eb50166d08")
-		)
-		(instances
-			(project "openrz67"
-				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
-					(reference "#PWR008")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "openrz67:Power-VCC")
 		(at 105.41 140.97 0)
 		(unit 1)
@@ -13111,161 +12029,6 @@
 			(project "openrz67"
 				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
 					(reference "#PWR009")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "openrz67:G6K-2F-Y3VDC")
-		(at 318.77 121.92 0)
-		(mirror x)
-		(unit 1)
-		(body_style 0)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "0fa6c94d-e0ea-4510-a0cf-5f5b379de249")
-		(property "Reference" "K1"
-			(at 334.01 119.38 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.0414 1.0414)
-				)
-				(justify left top)
-			)
-		)
-		(property "Value" "G6K-2F-Y DC3"
-			(at 334.01 121.92 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.5748 1.5748)
-				)
-				(justify left top)
-			)
-		)
-		(property "Footprint" "openrz67:RELAY-SMD_G6K-2F-Y"
-			(at 318.77 121.92 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://atta.szlcsc.com/upload/public/pdf/source/20220125/C1876770_53E5491D4B68F29C4BBD8118E9BAE0E8.pdf"
-			(at 318.77 121.92 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 318.77 121.92 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer Part" "G6K-2F-Y DC3"
-			(at 318.77 121.92 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "OMRON(欧姆龙)"
-			(at 318.77 121.92 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Supplier Part" "C93168"
-			(at 318.77 121.92 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Supplier" "LCSC"
-			(at 318.77 121.92 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC Part Name" "G6K-2F-Y 3VDC"
-			(at 318.77 121.92 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "7a5ddca2-200b-4712-932a-05783cef906b")
-		)
-		(pin "2"
-			(uuid "6e53706c-7b28-4bd2-8a39-a91dff18244a")
-		)
-		(pin "3"
-			(uuid "c59b7d76-9771-42b9-8837-869189490969")
-		)
-		(pin "4"
-			(uuid "f27ef21d-9e7b-4414-a989-cf92806e0b76")
-		)
-		(pin "5"
-			(uuid "787b24a8-d94a-448f-88fe-51dfd63548d6")
-		)
-		(pin "6"
-			(uuid "2dbef097-c8b3-405d-84a5-88204dddbe40")
-		)
-		(pin "7"
-			(uuid "4d98713b-890c-4ede-a313-f95e73a6d072")
-		)
-		(pin "8"
-			(uuid "6daee297-1120-4d91-bb7b-388a50c90253")
-		)
-		(instances
-			(project "openrz67"
-				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
-					(reference "K1")
 					(unit 1)
 				)
 			)
@@ -14829,142 +13592,6 @@
 		)
 	)
 	(symbol
-		(lib_id "openrz67:1N4148WT_C232841")
-		(at 288.29 121.92 270)
-		(unit 1)
-		(body_style 0)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "1a64d6c0-b7e9-4ec8-a9e0-ea406d8b6aac")
-		(property "Reference" "D1"
-			(at 292.1 123.19 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.5748 1.5748)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Value" "1N4148WT"
-			(at 292.1 125.73 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.5748 1.5748)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Footprint" "openrz67:SOD-523_L1.2-W0.8-LS1.6-RD"
-			(at 288.29 121.92 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://item.szlcsc.com/datasheet/1N4148WT/232639.html"
-			(at 288.29 121.92 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 288.29 121.92 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer Part" "1N4148WT"
-			(at 288.29 121.92 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "onsemi(安森美)"
-			(at 288.29 121.92 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Supplier Part" "C232841"
-			(at 288.29 121.92 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Supplier" "LCSC"
-			(at 288.29 121.92 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC Part Name" "1N4148WT"
-			(at 288.29 121.92 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "59e6fd9d-ebec-4f1f-9b3e-2b1254332ec8")
-		)
-		(pin "1"
-			(uuid "6f878bb5-7a99-40c3-9683-f1e38467423e")
-		)
-		(instances
-			(project "openrz67"
-				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
-					(reference "D1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "openrz67:CGA0603X5R106K100JT")
 		(at 105.41 146.05 90)
 		(unit 1)
@@ -15243,142 +13870,6 @@
 			(project "openrz67"
 				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
 					(reference "C31")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "openrz67:CL10A106MA8NRNC")
-		(at 278.13 190.5 90)
-		(unit 1)
-		(body_style 0)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "281229e0-4d1a-4fa2-8ff7-71387ef6c00c")
-		(property "Reference" "C28"
-			(at 280.67 189.23 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.0414 1.0414)
-				)
-				(justify right top)
-			)
-		)
-		(property "Value" "10uF"
-			(at 280.67 194.31 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.5748 1.5748)
-				)
-				(justify right top)
-			)
-		)
-		(property "Footprint" "openrz67:C0603"
-			(at 278.13 190.5 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://item.szlcsc.com/datasheet/CL10A106MA8NRNC/97651.html"
-			(at 278.13 190.5 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 278.13 190.5 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer Part" "CL10A106MA8NRNC"
-			(at 278.13 190.5 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "SAMSUNG(三星)"
-			(at 278.13 190.5 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Supplier Part" "C96446"
-			(at 278.13 190.5 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Supplier" "LCSC"
-			(at 278.13 190.5 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC Part Name" "10uF ±20% 25V"
-			(at 278.13 190.5 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "8714d28c-7159-4767-86ee-a41738596b96")
-		)
-		(pin "2"
-			(uuid "9ff6cf17-cacd-40b7-a46c-f0af5629809e")
-		)
-		(instances
-			(project "openrz67"
-				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
-					(reference "C28")
 					(unit 1)
 				)
 			)
@@ -16255,142 +14746,6 @@
 		)
 	)
 	(symbol
-		(lib_id "openrz67:1N4148WT_C232841")
-		(at 289.56 190.5 270)
-		(unit 1)
-		(body_style 0)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "458378b3-3118-4a5b-bc1e-3302e4905a43")
-		(property "Reference" "D2"
-			(at 293.37 191.77 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.5748 1.5748)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Value" "1N4148WT"
-			(at 293.37 194.31 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.5748 1.5748)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Footprint" "openrz67:SOD-523_L1.2-W0.8-LS1.6-RD"
-			(at 289.56 190.5 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://item.szlcsc.com/datasheet/1N4148WT/232639.html"
-			(at 289.56 190.5 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 289.56 190.5 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer Part" "1N4148WT"
-			(at 289.56 190.5 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "onsemi(安森美)"
-			(at 289.56 190.5 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Supplier Part" "C232841"
-			(at 289.56 190.5 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Supplier" "LCSC"
-			(at 289.56 190.5 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC Part Name" "1N4148WT"
-			(at 289.56 190.5 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "cad48077-b374-4784-a4a7-1dd9b82fea5e")
-		)
-		(pin "1"
-			(uuid "267092e0-3f04-4eb5-8dde-2d40c24e5f2c")
-		)
-		(instances
-			(project "openrz67"
-				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
-					(reference "D2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "openrz67:Ground-GND")
 		(at 306.07 46.99 0)
 		(unit 1)
@@ -16817,146 +15172,7 @@
 		)
 	)
 	(symbol
-		(lib_id "openrz67:DTC114EKAT146")
-		(at 281.94 217.17 0)
-		(unit 1)
-		(body_style 0)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "5b626fe7-a8cd-4ea5-9118-441ee8da6ad2")
-		(property "Reference" "Q2"
-			(at 292.1 208.28 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.5748 1.5748)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Value" "DTC114EKAT146"
-			(at 292.1 211.836 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.5748 1.5748)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Footprint" "openrz67:SOT-346_L2.9-W1.6-P1.90-LS2.8-TR-CW"
-			(at 281.94 217.17 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://atta.szlcsc.com/upload/public/pdf/source/20170818/C79971_1503051322827895391.pdf"
-			(at 281.94 217.17 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 281.94 217.17 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer Part" "DTC114EKAT146"
-			(at 281.94 217.17 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "ROHM(罗姆)"
-			(at 281.94 217.17 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Supplier Part" "C79971"
-			(at 281.94 217.17 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Supplier" "LCSC"
-			(at 281.94 217.17 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC Part Name" "耐压:50V 电流:50mA"
-			(at 281.94 217.17 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "3"
-			(uuid "13b3cedb-4ea8-484b-9b93-6ae578a72044")
-		)
-		(pin "2"
-			(uuid "6ca63a91-c626-4c6a-830d-9ccdd91bc4a6")
-		)
-		(pin "1"
-			(uuid "9ae547bc-b815-4a1d-b18b-2407ff387926")
-		)
-		(instances
-			(project "openrz67"
-				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
-					(reference "Q2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "openrz67:RC0402JR-0722RL")
+		(lib_id "openrz67:0402WGF220JTCE")
 		(at 181.61 149.86 0)
 		(unit 1)
 		(body_style 0)
@@ -16999,7 +15215,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://atta.szlcsc.com/upload/public/pdf/source/20180821/C275644_0D56F95EFF785E7D9A1FEF436B37DA78.pdf"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C25092.html"
 			(at 181.61 149.86 0)
 			(hide yes)
 			(show_name no)
@@ -17021,7 +15237,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part" "RC0402JR-0722RL"
+		(property "Manufacturer Part" "0402WGF220JTCE"
 			(at 181.61 149.86 0)
 			(hide yes)
 			(show_name no)
@@ -17032,7 +15248,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "YAGEO(国巨)"
+		(property "Manufacturer" "UNI-ROYAL(厚声)"
 			(at 181.61 149.86 0)
 			(hide yes)
 			(show_name no)
@@ -17043,7 +15259,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" "C93929"
+		(property "Supplier Part" "C25092"
 			(at 181.61 149.86 0)
 			(hide yes)
 			(show_name no)
@@ -17065,7 +15281,7 @@
 				)
 			)
 		)
-		(property "LCSC Part Name" "厚膜电阻 22Ω ±5% 62.5mW"
+		(property "LCSC Part Name" "22Ω ±1% 62.5mW 厚膜电阻"
 			(at 181.61 149.86 0)
 			(hide yes)
 			(show_name no)
@@ -17521,83 +15737,6 @@
 		)
 	)
 	(symbol
-		(lib_id "openrz67:Ground-GND")
-		(at 288.29 161.29 0)
-		(unit 1)
-		(body_style 0)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "5f93b268-4b93-4385-afc9-030ef6e77485")
-		(property "Reference" "#PWR027"
-			(at 288.29 161.29 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 288.29 167.64 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.5748 1.5748)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 288.29 161.29 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 288.29 161.29 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 288.29 161.29 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "733d85e7-f2ae-4f8c-9853-b18a1f789b65")
-		)
-		(instances
-			(project "openrz67"
-				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
-					(reference "#PWR027")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "openrz67:ME6211C33M5G-N")
 		(at 335.28 33.02 0)
 		(unit 1)
@@ -17820,83 +15959,6 @@
 		)
 	)
 	(symbol
-		(lib_id "openrz67:Ground-AGND")
-		(at 354.33 105.41 90)
-		(unit 1)
-		(body_style 0)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "60594571-5599-4231-beda-a8f9c9a8b045")
-		(property "Reference" "#PWR029"
-			(at 354.33 105.41 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "AGND"
-			(at 360.68 105.41 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.5748 1.5748)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 354.33 105.41 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 354.33 105.41 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 354.33 105.41 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "b0bfc067-d2b4-4be3-887e-905321131277")
-		)
-		(instances
-			(project "openrz67"
-				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
-					(reference "#PWR029")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "openrz67:Power-5V")
 		(at 198.12 48.26 0)
 		(unit 1)
@@ -17968,84 +16030,6 @@
 			(project "openrz67"
 				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
 					(reference "#PWR030")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "openrz67:Ground-AGND")
-		(at 351.79 212.09 90)
-		(mirror x)
-		(unit 1)
-		(body_style 0)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "616f04e2-2b83-4561-b11d-51ccdeb2f3cd")
-		(property "Reference" "#PWR031"
-			(at 351.79 212.09 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "AGND"
-			(at 358.14 212.09 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.5748 1.5748)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 351.79 212.09 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 351.79 212.09 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 351.79 212.09 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "f9917f16-67c4-4eb4-8849-66ac3d0fce5d")
-		)
-		(instances
-			(project "openrz67"
-				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
-					(reference "#PWR031")
 					(unit 1)
 				)
 			)
@@ -18207,7 +16191,7 @@
 		)
 	)
 	(symbol
-		(lib_id "openrz67:RC0402JR-0722RL")
+		(lib_id "openrz67:0402WGF220JTCE")
 		(at 181.61 147.32 0)
 		(unit 1)
 		(body_style 0)
@@ -18250,7 +16234,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://atta.szlcsc.com/upload/public/pdf/source/20180821/C275644_0D56F95EFF785E7D9A1FEF436B37DA78.pdf"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C25092.html"
 			(at 181.61 147.32 0)
 			(hide yes)
 			(show_name no)
@@ -18272,7 +16256,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part" "RC0402JR-0722RL"
+		(property "Manufacturer Part" "0402WGF220JTCE"
 			(at 181.61 147.32 0)
 			(hide yes)
 			(show_name no)
@@ -18283,7 +16267,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" "YAGEO(国巨)"
+		(property "Manufacturer" "UNI-ROYAL(厚声)"
 			(at 181.61 147.32 0)
 			(hide yes)
 			(show_name no)
@@ -18294,7 +16278,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" "C93929"
+		(property "Supplier Part" "C25092"
 			(at 181.61 147.32 0)
 			(hide yes)
 			(show_name no)
@@ -18316,7 +16300,7 @@
 				)
 			)
 		)
-		(property "LCSC Part Name" "厚膜电阻 22Ω ±5% 62.5mW"
+		(property "LCSC Part Name" "22Ω ±1% 62.5mW 厚膜电阻"
 			(at 181.61 147.32 0)
 			(hide yes)
 			(show_name no)
@@ -20558,83 +18542,6 @@
 		)
 	)
 	(symbol
-		(lib_id "openrz67:Power-VCC")
-		(at 276.86 106.68 0)
-		(unit 1)
-		(body_style 0)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "940e47f6-aace-4d02-8e05-23c92d5579f5")
-		(property "Reference" "#PWR045"
-			(at 276.86 106.68 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "VCC"
-			(at 276.86 102.87 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.5748 1.5748)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 276.86 106.68 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 276.86 106.68 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 276.86 106.68 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "0b3d3c63-920d-49e9-8ecc-0c5377feabf4")
-		)
-		(instances
-			(project "openrz67"
-				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
-					(reference "#PWR045")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "openrz67:0402WGF5101TCE")
 		(at 58.42 52.07 0)
 		(unit 1)
@@ -21043,145 +18950,6 @@
 		)
 	)
 	(symbol
-		(lib_id "openrz67:DTC114EKAT146")
-		(at 280.67 148.59 0)
-		(unit 1)
-		(body_style 0)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "9b630dfa-222f-4fb9-b543-de134dafad40")
-		(property "Reference" "Q1"
-			(at 290.83 139.7 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.5748 1.5748)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Value" "DTC114EKAT146"
-			(at 290.83 143.256 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.5748 1.5748)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Footprint" "openrz67:SOT-346_L2.9-W1.6-P1.90-LS2.8-TR-CW"
-			(at 280.67 148.59 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://atta.szlcsc.com/upload/public/pdf/source/20170818/C79971_1503051322827895391.pdf"
-			(at 280.67 148.59 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 280.67 148.59 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer Part" "DTC114EKAT146"
-			(at 280.67 148.59 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "ROHM(罗姆)"
-			(at 280.67 148.59 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Supplier Part" "C79971"
-			(at 280.67 148.59 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Supplier" "LCSC"
-			(at 280.67 148.59 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC Part Name" "耐压:50V 电流:50mA"
-			(at 280.67 148.59 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "afbc8960-441b-40dc-93d6-1d6eab7c777a")
-		)
-		(pin "2"
-			(uuid "4290f27e-e130-44a2-b34c-75ccba1a1dd8")
-		)
-		(pin "3"
-			(uuid "92df9096-fcba-490b-bbdb-30221762a18a")
-		)
-		(instances
-			(project "openrz67"
-				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
-					(reference "Q1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "openrz67:Ground-GND")
 		(at 36.83 26.67 180)
 		(unit 1)
@@ -21253,160 +19021,6 @@
 			(project "openrz67"
 				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
 					(reference "#PWR046")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "openrz67:Ground-GND")
-		(at 276.86 127 0)
-		(unit 1)
-		(body_style 0)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "9f970ef2-10d1-457e-a530-79917c0df56b")
-		(property "Reference" "#PWR047"
-			(at 276.86 127 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 276.86 133.35 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.5748 1.5748)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 276.86 127 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 276.86 127 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 276.86 127 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "1033190b-5d83-410a-bdb4-4ac835859e00")
-		)
-		(instances
-			(project "openrz67"
-				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
-					(reference "#PWR047")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "openrz67:Power-VCC")
-		(at 278.13 175.26 0)
-		(unit 1)
-		(body_style 0)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "9fdccb11-e479-4593-a96b-2eaa02aa3728")
-		(property "Reference" "#PWR048"
-			(at 278.13 175.26 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "VCC"
-			(at 278.13 171.45 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.5748 1.5748)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 278.13 175.26 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 278.13 175.26 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 278.13 175.26 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "c5220e3f-e985-427d-926f-8c5132cbff83")
-		)
-		(instances
-			(project "openrz67"
-				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
-					(reference "#PWR048")
 					(unit 1)
 				)
 			)
@@ -22609,142 +20223,6 @@
 			(project "openrz67"
 				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
 					(reference "#PWR055")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "openrz67:CL10A106MA8NRNC")
-		(at 276.86 121.92 90)
-		(unit 1)
-		(body_style 0)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "c22287d0-f693-4a36-9103-fc0eafeb237d")
-		(property "Reference" "C27"
-			(at 279.4 120.65 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.0414 1.0414)
-				)
-				(justify right top)
-			)
-		)
-		(property "Value" "10uF"
-			(at 279.4 125.73 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.5748 1.5748)
-				)
-				(justify right top)
-			)
-		)
-		(property "Footprint" "openrz67:C0603"
-			(at 276.86 121.92 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://item.szlcsc.com/datasheet/CL10A106MA8NRNC/97651.html"
-			(at 276.86 121.92 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 276.86 121.92 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer Part" "CL10A106MA8NRNC"
-			(at 276.86 121.92 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "SAMSUNG(三星)"
-			(at 276.86 121.92 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Supplier Part" "C96446"
-			(at 276.86 121.92 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Supplier" "LCSC"
-			(at 276.86 121.92 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC Part Name" "10uF ±20% 25V"
-			(at 276.86 121.92 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "17245a96-8f65-4503-ad88-53e422320924")
-		)
-		(pin "2"
-			(uuid "7418558b-308b-43bf-95b5-4376e9398c2e")
-		)
-		(instances
-			(project "openrz67"
-				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
-					(reference "C27")
 					(unit 1)
 				)
 			)
@@ -24136,238 +21614,6 @@
 		)
 	)
 	(symbol
-		(lib_id "openrz67:Ground-GND")
-		(at 278.13 195.58 0)
-		(unit 1)
-		(body_style 0)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "ed1cc18d-f393-4663-869a-92ca2e11457f")
-		(property "Reference" "#PWR058"
-			(at 278.13 195.58 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 278.13 201.93 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.5748 1.5748)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 278.13 195.58 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 278.13 195.58 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 278.13 195.58 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "c9609711-46ef-44b1-bd54-af3d6d85dfc0")
-		)
-		(instances
-			(project "openrz67"
-				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
-					(reference "#PWR058")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "openrz67:G6K-2F-Y3VDC")
-		(at 320.04 190.5 0)
-		(mirror x)
-		(unit 1)
-		(body_style 0)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "ed9026fd-1139-4244-806a-51246a0681a1")
-		(property "Reference" "K2"
-			(at 335.28 187.96 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.0414 1.0414)
-				)
-				(justify left top)
-			)
-		)
-		(property "Value" "G6K-2F-Y DC3"
-			(at 335.28 190.5 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.5748 1.5748)
-				)
-				(justify left top)
-			)
-		)
-		(property "Footprint" "openrz67:RELAY-SMD_G6K-2F-Y"
-			(at 320.04 190.5 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://atta.szlcsc.com/upload/public/pdf/source/20220125/C1876770_53E5491D4B68F29C4BBD8118E9BAE0E8.pdf"
-			(at 320.04 190.5 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 320.04 190.5 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer Part" "G6K-2F-Y DC3"
-			(at 320.04 190.5 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "OMRON(欧姆龙)"
-			(at 320.04 190.5 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Supplier Part" "C93168"
-			(at 320.04 190.5 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Supplier" "LCSC"
-			(at 320.04 190.5 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC Part Name" "G6K-2F-Y 3VDC"
-			(at 320.04 190.5 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "808b5500-7643-4c83-8cc5-11f70efba7c4")
-		)
-		(pin "2"
-			(uuid "56278f5f-b48f-4c55-832e-9587d5b2aabd")
-		)
-		(pin "3"
-			(uuid "0d097246-9b4d-4f52-babc-d7ba27eeaa08")
-		)
-		(pin "4"
-			(uuid "86859c47-460b-4064-912b-b24f847e9952")
-		)
-		(pin "5"
-			(uuid "69eb0c52-043d-4cd8-b894-93a45299ecaf")
-		)
-		(pin "6"
-			(uuid "6efcc209-76b6-4eec-b6fb-c50992c8abd6")
-		)
-		(pin "7"
-			(uuid "57b0f397-60b1-4d77-89c4-0af49acca103")
-		)
-		(pin "8"
-			(uuid "62c974f8-b232-47b7-a2fe-d3f4a47f5117")
-		)
-		(instances
-			(project "openrz67"
-				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
-					(reference "K2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "openrz67:Ground-AGND")
 		(at 201.93 260.35 0)
 		(unit 1)
@@ -25292,71 +22538,6 @@
 	)
 	(symbol
 		(lib_id "openrz67:PWR_FLAG")
-		(at 354.33 105.41 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim yes)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "23f08671-0bca-447e-a959-e2cad20550d4")
-		(property "Reference" "#FLG02"
-			(at 354.33 101.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "PWR_FLAG"
-			(at 354.33 100.33 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" ""
-			(at 354.33 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 354.33 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 354.33 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "openrz67"
-				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
-					(reference "#FLG02")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "openrz67:PWR_FLAG")
 		(at 306.07 27.94 0)
 		(unit 1)
 		(body_style 1)
@@ -25728,4 +22909,1044 @@
 		)
 	)
 	(embedded_fonts no)
+		(symbol
+		(lib_id "openrz67:0402WGF3300TCE")
+		(at 278.13 147.32 180)
+		(unit 1)
+		(body_style 0)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "7ca9535f-48f4-47db-a793-942f032852c5")
+		(property "Reference" "R21"
+			(at 275.59 146.05 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.0414 1.0414)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "330Ω"
+			(at 275.59 150.622 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.5748 1.5748)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "openrz67:R0402"
+			(at 278.13 147.32 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C25104.html"
+			(at 278.13 147.32 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 278.13 147.32 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer Part" "0402WGF3300TCE"
+			(at 278.13 147.32 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "UNI-ROYAL(厚声)"
+			(at 278.13 147.32 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Supplier Part" "C25104"
+			(at 278.13 147.32 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Supplier" "LCSC"
+			(at 278.13 147.32 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part Name" "330Ω ±1% 62.5mW 厚膜电阻"
+			(at 278.13 147.32 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "ce513230-d06c-4c06-89b9-7ca0fb2e7ffc")
+		)
+		(pin "2"
+			(uuid "dff96791-0f9f-4183-8256-dc606586e20e")
+		)
+		(instances
+			(project "openrz67"
+				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
+					(reference "R21")
+					(unit 1)
+				)
+			)
+		)
+	)
+		(symbol
+		(lib_id "openrz67:TLP172GM")
+		(at 300.99 149.86 0)
+		(unit 1)
+		(body_style 0)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "838798c8-fdb7-4592-bffe-36e521b22c0a")
+		(property "Reference" "U5"
+			(at 300.99 142.24 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.5748 1.5748)
+				)
+			)
+		)
+		(property "Value" "TLP172GM"
+			(at 300.99 157.48 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.5748 1.5748)
+				)
+			)
+		)
+		(property "Footprint" "openrz67:SMD-4_L4.6-W3.7-P2.54-LS7.0-BR"
+			(at 300.99 149.86 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://toshiba.semicon-storage.com/info/TLP172GM_datasheet_en_20230525.pdf"
+			(at 300.99 149.86 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "PhotoMOS relay, 1-Form-A, 350 V / 110 mA, 4-pin SO6"
+			(at 300.99 149.86 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer Part" "TLP172GM(TPL,E"
+			(at 300.99 149.86 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "TOSHIBA(东芝)"
+			(at 300.99 149.86 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Supplier Part" "C261926"
+			(at 300.99 149.86 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Supplier" "LCSC"
+			(at 300.99 149.86 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part Name" "TLP172GM(TPL,E"
+			(at 300.99 149.86 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "b0b668ef-6db9-4ecc-a536-5d3777f5e565")
+		)
+		(pin "2"
+			(uuid "6e7e6471-26b6-4291-9c84-60fa39634edc")
+		)
+		(pin "3"
+			(uuid "9d8dc73c-2941-47e4-8fff-e48fcd5e4a10")
+		)
+		(pin "4"
+			(uuid "17c4f072-03d3-42b9-9362-c6b0870bd1eb")
+		)
+		(instances
+			(project "openrz67"
+				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
+					(reference "U5")
+					(unit 1)
+				)
+			)
+		)
+	)
+		(wire
+		(pts
+			(xy 283.21 147.32) (xy 289.56 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "41a8cad3-966e-4914-8980-44f86564d39e")
+	)
+		(wire
+		(pts
+			(xy 289.56 152.4) (xy 289.56 157.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8349285d-ff7a-4165-b4f7-c6d329cd1fd1")
+	)
+		(symbol
+		(lib_id "openrz67:Ground-GND")
+		(at 289.56 157.48 0)
+		(unit 1)
+		(body_style 0)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "0b091882-468a-48e8-afd0-2dd7842cee54")
+		(property "Reference" "#PWR008"
+			(at 289.56 157.48 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 289.56 163.83 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.5748 1.5748)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 289.56 157.48 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 289.56 157.48 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 289.56 157.48 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "e6dacd71-7a3c-4ecf-8235-277827c89c6c")
+		)
+		(instances
+			(project "openrz67"
+				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
+					(reference "#PWR008")
+					(unit 1)
+				)
+			)
+		)
+	)
+		(wire
+		(pts
+			(xy 312.42 147.32) (xy 320.04 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "af9d5d3c-d5be-4ba6-9a30-e11d9ad36f47")
+	)
+		(global_label "S1"
+		(shape passive)
+		(at 320.04 147.32 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "e6802758-1c4a-4aed-955e-336351ef2d2d")
+	)
+		(wire
+		(pts
+			(xy 312.42 152.4) (xy 312.42 157.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "888be251-fd0f-4508-ac97-05ff1f6a5b30")
+	)
+		(symbol
+		(lib_id "openrz67:Ground-AGND")
+		(at 312.42 157.48 0)
+		(unit 1)
+		(body_style 0)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "494a49c8-b606-48a9-a534-1ca14b4c1728")
+		(property "Reference" "#PWR029"
+			(at 312.42 157.48 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "AGND"
+			(at 312.42 163.83 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.5748 1.5748)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 312.42 157.48 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 312.42 157.48 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 312.42 157.48 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "cb38b5ac-7365-41cd-838c-e80a580dcae8")
+		)
+		(instances
+			(project "openrz67"
+				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
+					(reference "#PWR029")
+					(unit 1)
+				)
+			)
+		)
+	)
+		(symbol
+		(lib_id "openrz67:PWR_FLAG")
+		(at 312.42 157.48 0)
+		(unit 1)
+		(body_style 0)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "445617e1-8584-4e20-8e90-5f2ca7cce499")
+		(property "Reference" "#FLG02"
+			(at 312.42 157.48 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 312.42 152.4 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.5748 1.5748)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 312.42 157.48 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 312.42 157.48 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 312.42 157.48 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "985eca31-c270-4bb1-ae59-d7010043ad0f")
+		)
+		(instances
+			(project "openrz67"
+				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
+					(reference "#FLG02")
+					(unit 1)
+				)
+			)
+		)
+	)
+		(symbol
+		(lib_id "openrz67:0402WGF3300TCE")
+		(at 279.4 215.9 180)
+		(unit 1)
+		(body_style 0)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "a913550c-cd70-490b-a18d-1b6c4d9bed75")
+		(property "Reference" "R22"
+			(at 276.86 214.63 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.0414 1.0414)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "330Ω"
+			(at 276.86 219.202 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.5748 1.5748)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "openrz67:R0402"
+			(at 279.4 215.9 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/product-detail/C25104.html"
+			(at 279.4 215.9 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 279.4 215.9 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer Part" "0402WGF3300TCE"
+			(at 279.4 215.9 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "UNI-ROYAL(厚声)"
+			(at 279.4 215.9 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Supplier Part" "C25104"
+			(at 279.4 215.9 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Supplier" "LCSC"
+			(at 279.4 215.9 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part Name" "330Ω ±1% 62.5mW 厚膜电阻"
+			(at 279.4 215.9 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "255401d1-6470-4222-949e-33b801aad883")
+		)
+		(pin "2"
+			(uuid "99237cd9-ebf5-4660-97dc-ccc8299350a9")
+		)
+		(instances
+			(project "openrz67"
+				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
+					(reference "R22")
+					(unit 1)
+				)
+			)
+		)
+	)
+		(symbol
+		(lib_id "openrz67:TLP172GM")
+		(at 302.26 218.44 0)
+		(unit 1)
+		(body_style 0)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "9dd45f61-4270-4a87-96cd-b41f2c6ed38c")
+		(property "Reference" "U6"
+			(at 302.26 210.82 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.5748 1.5748)
+				)
+			)
+		)
+		(property "Value" "TLP172GM"
+			(at 302.26 226.06 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.5748 1.5748)
+				)
+			)
+		)
+		(property "Footprint" "openrz67:SMD-4_L4.6-W3.7-P2.54-LS7.0-BR"
+			(at 302.26 218.44 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://toshiba.semicon-storage.com/info/TLP172GM_datasheet_en_20230525.pdf"
+			(at 302.26 218.44 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "PhotoMOS relay, 1-Form-A, 350 V / 110 mA, 4-pin SO6"
+			(at 302.26 218.44 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer Part" "TLP172GM(TPL,E"
+			(at 302.26 218.44 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "TOSHIBA(东芝)"
+			(at 302.26 218.44 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Supplier Part" "C261926"
+			(at 302.26 218.44 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Supplier" "LCSC"
+			(at 302.26 218.44 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part Name" "TLP172GM(TPL,E"
+			(at 302.26 218.44 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "38658c29-bb60-4df0-b55c-5c2e7a2dee75")
+		)
+		(pin "2"
+			(uuid "598db079-a95a-4902-b1f9-4fb0a16fdf71")
+		)
+		(pin "3"
+			(uuid "61779b25-bc35-41e1-8848-7e758b8c2ef1")
+		)
+		(pin "4"
+			(uuid "5338be38-060f-485f-86cd-dcfd7dd89644")
+		)
+		(instances
+			(project "openrz67"
+				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
+					(reference "U6")
+					(unit 1)
+				)
+			)
+		)
+	)
+		(wire
+		(pts
+			(xy 284.48 215.9) (xy 290.83 215.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6cd37600-e14d-492a-b64a-e9d21db05d31")
+	)
+		(wire
+		(pts
+			(xy 290.83 220.98) (xy 290.83 226.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "be375c44-f4ae-4f7e-a68c-d3d4b6835269")
+	)
+		(symbol
+		(lib_id "openrz67:Ground-GND")
+		(at 290.83 226.06 0)
+		(unit 1)
+		(body_style 0)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "724d9757-bc4f-4342-a075-1d5808c33fb5")
+		(property "Reference" "#PWR027"
+			(at 290.83 226.06 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 290.83 232.41 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.5748 1.5748)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 290.83 226.06 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 290.83 226.06 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 290.83 226.06 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "76a189df-0739-4a43-9fc5-b8bc8fb82a6a")
+		)
+		(instances
+			(project "openrz67"
+				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
+					(reference "#PWR027")
+					(unit 1)
+				)
+			)
+		)
+	)
+		(wire
+		(pts
+			(xy 313.69 215.9) (xy 321.31 215.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "de4c0383-492c-48a4-87ce-dd24814512b4")
+	)
+		(global_label "S2"
+		(shape passive)
+		(at 321.31 215.9 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "80a426f3-b5a2-4b33-8197-2910f10a4417")
+	)
+		(wire
+		(pts
+			(xy 313.69 220.98) (xy 313.69 226.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c05e4efc-5c41-4bde-8137-f5d7cbcf4a3e")
+	)
+		(symbol
+		(lib_id "openrz67:Ground-AGND")
+		(at 313.69 226.06 0)
+		(unit 1)
+		(body_style 0)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "de1e6993-39f9-4ad5-aa2b-63c756896b7f")
+		(property "Reference" "#PWR031"
+			(at 313.69 226.06 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "AGND"
+			(at 313.69 232.41 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.5748 1.5748)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 313.69 226.06 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 313.69 226.06 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 313.69 226.06 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "8e7013a3-0c3a-42ce-8b0d-1d63fc4be638")
+		)
+		(instances
+			(project "openrz67"
+				(path "/608428cc-ede5-4359-a9e7-0ca7713b40fb"
+					(reference "#PWR031")
+					(unit 1)
+				)
+			)
+		)
+	)
 )

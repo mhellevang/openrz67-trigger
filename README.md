@@ -20,22 +20,22 @@ The PCB source is the KiCad project in [`pcb/kicad/`](pcb/kicad/) (ported from E
 The current source is **rev 2, not yet fabricated**: it moves the battery connector to the underside and changes `U4` to a side-entry part. The board pictured above is rev 2; the enclosure in [`case/`](case/) still fits the fabricated rev 1. Connector part numbers and geometry are documented in [`pcb/kicad/README.md`](pcb/kicad/README.md), which is the authoritative source for them.
 
 * 1× ESP32-C3FH4
-* 2× Omron G6K-2F-Y DC3 relays to control the shutter release
+* 2× Toshiba TLP172GM PhotoMOS relays (solid-state, isolated) to close the shutter contacts
 * Supporting components per the [BOM](pcb/kicad/out/openrz67-bom.csv)
 * 2.4 GHz antenna with U.FL connector
 * 250 mAh LiPo for power, on a JST S2B-PH-SM4-TB side-entry connector (`BAT1`) on the board's underside
 * SS12F15 slide switch
 
-The solution is flexible: an ESP32-C3 development board such as the Seeed XIAO ESP32C3 and two relay channels work too. Assign two output-capable GPIOs in `src/main.cpp`. The reference circuit uses two Omron G6K-2F-Y DC3 relays with active-high transistor drivers and flyback diodes. Other relays or modules may require a different supply voltage or inverted output logic.
+The solution is flexible: an ESP32-C3 development board such as the Seeed XIAO ESP32C3 and two isolated switch channels work too. Assign two output-capable GPIOs in `src/main.cpp`. On the PCB each channel is a TLP172GM PhotoMOS relay whose LED is driven directly from the GPIO through 330 Ω; the output closes S1 or S2 to camera ground while the GPIO is HIGH. The earlier reference circuit with two Omron G6K-2F-Y DC3 relays, active-high transistor drivers and flyback diodes (rev 1, diagram below) works the same way; relay modules may need a different supply voltage or inverted logic.
 
-![Wiring diagram for an ESP32-C3, two relay channels and the Mamiya RZ67 camera port](assets/wiring-diagram.svg)
+![Wiring diagram for an ESP32-C3, two relay channels and the Mamiya RZ67 camera port (rev-1 reference circuit)](assets/wiring-diagram.svg)
 
 ### Current PCB pinout
 
 | GPIO | Function |
 |------|----------|
-| 3    | Shutter relay 1 |
-| 21   | Shutter relay 2 |
+| 3    | Shutter output S2 (U6) |
+| 21   | Shutter output S1 (U5) |
 | 20   | Status LED |
 
 ### Camera connector
@@ -60,7 +60,7 @@ Viewed from the front, the camera's four-pin remote-control port is:
 3. S1 switch
 4. S2 switch
 
-To trigger the shutter release, the relays short S1/S2 to GND. For bulb exposures, set the camera's shutter-speed dial to `B`. The camera closes the shutter automatically after approximately 60 seconds even if the switches remain closed.
+To trigger the shutter release, the PhotoMOS outputs short S1/S2 to camera GND. For bulb exposures, set the camera's shutter-speed dial to `B`. The camera closes the shutter automatically after approximately 60 seconds even if the switches remain closed.
 
 ## BLE protocol
 
@@ -97,7 +97,7 @@ pio run -t upload
 
 If uploading does not start, hold `BOOT`, press and release `EN`, then release `BOOT` and retry.
 
-Serial logging is disabled because UART0 uses GPIO 20 and GPIO 21, which are assigned to the status LED and a relay.
+Serial logging is disabled because UART0 uses GPIO 20 and GPIO 21, which are assigned to the status LED and a shutter output.
 
 ## License
 
