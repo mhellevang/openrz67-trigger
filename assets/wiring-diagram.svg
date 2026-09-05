@@ -1,114 +1,122 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title description">
-  <title id="title">OpenRZ67 wiring diagram</title>
-  <desc id="description">An ESP32-C3 controls two active-high relay channels. The normally-open relay contacts short the Mamiya RZ67 S1 and S2 pins to camera ground. The camera's 6 volt pin is not connected.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title description">
+  <title id="title">OpenRZ67 PhotoMOS wiring diagram</title>
+  <desc id="description">GPIO4 and GPIO3 drive two TLP172AM input LEDs through 220 ohm resistors. Their isolated outputs close the Mamiya RZ67 S1 and S2 signals to camera ground. The camera 6 volt pin is not connected, and camera ground stays isolated from ESP32 ground.</desc>
   <defs>
     <style>
       text { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #17202a; }
       .title { font-size: 28px; font-weight: 700; }
-      .section { font-size: 18px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+      .section { font-size: 18px; font-weight: 700; letter-spacing: .04em; }
       .label { font-size: 17px; font-weight: 650; }
       .small { font-size: 14px; fill: #52606d; }
       .tiny { font-size: 12px; fill: #68737d; }
-      .panel { fill: #f8fafb; stroke: #cbd5dc; stroke-width: 2; }
       .board { fill: #e9f6f1; stroke: #17815f; stroke-width: 3; }
-      .relay { fill: #fff7e8; stroke: #d88718; stroke-width: 3; }
+      .photo { fill: #fff7e8; stroke: #d88718; stroke-width: 3; }
       .camera { fill: #eef3ff; stroke: #456bd1; stroke-width: 3; }
+      .channel { fill: #fff; stroke: #d9a34f; stroke-width: 2; }
     </style>
-    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#c13c66"/>
-    </marker>
   </defs>
 
-  <rect width="1200" height="720" fill="#ffffff"/>
-  <text x="54" y="55" class="title">ESP32-C3 to Mamiya RZ67</text>
-  <text x="54" y="83" class="small">Reference circuit using two Omron G6K-2F-Y DC3 relays.</text>
+  <rect width="1200" height="760" fill="#fff"/>
+  <text x="50" y="52" class="title">ESP32-C3 to Mamiya RZ67</text>
+  <text x="50" y="80" class="small">Current rev 2 shutter interface with two isolated TLP172AM PhotoMOS channels</text>
 
-  <text x="54" y="132" class="section">Controller</text>
-  <rect x="54" y="150" width="280" height="420" rx="18" class="board"/>
-  <text x="86" y="195" class="label">ESP32-C3</text>
-  <text x="86" y="219" class="small">Development board or custom PCB</text>
+  <text x="50" y="128" class="section">CONTROLLER</text>
+  <rect x="50" y="145" width="280" height="505" rx="18" class="board"/>
+  <text x="82" y="190" class="label">ESP32-C3</text>
+  <text x="82" y="214" class="small">Custom PCB or development board</text>
 
-  <circle cx="305" cy="275" r="6" fill="#c13c66"/>
-  <text x="86" y="281" class="label">SHUTTER 1</text>
-  <text x="197" y="281" class="small">digital output</text>
+  <circle cx="310" cy="280" r="6" fill="#c13c66"/>
+  <text x="82" y="275" class="label">GPIO4</text>
+  <text x="82" y="299" class="small">S1_DRV · U1 pin 9</text>
 
-  <circle cx="305" cy="350" r="6" fill="#c13c66"/>
-  <text x="86" y="356" class="label">SHUTTER 2</text>
-  <text x="197" y="356" class="small">digital output</text>
+  <circle cx="310" cy="460" r="6" fill="#c13c66"/>
+  <text x="82" y="455" class="label">GPIO3</text>
+  <text x="82" y="479" class="small">S2_DRV · U1 pin 8</text>
 
-  <circle cx="305" cy="425" r="6" fill="#d88718"/>
-  <text x="86" y="431" class="label">3V3</text>
-  <text x="139" y="431" class="small">relay supply</text>
+  <circle cx="310" cy="590" r="6" fill="#27323a"/>
+  <text x="82" y="585" class="label">GND</text>
+  <text x="82" y="609" class="small">Controller side only</text>
 
-  <circle cx="305" cy="500" r="6" fill="#27323a"/>
-  <text x="86" y="506" class="label">GND</text>
-  <text x="141" y="506" class="small">control side</text>
+  <text x="385" y="128" class="section">ISOLATED SHUTTER SWITCHES</text>
+  <rect x="385" y="145" width="410" height="505" rx="18" class="photo"/>
 
-  <text x="398" y="132" class="section">3 V relay driver</text>
-  <rect x="398" y="150" width="320" height="420" rx="18" class="relay"/>
-  <text x="430" y="195" class="label">2× G6K-2F-Y DC3 · active HIGH</text>
-  <text x="430" y="219" class="small">Transistor driver and flyback diode per relay</text>
+  <rect x="410" y="190" width="360" height="180" rx="14" class="channel"/>
+  <text x="430" y="220" class="label">U5 · TLP172AM · S1</text>
+  <rect x="430" y="263" width="82" height="34" rx="7" fill="#fff7e8" stroke="#d88718" stroke-width="2"/>
+  <text x="471" y="285" text-anchor="middle" class="small">R21 220 Ω</text>
+  <line x1="316" y1="280" x2="430" y2="280" stroke="#c13c66" stroke-width="4" stroke-linecap="round"/>
+  <line x1="512" y1="280" x2="535" y2="280" stroke="#c13c66" stroke-width="4" stroke-linecap="round"/>
+  <rect x="535" y="258" width="58" height="44" rx="8" fill="#fff7e8" stroke="#d88718" stroke-width="2"/>
+  <text x="564" y="285" text-anchor="middle" class="label">LED</text>
+  <text x="535" y="321" class="tiny">A</text>
+  <text x="585" y="321" class="tiny">K</text>
+  <polyline points="593,280 606,280 606,590" fill="none" stroke="#27323a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="598" y1="268" x2="657" y2="268" stroke="#d88718" stroke-width="2.5"/>
+  <polygon points="667,268 657,263 657,273" fill="#d88718"/>
+  <line x1="598" y1="292" x2="657" y2="292" stroke="#d88718" stroke-width="2.5"/>
+  <polygon points="667,292 657,287 657,297" fill="#d88718"/>
+  <line x1="630" y1="235" x2="630" y2="325" stroke="#9b7a43" stroke-width="2" stroke-dasharray="7 6"/>
+  <rect x="680" y="257" width="68" height="46" rx="8" fill="#eef3ff" stroke="#456bd1" stroke-width="2"/>
+  <text x="714" y="276" text-anchor="middle" class="tiny">MOSFET</text>
+  <text x="714" y="292" text-anchor="middle" class="tiny">output</text>
+  <line x1="665" y1="280" x2="680" y2="280" stroke="#337f9c" stroke-width="4" stroke-linecap="round"/>
+  <line x1="748" y1="280" x2="867" y2="280" stroke="#337f9c" stroke-width="4" stroke-linecap="round"/>
+  <polyline points="665,280 650,280 650,590" fill="none" stroke="#337f9c" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="430" y="350" class="tiny">PCB pads 1/2 = Toshiba 1/3 · pads 3/4 = 4/6</text>
 
-  <rect x="430" y="250" width="120" height="50" rx="10" fill="#fff" stroke="#d88718" stroke-width="2"/>
-  <text x="490" y="281" text-anchor="middle" class="label">IN1</text>
-  <path d="M 311 275 H 430" fill="none" stroke="#c13c66" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <rect x="410" y="390" width="360" height="180" rx="14" class="channel"/>
+  <text x="430" y="420" class="label">U6 · TLP172AM · S2</text>
+  <rect x="430" y="443" width="82" height="34" rx="7" fill="#fff7e8" stroke="#d88718" stroke-width="2"/>
+  <text x="471" y="465" text-anchor="middle" class="small">R22 220 Ω</text>
+  <line x1="316" y1="460" x2="430" y2="460" stroke="#c13c66" stroke-width="4" stroke-linecap="round"/>
+  <line x1="512" y1="460" x2="535" y2="460" stroke="#c13c66" stroke-width="4" stroke-linecap="round"/>
+  <rect x="535" y="438" width="58" height="44" rx="8" fill="#fff7e8" stroke="#d88718" stroke-width="2"/>
+  <text x="564" y="465" text-anchor="middle" class="label">LED</text>
+  <text x="535" y="501" class="tiny">A</text>
+  <text x="585" y="501" class="tiny">K</text>
+  <line x1="593" y1="460" x2="606" y2="460" stroke="#27323a" stroke-width="4" stroke-linecap="round"/>
+  <line x1="598" y1="448" x2="657" y2="448" stroke="#d88718" stroke-width="2.5"/>
+  <polygon points="667,448 657,443 657,453" fill="#d88718"/>
+  <line x1="598" y1="472" x2="657" y2="472" stroke="#d88718" stroke-width="2.5"/>
+  <polygon points="667,472 657,467 657,477" fill="#d88718"/>
+  <line x1="630" y1="415" x2="630" y2="505" stroke="#9b7a43" stroke-width="2" stroke-dasharray="7 6"/>
+  <rect x="680" y="437" width="68" height="46" rx="8" fill="#eef3ff" stroke="#456bd1" stroke-width="2"/>
+  <text x="714" y="456" text-anchor="middle" class="tiny">MOSFET</text>
+  <text x="714" y="472" text-anchor="middle" class="tiny">output</text>
+  <line x1="665" y1="460" x2="680" y2="460" stroke="#337f9c" stroke-width="4" stroke-linecap="round"/>
+  <line x1="748" y1="460" x2="867" y2="460" stroke="#337f9c" stroke-width="4" stroke-linecap="round"/>
+  <line x1="665" y1="460" x2="650" y2="460" stroke="#337f9c" stroke-width="4" stroke-linecap="round"/>
+  <text x="430" y="550" class="tiny">PCB pads 1/2 = Toshiba 1/3 · pads 3/4 = 4/6</text>
 
-  <rect x="430" y="325" width="120" height="50" rx="10" fill="#fff" stroke="#d88718" stroke-width="2"/>
-  <text x="490" y="356" text-anchor="middle" class="label">IN2</text>
-  <path d="M 311 350 H 430" fill="none" stroke="#c13c66" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <line x1="606" y1="590" x2="310" y2="590" stroke="#27323a" stroke-width="4" stroke-linecap="round"/>
+  <text x="600" y="613" text-anchor="end" class="tiny">ESP32 GND</text>
 
-  <rect x="430" y="400" width="120" height="50" rx="10" fill="#fff" stroke="#d88718" stroke-width="2"/>
-  <text x="490" y="431" text-anchor="middle" class="label">VCC</text>
-  <path d="M 311 425 H 430" fill="none" stroke="#d88718" stroke-width="4" stroke-linecap="round"/>
+  <text x="850" y="128" class="section">CAMERA PORT</text>
+  <rect x="850" y="145" width="300" height="505" rx="18" class="camera"/>
+  <text x="882" y="190" class="label">Mamiya RZ67</text>
+  <text x="882" y="214" class="small">Four-pin remote connector</text>
 
-  <rect x="430" y="475" width="120" height="50" rx="10" fill="#fff" stroke="#d88718" stroke-width="2"/>
-  <text x="490" y="506" text-anchor="middle" class="label">GND</text>
-  <path d="M 311 500 H 430" fill="none" stroke="#27323a" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="885" cy="245" r="18" fill="#fff" stroke="#9ba5ad" stroke-width="3"/>
+  <text x="885" y="251" text-anchor="middle" class="label">1</text>
+  <text x="920" y="241" class="label">6 V</text>
+  <text x="920" y="263" class="small">Do not connect</text>
 
-  <line x1="592" y1="409" x2="632" y2="393" stroke="#27323a" stroke-width="4" stroke-linecap="round"/>
-  <circle cx="585" cy="410" r="6" fill="#27323a"/>
-  <circle cx="645" cy="385" r="6" fill="#27323a"/>
-  <text x="585" y="443" text-anchor="middle" class="tiny">COM</text>
-  <text x="645" y="368" text-anchor="middle" class="tiny">NO</text>
-  <text x="681" y="416" text-anchor="end" class="label">K1</text>
+  <circle cx="885" cy="280" r="18" fill="#fff" stroke="#337f9c" stroke-width="3"/>
+  <text x="885" y="286" text-anchor="middle" class="label">3</text>
+  <text x="920" y="286" class="label">S1</text>
 
-  <line x1="592" y1="484" x2="632" y2="468" stroke="#27323a" stroke-width="4" stroke-linecap="round"/>
-  <circle cx="585" cy="485" r="6" fill="#27323a"/>
-  <circle cx="645" cy="460" r="6" fill="#27323a"/>
-  <text x="585" y="518" text-anchor="middle" class="tiny">COM</text>
-  <text x="645" y="443" text-anchor="middle" class="tiny">NO</text>
-  <text x="681" y="491" text-anchor="end" class="label">K2</text>
+  <circle cx="885" cy="460" r="18" fill="#fff" stroke="#337f9c" stroke-width="3"/>
+  <text x="885" y="466" text-anchor="middle" class="label">4</text>
+  <text x="920" y="466" class="label">S2</text>
 
-  <text x="782" y="132" class="section">Camera port</text>
-  <rect x="782" y="150" width="364" height="420" rx="18" class="camera"/>
-  <text x="814" y="195" class="label">Mamiya RZ67</text>
-  <text x="814" y="219" class="small">Front view · listed in physical left-to-right order</text>
+  <circle cx="885" cy="590" r="18" fill="#fff" stroke="#27323a" stroke-width="3"/>
+  <text x="885" y="596" text-anchor="middle" class="label">2</text>
+  <text x="920" y="586" class="label">GND</text>
+  <text x="920" y="608" class="small">Camera side · AGND</text>
+  <line x1="650" y1="590" x2="867" y2="590" stroke="#337f9c" stroke-width="4" stroke-linecap="round"/>
 
-  <circle cx="840" cy="260" r="18" fill="#fff" stroke="#9ba5ad" stroke-width="3"/>
-  <circle cx="840" cy="335" r="18" fill="#fff" stroke="#27323a" stroke-width="3"/>
-  <circle cx="840" cy="410" r="18" fill="#fff" stroke="#337f9c" stroke-width="3"/>
-  <circle cx="840" cy="485" r="18" fill="#fff" stroke="#337f9c" stroke-width="3"/>
-  <text x="840" y="266" text-anchor="middle" class="label">1</text>
-  <text x="840" y="341" text-anchor="middle" class="label">2</text>
-  <text x="840" y="416" text-anchor="middle" class="label">3</text>
-  <text x="840" y="491" text-anchor="middle" class="label">4</text>
-  <text x="875" y="266" class="label">6 V</text>
-  <text x="930" y="266" class="small">Do not connect</text>
-  <text x="875" y="341" class="label">GND</text>
-  <text x="930" y="341" class="small">K1 COM + K2 COM</text>
-  <text x="875" y="416" class="label">S1</text>
-  <text x="930" y="416" class="small">K1 NO</text>
-  <text x="875" y="491" class="label">S2</text>
-  <text x="930" y="491" class="small">K2 NO</text>
-
-  <path d="M 645 385 H 760 V 410 H 822" fill="none" stroke="#337f9c" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M 645 460 H 740 V 485 H 822" fill="none" stroke="#337f9c" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M 585 410 H 570 V 335 H 822" fill="none" stroke="#27323a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M 585 485 H 570 V 410" fill="none" stroke="#27323a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-
-  <rect x="54" y="616" width="1092" height="62" rx="14" class="panel"/>
-  <circle cx="85" cy="647" r="10" fill="#456bd1"/>
-  <text x="108" y="652" class="label">Use NO contacts.</text>
-  <text x="266" y="652" class="small">The relays close S1 and S2 to camera GND only while the shutter outputs are HIGH.</text>
-  <text x="1082" y="652" text-anchor="end" class="tiny">Pin assignment is firmware-specific</text>
+  <rect x="50" y="685" width="1100" height="48" rx="12" fill="#f8fafb" stroke="#cbd5dc" stroke-width="2"/>
+  <circle cx="78" cy="709" r="8" fill="#456bd1"/>
+  <text x="98" y="714" class="small">GPIO HIGH turns the channel on. Camera GND is isolated from ESP32 GND.</text>
+  <text x="1118" y="714" text-anchor="end" class="tiny">Current PCB: U5 = S1 · U6 = S2</text>
 </svg>
