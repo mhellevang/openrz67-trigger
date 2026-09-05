@@ -1,7 +1,7 @@
 # openrz67 PCB — KiCad project
 
 KiCad 10 project for the OpenRZ67 trigger board (48 × 22 mm, 2 layers, ESP32-C3,
-two G6K relays, LGS5500 charger/boost). This is now the **source**; the EasyEDA Pro
+two TLP172AM PhotoMOS relays, LGS5500 charger/boost). This is now the **source**; the EasyEDA Pro
 project it was ported from is archived in `../archive/easyeda/` (v2 `.epro` and v3 `.epro2`);
 the fabricated 2025-09-23 revision (Gerber, BOM, PnP, STEP) is in `../archive/2025-09-23-rev1/`.
 
@@ -54,8 +54,8 @@ out. No DRC or ERC exclusions are configured.
 
 | Check | Count | What |
 |---|---|---|
-| `courtyards_overlap` | 6 | Neighbours closer than 0.1 mm on the fabricated rev-1 layout: C28/S3, C21/USB1, L3 against C20/R9/R12, H1/USB1. |
-| `text_height`, `text_thickness` | 2 | The `BOOT EN` label on F.SilkS is 0.5 mm / 0.10 mm, under JLCPCB's 1.0 mm / 0.15 mm. Enlarged in place it runs over the R18 and C28 pads, where the fab clips silkscreen against solder mask. Splitting it into separate `BOOT` and `EN` labels does not help: the free band above the S1 pads is 0.85 mm and the one below the switches is 0.7 mm, both under the 1.0 mm the text needs. Fixing it means moving parts. Every other silkscreen text is at or above 1.067 mm. |
+| `courtyards_overlap` | 5 | Neighbours closer than 0.1 mm on the fabricated rev-1 layout: C21/USB1, L3 against C20/R9/R12, H1/USB1. |
+| `text_height`, `text_thickness` | 2 | The `BOOT EN` label on F.SilkS is 0.5 mm / 0.10 mm, under JLCPCB's 1.0 mm / 0.15 mm. Enlarged in place it runs over the R18 pads and the S3 body, where the fab clips silkscreen against solder mask. Splitting it into separate `BOOT` and `EN` labels does not help: the free band above the S1 pads is 0.85 mm and the one below the switches is 0.7 mm, both under the 1.0 mm the text needs. Fixing it means moving parts. Every other silkscreen text is at or above 1.067 mm. |
 
 ## Rev 2 layout changes (2026-09-03)
 
@@ -66,12 +66,36 @@ Outline unchanged from rev 1: **48 × 22 mm**, 2 mm corner radius, mounting hole
 
 - **U4** camera connector: side-entry S4B-XH-A (LCSC C157925) at (44.3, 11.0), opening
   out of the camera end.
-- **BAT1** battery connector: SMD side-entry **S2B-PH-SM4-TB** (LCSC C295747) on the
-  **bottom** side, centre at (9.6, 4.45), opening toward the board centre. The cell lies
-  flat under the board and plugs in without bending the leads. Pin 1 = BAT+ as before.
-  BAT+ reaches the bottom through a 0.6/0.3 via next to C22; GND is the bottom pour.
-  JLCPCB two-sided assembly costs extra: BAT1 can also be left unplaced and hand-soldered.
-  `BAT+` / `BAT-` are labelled on the bottom silkscreen at 1.067 mm.
+- **BAT1** battery connector: vertical through-hole **B2B-PH-K-S(LF)(SN)** (LCSC C131337)
+  on the **top** side, restored on 2026-09-05 from the layout before `d7d51ae`.
+  Centre (3.275, 4.8105), rotation 90°. Pin 1 = BAT+, pin 2 = GND.
+  The original 0.635 mm top-side BAT+ connection and five GND stitching vias are restored;
+  the bottom-side BAT+ branch and its transfer via are removed. `BAT+` / `BAT-` labels
+  on the bottom identify the through-hole solder pads. All components are now on top.
+  The battery cable must reach around the board if the cell remains underneath.
+- **Shutter outputs are PhotoMOS, not relays (2026-09-04).** K1/K2 (G6K-2F-Y), their DTC114E
+  drivers Q1/Q2, flyback diodes D1/D2 and coil decoupling C27/C28 are gone. Each channel is one
+  **TLP172AM** (Toshiba, LCSC C2152276, 4-pin SO6): the ESP32 GPIO drives the LED through a
+  **220 Ω** 0402 (R21/R22, C25091), about 9 mA nominal. At 3.3 V, VOH = 0.8 × VDD,
+  VF = 1.4 V and +1% resistance give 5.6 mA at 25 °C, within the datasheet's 5 to 25 mA
+  recommendation. The MOSFET output closes S1/S2 to camera ground.
+  TLP172AM replaced TLP172GM on 2026-09-05: maximum on-resistance is 2 Ω at 25 °C / IF = 5 mA,
+  versus 50 Ω continuous for GM. AM's output rating is 60 V / 500 mA; package and pin functions
+  are unchanged. The imported pad numbering 1/2/3/4 maps to Toshiba pins 1/3/4/6.
+  Firmware activates S1, waits 10 ms, then activates S2. Camera input limits remain unverified;
+  test the assembled prototype before ordering a production batch. See [research notes](notes/rz67-remote-inputs.md)
+  and the [Toshiba datasheet](https://toshiba.semicon-storage.com/info/docget.jsp?did=36714&prodName=TLP172AM).
+  U5 = S1 (net `S1_DRV`, **GPIO4**, U1 pin 9), U6 = S2 (net `S2_DRV`, GPIO3, U1 pin 8). Rev 1
+  drove S1 from GPIO21, which is U0TXD: the ROM boot log leaves it high until `setup()` runs,
+  so S1 was closed during every boot. Harmless alone, since the camera needs S1 and S2 together,
+  but GPIO4 is a plain input at reset and GPIO21 is now free for serial logging. Isolation is kept: camera ground `AGND` still touches only U4 pin 2 and the two
+  output pins, and the AGND pours (both layers) were pulled in from x = 32.1 to x = 34.6 so the
+  LED side of each part sits in the GND domain. Eight parts became four, the tallest top-side part
+  went from 5.2 mm (relay) to 2.2 mm, and the coil current (about 67 mA while an exposure is
+  held) is gone. Footprint `SMD-4_L4.6-W3.7-P2.54-LS7.0-BR` and the 3D model came from
+  `easyeda2kicad` for C261926; the unused relay/SOT-346/SOD-523 footprints, models and symbols
+  were removed from the project libraries. R4/R5 (USB 22 Ω) are UNI-ROYAL 0402WGF220JTCE
+  (C25092, JLCPCB Basic) since JLCPCB had 2 of the Yageo part in stock.
 - **C5** moved to the analog supply: the 100 nF that sat on VCC next to the ferrite bead
   L2 now sits on the far side of it, on the new **VDDA** net feeding U1 pins 31/32 (radio and
   ADC supply). Before, nothing decoupled that net; the bead alone was just series impedance.
@@ -81,7 +105,7 @@ Outline unchanged from rev 1: **48 × 22 mm**, 2 mm corner radius, mounting hole
 
   | What | Height below the board |
   |---|---|
-  | BAT1 body, S2B-PH-SM4-TB (JST ePH p.4) | 5.5 mm, plus the PHR-2 plug |
+  | BAT1 through-hole tails, B2B-PH-K-S | 3.4 mm unclipped |
   | S3 through-hole tails, B2B-PH-K-S | 3.4 mm unclipped |
   | U4 through-hole tails, S4B-XH-A | 3.4 mm unclipped |
   | USB1 shell posts | ~1 mm |
@@ -117,13 +141,14 @@ JLCPCB's uploader asks you to map columns; the exports do not use its header nam
 | Footprint | `Footprint` |
 | LCSC Part # | `LCSC` |
 
-The position file uses the drill-file origin at the board's top-left corner, the same
-convention JLCPCB accepted for rev 1, and rotations for the top-side parts are unchanged
-since that order. **BAT1 is the one part on the bottom side**: check its orientation in
-the fab's assembly preview before confirming, since bottom-side rotation conventions
-differ between tools.
-
-Two-sided assembly costs extra. BAT1 can be left unplaced and hand-soldered instead.
+The position file is rewritten by `regen.sh` into JLCPCB's CPL layout (`Designator, Mid X,
+Mid Y, Layer, Rotation`, mm suffix); their parser rejects KiCad's native header with
+"Failed processing the CPL file". Origin is the drill-file origin at the board's top-left
+corner, the same convention JLCPCB accepted for rev 1, and rotations for the top-side
+parts are unchanged since that order. BAT1 is back on top with its original through-hole
+footprint and rotation. Check BAT1 pin 1 in the fab's assembly preview before confirming.
+No bottom-side component assembly is needed. BAT1, S3 and U4 are through-hole parts;
+confirm the assembler's through-hole service or hand-solder them after SMD assembly.
 
 ## Port notes (2026-09-03)
 
@@ -132,8 +157,8 @@ Two-sided assembly costs extra. BAT1 can be left unplaced and hand-soldered inst
 - Removed the "JeefunPCB" A3 sheet-frame symbol that came with the EasyEDA template
   and replaced it with a KiCad title block. Annotated the 62 power flags (`#PWR001…`),
   deleted two floating GND flags, added a no-connect on U4 pin 1.
-- EasyEDA local labels became global labels so net names match the board (`BAT+`, `D1`,
-  `D6`, `D7`); EasyEDA auto-nets (`$1N…`) were renamed to KiCad's `Net-(…)` names.
+- EasyEDA local labels became global labels so net names match the board (`BAT+`, `D7`, and the
+  Wemos-style `D1`/`D6`, renamed `S2_DRV`/`S1_DRV` on 2026-09-04); EasyEDA auto-nets (`$1N…`) were renamed to KiCad's `Net-(…)` names.
   Connectivity was verified pad-for-pad against the schematic netlist before renaming.
 - USB-C shell pads 13/14 are GND in the schematic; the EasyEDA board had them net-less.
   They are GND now (they sit in the GND pour).
@@ -155,7 +180,7 @@ Two-sided assembly costs extra. BAT1 can be left unplaced and hand-soldered inst
 - Bottom silkscreen label changed from "EPS32-C3 Camera Trigger V1.0 / 2025-08-23" to
   "OpenRZ67 Trigger v2 / 2026-09".
 - Pin electrical types were set by hand for the ICs (ESP32-C3, LGS5500, ME6211, USB-C);
-  passives/connectors/relays are `passive`. Supply nets without a driver carry `PWR_FLAG`
+  passives, connectors and the PhotoMOS pins are `passive`. Supply nets without a driver carry `PWR_FLAG`
   (GND, AGND, BAT+, VBUS, +5V_VIN, VDDA). ERC runs at default severities: 0 errors, 0
   warnings. The eight dangling wire ends inherited from the EasyEDA drawing were removed
   (an orphan S1/S2/AGND label cluster and three over-long wire tails); the netlist is
