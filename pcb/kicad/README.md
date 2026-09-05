@@ -66,12 +66,13 @@ Outline unchanged from rev 1: **48 × 22 mm**, 2 mm corner radius, mounting hole
 
 - **U4** camera connector: side-entry S4B-XH-A (LCSC C157925) at (44.3, 11.0), opening
   out of the camera end.
-- **BAT1** battery connector: SMD side-entry **S2B-PH-SM4-TB** (LCSC C295747) on the
-  **bottom** side, centre at (9.6, 4.45), opening toward the board centre. The cell lies
-  flat under the board and plugs in without bending the leads. Pin 1 = BAT+ as before.
-  BAT+ reaches the bottom through a 0.6/0.3 via next to C22; GND is the bottom pour.
-  JLCPCB two-sided assembly costs extra: BAT1 can also be left unplaced and hand-soldered.
-  `BAT+` / `BAT-` are labelled on the bottom silkscreen at 1.067 mm.
+- **BAT1** battery connector: vertical through-hole **B2B-PH-K-S(LF)(SN)** (LCSC C131337)
+  on the **top** side, restored on 2026-09-05 from the layout before `d7d51ae`.
+  Centre (3.275, 4.8105), rotation 90°. Pin 1 = BAT+, pin 2 = GND.
+  The original 0.635 mm top-side BAT+ connection and five GND stitching vias are restored;
+  the bottom-side BAT+ branch and its transfer via are removed. `BAT+` / `BAT-` labels
+  on the bottom identify the through-hole solder pads. All components are now on top.
+  The battery cable must reach around the board if the cell remains underneath.
 - **Shutter outputs are PhotoMOS, not relays (2026-09-04).** K1/K2 (G6K-2F-Y), their DTC114E
   drivers Q1/Q2, flyback diodes D1/D2 and coil decoupling C27/C28 are gone. Each channel is one
   **TLP172AM** (Toshiba, LCSC C2152276, 4-pin SO6): the ESP32 GPIO drives the LED through a
@@ -104,7 +105,7 @@ Outline unchanged from rev 1: **48 × 22 mm**, 2 mm corner radius, mounting hole
 
   | What | Height below the board |
   |---|---|
-  | BAT1 body, S2B-PH-SM4-TB (JST ePH p.4) | 5.5 mm, plus the PHR-2 plug |
+  | BAT1 through-hole tails, B2B-PH-K-S | 3.4 mm unclipped |
   | S3 through-hole tails, B2B-PH-K-S | 3.4 mm unclipped |
   | U4 through-hole tails, S4B-XH-A | 3.4 mm unclipped |
   | USB1 shell posts | ~1 mm |
@@ -144,11 +145,10 @@ The position file is rewritten by `regen.sh` into JLCPCB's CPL layout (`Designat
 Mid Y, Layer, Rotation`, mm suffix); their parser rejects KiCad's native header with
 "Failed processing the CPL file". Origin is the drill-file origin at the board's top-left
 corner, the same convention JLCPCB accepted for rev 1, and rotations for the top-side
-parts are unchanged since that order. **BAT1 is the one part on the bottom side**: check its orientation in
-the fab's assembly preview before confirming, since bottom-side rotation conventions
-differ between tools.
-
-Two-sided assembly costs extra. BAT1 can be left unplaced and hand-soldered instead.
+parts are unchanged since that order. BAT1 is back on top with its original through-hole
+footprint and rotation. Check BAT1 pin 1 in the fab's assembly preview before confirming.
+No bottom-side component assembly is needed. BAT1, S3 and U4 are through-hole parts;
+confirm the assembler's through-hole service or hand-solder them after SMD assembly.
 
 ## Port notes (2026-09-03)
 

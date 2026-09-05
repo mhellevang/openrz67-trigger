@@ -1,6 +1,6 @@
 Designator,Mid X,Mid Y,Layer,Rotation
-BAT1,9.600mm,-4.450mm,Bottom,-90
 A1,9.038mm,-19.634mm,Top,90
+BAT1,3.275mm,-4.811mm,Top,90
 C1,11.003mm,-20.258mm,Top,-90
 C2,14.745mm,-20.258mm,Top,-90
 C3,19.764mm,-21.114mm,Top,0
