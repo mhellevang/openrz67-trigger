@@ -1,42 +1,42 @@
-# RZ67: S1/S2 og kontaktmotstand
+# RZ67: S1/S2 and contact resistance
 
-Undersøkt 2026-09-05. Dokumentasjon, ikke produksjonsgodkjenning. Ingen komponenter endret.
+Investigated on 2026-09-05. Documentation only, not production approval. No components changed.
 
-## Konklusjon
+## Conclusion
 
-Manualen gir funksjon, kontaktmerking og kameraets batteristrøm, men ingen funnet spesifikasjon for S1/S2-inngangsstrøm, terskelspenning eller maksimal kontaktmotstand. Nettundersøkelsen fant heller ingen bekreftede målinger av disse verdiene. Dette betyr ikke at opplysningene aldri er publisert.
+The manual describes the functions, contact labels, and camera battery current, but no specification was found for S1/S2 input current, threshold voltage, or maximum contact resistance. The online research likewise found no verified measurements of these values. This does not mean the information has never been published.
 
-Lav kontaktmotstand er en fornuftig måte å redusere usikkerheten på. TLP172AM er en bedre kandidat enn TLP172GM med hensyn til spenningsfall, men kameraets kompatibilitet er ikke dokumentert av dette alene. Endelig valg krever også kontroll av strøm, spenning/transienter, temperatur, lekkasje, timing og LED-driving.
+Low contact resistance is a reasonable way to reduce uncertainty. The TLP172AM is a better candidate than the TLP172GM in terms of voltage drop, but this alone does not establish camera compatibility. A final selection also requires checks of current, voltage and transients, temperature, leakage, timing, and LED drive.
 
-## Hva originalmanualen faktisk sier
+## What the original manual actually says
 
-Kilde: [Mamiya RZ67 repair manual](/Users/mathiashellevang/Koofr/Manualer/Mamiya-RZ67-repair.pdf). Sidetall nedenfor er trykte sidetall. Hele dokumentet er OCR-søkt; relevante sider er også visuelt kontrollert. OCR kan overse tekst.
+Source: [Mamiya RZ67 repair manual](/Users/mathiashellevang/Koofr/Manualer/Mamiya-RZ67-repair.pdf). Page numbers below refer to the printed page numbers. The entire document was searched using OCR, and the relevant pages were also inspected visually. OCR may miss text.
 
-| Side | Opplysning | Betydning for utløseren |
+| Page | Information | Relevance to the trigger |
 |---|---|---|
-| 95, fig. 114 | VS på søkerkontakt 2: 3,2 V ±2 mV. Kommer når S1 aktiveres med RZ-objektiv; justeres med VR1. | Referanseutgang til søkeren, ikke S1/S2-terskel eller tillatt spenningsfall over bryteren. |
-| 102 | Winderens 9 V omformes til ca. 6 V, også til RC-kontakten. | Ikke anta at RC-kontaktens BW er kameraets ordinære batteriutgang. |
-| 104, fig. 122 | RC-kontakt: 6 V/BW, Ground, S1, S2. | Identifiserer signalene, uten elektriske inngangsgrenser. Tegningsrekkefølgen er ikke en universell pinnummerering sett fra pluggfronten. |
-| 106 | S1 aktiveres ved ca. 0,5 mm knappetrykk; S2 ved ca. 2 mm. | Støtter S1 før S2, men oppgir ikke et minimumsintervall i millisekunder. |
-| 114, C-2 / fig. 131 | 3–7 mA med S1 på; 16–21 mA ved utløsning med 1 eller 4 sekunders lukkertid. | Målt i batteritilførselen med dummybatteri. Ikke målt gjennom RC-kontaktene og ikke en spesifisert grense for korte strømspisser. |
-| 116, fig. 132-A | Frakoblet moving-coil-enhet: omtrent 6 Ω. | Gjelder aktuatoren, ikke RC-inngangens motstand. Kan ikke brukes til å beregne kontaktstrøm uten den mellomliggende kretsen. |
+| 95, fig. 114 | VS at viewfinder contact 2: 3.2 V ±2 mV. Appears when S1 is activated with an RZ lens; adjusted with VR1. | Reference output to the viewfinder, not the S1/S2 threshold or permitted voltage drop across the switch. |
+| 102 | The winder's 9 V is converted to approximately 6 V, including for the RC connector. | Do not assume that BW on the RC connector is the camera's regular battery output. |
+| 104, fig. 122 | RC connector: 6 V/BW, Ground, S1, S2. | Identifies the signals without specifying electrical input limits. The order in the drawing is not a universal pin numbering when viewed from the front of the plug. |
+| 106 | S1 activates at approximately 0.5 mm of button travel; S2 at approximately 2 mm. | Supports activating S1 before S2, but does not specify a minimum interval in milliseconds. |
+| 114, C-2 / fig. 131 | 3–7 mA with S1 on; 16–21 mA during release with a shutter speed of 1 or 4 seconds. | Measured in the battery supply using a dummy battery. Not measured through the RC contacts and not a specified limit for short current spikes. |
+| 116, fig. 132-A | Disconnected moving-coil unit: approximately 6 Ω. | Applies to the actuator, not the resistance of the RC input. It cannot be used to calculate contact current without the intermediate circuit. |
 
-## Indirekte støtte fra originalt tilbehør
+## Indirect evidence from original accessories
 
-[Mamiya Electromagnetic Cable Release](https://ianbfoto.com/downloads/Mamiya%20645/Mamiya%20Electromagnetic%20Cable%20Release.pdf), én side, visuelt lest: Type B har omtrent 4 m rett kabel. Knappen har halvtrykk for måling og fulltrykk for utløsning. Kabeltverrsnitt, kontaktmotstand og inngangsgrenser oppgis ikke. Ledninger og kontakter har en endelig motstand, så kameraet krever ikke en ideell 0 Ω-bryter. Dette fastsetter likevel ingen numerisk motstandsgrense.
+[Mamiya Electromagnetic Cable Release](https://ianbfoto.com/downloads/Mamiya%20645/Mamiya%20Electromagnetic%20Cable%20Release.pdf), one page, visually inspected: Type B has approximately 4 m of straight cable. The button has a half-press for metering and a full press for release. Wire gauge, contact resistance, and input limits are not specified. Wires and connectors have finite resistance, so the camera does not require an ideal 0 Ω switch. This still does not establish a numerical resistance limit.
 
-[Mamiya RS401](https://ianbfoto.com/downloads/Mamiya%20645/Mamiya%20645%20RZ67%20Remote%20Control%20RS401.pdf), fire sider, visuelt lest: beskriver original trådløs fjernutløser for blant annet RZ67-serien. Ingen S1/S2-strøm, kontaktmotstand eller terskelspenning funnet i denne bruksanvisningen.
+[Mamiya RS401](https://ianbfoto.com/downloads/Mamiya%20645/Mamiya%20645%20RZ67%20Remote%20Control%20RS401.pdf), four pages, visually inspected: describes the original wireless remote release for the RZ67 series and other cameras. No S1/S2 current, contact resistance, or threshold voltage was found in this manual.
 
-[Jan Griffioens egen reparasjon](https://jantecnl.synology.me/en/mamiya-rz67-repair-shutter-release-electronics-problem/) beskriver at han hadde servicemanualen, men måtte arbeide med blokk- og ledningsskjema uten funksjonelt elektronikkskjema. Dette beskriver hans kildetilgang, ikke et bevis for at et slikt skjema ikke finnes.
+[Jan Griffioen's repair](https://jantecnl.synology.me/en/mamiya-rz67-repair-shutter-release-electronics-problem/) states that he had the service manual but had to work from block and wiring diagrams without a functional electronic schematic. This describes the sources available to him, not proof that such a schematic does not exist.
 
-## Komponentsammenligning
+## Component comparison
 
-- [Omron G6K](https://components.omron.com/us-en/system/files/2026-05/datasheet_pdf/K106-E1.pdf): initial kontaktmotstand maks. 100 mΩ (0,1 Ω), målt ved 10 mA / 1 V. Spolemotstanden er ikke motstanden kameraet ser.
-- [Toshiba TLP172GM](https://toshiba.semicon-storage.com/info/TLP172GM_datasheet_en_20230525.pdf?did=36716&prodName=TLP172GM): R_on maks. 35 Ω for kort måling under 1 s, 50 Ω kontinuerlig, ved databladets testbetingelser, 25 °C og LED-strøm 5 mA.
-- [Toshiba TLP172AM](https://toshiba.semicon-storage.com/info/docget.jsp?did=36714&prodName=TLP172AM): R_on maks. 2 Ω ved databladets testbetingelser, 25 °C og LED-strøm 5 mA. Utgang klassifisert 60 V / 500 mA; grenser må vurderes med derating. Ikke en garanti for kamerakompatibilitet.
+- [Omron G6K](https://components.omron.com/us-en/system/files/2026-05/datasheet_pdf/K106-E1.pdf): maximum initial contact resistance of 100 mΩ (0.1 Ω), measured at 10 mA / 1 V. The coil resistance is not the resistance seen by the camera.
+- [Toshiba TLP172GM](https://toshiba.semicon-storage.com/info/TLP172GM_datasheet_en_20230525.pdf?did=36716&prodName=TLP172GM): maximum R_on of 35 Ω for a short measurement under 1 s and 50 Ω continuously, under the datasheet test conditions at 25 °C and 5 mA LED current.
+- [Toshiba TLP172AM](https://toshiba.semicon-storage.com/info/docget.jsp?did=36714&prodName=TLP172AM): maximum R_on of 2 Ω under the datasheet test conditions at 25 °C and 5 mA LED current. The output is rated for 60 V / 500 mA; the limits must be assessed with derating. This is not a guarantee of camera compatibility.
 
-Illustrasjon, ikke målt kontaktstrøm: Dersom 7 mA gikk gjennom bryteren, ville 50 Ω gi 350 mV spenningsfall og 2 Ω gi 14 mV. Ved 21 mA ville tallene være 1,05 V og 42 mV. Det er ikke fastslått at kameraets batteristrøm går gjennom S1 eller S2. Tallene er derfor ikke en worst-case-beregning for kameraet.
+Illustrative calculation, not measured contact current: If 7 mA flowed through the switch, 50 Ω would produce a 350 mV voltage drop and 2 Ω would produce 14 mV. At 21 mA, the values would be 1.05 V and 42 mV. It has not been established that the camera's battery current flows through S1 or S2. These figures are therefore not a worst-case calculation for the camera.
 
-## Avgrenset neste test
+## Scoped next test
 
-En utvendig adapter ved den allerede verifiserte RC-pinouten kan brukes til å sammenligne det fungerende mekaniske reléet med kjente seriemotstander i hver signalledning, én om gangen og sammen. Ikke bruk BW-pinnen og ikke tilfør ekstern spenning. Kontroller halvtrykk, utløsning, bulb og svakere batteri. Dette undersøker toleranse for kontaktmotstand på det aktuelle kameraet, men erstatter ikke kontroll av PhotoMOS-lekkasje, strømspisser og koblingstid eller testing av andre kameramodeller.
+An external adapter connected at the already verified RC pinout can be used to compare the working mechanical relay with known series resistances in each signal wire, both individually and together. Do not use the BW pin or apply an external voltage. Check half-press, release, bulb mode, and operation with a weaker battery. This tests the contact resistance tolerance of the specific camera, but does not replace checks of PhotoMOS leakage, current spikes, switching time, or testing with other camera models.
