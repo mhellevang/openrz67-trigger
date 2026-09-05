@@ -2,11 +2,11 @@
 # requires-python = ">=3.12"
 # dependencies = ["build123d>=0.11.1"]
 # ///
-"""openrz67-trigger enclosure (build123d port of openrz67-case.scad).
+"""openrz67-trigger enclosure (build123d).
 
-Two-part snap-fit box for the ESP32CamTrigger PCB (rev. 2025-09-23), with
-the battery in its own bay beside the PCB. Dimensions come from the PCB
-production files in ../pcb/ — see README.md for the full design rationale.
+Two-part snap-fit box for the OpenRZ67 trigger PCB rev 2 (../pcb/kicad/), with
+the battery in its own bay beside the PCB. Dimensions come from the KiCad board
+and its footprints — see README.md for the full design rationale.
 
 Parts: base (tub), lid (telescoping ship-lap edge), lightpipe (clear filament).
 Print orientation: base floor-down; lid upside-down (the debossed top text
@@ -14,8 +14,10 @@ faces the bed — filament change at Z = lid_text_depth colours the letters);
 lightpipe head-down. No supports.
 
 Coordinate system: case coords, origin at the outer box's front-left-bottom
-corner, Y toward the back. bx()/by() map board coords (board origin
-bottom-left, Y up) into case coords.
+corner, Y toward the back. bx()/by() map board coords into case coords. Board
+coords here are the enclosure's: origin at the board's front-left corner, Y
+toward the back — the KiCad board measures Y from the other long edge, so
+board_y_here = 22 - kicad_y (the two mounting holes are (2,2) and (46,20)).
 
 Run (exports STLs to stl/ and checks the assertions):
     uv run openrz67_case.py
@@ -35,18 +37,26 @@ from pathlib import Path
 
 from build123d import *
 
-# --- Board (from the PCB production files) ---------------------------------
+# --- Board (rev 2, from ../pcb/kicad/) ---------------------------------------
 board_w, board_h, board_r = 48.0, 22.0, 2.0
 pcb_t = float(os.environ.get("PCB_T", 1.6))
 mount_holes = [(2, 2), (46, 20)]     # the real Ø2 holes (board coords)
 hole_d = 2.0                         # their diameter (locating pins are hole_d - 0.3)
 pcb_supports = [(2, 20), (46, 2)]    # solid posts in the screwless corners
 pcb_overhang_left = 2.0              # USB-C shell protrudes past the board edge
+# U4 camera connector: side-entry S4B-XH-A on the right edge, mouth facing out. Its
+# body reaches xh_mouth past the pin row (F.Fab outline), i.e. 5.5 mm past the board
+# edge, so the cavity grows on the right and the body passes through the lid wall.
+xh_x, xh_y, xh_mouth = 44.3, 22 - 11.0, 9.2         # pin row (board), pins -> mouth face
+xh_w, xh_h, xh_back, xh_clr = 12.4, 6.1, 2.3, 0.4   # body width, height, pins -> rear face
+xh_recess = 0.3                      # mouth face this far inside the outer wall face
 # TH solder tails below the PCB: [board_x, board_y, relief_dia] (BAT1 pins)
 th_keepouts = [(3.275, 16.189, 3.2), (3.275, 18.189, 3.2)]
 th_keepout_depth = 3.0
 # Component bodies above the PCB the lid bosses must clear: (x0, y0, x1, y1)
-comp_keepouts = [(0.0, 4.0, 8.0, 14.5)]   # USB-C connector body
+comp_keepouts = [(0.0, 4.0, 8.0, 14.5),   # USB-C connector body
+                 (xh_x - xh_back - xh_clr, xh_y - xh_w / 2 - xh_clr, 49.0, xh_y + xh_w / 2 + xh_clr)]
+#                ^ U4 body vs the (46,20) hold-down boss (0.3 mm apart nominally)
 
 # --- PCB frame (guide fins, front edge; the bay divider guides the back) ----
 frame_clr, frame_proud, frame_cham = 0.2, 0.6, 0.4
@@ -58,7 +68,8 @@ clr, wall, floor_t, lid_top_t = 0.4, 2.4, 2.0, 2.0   # wall 2.4: the lap halves 
 
 # --- Vertical stack ---------------------------------------------------------
 standoff_h = 3.5                     # >= th_keepout_depth + margin (no battery underneath)
-h_relay, h_xh, h_usbc, h_ph = 5.2, 8.0, 3.3, 6.0   # component heights above PCB
+h_usbc, h_ph_plug = 3.3, 8.0         # USB-C shell; PHR-2 plug + wire bend in the top-entry
+#                                      PH headers (BAT1, S3) — the tallest thing on rev 2
 
 # --- Battery bay (beside the PCB, behind its back edge) ---------------------
 batt_w, batt_l, batt_t = 31, 20, 6.0
@@ -71,9 +82,6 @@ usb_recess_d = wall - 0.5            # keep a 0.5 lip so the plug still seats fu
 led_pos = [(22.514, 20.186), (24.224, 20.186)]           # D3, D4
 led_win_l, led_win_w, led_win_r = 6.0, 3.0, 1.2
 led_head_lip, led_head_t, led_pipe_clr, led_pipe_gap = 1.0, 1.0, 0.2, 1.5
-cable_port_w, cable_port_h, cable_port_z = 5.0, 2.6, 7.7  # XH drop-in slit port; mouth top
-# flush with the lid's interior ceiling (comp_clr) so the stiff wire passes at the plug's
-# 8 mm top-exit height with no down-bend — a lower mouth stops the lid from closing
 
 # --- Slide switch SS12F15 (front wall, wired to S3) --------------------------
 sw_x, sw_z = 22, 4.5
@@ -104,16 +112,14 @@ eps = 0.01
 
 # --- Derived ------------------------------------------------------------------
 off = wall + clr
-inner_w = board_w + 2 * clr + pcb_overhang_left
+pcb_overhang_right = xh_x + xh_mouth + xh_recess - board_w - clr - wall
+inner_w = board_w + 2 * clr + pcb_overhang_left + pcb_overhang_right
 bay_d = batt_l + 2 * batt_clr
 inner_h = clr + board_h + frame_clr + divider_t + bay_d
 inner_r = board_r + clr
 outer_w, outer_h, outer_r = inner_w + 2 * wall, inner_h + 2 * wall, inner_r + wall
 standoff_d = 4.0
-comp_clr = max(h_relay, h_xh, h_ph) + 1.0
-assert cable_port_z + cable_port_h / 2 >= h_xh + 0.7, \
-    "XH mouth top below the wire's natural exit height — lid won't close over the cable"
-assert cable_port_z + cable_port_h / 2 <= comp_clr + eps, "XH mouth breaks the lid ceiling"
+comp_clr = max(h_ph_plug, xh_h) + 1.0
 pcb_z = floor_t + standoff_h
 pcb_top_z = pcb_z + pcb_t
 split_z = pcb_top_z
@@ -185,15 +191,12 @@ cut_usb = xprism(Pos(usb_cy, usb_zc) * RectangleRounded(usb_open_w, usb_open_h, 
 cut_usb += xprism(Pos(usb_cy, usb_zc) * RectangleRounded(usb_recess_w, usb_recess_h, usb_recess_r),
                   wall - usb_recess_d, usb_recess_d + 1)
 
-# XH cable port (right wall): rounded mouth with its top at the lid's interior
-# ceiling, so the wires exit at the plug's 8mm top-entry height without bending,
-# + a drop-in slit down to the split, so the pre-wired bundle lays in as the lid
-# closes and the lid lifts off untethered. Lid-only cut.
-xh_cy, xh_zc = by(22 - 11.0), pcb_top_z + cable_port_z
-cut_xh = xprism(Pos(xh_cy, xh_zc) * SlotOverall(cable_port_w, cable_port_h),
-                outer_w - wall - 1, wall + 2)
-cut_xh += box(outer_w - wall - 1, xh_cy - cable_port_w / 2, split_z,
-              wall + 2, cable_port_w, xh_zc - split_z + eps)
+# U4 opening (right wall): the side-entry XH body sits in a rectangular through-cut
+# in the lid wall, mouth xh_recess inside the outer face; the XHP plug goes in from
+# outside. Everything is above the split, so the lid just drops over the connector.
+xh_cy = by(xh_y)
+cut_xh = box(outer_w - wall - 1, xh_cy - xh_w / 2 - xh_clr, split_z - eps,
+             wall + 2, xh_w + 2 * xh_clr, xh_h + xh_clr + eps)
 
 # Frame-fin tongue notches (cut from the lid tongue where the base fins stand)
 fin_ycap = off - frame_clr
@@ -350,8 +353,9 @@ def _open(solid, probe, what):
     assert v < 1e-6, f"{what} blocked (probe volume {v:.3f})"
 
 _open(base + lid, box(-0.5, usb_cy - 4, usb_zc - 2.5, wall + 1, 8, 5), "USB opening")
-_open(lid, box(outer_w - wall - 0.5, xh_cy - 1, split_z + eps, wall + 1, 2,
-               h_xh + 0.7), "XH port free from the seam up past the wire height")
+_open(base + lid, box(bx(xh_x - xh_back), xh_cy - xh_w / 2, split_z + eps,
+                      xh_mouth + xh_back, xh_w, xh_h), "U4 body envelope through the right wall")
+assert bx(xh_x + xh_mouth) <= outer_w - xh_recess + 1e-6, "U4 mouth sticks out of the wall"
 _open(lid, box(led_cx - 2, led_cy - 1, total_h - lid_top_t + eps, 4, 2, lid_top_t), "LED window")
 for hx, hy in mount_holes:
     _open(lid, cyl(bx(hx), by(hy), pcb_top_z + eps, 2.0, pin_proud), "locating-pin recess")
