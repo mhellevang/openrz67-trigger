@@ -15,7 +15,7 @@
 			)
 		)
 	)
-	(property "Value" "TLP172GM"
+	(property "Value" "TLP172AM"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(uuid "29ab6388-414c-441a-8413-e38aa984d2ce")
@@ -26,7 +26,7 @@
 			)
 		)
 	)
-	(property "Datasheet" "https://toshiba.semicon-storage.com/info/TLP172GM_datasheet_en_20230525.pdf"
+	(property "Datasheet" "https://toshiba.semicon-storage.com/info/docget.jsp?did=36714&prodName=TLP172AM"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -38,7 +38,7 @@
 			)
 		)
 	)
-	(property "Description" "PhotoMOS relay, 1-Form-A, 350 V / 110 mA, 4-pin SO6"
+	(property "Description" "PhotoMOS relay, 1-Form-A, 60 V / 500 mA, 4-pin SO6"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)

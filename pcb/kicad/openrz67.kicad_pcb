@@ -11553,7 +11553,7 @@
 				)
 			)
 		)
-		(property "Value" "TLP172GM"
+		(property "Value" "TLP172AM"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(uuid "ef52c818-c913-49ce-8279-4bea65972099")
@@ -11564,7 +11564,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://toshiba.semicon-storage.com/info/TLP172GM_datasheet_en_20230525.pdf"
+		(property "Datasheet" "https://toshiba.semicon-storage.com/info/docget.jsp?did=36714&prodName=TLP172AM"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -11576,7 +11576,7 @@
 				)
 			)
 		)
-		(property "Description" "PhotoMOS relay, 1-Form-A, 350 V / 110 mA, 4-pin SO6"
+		(property "Description" "PhotoMOS relay, 1-Form-A, 60 V / 500 mA, 4-pin SO6"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -11588,7 +11588,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part" "TLP172GM(TPL,E"
+		(property "Manufacturer Part" "TLP172AM(TPL,E"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -11612,7 +11612,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" "C261926"
+		(property "Supplier Part" "C2152276"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -11636,7 +11636,7 @@
 				)
 			)
 		)
-		(property "LCSC Part Name" "TLP172GM(TPL,E"
+		(property "LCSC Part Name" "TLP172AM(TPL,E"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -18834,7 +18834,7 @@
 				)
 			)
 		)
-		(property "Value" "TLP172GM"
+		(property "Value" "TLP172AM"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(uuid "08271506-0974-46be-8e95-e64e117ce2b7")
@@ -18845,7 +18845,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://toshiba.semicon-storage.com/info/TLP172GM_datasheet_en_20230525.pdf"
+		(property "Datasheet" "https://toshiba.semicon-storage.com/info/docget.jsp?did=36714&prodName=TLP172AM"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -18857,7 +18857,7 @@
 				)
 			)
 		)
-		(property "Description" "PhotoMOS relay, 1-Form-A, 350 V / 110 mA, 4-pin SO6"
+		(property "Description" "PhotoMOS relay, 1-Form-A, 60 V / 500 mA, 4-pin SO6"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -18869,7 +18869,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part" "TLP172GM(TPL,E"
+		(property "Manufacturer Part" "TLP172AM(TPL,E"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -18893,7 +18893,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" "C261926"
+		(property "Supplier Part" "C2152276"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -18917,7 +18917,7 @@
 				)
 			)
 		)
-		(property "LCSC Part Name" "TLP172GM(TPL,E"
+		(property "LCSC Part Name" "TLP172AM(TPL,E"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)

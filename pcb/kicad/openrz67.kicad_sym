@@ -7678,7 +7678,7 @@
 	      )
 	    )
 	  )
-		(symbol "TLP172GM"
+		(symbol "TLP172AM"
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -7715,7 +7715,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://toshiba.semicon-storage.com/info/TLP172GM_datasheet_en_20230525.pdf"
+		(property "Datasheet" "https://toshiba.semicon-storage.com/info/docget.jsp?did=36714&prodName=TLP172AM"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7726,7 +7726,7 @@
 				)
 			)
 		)
-		(property "Description" "PhotoMOS relay, 1-Form-A, 350 V / 110 mA, 4-pin SO6"
+		(property "Description" "PhotoMOS relay, 1-Form-A, 60 V / 500 mA, 4-pin SO6"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7737,7 +7737,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part" "TLP172GM(TPL,E"
+		(property "Manufacturer Part" "TLP172AM(TPL,E"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7759,7 +7759,7 @@
 				)
 			)
 		)
-		(property "Supplier Part" "C261926"
+		(property "Supplier Part" "C2152276"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7781,7 +7781,7 @@
 				)
 			)
 		)
-		(property "LCSC Part Name" "TLP172GM(TPL,E"
+		(property "LCSC Part Name" "TLP172AM(TPL,E"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7792,7 +7792,7 @@
 				)
 			)
 		)
-		(symbol "TLP172GM_1_0"
+		(symbol "TLP172AM_1_0"
 			(rectangle
 				(start -7.62 5.08)
 				(end 7.62 -5.08)

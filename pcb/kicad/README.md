@@ -1,7 +1,7 @@
 # openrz67 PCB — KiCad project
 
 KiCad 10 project for the OpenRZ67 trigger board (48 × 22 mm, 2 layers, ESP32-C3,
-two TLP172GM PhotoMOS relays, LGS5500 charger/boost). This is now the **source**; the EasyEDA Pro
+two TLP172AM PhotoMOS relays, LGS5500 charger/boost). This is now the **source**; the EasyEDA Pro
 project it was ported from is archived in `../archive/easyeda/` (v2 `.epro` and v3 `.epro2`);
 the fabricated 2025-09-23 revision (Gerber, BOM, PnP, STEP) is in `../archive/2025-09-23-rev1/`.
 
@@ -74,9 +74,16 @@ Outline unchanged from rev 1: **48 × 22 mm**, 2 mm corner radius, mounting hole
   `BAT+` / `BAT-` are labelled on the bottom silkscreen at 1.067 mm.
 - **Shutter outputs are PhotoMOS, not relays (2026-09-04).** K1/K2 (G6K-2F-Y), their DTC114E
   drivers Q1/Q2, flyback diodes D1/D2 and coil decoupling C27/C28 are gone. Each channel is one
-  **TLP172GM** (Toshiba, LCSC C261926, 4-pin SO6): the ESP32 GPIO drives the LED through a
-  **220 Ω** 0402 (R21/R22, C25091), 9 mA typical and 5.6 mA at worst-case VOH/VF, inside the
-  datasheet's 5 to 25 mA recommendation, and the MOSFET output closes S1/S2 to camera ground.
+  **TLP172AM** (Toshiba, LCSC C2152276, 4-pin SO6): the ESP32 GPIO drives the LED through a
+  **220 Ω** 0402 (R21/R22, C25091), about 9 mA nominal. At 3.3 V, VOH = 0.8 × VDD,
+  VF = 1.4 V and +1% resistance give 5.6 mA at 25 °C, within the datasheet's 5 to 25 mA
+  recommendation. The MOSFET output closes S1/S2 to camera ground.
+  TLP172AM replaced TLP172GM on 2026-09-05: maximum on-resistance is 2 Ω at 25 °C / IF = 5 mA,
+  versus 50 Ω continuous for GM. AM's output rating is 60 V / 500 mA; package and pin functions
+  are unchanged. The imported pad numbering 1/2/3/4 maps to Toshiba pins 1/3/4/6.
+  Firmware activates S1, waits 10 ms, then activates S2. Camera input limits remain unverified;
+  test the assembled prototype before ordering a production batch. See [research notes](notes/rz67-remote-inputs.md)
+  and the [Toshiba datasheet](https://toshiba.semicon-storage.com/info/docget.jsp?did=36714&prodName=TLP172AM).
   U5 = S1 (net `S1_DRV`, **GPIO4**, U1 pin 9), U6 = S2 (net `S2_DRV`, GPIO3, U1 pin 8). Rev 1
   drove S1 from GPIO21, which is U0TXD: the ROM boot log leaves it high until `setup()` runs,
   so S1 was closed during every boot. Harmless alone, since the camera needs S1 and S2 together,
