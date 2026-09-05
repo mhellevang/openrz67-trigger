@@ -48,8 +48,9 @@ void cancelCountdown();
 
 void openShutter() {
     Serial.println("Setting shutterPins HIGH...");
-    digitalWrite(shutterPinS2, HIGH);
     digitalWrite(shutterPinS1, HIGH);
+    delay(10); // Allow S1's PhotoMOS to turn on before requesting release.
+    digitalWrite(shutterPinS2, HIGH);
 }
 
 void closeShutter() {
