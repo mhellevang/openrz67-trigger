@@ -86,7 +86,11 @@ slide_d, slide_gap = 1.0, 0.15
 # into a window through the right side wall; its back face is square, so the floor cannot be
 # pulled out until the catch is pushed in through the window. A bump detent (shell walls
 # springing over it) held only by friction and let go to a pull at 0.3 and 0.4 proud.
-latch_l, latch_w, latch_slot = 15.0, 2.2, 1.4   # arm root to free end, width at the plate top, slot
+# The slots lean 45 deg (inward and backward going down) so nothing shows through the floor
+# from below; the lean widens the arm's section, so it is longer than the 15 of the straight
+# slot to keep the strain and about the same push force.
+latch_l, latch_w, latch_slot = 18.0, 2.2, 1.4   # arm root to free end, width at the plate top, slot
+latch_lean = floor_t      # slot shift over the plate thickness: 45 deg
 latch_p, latch_catch_l = 1.2, 3.0               # catch proud of the floor edge, catch length
 latch_hold = 3.0          # side wall behind the window: takes the pull
 latch_strain = 0.02       # max bending strain at the arm root (ABS yields around 3 %)
@@ -145,7 +149,8 @@ latch_defl = latch_p - slide_gap          # the arm's bend while the catch rides
 
 check((wall - edge_r) / math.sqrt(2) >= 0.87, "groove lip between the two chamfers under two perimeter lines")
 check(latch_slot >= latch_defl + 0.3, "latch slot too narrow for the arm to bend")
-check(1.5 * latch_w * latch_defl / latch_l ** 2 <= latch_strain, "latch arm bends past latch_strain: lengthen it")
+check(latch_lean >= latch_slot + 0.1 and latch_lean <= floor_t, "latch slot see-through or leaning past 45 deg")
+check(1.5 * (latch_w + latch_lean) * latch_defl / latch_l ** 2 <= latch_strain, "latch arm bends past latch_strain: lengthen it")
 check(latch_p < wall - slide_d - slide_gap, "latch catch pokes out of the side wall")
 check(floor_t - cell_mark_d >= 1.0, "floor under the + mark too thin")
 
@@ -173,6 +178,14 @@ def box(x0, y0, z0, dx, dy, dz):
 
 def cyl(x, y, z0, d, h):
     return Pos(x, y, z0) * Cylinder(d / 2, h, align=(Align.CENTER, Align.CENTER, Align.MIN))
+
+
+def leaned(sk):
+    """sk (its footprint at z = floor_t) swept through z = -1 .. floor_t + 1 along the latch lean."""
+    k = (floor_t + 2) / floor_t
+    lean = Vector(-latch_lean, latch_lean, -floor_t)
+    return extrude(Plane.XY.offset(floor_t + 1) * Pos(latch_lean / floor_t, -latch_lean / floor_t) * sk,
+                   amount=lean.length * k, dir=lean)
 
 
 def dovetail(sk, grow, top):
@@ -299,8 +312,8 @@ rail = box(wall + slide_gap, wall + inner_r, floor_t - eps,
            bx(rail_x0) - wall - slide_gap, band_y - wall - inner_r + eps, pcb_z - clip_gap - floor_t + eps)
 base += rail
 # Latch arm: slot along its inner side and behind its free end
-base -= box(latch_xa - latch_slot, latch_y1 - latch_l, -1, latch_slot, latch_l + latch_slot, floor_t + 2)
-base -= box(latch_xa - latch_slot, latch_y1, -1, outer_w + 1 - latch_xa + latch_slot, latch_slot, floor_t + 2)
+base -= leaned(rrect(latch_slot, latch_l + latch_slot, 0.01, latch_xa - latch_slot, latch_y1 - latch_l)
+               + rrect(outer_w + 3 - latch_xa + latch_slot, latch_slot, 0.01, latch_xa - latch_slot, latch_y1))
 base_slide = base                      # without the catch: what must pass the shell freely
 _far = latch_xe + latch_p + 1
 latch_catch = (Pos(latch_p, 0, 0) * dovetail(floor_sk, 0, floor_t)) & prism(Polygon(
@@ -407,7 +420,12 @@ for d in (0.5, 1, 2, 4, 8, 14, 20, outer_h):
 # (the arm bends), and its outer face shows in the window for a fingernail
 check((lid & Pos(0, slide_gap + 0.1, 0) * latch_catch).volume > 1e-3, "latch catch does not hold against a pull")
 check((lid & Pos(0, latch_catch_l + 2 * slide_gap + 0.5, 0) * latch_catch).volume > 1e-3, "latch catch does not bend the arm")
-_clear(base, box(latch_xa - latch_slot + eps, latch_y1 - latch_l + 0.5, -1, latch_slot - 2 * eps, latch_l - 0.5, floor_t + 2), "latch slot")
+_clear(base, leaned(rrect(latch_slot - 2 * eps, latch_l - 0.5, 0.01, latch_xa - latch_slot + eps, latch_y1 - latch_l + 0.5)), "latch slot")
+_clear(base, leaned(rrect(outer_w - latch_xa, latch_slot - 2 * eps, 0.01, latch_xa + 0.1, latch_y1 + eps)), "latch end slot")
+# ...but closed when seen straight from below: a column through the slot's top footprint hits plastic
+for x, y in ((latch_xa - latch_slot / 2, latch_y1 - latch_l / 2), (latch_xa - latch_slot / 2, latch_y1 + latch_slot / 2),
+             (outer_w - wall - 0.5, latch_y1 + latch_slot / 2)):
+    check((base & box(x - 0.05, y - 0.05, 0, 0.1, 0.1, floor_t)).volume > 1e-4, f"floor see-through at the latch slot ({x:.1f}, {y:.1f})")
 _open(lid, box(latch_xe + latch_p + 0.1, latch_y0 + latch_p + 0.1, 0.2, outer_w, latch_y1 - latch_y0 - latch_p - 0.2, floor_t - 0.2), "latch window")
 # The floor holds the board: the rail top and the plate top clip_gap under board and strap
 _rail_top = box(wall + slide_gap + 0.1, by(5), pcb_z - clip_gap - 0.05, bx(rail_x0) - wall - slide_gap - 0.2, board_h - 10, 0.05 - eps)

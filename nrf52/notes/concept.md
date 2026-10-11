@@ -419,6 +419,10 @@ From `kicad/notes/review-2026-10-10.md`.
   through the side wall, released by pushing it in through the window. The arm prints flat
   and bends along the layers, so it does not repeat the broken fingers. The fingernail
   notch at the top of the back band went with it: left over from the snap version.
+- Third print (latch): the latch works well, but the straight slot around the arm let you see
+  into the case from below. The slot now leans 45°: same in-plane play for the arm, no line
+  of sight, no supports. The lean widens the arm's section, so the arm went from 15 to 18 mm
+  to keep the root strain under 2 % and about the same push force. Only the floor changed.
 - Untested: the board's weight and the button force now go through the clip strap into its
   solder legs; the latch: arm spring-back and how easy the catch is to push in; the board's play (`clip_gap` 0.1) under the button. Check
   on the first board.

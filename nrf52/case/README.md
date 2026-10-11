@@ -69,8 +69,9 @@ runs right to left in the case: the module sits front-right, the camera plug bac
     rail on the plate sits `clip_gap` under the board's edge at board x 29.5, the only edge
     the clip leaves free along the whole slide path. The board is held between these and the
     bosses.
-  - **Latch**: the plate's right edge strip is an arm (`latch_l` 15 long, `latch_w` 2.2 wide)
-    cut free by a `latch_slot` (1.4) slot. Its free end carries a catch, the dovetail edge
+  - **Latch**: the plate's right edge strip is an arm (`latch_l` 18 long, `latch_w` 2.2 wide)
+    cut free by a `latch_slot` (1.4) slot. The slot leans 45° (`latch_lean`), so the floor is
+    closed when seen from below. Its free end carries a catch, the dovetail edge
     pushed out `latch_p` (1.2), that clicks into a window through the bottom of the right side
     wall. The catch's front is a 45° ramp, its back face square. To open: push the catch in
     through the window with a fingernail and slide the floor out backwards. The arm prints flat
