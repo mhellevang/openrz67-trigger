@@ -16,4 +16,4 @@ uv run view.py view/board.step view
 
 echo
 echo "Open the viewer URL below with ?file=nrf-closed.glb or ?file=nrf-floor-out.glb"
-cd view && exec cadgen viewer
+cd view && exec cadgen viewer --new
