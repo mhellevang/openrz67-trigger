@@ -4,7 +4,7 @@
 #
 # Usage:
 #   ./export.sh
-#   SNAP_TEST=true ./export.sh    # also export a corner test pair (not in the .3mf)
+#   SLIDE_TEST=true ./export.sh   # also export the back end of both parts (not in the .3mf)
 set -euo pipefail
 cd "$(dirname "$0")"
 command -v uv >/dev/null 2>&1 || { echo "uv not found (https://docs.astral.sh/uv/)" >&2; exit 1; }

@@ -392,3 +392,33 @@ From `kicad/notes/review-2026-10-10.md`.
   public test key with a warning.
 - Cost: 39 kB MCUboot, app 127 to 147 kB, RAM 26 to 45 kB. Each wake from System OFF goes
   through MCUboot, which checks the app's signature first; measure that on the first board.
+
+## Sliding floor (2026-10-11)
+
+- Why: on the printed case the board hooks and snap fingers broke at the root after a few
+  assembly cycles. Both stand up from the bed when the lid prints upside down, so they bend
+  across the layer lines, ABS's weak direction. A coin cell gets changed regularly, so the box
+  must open many times.
+- Now: a one-piece shell and a floor that slides out backwards in dovetail grooves. The floor
+  carries the back wall below the board, so with it out the cell leaves the clip backwards as
+  before. Snap, hooks, board ledge, pry slot and orientation rib are gone. The only flex left
+  is the shell's side walls springing 0.15 mm over the detent bumps, in the plane of the layers.
+- The board rests on the clip strap and on a rail under its edge at board x 29.5. A ledge
+  under the other edges cannot slide in: the cell and the clip legs are in its way. Without
+  the hooks the side clearance went back to 0.4, but the lid text needs the width, so the wall
+  is 3.4: the box is 2.6 mm narrower, 0.4 mm longer and 0.45 mm lower than before.
+- Rejected: a cell slot in the back wall with the snap lid kept. It would leave the lid
+  closed most of the time, but the snap fingers stay, and the floor version needs no flexing
+  parts at all.
+- First print: the floor slides well, but the detent (0.3 proud, both ramps 1.0, about 17°)
+  let go to a little finger. Now 0.4 proud with a 0.5 back ramp (39°): roughly four times the
+  pull-out force for about twice the push-in force.
+- Second print (detent 0.4 / 0.5): better, but still far too easy to open and close. A bump
+  only holds by friction, and stiff 3.4 mm walls give it almost no spring. Now a latch: an arm
+  cut free in the floor plate's right edge, a catch with a square back face in a window
+  through the side wall, released by pushing it in through the window. The arm prints flat
+  and bends along the layers, so it does not repeat the broken fingers. The fingernail
+  notch at the top of the back band went with it: left over from the snap version.
+- Untested: the board's weight and the button force now go through the clip strap into its
+  solder legs; the latch: arm spring-back and how easy the catch is to push in; the board's play (`clip_gap` 0.1) under the button. Check
+  on the first board.

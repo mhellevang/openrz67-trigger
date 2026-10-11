@@ -1,17 +1,22 @@
 # Parametric enclosure for the nRF52 board (build123d)
 
-`openrz67_nrf_case.py` is a two-part snap-fit box, plus a light pipe, for the coin-cell board in
-[`../kicad/`](../kicad/). Outer size with default values: **39.7 × 37.2 × 12.6 mm**. Printed in
-ABS, lid upside-down, base floor-down, no supports. The light pipe prints in clear filament,
-head-down, and is glued into the lid.
+`openrz67_nrf_case.py` is a two-part box, plus a light pipe, for the coin-cell board in
+[`../kicad/`](../kicad/): a one-piece shell and a floor that slides out backwards. Outer size
+with default values: **37.1 × 37.6 × 12.2 mm**. Printed in ABS, shell upside-down, floor
+floor-down, no supports. The light pipe prints in clear filament, head-down, and is glued into
+the shell.
 
-Layout: the board rests on a 1 mm ledge around the base cavity, component side up, with the
-CR2032 and its clip hanging below it. The lid presses the board onto the ledge with four
-bosses and carries the button tab, the LED light pipe and the opening for the camera plug. The
-floor is flat and closed, for velcro on the camera. Two hooks in the lid clip under the
-board's side edges. To change the cell, pry the lid off with a coin in the front slot: the
-board comes with it, and the cell slides backwards out of the clip. To take the board out of
-the lid, pull the tab under each hook outward.
+Layout: the board sits in the shell component side up, against four bosses off the ceiling,
+with the CR2032 and its clip hanging below it. The floor holds it up from below and carries
+the lower back wall. Nothing flexes to open it.
+
+**Changing the cell:** take the box off the camera and turn it upside down. Pull the floor out
+backwards with a fingernail in the notch at the top of its back. The board stays in the shell.
+Slide the cell out of the clip backwards, slide the new one in, + side up (toward you), then
+slide the floor back in until it clicks.
+
+Velcro goes on the floor's middle only, not across the shell's bottom edges, or it glues the
+floor shut.
 
 ## Source data
 
@@ -31,21 +36,10 @@ runs right to left in the case: the module sits front-right, the camera plug bac
 
 ## Construction
 
-- **Base**: tub with a board ledge: a wall standing on the floor up to `pcb_z`, `ledge_gap`
-  (0.2) inside the lid tongue, reaching 1.0 under the board on every side (`ledge_w` 1.4
-  from the front and back walls). Below the tongue it joins the outer wall. Broken on both
-  sides where the clip passes and the hooks hang, and along the back where the cell comes
-  within 1 mm of the board edge. The base keeps its full wall along the whole back. A 10 mm
-  "+" is debossed 0.4 into the floor under the cell: the cell's + side faces the floor. The front
-  ledge bridges `ant_wall_clr` (1.0 mm of air in front of the antenna end). Flat closed
-  floor. Pry slot on the front wall at the seam. The bottom edge has the same 1 mm 45°
-  chamfer (`edge_r`) as the lid's top edge.
-- **Orientation rib** (`orient_mark_*`): a 2.5 × 0.8 rib on the front wall, 7 tall, split at
-  the seam between base and lid. The halves line up only when the lid is on the right way
-  around. Off-centre at board x 4, clear of the pry slot.
-- **Lid**: telescoping tongue (`lap` 5) with four snap fingers on the **side** walls (the
-  back wall carries the plug opening). Hold-down bosses (`bosses`, board x/y/Ø) at four free
-  spots: the module owns the board's (0, 0) corner and `C1` + `J1` the (29.5, 29) one.
+- **Shell** (`lid` in the script and STL names): top and four walls, open at the bottom.
+  Below the board the back wall is missing: that part belongs to the floor.
+  - **Bosses** (`bosses`, board x/y/Ø) at four free spots press on bare board. The module owns
+    the board's (0, 0) corner and `C1` + `J1` the (29.5, 29) one.
   - **Button**: a `tab_w × tab_l` (6 × 7.45) cantilever tab cut free by a `tab_slot` (0.7)
     U-slot with `tab_r` (1.5) corners at the free end, hinged at its front end, thinned to `tab_t` (0.8) from the inside, with a
     Ø`nub_d` (2.4) nub that stops `nub_gap` (0.3) above the switch cap. The free end is
@@ -62,41 +56,51 @@ runs right to left in the case: the module sits front-right, the camera plug bac
     The pockets are filled by
     `openrz67-nrf-lid-text.stl` (text and rail), a second part of the lid on filament 2 in the .3mf.
     `LID_TEXT_SHOW=false` turns it off; `LID_TEXT` / `LID_TEXT_SIZE` change the name line.
-  - **Board hooks** (`hook_*`): a 1.0 × 3.4 finger off the ceiling on each side wall, at
-    board y 13.45, between the snap fingers and in front of the clip's solder legs. The barb
-    reaches `hook_grip` (0.5) under the board, with a flat face toward the board and a 45°
-    lead-in below it. `hook_flex` (0.7) of air behind the finger lets it spring out as the
-    board goes in. A `hook_tab` (1.5) below the barb is the release: pull it outward with a
-    fingernail between the tab and the clip leg. The hooks set the board-to-side-wall gap,
-    `side_clr` (1.9).
-  - **Plug opening**: connector width + 2 × `conn_clr` (0.5), from the board top up
-    `conn_h + conn_clr`, open to the seam, so the lid lifts off with the plug in place.
-  - **No tongue on the back wall**: the base has its full wall there instead. That gives the
-    plug a floor, and with the board in the lid the cell slides out backwards under it.
-- **Snap**: the ESP32 case's finger geometry unchanged (`snap_bead` 0.55, `bead_h` 1.4, 0.4
-  click-in / 0.15 retention chamfers, `finger_t` 1.0, `finger_slot` 0.8), fingers 10 long,
-  `wall` 3.2 so both lap halves stay two perimeters thick. Tune with `SNAP_TEST=true`.
+    The text sets the case width: `wall` is 3.4 so "OpenRZ67" clears the edge chamfers.
+  - **Plug opening**: a window in the back wall, connector width + 2 × `conn_clr` (0.5),
+    from the board top up `conn_h + conn_clr`.
+- **Floor** (`base`): a `floor_t` (1.6) plate with a dovetail edge that runs `slide_d` (1.0)
+  into grooves in the side walls and the front wall. The lower `slide_d` of the edge is a
+  45° chamfer, on both parts, so neither needs support. `slide_gap` (0.15) all round.
+  - **Back band**: the back wall below the board, `wall` deep, full width, part of the floor.
+    With the floor out, the back is open below the board, so the cell can slide out of the
+    clip backwards (it needs 14.5 mm to clear the strap).
+  - **Board support**: the plate top sits `clip_gap` (0.1) under the clip's strap, and a
+    rail on the plate sits `clip_gap` under the board's edge at board x 29.5, the only edge
+    the clip leaves free along the whole slide path. The board is held between these and the
+    bosses.
+  - **Latch**: the plate's right edge strip is an arm (`latch_l` 15 long, `latch_w` 2.2 wide)
+    cut free by a `latch_slot` (1.4) slot. Its free end carries a catch, the dovetail edge
+    pushed out `latch_p` (1.2), that clicks into a window through the bottom of the right side
+    wall. The catch's front is a 45° ramp, its back face square. To open: push the catch in
+    through the window with a fingernail and slide the floor out backwards. The arm prints flat
+    and bends in the plane of the layers; an assertion keeps its root strain under
+    `latch_strain` (2 %). Tune with `SLIDE_TEST=true`.
+  - **Polarity mark**: a 10 mm "+" debossed 0.4 into the plate under the cell: the cell's +
+    side faces the floor.
 
-The script carries module-level assertions: each part is one body, base and lid do not
+The script carries module-level assertions: each part is one body, the parts do not
 overlap, outer dimensions, the board / cell / clip / module / connector / switch / LED
-keepouts (the clip as strap plus solder legs, from its 3D model), the bosses and the light-pipe collar clear of every top-side part, the light pipe
-clear of the lid, the button tab tip over the cavity, the
-camera plug opening on the left (a board mapped without the mirror fails here), every opening breaking through, the orientation rib clear of the pry slot and the
-lid chamfer, the front ledge actually being under the
-board, the board hooks (placed where intended, clear of the snap finger slots, air behind
-them, reaching under the board) and the cell's way out backwards with the board in the lid. They run on every export.
+keepouts (the clip as strap plus solder legs, from its 3D model), the bosses and the
+light-pipe collar clear of every top-side part, the light pipe clear of the shell, the button
+tab tip over the cavity, the camera plug opening on the left (a board mapped without the
+mirror fails here), every opening breaking through, the board's way into the shell from
+below, the floor sliding out past the shell and under the board, cell and clip at every step,
+the latch catch holding against a pull, bending the arm and showing in its window, the floor actually under the strap and the board edge, and the cell's
+way out backwards with the floor out. They run on every export.
 
 ## Usage
 
 ```sh
 cd nrf52/case
 ./export.sh                          # base + lid + light pipe -> stl/, then openrz67-nrf-case.3mf
-SNAP_TEST=true ./export.sh           # also a cropped corner pair (not in the .3mf)
+SLIDE_TEST=true ./export.sh          # also the back end of both parts, for tuning the fit (not in the .3mf)
 ```
+
 
 Requires [uv](https://docs.astral.sh/uv/); the script carries its own dependency header.
 
-`openrz67-nrf-case.3mf` is the QIDI Studio project: plate 1 base floor-down and lid upside-down
+`openrz67-nrf-case.3mf` is the QIDI Studio project: plate 1 floor floor-down and shell upside-down
 (ABS profile, lid text on filament 2), plate 2 the light pipe head-down on filament 3 (clear,
 0.28 mm layers, 100 % infill, 20 mm/s). The template has the ESP32 case's settings, except a
 0.42 mm first-layer line width (the lid text is the first layer). `../../case/make_3mf.py` builds it by swapping the fresh STLs into
