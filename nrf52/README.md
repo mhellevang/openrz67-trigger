@@ -6,7 +6,7 @@ charger or power switch. Rev A is ordered (fab package in [`kicad/archive/`](kic
 | Directory | What |
 |---|---|
 | `kicad/` | the board, generated from `tools/design.py`; fab files in `out/` |
-| `case/` | build123d snap-fit box |
+| `case/` | build123d box with a sliding floor |
 | `firmware/` | Zephyr application, builds on nRF Connect SDK v3.4.1 |
 | `notes/` | reasoning and history |
 
