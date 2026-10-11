@@ -95,8 +95,12 @@ way out backwards with the floor out. They run on every export.
 cd nrf52/case
 ./export.sh                          # base + lid + light pipe -> stl/, then openrz67-nrf-case.3mf
 SLIDE_TEST=true ./export.sh          # also the back end of both parts, for tuning the fit (not in the .3mf)
+./view.sh                            # board + case in CAD Viewer (browser), closed and with the floor out
 ```
 
+`view.sh` exports the board STEP from KiCad (`kicad-cli`), places it in the case with
+`view.py`, writes GLBs to `view/` and serves them with `cadgen viewer`. Open the printed URL
+with `?file=nrf-closed.glb` or `?file=nrf-floor-out.glb`.
 
 Requires [uv](https://docs.astral.sh/uv/); the script carries its own dependency header.
 
