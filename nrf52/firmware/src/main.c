@@ -30,8 +30,10 @@ LOG_MODULE_REGISTER(openrz67, LOG_LEVEL_INF);
 
 #define ADV_TIMEOUT      K_MINUTES(5)
 #define VBAT_PERIOD      K_SECONDS(60)
-#define VBAT_EMPTY_MV    2500   /* CR2032: 0 % */
-#define VBAT_FULL_MV     3000   /* 100 % */
+/* Defaults are the CR2032 board's; a board with a divider or a LiPo sets them in zephyr,user */
+#define VBAT_EMPTY_MV    DT_PROP_OR(DT_PATH(zephyr_user), vbat_empty_mv, 2500)
+#define VBAT_FULL_MV     DT_PROP_OR(DT_PATH(zephyr_user), vbat_full_mv, 3000)
+#define VBAT_DIVIDER     DT_PROP_OR(DT_PATH(zephyr_user), vbat_divider, 1)
 #define TRIGGER_HOLD_MS  100    /* S2 held for a plain release */
 #define S1_LEAD_MS       10     /* S1 before S2, lets the camera wake its meter */
 #define DEFAULT_COUNTDOWN_MS 10000
@@ -45,6 +47,7 @@ static const struct gpio_dt_spec s1 = GPIO_DT_SPEC_GET(DT_NODELABEL(s1_drv), gpi
 static const struct gpio_dt_spec s2 = GPIO_DT_SPEC_GET(DT_NODELABEL(s2_drv), gpios);
 static const struct gpio_dt_spec button = GPIO_DT_SPEC_GET(DT_ALIAS(sw0), gpios);
 static const struct adc_dt_spec vdd_adc = ADC_DT_SPEC_GET_BY_IDX(DT_PATH(zephyr_user), 0);
+static const struct gpio_dt_spec vbat_en = GPIO_DT_SPEC_GET_OR(DT_PATH(zephyr_user), vbat_enable_gpios, {0});
 static const struct device *const wdt = DEVICE_DT_GET(DT_ALIAS(watchdog0));
 
 /* --- GATT ------------------------------------------------------------------------- */
@@ -197,10 +200,18 @@ static void vbat_update(struct k_work *work)
 	struct adc_sequence seq = {.buffer = &raw, .buffer_size = sizeof(raw)};
 
 	adc_sequence_init_dt(&vdd_adc, &seq);
-	if (adc_read_dt(&vdd_adc, &seq) == 0) {
+	if (vbat_en.port) {
+		gpio_pin_set_dt(&vbat_en, 1);
+		k_msleep(2);
+	}
+	int err = adc_read_dt(&vdd_adc, &seq);
+	if (vbat_en.port) {
+		gpio_pin_set_dt(&vbat_en, 0);
+	}
+	if (err == 0) {
 		int32_t mv = raw;
 		adc_raw_to_millivolts_dt(&vdd_adc, &mv);
-		vbat_mv = CLAMP(mv, 0, 0xffff);
+		vbat_mv = CLAMP(mv * VBAT_DIVIDER, 0, 0xffff);
 		int pct = (int)(vbat_mv - VBAT_EMPTY_MV) * 100 / (VBAT_FULL_MV - VBAT_EMPTY_MV);
 		bt_bas_set_battery_level(CLAMP(pct, 0, 100));
 		if (vbat_notify && current_conn) {
@@ -364,6 +375,9 @@ int main(void)
 	gpio_init_callback(&button_cb, button_pressed, BIT(button.pin));
 	gpio_add_callback(button.port, &button_cb);
 	adc_channel_setup_dt(&vdd_adc);
+	if (vbat_en.port) {
+		gpio_pin_configure_dt(&vbat_en, GPIO_OUTPUT_INACTIVE);
+	}
 
 	/* a hung loop resets the chip, and reset releases S1/S2 */
 	struct wdt_timeout_cfg wdt_cfg = {

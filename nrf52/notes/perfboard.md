@@ -49,55 +49,28 @@ The board's `led0` alias already says so.
 
 ## Firmware
 
-The app picks up `boards/xiao_nrf54l15_nrf54l15_cpuapp.overlay` on its own when built with
-`west build -b xiao_nrf54l15/nrf54l15/cpuapp`. `src/main.c` needs `s1_drv`, `s2_drv`, the
-`led0`, `sw0` and `watchdog0` aliases and one ADC channel in `zephyr,user`; the XIAO's board
-files supply `led0` and `sw0`.
+Same app as the coin-cell board. `firmware/boards/xiao_nrf54l15_nrf54l15_cpuapp.overlay`
+adds the two outputs, points the battery reading at the XIAO's divider and turns on the
+watchdog; the XIAO's own board files give `led0`, `sw0` and `watchdog0`. Builds with sysbuild
+and MCUboot on NCS v3.4.1 (2026-10-15), not flashed:
 
-```dts
-#include <zephyr/dt-bindings/adc/nrf-saadc.h>
-#include <zephyr/dt-bindings/gpio/nordic-nrf-gpio.h>
-
-/ {
-	outputs {
-		compatible = "gpio-leds";
-		s1_drv: s1 {
-			gpios = <&gpio1 5 (GPIO_ACTIVE_HIGH | NRF_GPIO_DRIVE_S0H1)>;	/* D1 */
-		};
-		s2_drv: s2 {
-			gpios = <&gpio1 6 (GPIO_ACTIVE_HIGH | NRF_GPIO_DRIVE_S0H1)>;	/* D2 */
-		};
-	};
-
-	aliases {
-		watchdog0 = &wdt31;
-	};
-
-	zephyr,user {
-		io-channels = <&adc 0>;
-	};
-};
-
-&gpio0 {
-	sense-edge-mask = <(1 << 0)>;	/* USR button via SENSE, as on the coin-cell board */
-	latch-detect;
-};
-
-&wdt31 {
-	status = "okay";
-};
+```sh
+west build -p -b xiao_nrf54l15/nrf54l15/cpuapp -s $FW -d $FW/build -- -DBOARD_ROOT=$FW -DSB_CONFIG_BOOT_SIGNATURE_KEY_FILE=\"$KEY\"
+west flash -d $FW/build    # over the XIAO's USB-C
 ```
+
+Battery: on the XIAO, VDD is the regulated 3.3 V, so the coin-cell board's VDD reading would
+always say full. The LiPo sits behind a load switch (P1.15) and a 1:2 divider into AIN7. The
+overlay gives the firmware the switch, the divider and a LiPo range (3.3 to 4.15 V) through
+`zephyr,user`; the firmware turns the switch on for each reading only. The board's own
+`vbat_pwr` regulator is disabled so it does not hold the switch on.
 
 ## Open
 
-- **Battery level.** On the XIAO, VDD is the regulated 3.3 V, so the current VDD reading is
-  always "full". The battery sits behind a load switch (`vbat_pwr`, P1.15) and a divider
-  into AIN7 (P1.14); Seeed's sample multiplies by 2. Needs a small firmware change: switch on,
-  sample AIN7, switch off, and a LiPo curve instead of the CR2032 one.
+- **Battery reading.** The 1:2 divider comes from Seeed's sample (`× 2`), not the schematic.
+  Check against a multimeter on the first build.
 - **Idle current.** Seeed gives no board-level System OFF figure. The charger, regulator and
   whether the SAMD11 runs from the battery set it. Measure before promising battery life.
-- **MCUboot.** The XIAO's board files include the standard nRF54L15 partitions, so sysbuild
-  with MCUboot should build. Not tried.
 - **DC/DC.** The XIAO has the inductor and enables DC/DC in its devicetree. Check that it
   agrees with the firmware's `INDUCTORDET` check at boot.
 - **Size.** The XIAO is 21 × 17.5 mm. With two DIP-4 parts and a LiPo, the box ends up about
