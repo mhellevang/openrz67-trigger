@@ -21,20 +21,22 @@ the same time would push 3.3 V into the cell. The LiPo keeps it simple and USB-C
 
 ## Wiring
 
-```
-XIAO D1 (P1.05) ── 330 Ω ── AQY212EH #1 pin 1 (LED +)
-XIAO GND ──────────────────  AQY212EH #1 pin 2 (LED −)
-                             AQY212EH #1 pins 3/4 ── camera S1 (pin 3) and camera GND (pin 2)
+![Wiring diagram: XIAO D1 and D2 drive two AQY212EH relays through 330 Ω; the relays switch camera S1 and S2 to camera GND](perfboard-wiring.svg)
 
-XIAO D2 (P1.06) ── 330 Ω ── AQY212EH #2 pin 1 (LED +)
-XIAO GND ──────────────────  AQY212EH #2 pin 2 (LED −)
-                             AQY212EH #2 pins 3/4 ── camera S2 (pin 4) and camera GND (pin 2)
+Every wire, as a checklist:
 
-Camera pin 1 (6 V): not connected.
-```
+| From | To |
+|---|---|
+| XIAO D1 | 330 Ω, then AQY212EH #1 pin 1 |
+| XIAO D2 | 330 Ω, then AQY212EH #2 pin 1 |
+| XIAO GND | AQY212EH #1 pin 2 and #2 pin 2 |
+| AQY212EH #1 pin 3 | camera pin 3 (S1) |
+| AQY212EH #2 pin 4 | camera pin 4 (S2) |
+| AQY212EH #1 pin 4 and #2 pin 3 | camera pin 2 (GND) |
+| LiPo + / − | XIAO BAT+ / BAT− pads, underside |
 
-Camera GND stays separate from the XIAO's GND, as on both PCBs. The PhotoMOS output is
-bidirectional, so pin 3/4 order does not matter.
+Camera pin 1 (6 V) stays unconnected. Camera GND never touches the XIAO's GND, as on both PCBs.
+The relay's switch side has no polarity, so pins 3 and 4 can swap.
 
 Drive: the XIAO's GPIO sits at a regulated 3.3 V, so the LED current does not fall with the
 battery. (3.3 − 0.4 − 1.5) / 330 ≈ 4.2 mA worst case, above the 3.0 mA threshold. Two channels
