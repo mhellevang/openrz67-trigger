@@ -45,7 +45,7 @@ import zipfile
 SUB_PARTS = {"openrz67-lid.stl": [("openrz67-lid-text.stl", 2)],
              "openrz67-nrf-lid.stl": [("openrz67-nrf-lid-text.stl", 2)]}
 # The template's objects, by name: exactly these get their mesh swapped (SNAP_TEST pieces are
-# not in it). --objects overrides it for another case's template (nrf52/case/export.sh).
+# not in it). --objects overrides it for another case's template (nrf/case/export.sh).
 OBJECTS = {"openrz67-base.stl", "openrz67-lid.stl", "openrz67-lightpipe.stl"}
 BED = 256.0            # Bambu P2S; plates sit in a row, stride = 1.2 * bed (LOGICAL_PART_PLATE_GAP)
 

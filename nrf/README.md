@@ -1,14 +1,15 @@
-# nRF52 coin-cell trigger
+# nRF coin-cell trigger
 
-Second board design for the RZ67 trigger: an nRF54L15 module on a CR2032, no regulator,
-charger or power switch. Rev A is ordered (fab package in [`kicad/archive/`](kicad/archive/)).
+An nRF54L15 module on a CR2032, with no regulator, charger or power switch. Rev A is ordered
+(fab package in [`kicad/archive/`](kicad/archive/)). The camera port and the BLE protocol are
+described in the [top-level README](../README.md).
 
 | Directory | What |
 |---|---|
 | `kicad/` | the board, generated from `tools/design.py`; fab files in `out/` |
 | `case/` | build123d box with a sliding floor |
 | `firmware/` | Zephyr application, builds on nRF Connect SDK v3.4.1 |
-| `notes/` | reasoning and history |
+| `notes/` | reasoning and history; [`perfboard.md`](notes/perfboard.md) is the same circuit on perfboard with a XIAO nRF54L15 |
 
 ## Parts to buy
 

@@ -1,7 +1,7 @@
 # Firmware for the nRF52 board (Zephyr / nRF Connect SDK)
 
 Zephyr application for the coin-cell trigger in [`../kicad/`](../kicad/). Same Bluetooth
-services and command bytes as the ESP32-C3 firmware in the repository root, so the
+services and command bytes as the ESP32-C3 firmware in [`../../esp32/`](../../esp32/), so the
 [Android](https://github.com/openrz67/openrz67-android) and
 [iOS](https://github.com/openrz67/openrz67-ios) apps work unchanged. Builds with nRF Connect
 SDK v3.4.1 (MCUboot 39 kB, app 147 kB flash, 45 kB RAM); not yet flashed on hardware.
@@ -74,7 +74,7 @@ MCUboot and the app and signs the app:
 
 ```sh
 cd ~/ncs && source .venv/bin/activate && export ZEPHYR_SDK_INSTALL_DIR=~/zephyr-sdk-1.0.1
-FW=/path/to/openrz67-trigger/nrf52/firmware
+FW=/path/to/openrz67-trigger/nrf/firmware
 KEY=~/.openrz67/mcuboot-ed25519.pem
 west build -b openrz67_nrf/nrf54l15/cpuapp -s $FW -d $FW/build -- -DBOARD_ROOT=$FW -DSB_CONFIG_BOOT_SIGNATURE_KEY_FILE=\"$KEY\"
 west build -b openrz67_nrf/nrf54l15/cpuapp -s $FW -d $FW/build -- -DBOARD_ROOT=$FW -DSB_CONFIG_BOOT_SIGNATURE_KEY_FILE=\"$KEY\" -DEXTRA_CONF_FILE=debug.conf   # RTT logging

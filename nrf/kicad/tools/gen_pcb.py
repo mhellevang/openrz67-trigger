@@ -1,6 +1,6 @@
 """Build openrz67-nrf.kicad_pcb from design.py with KiCad's pcbnew.
 
-Run with KiCad's bundled python from nrf52/kicad/:
+Run with KiCad's bundled python from nrf/kicad/:
   $KICAD_PY tools/gen_pcb.py [--dump]
 --dump prints every pad position after placement (used while routing).
 """

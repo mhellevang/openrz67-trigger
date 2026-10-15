@@ -93,7 +93,7 @@ way out backwards with the floor out. They run on every export.
 ## Usage
 
 ```sh
-cd nrf52/case
+cd nrf/case
 ./export.sh                          # base + lid + light pipe -> stl/, then openrz67-nrf-case.3mf
 SLIDE_TEST=true ./export.sh          # also the back end of both parts, for tuning the fit (not in the .3mf)
 ./view.sh                            # board + case in CAD Viewer (browser), closed and with the floor out
@@ -108,7 +108,7 @@ Requires [uv](https://docs.astral.sh/uv/); the script carries its own dependency
 `openrz67-nrf-case.3mf` is the QIDI Studio project: plate 1 floor floor-down and shell upside-down
 (ABS profile, lid text on filament 2), plate 2 the light pipe head-down on filament 3 (clear,
 0.28 mm layers, 100 % infill, 20 mm/s). The template has the ESP32 case's settings, except a
-0.42 mm first-layer line width (the lid text is the first layer). `../../case/make_3mf.py` builds it by swapping the fresh STLs into
+0.42 mm first-layer line width (the lid text is the first layer). `../../esp32/case/make_3mf.py` builds it by swapping the fresh STLs into
 `qidi-template.3mf`, so the slicer settings survive every re-export. To change settings or the
 plate layout: open the project in QIDI Studio, change it, save, and copy it over
 `qidi-template.3mf`.

@@ -40,7 +40,7 @@ echo "==> position file"
 "$KICAD_CLI" pcb export pos --format csv --units mm --side both --use-drill-file-origin \
   --exclude-dnp -o out/openrz67-nrf-pos.csv "$PCB" >/dev/null
 # JLCPCB's CPL parser rejects KiCad's header names; rewrite to the layout the main board's
-# file was accepted in (pcb/kicad/tools/regen.sh).
+# file was accepted in (esp32/pcb/kicad/tools/regen.sh).
 "$KICAD_PY" - out/openrz67-nrf-pos.csv <<'PY'
 import csv, sys
 p = sys.argv[1]

@@ -29,7 +29,7 @@ design cannot do: live on a coin cell with no power switch, no charger and no re
 - **Cell**: CR2032 in an SMD holder. 220 mAh, 20 mm. CR2450 (620 mAh, 24.5 mm) if the case
   can take it; same holder family, decide when the outline is drawn.
 - **Outputs**: 2 × TLP172AM, LED resistor **330 Ω** (not 150 Ω): 5.2 mA at 3.0 V, 3.4 mA at
-  2.5 V, still above IFT max 3 mA (TLP172AM datasheet §11, see `../../pcb/kicad/notes/review-2026-09-10-verify.md` 4.2).
+  2.5 V, still above IFT max 3 mA (TLP172AM datasheet §11, see `../../esp32/pcb/kicad/notes/review-2026-09-10-verify.md` 4.2).
   Nominal IF 5 mA is the RON ≤ 2 Ω test point. Camera GND stays separate from cell GND.
 - **Bulk cap**: 100–220 µF across the cell. CR2032 internal resistance is 10–40 Ω and climbs
   with age; worst-case peak is 2 × 5 mA LEDs + ~6 mA radio TX at 0 dBm ≈ 16 mA ≈ 0.6 V sag at
@@ -61,7 +61,7 @@ firmware's values, kept so the apps behave the same; slowing them is a tuning it
 Zephyr via nRF Connect SDK (west + the VS Code nRF Connect extension). System OFF, advertising
 timeouts, BAS and DIS are built in, and the Nordic BLE stack is the reference one. The
 Arduino route (Adafruit nRF52 core) needs the Adafruit bootloader on the module and gives less
-control of sleep. The command protocol is reimplemented 1:1 from `src/main.cpp`.
+control of sleep. The command protocol is reimplemented 1:1 from `esp32/src/main.cpp`.
 
 ## Case
 
@@ -77,7 +77,7 @@ XH connector, as today.
 - CR2450 clip variant, if the case wants the bigger cell.
 - 100–220 µF in 1206/1210 at 6.3 V, or a tantalum.
 - Actual TX current of the chosen module at 0 dBm with DC/DC enabled.
-- Camera-side requirements in `../../case/notes/rz67-remote-inputs.md` still hold for 5 mA drive.
+- Camera-side requirements in `../../esp32/pcb/kicad/notes/rz67-remote-inputs.md` still hold for 5 mA drive.
 
 ## Layout decisions (kicad/, first pass)
 

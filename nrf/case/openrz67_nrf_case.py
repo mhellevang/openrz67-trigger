@@ -103,7 +103,7 @@ tab_w, tab_l, tab_slot, tab_r = 6.0, 7.45, 0.7, 1.5   # tab_r: free-end corners
 tab_tip = 1.45            # switch centre to the tab's free end: the tip stays over the cavity
 tab_t = 0.8               # tab thinned from the inside to this: about 5 N to press (8 N at 1.0)
 nub_d, nub_gap = 2.4, 0.3  # nub diameter, air over the switch cap at rest
-# Light pipe: top hat as on the ESP32 case (../../case/openrz67_case.py has the history):
+# Light pipe: top hat as on the ESP32 case (../../esp32/case/openrz67_case.py has the history):
 # tapered head in a funnel, stem in a slip-fit window, glued. The collar off the ceiling
 # keeps it from tilting; only D1 and R3 sit under its ring, both under low_part_h.
 led_stem_d = 2.2
@@ -113,7 +113,7 @@ low_part_h = 0.6          # D1 (0603 LED); R3 (0402) is lower
 conn_clr = 0.5            # around the connector body in the wall opening
 cell_mark_l, cell_mark_w, cell_mark_d = 10.0, 1.5, 0.4   # "+" debossed in the floor under the cell: its + side faces the floor
 # Lid text: debossed in the top, filled by an inlay part on filament 2 (make_3mf.py), as on
-# the ESP32 case (../../case/openrz67_case.py has the reasoning). Centred in X, and in Y
+# the ESP32 case (../../esp32/case/openrz67_case.py has the reasoning). Centred in X, and in Y
 # between the front edge chamfer and the LED seat. A rail runs from the left wall into the
 # light-pipe seat, as on the ESP32 case: the LED reads as an indicator on a line.
 # (text, font size, letter tracking)
