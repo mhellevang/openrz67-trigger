@@ -119,26 +119,27 @@
 
   <!-- relay outputs -> camera -->
   <line x1="575" y1="320" x2="880" y2="320" class="out"/>
-  <polyline points="575,360 640,360 640,410 880,410" class="out"/>
-  <polyline points="575,490 640,490 640,410" class="out"/>
-  <circle cx="640" cy="410" r="6" fill="#337f9c"/>
-  <line x1="575" y1="530" x2="880" y2="530" class="out"/>
+  <polyline points="575,490 640,490 640,410 880,410" class="out"/>
+  <path d="M575,360 H690 V398 A12,12 0 0 1 690,422 V500 H880" class="out"/>
+  <polyline points="575,530 690,530 690,500" class="out"/>
+  <circle cx="690" cy="500" r="6" fill="#337f9c"/>
 
   <!-- camera -->
   <text x="860" y="128" class="section">RZ67 REMOTE PORT</text>
-  <text x="860" y="150" class="small">Pin numbers as in the trigger README</text>
+  <text x="860" y="150" class="small">Pins in row order, as in the trigger README.</text>
+  <text x="860" y="170" class="small">The triangle on the camera marks pin 1.</text>
   <rect x="860" y="270" width="290" height="370" rx="18" class="camera"/>
   <circle cx="880" cy="320" r="7" fill="#337f9c"/>
   <text x="900" y="315" class="label">Pin 4 · S2</text>
   <text x="900" y="335" class="tiny">from AQY212EH #2</text>
   <circle cx="880" cy="410" r="7" fill="#337f9c"/>
-  <text x="900" y="405" class="label">Pin 2 · GND</text>
-  <text x="900" y="425" class="tiny">camera ground, from both relays</text>
-  <circle cx="880" cy="530" r="7" fill="#337f9c"/>
-  <text x="900" y="525" class="label">Pin 3 · S1</text>
-  <text x="900" y="545" class="tiny">from AQY212EH #1</text>
-  <circle cx="880" cy="600" r="7" fill="#fff" stroke="#a0a8b0" stroke-width="2"/>
-  <text x="900" y="605" class="off">Pin 1 · 6 V, not connected</text>
+  <text x="900" y="405" class="label">Pin 3 · S1</text>
+  <text x="900" y="425" class="tiny">from AQY212EH #1</text>
+  <circle cx="880" cy="500" r="7" fill="#337f9c"/>
+  <text x="900" y="495" class="label">Pin 2 · GND</text>
+  <text x="900" y="515" class="tiny">camera ground, from both relays</text>
+  <circle cx="880" cy="590" r="7" fill="#fff" stroke="#a0a8b0" stroke-width="2"/>
+  <text x="900" y="595" class="off">Pin 1 · 6 V, not connected</text>
 
   <text x="50" y="770" class="small">Camera GND (blue) and XIAO GND (black) never touch. That separation is the point of the PhotoMOS relays.</text>
 </svg>

@@ -30,9 +30,9 @@ Every wire, as a checklist:
 | XIAO D1 | 330 Ω, then AQY212EH #1 pin 1 |
 | XIAO D2 | 330 Ω, then AQY212EH #2 pin 1 |
 | XIAO GND | AQY212EH #1 pin 2 and #2 pin 2 |
-| AQY212EH #1 pin 3 | camera pin 3 (S1) |
+| AQY212EH #1 pin 4 | camera pin 3 (S1) |
 | AQY212EH #2 pin 4 | camera pin 4 (S2) |
-| AQY212EH #1 pin 4 and #2 pin 3 | camera pin 2 (GND) |
+| AQY212EH #1 pin 3 and #2 pin 3 | camera pin 2 (GND) |
 | LiPo + / − | XIAO BAT+ / BAT− pads, underside |
 
 Camera pin 1 (6 V) stays unconnected. Camera GND never touches the XIAO's GND, as on both PCBs.
