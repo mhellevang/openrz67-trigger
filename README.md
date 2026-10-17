@@ -10,10 +10,20 @@ Two boards, same protocol, same apps:
 | Directory | Board | Status |
 |---|---|---|
 | [`esp32/`](esp32/) | ESP32-C3, 250 mAh LiPo with USB-C charging, PlatformIO firmware | rev 2 in regular use |
-| [`nrf/`](nrf/) | nRF54L15 module on a CR2032, no charger or regulator, Zephyr firmware | rev A ordered, not yet tested |
+| [`nrf/`](nrf/) | nRF54L15 module on a CR2032, no charger or regulator, Zephyr firmware | rev A in testing |
 
 Both switch the camera through two isolated PhotoMOS relays. [`nrf/notes/perfboard.md`](nrf/notes/perfboard.md)
 shows the same circuit on perfboard with off-the-shelf parts.
+
+## History
+
+* **2022-12** Pinout from Julio Ryuuzaki (see Credits).
+* **2023-01** First version on a Seeed XIAO ESP32-C3 with a Fritzing schematic, plus the first
+  Android app. A small carrier PCB followed in April 2023; its source is lost.
+* **2025-09** Custom ESP32-C3 board, rev 1, drawn in EasyEDA. Worked, but the LGS5500 charger
+  led to a new power path.
+* **2026-09** ESP32 rev 2 in KiCad: PhotoMOS relays, BQ25185 + TPS63031. In regular use.
+* **2026-10** Coin-cell board on an nRF54L15 module, rev A.
 
 ## Camera connection
 
