@@ -109,23 +109,50 @@ falls back to the old one on the next reset.
 
 ### First flash with the probe
 
+![Mac to Pico to RF board: setup and SWD wiring](flashing.svg)
+
 Flashing is over SWD through `J2`, a JST SH 1.0 mm connector: a Qwiic / STEMMA QT cable with
 female Dupont ends goes straight onto a Raspberry Pi Pico 2 WH (pre-soldered headers) running
 Raspberry Pi's `debugprobe_on_pico2.uf2` (CMSIS-DAP; `debugprobe_on_pico.uf2` on a Pico H),
-no soldering anywhere. pyOCD drives it; a
-J-Link works through its own runner:
+no soldering anywhere.
+
+1. Download **`debugprobe_on_pico2.uf2`** for the Pico 2 WH from the
+   [debugprobe releases](https://github.com/raspberrypi/debugprobe/releases).
+   For an original Pico H, download `debugprobe_on_pico.uf2` instead.
+2. Hold **BOOTSEL** on the Pico while plugging its USB cable into the Mac, then release it.
+   Open the Pico drive that appears in Finder and drag the downloaded
+   **`debugprobe_on_pico2.uf2`** file onto it, just as you would copy a file to a USB stick.
+   For an original Pico H, copy `debugprobe_on_pico.uf2` instead. The Pico automatically
+   restarts as a CMSIS-DAP probe when the copy finishes. This is a one-time step.
+3. Unplug USB, remove the RF board's **CR2032**, and connect the four wires below to **J2**.
+   The Pico supplies 3.3 V during flashing. Use the side header pins on the Pico; the drawing
+   shows logical connections, not physical pin positions. The power pin is labelled **3V3**
+   on the Pico: use that label to find it. **3V3_EN** is a different pin and must stay unconnected.
+   Physical pin numbers below are an extra reference. Cable colours can vary.
+4. Connect the Pico to the Mac over USB. After building firmware as above, activate the same
+   Python environment and run:
 
 ```sh
-pip install 'pyocd>=0.37'    # nrf54l target built in, no pack
+source ~/ncs/.venv/bin/activate
+python -m pip install --upgrade pyocd
+pyocd list
 west flash -d $FW/build --runner pyocd
-west flash -d $FW/build --runner jlink
 ```
+
+`pyocd list` should show the Pico. `$FW` is the firmware directory set in the build steps.
+The board configuration selects the `nrf54l` target automatically.
 
 | `J2` pin | Qwiic wire | Pico pin |
 |---|---|---|
 | 1 GND | black | GND (pin 3) |
-| 2 VDD | red | 3V3(OUT) (pin 36), with the cell **out**: the probe powers the board, so both sides run at 3.3 V. Never with the cell in, it would charge the CR2032 |
+| 2 VDD | red | **3V3**, as labelled on the Pico (pin 36). Leave **3V3_EN** unconnected. With the cell **out**, the probe powers the board, so both sides run at 3.3 V. Never with the cell in, it would charge the CR2032 |
 | 3 SWCLK | blue | GP2 (pin 4) |
 | 4 SWDIO | yellow | GP3 (pin 5) |
 
 There is no reset line; the probe resets the chip over SWD.
+After flashing, unplug USB and disconnect J2 before inserting the battery. Subsequent app
+updates can use Bluetooth as described above. This procedure has not yet been validated on
+hardware.
+
+A J-Link can be used instead of the Pico with `west flash -d $FW/build --runner jlink`;
+the Pico wiring table above does not apply to it.

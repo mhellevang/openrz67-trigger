@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="680" viewBox="0 0 1100 680" role="img" aria-labelledby="title desc">
+  <title id="title">Flash the OpenRZ67 RF board with a Raspberry Pi Pico</title>
+  <desc id="desc">A Mac connects over USB to a Pico running debugprobe. Connect Pico physical pin 3 to J2 pin 1 GND, physical pin 36 to J2 pin 2 VDD, physical pin 4 GP2 to J2 pin 3 SWCLK, and physical pin 5 GP3 to J2 pin 4 SWDIO. Remove the CR2032 before connecting power. This is a wiring schematic, not a physical connector view.</desc>
+  <defs>
+    <style>
+      text{font-family:Arial,Helvetica,sans-serif;fill:#183247}
+      .title{font-size:28px;font-weight:700}.heading{font-size:20px;font-weight:700}
+      .body{font-size:17px}.small{font-size:15px;fill:#526779}.mono{font-family:monospace;font-size:16px}
+    </style>
+  </defs>
+  <rect width="1100" height="680" rx="20" fill="#f3f6fa"/>
+  <text x="40" y="52" class="title">First flash: Mac → Pico → RF board</text>
+  <text x="40" y="83" class="body">Pico 2 WH acts as a USB-to-SWD programming probe.</text>
+
+  <rect x="40" y="110" width="1020" height="62" rx="10" fill="#fff0cf" stroke="#d09524"/>
+  <text x="60" y="137" class="heading">Remove the CR2032 before connecting the probe.</text>
+  <text x="60" y="160" class="body">The Pico supplies 3.3 V. Disconnect USB while wiring. Never use 5 V / VBUS.</text>
+
+  <rect x="40" y="208" width="190" height="230" rx="14" fill="white" stroke="#c8d4df"/>
+  <text x="64" y="246" class="heading">Mac</text>
+  <text x="64" y="278" class="body">Build firmware</text>
+  <text x="64" y="305" class="body">Run west flash</text>
+  <path d="M230 350H310" stroke="#526779" stroke-width="6"/>
+  <text x="250" y="333" class="small">USB</text>
+
+  <rect x="310" y="208" width="300" height="230" rx="14" fill="#e6f3ec" stroke="#78a58b"/>
+  <text x="334" y="246" class="heading">Raspberry Pi Pico 2 WH</text>
+  <text x="334" y="274" class="small">Use 3V3, not 3V3_EN</text>
+  <text x="334" y="312" class="body">GND · physical pin 3</text>
+  <text x="334" y="345" class="body">3V3 · label on Pico (pin 36)</text>
+  <text x="334" y="378" class="body">GP2 · physical pin 4</text>
+  <text x="334" y="411" class="body">GP3 · physical pin 5</text>
+
+  <path d="M610 306H790" fill="none" stroke-width="5" stroke-linecap="round" stroke="#263340"/>
+  <path d="M610 339H790" fill="none" stroke-width="5" stroke-linecap="round" stroke="#cf4141"/>
+  <path d="M610 372H790" fill="none" stroke-width="5" stroke-linecap="round" stroke="#2477c3"/>
+  <path d="M610 405H790" fill="none" stroke-width="5" stroke-linecap="round" stroke="#c99500"/>
+  <text x="640" y="287" class="small">SH 1.0 mm cable</text>
+
+  <rect x="790" y="208" width="270" height="230" rx="14" fill="white" stroke="#c8d4df"/>
+  <text x="814" y="246" class="heading">OpenRZ67 RF board</text>
+  <text x="814" y="274" class="small">J2 · SWD connector</text>
+  <text x="814" y="312" class="body">1 · GND</text>
+  <text x="814" y="345" class="body">2 · VDD (3.3 V)</text>
+  <text x="814" y="378" class="body">3 · SWCLK</text>
+  <text x="814" y="411" class="body">4 · SWDIO</text>
+  <text x="310" y="463" class="small">Logical wiring only. Find the 3V3 label on the Pico; leave 3V3_EN unconnected. Colours can vary.</text>
+
+  <rect x="40" y="492" width="490" height="148" rx="12" fill="white" stroke="#c8d4df"/>
+  <text x="60" y="522" class="heading">1. Prepare the Pico once</text>
+  <text x="60" y="552" class="body">Hold BOOTSEL while connecting USB to the Mac.</text>
+  <text x="60" y="578" class="body">Drag debugprobe_on_pico2.uf2 onto the Pico drive.</text>
+  <text x="60" y="603" class="small">The Pico restarts automatically after copying.</text>
+  <text x="60" y="625" class="small">Original Pico H: copy debugprobe_on_pico.uf2 instead.</text>
+
+  <rect x="550" y="492" width="510" height="148" rx="12" fill="white" stroke="#c8d4df"/>
+  <text x="570" y="522" class="heading">2. Connect and flash</text>
+  <text x="570" y="552" class="body">Wire with USB unplugged, then connect USB.</text>
+  <text x="570" y="580" class="mono">pyocd list</text>
+  <text x="570" y="607" class="mono">west flash -d $FW/build --runner pyocd</text>
+  <text x="40" y="665" class="small">After flashing: unplug USB and J2 before inserting the battery. Hardware flashing is not yet validated.</text>
+</svg>
