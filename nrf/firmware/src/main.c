@@ -24,7 +24,9 @@
 #include <zephyr/bluetooth/services/bas.h>
 #include <zephyr/logging/log.h>
 #include <zephyr/init.h>
+#if defined(CONFIG_SOC_SERIES_NRF54LX)
 #include <hal/nrf_regulators.h>
+#endif
 
 LOG_MODULE_REGISTER(openrz67, LOG_LEVEL_INF);
 
@@ -354,6 +356,7 @@ static k_timeout_t next_wait(int64_t now)
 	return K_SECONDS(1);
 }
 
+#if defined(CONFIG_SOC_SERIES_NRF54LX)
 /* DC/DC roughly halves the radio current, but only with an inductor on DCC, inside the
  * module. Ebyte does not say whether it is there, so ask the chip before turning it on. */
 static int dcdc_init(void)
@@ -364,6 +367,7 @@ static int dcdc_init(void)
 	return 0;
 }
 SYS_INIT(dcdc_init, PRE_KERNEL_1, 0);
+#endif
 
 int main(void)
 {

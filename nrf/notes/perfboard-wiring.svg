@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="790" viewBox="0 0 1200 790" role="img" aria-labelledby="title description">
   <title id="title">OpenRZ67 perfboard wiring</title>
-  <desc id="description">Seeed XIAO nRF54L15, top view with USB-C pointing down. D1 drives AQY212EH number 1 and D2 drives number 2, each through 330 ohm; pin 2 of both relays goes to XIAO GND. Relay 1 switches camera S1 to camera GND, relay 2 switches camera S2 to camera GND. Camera 6 volt is not connected, and camera GND never touches XIAO GND.</desc>
+  <desc id="description">Adafruit Feather nRF52840 Express, top view with USB pointing down. A0 drives AQY212EH number 1 and A1 drives number 2, each through 330 ohm; pin 2 of both relays goes to Feather GND. Relay 1 switches camera S1 to camera GND, relay 2 switches camera S2 to camera GND. Camera 6 volt is not connected, and camera GND never touches Feather GND.</desc>
   <defs>
     <style>
       text { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #17202a; }
@@ -24,49 +24,65 @@
   </defs>
 
   <rect width="1200" height="790" fill="#fff"/>
-  <text x="50" y="52" class="title">Perfboard trigger: XIAO nRF54L15 to Mamiya RZ67</text>
+  <text x="50" y="52" class="title">Perfboard trigger: Feather nRF52840 to Mamiya RZ67</text>
   <text x="50" y="80" class="small">Through-hole build. Two AQY212EH PhotoMOS relays and two 330 Ω resistors, nothing else.</text>
 
-  <!-- XIAO, top view, USB-C down -->
-  <text x="50" y="128" class="section">XIAO nRF54L15</text>
-  <text x="50" y="150" class="small">Top view, USB-C pointing down</text>
+  <!-- Feather, top view, USB down -->
+  <text x="50" y="128" class="section">FEATHER nRF52840 EXPRESS</text>
+  <text x="50" y="150" class="small">Top view, USB pointing down</text>
   <rect x="60" y="180" width="240" height="440" rx="18" class="board"/>
   <rect x="150" y="610" width="60" height="30" rx="6" fill="#c9d3d0" stroke="#17815f" stroke-width="2"/>
-  <text x="180" y="664" text-anchor="middle" class="tiny">USB-C</text>
-  <text x="180" y="400" text-anchor="middle" class="small">nRF54L15</text>
+  <text x="180" y="664" text-anchor="middle" class="tiny">USB</text>
+  <rect x="90" y="575" width="44" height="30" rx="4" fill="#fff" stroke="#17815f" stroke-width="2"/>
+  <text x="112" y="595" text-anchor="middle" class="tiny">JST</text>
+  <text x="180" y="400" text-anchor="middle" class="small">nRF52840</text>
 
-  <!-- left edge, bottom to top: 5V GND 3V3 D10 D9 D8 D7 -->
-  <circle cx="60" cy="560" r="7" fill="#fff" stroke="#a0a8b0" stroke-width="2"/><text x="78" y="565" class="off">5V</text>
-  <circle cx="60" cy="505" r="7" fill="#27323a"/><text x="78" y="510" class="pin">GND</text>
-  <circle cx="60" cy="450" r="7" fill="#fff" stroke="#a0a8b0" stroke-width="2"/><text x="78" y="455" class="off">3V3</text>
-  <circle cx="60" cy="395" r="7" fill="#fff" stroke="#a0a8b0" stroke-width="2"/><text x="78" y="400" class="off">D10</text>
-  <circle cx="60" cy="340" r="7" fill="#fff" stroke="#a0a8b0" stroke-width="2"/><text x="78" y="345" class="off">D9</text>
-  <circle cx="60" cy="285" r="7" fill="#fff" stroke="#a0a8b0" stroke-width="2"/><text x="78" y="290" class="off">D8</text>
-  <circle cx="60" cy="230" r="7" fill="#fff" stroke="#a0a8b0" stroke-width="2"/><text x="78" y="235" class="off">D7</text>
+  <!-- right edge, long header, from the USB end up -->
+  <circle cx="300" cy="590" r="6" fill="#fff" stroke="#a0a8b0" stroke-width="2"/><text x="284" y="595" text-anchor="end" class="off">RST</text>
+  <circle cx="300" cy="564" r="6" fill="#fff" stroke="#a0a8b0" stroke-width="2"/><text x="284" y="569" text-anchor="end" class="off">3V</text>
+  <circle cx="300" cy="538" r="6" fill="#fff" stroke="#a0a8b0" stroke-width="2"/><text x="284" y="543" text-anchor="end" class="off">AREF</text>
+  <circle cx="300" cy="512" r="6" fill="#27323a"/><text x="284" y="517" text-anchor="end" class="pin">GND</text>
+  <circle cx="300" cy="486" r="6" fill="#c13c66"/><text x="284" y="491" text-anchor="end" class="pin">A0</text>
+  <circle cx="300" cy="460" r="6" fill="#c13c66"/><text x="284" y="465" text-anchor="end" class="pin">A1</text>
+  <circle cx="300" cy="434" r="6" fill="#fff" stroke="#a0a8b0" stroke-width="2"/><text x="284" y="439" text-anchor="end" class="off">A2</text>
+  <circle cx="300" cy="408" r="6" fill="#fff" stroke="#a0a8b0" stroke-width="2"/><text x="284" y="413" text-anchor="end" class="off">A3</text>
+  <circle cx="300" cy="382" r="6" fill="#fff" stroke="#a0a8b0" stroke-width="2"/><text x="284" y="387" text-anchor="end" class="off">A4</text>
+  <circle cx="300" cy="356" r="6" fill="#fff" stroke="#a0a8b0" stroke-width="2"/><text x="284" y="361" text-anchor="end" class="off">A5</text>
+  <circle cx="300" cy="330" r="6" fill="#fff" stroke="#a0a8b0" stroke-width="2"/><text x="284" y="335" text-anchor="end" class="off">SCK</text>
+  <circle cx="300" cy="304" r="6" fill="#fff" stroke="#a0a8b0" stroke-width="2"/><text x="284" y="309" text-anchor="end" class="off">MOSI</text>
+  <circle cx="300" cy="278" r="6" fill="#fff" stroke="#a0a8b0" stroke-width="2"/><text x="284" y="283" text-anchor="end" class="off">MISO</text>
+  <circle cx="300" cy="252" r="6" fill="#fff" stroke="#a0a8b0" stroke-width="2"/><text x="284" y="257" text-anchor="end" class="off">RX</text>
+  <circle cx="300" cy="226" r="6" fill="#fff" stroke="#a0a8b0" stroke-width="2"/><text x="284" y="231" text-anchor="end" class="off">TX</text>
+  <circle cx="300" cy="200" r="6" fill="#fff" stroke="#a0a8b0" stroke-width="2"/><text x="284" y="205" text-anchor="end" class="off">D2</text>
 
-  <!-- right edge, bottom to top: D0 .. D6 -->
-  <circle cx="300" cy="560" r="7" fill="#fff" stroke="#a0a8b0" stroke-width="2"/><text x="282" y="565" text-anchor="end" class="off">D0</text>
-  <circle cx="300" cy="505" r="7" fill="#c13c66"/><text x="282" y="510" text-anchor="end" class="pin">D1</text>
-  <circle cx="300" cy="450" r="7" fill="#c13c66"/><text x="282" y="455" text-anchor="end" class="pin">D2</text>
-  <circle cx="300" cy="395" r="7" fill="#fff" stroke="#a0a8b0" stroke-width="2"/><text x="282" y="400" text-anchor="end" class="off">D3</text>
-  <circle cx="300" cy="340" r="7" fill="#fff" stroke="#a0a8b0" stroke-width="2"/><text x="282" y="345" text-anchor="end" class="off">D4</text>
-  <circle cx="300" cy="285" r="7" fill="#fff" stroke="#a0a8b0" stroke-width="2"/><text x="282" y="290" text-anchor="end" class="off">D5</text>
-  <circle cx="300" cy="230" r="7" fill="#fff" stroke="#a0a8b0" stroke-width="2"/><text x="282" y="235" text-anchor="end" class="off">D6</text>
+  <!-- left edge, short header, from the USB end up -->
+  <circle cx="60" cy="538" r="6" fill="#fff" stroke="#a0a8b0" stroke-width="2"/><text x="76" y="543" class="off">BAT</text>
+  <circle cx="60" cy="512" r="6" fill="#fff" stroke="#a0a8b0" stroke-width="2"/><text x="76" y="517" class="off">EN</text>
+  <circle cx="60" cy="486" r="6" fill="#fff" stroke="#a0a8b0" stroke-width="2"/><text x="76" y="491" class="off">USB</text>
+  <circle cx="60" cy="460" r="6" fill="#fff" stroke="#a0a8b0" stroke-width="2"/><text x="76" y="465" class="off">13</text>
+  <circle cx="60" cy="434" r="6" fill="#fff" stroke="#a0a8b0" stroke-width="2"/><text x="76" y="439" class="off">12</text>
+  <circle cx="60" cy="408" r="6" fill="#fff" stroke="#a0a8b0" stroke-width="2"/><text x="76" y="413" class="off">11</text>
+  <circle cx="60" cy="382" r="6" fill="#fff" stroke="#a0a8b0" stroke-width="2"/><text x="76" y="387" class="off">10</text>
+  <circle cx="60" cy="356" r="6" fill="#fff" stroke="#a0a8b0" stroke-width="2"/><text x="76" y="361" class="off">9</text>
+  <circle cx="60" cy="330" r="6" fill="#fff" stroke="#a0a8b0" stroke-width="2"/><text x="76" y="335" class="off">6</text>
+  <circle cx="60" cy="304" r="6" fill="#fff" stroke="#a0a8b0" stroke-width="2"/><text x="76" y="309" class="off">5</text>
+  <circle cx="60" cy="278" r="6" fill="#fff" stroke="#a0a8b0" stroke-width="2"/><text x="76" y="283" class="off">SCL</text>
+  <circle cx="60" cy="252" r="6" fill="#fff" stroke="#a0a8b0" stroke-width="2"/><text x="76" y="257" class="off">SDA</text>
 
-  <!-- XIAO GND -->
-  <polyline points="53,505 30,505 30,530" class="gnd"/>
-  <line x1="16" y1="530" x2="44" y2="530" stroke="#27323a" stroke-width="3"/>
-  <line x1="21" y1="537" x2="39" y2="537" stroke="#27323a" stroke-width="3"/>
-  <line x1="26" y1="544" x2="34" y2="544" stroke="#27323a" stroke-width="3"/>
+  <!-- Feather GND -->
+  <polyline points="306,512 330,512 330,540" class="gnd"/>
+  <line x1="316" y1="540" x2="344" y2="540" stroke="#27323a" stroke-width="3"/>
+  <line x1="321" y1="547" x2="339" y2="547" stroke="#27323a" stroke-width="3"/>
+  <line x1="326" y1="554" x2="334" y2="554" stroke="#27323a" stroke-width="3"/>
 
-  <text x="60" y="702" class="label">LiPo 1S, 100–300 mAh</text>
-  <text x="60" y="724" class="small">On the BAT+ / BAT− pads on the underside. USB-C charges it.</text>
+  <text x="60" y="702" class="label">LiPo 1S with a JST PH plug</text>
+  <text x="60" y="724" class="small">Plugs into the Feather's JST socket. USB charges it.</text>
 
   <!-- relays -->
   <text x="400" y="128" class="section">PHOTOMOS RELAYS</text>
   <text x="400" y="150" class="small">Top view, dot = pin 1</text>
 
-  <!-- relay 2: D2 -> camera S2 -->
+  <!-- relay 2: A1 -> camera S2 -->
   <text x="480" y="288" class="label">AQY212EH #2</text>
   <rect x="480" y="300" width="80" height="80" rx="6" class="dip"/>
   <circle cx="494" cy="314" r="5" fill="#fff"/>
@@ -76,7 +92,7 @@
   <text x="546" y="326" text-anchor="middle" class="tiny" style="fill:#fff">4</text>
   <text x="546" y="366" text-anchor="middle" class="tiny" style="fill:#fff">3</text>
 
-  <!-- relay 1: D1 -> camera S1 -->
+  <!-- relay 1: A0 -> camera S1 -->
   <text x="480" y="458" class="label">AQY212EH #1</text>
   <rect x="480" y="470" width="80" height="80" rx="6" class="dip"/>
   <circle cx="494" cy="484" r="5" fill="#fff"/>
@@ -89,19 +105,19 @@
   <text x="400" y="600" class="small">Pin 1 LED+ · pin 2 LED− · pins 3 and 4 switch</text>
   <text x="400" y="622" class="small">The switch side has no polarity.</text>
 
-  <!-- D2 -> R -> relay 2 pin 1 -->
-  <polyline points="307,450 360,450 360,320 385,320" class="drv"/>
+  <!-- A1 -> R -> relay 2 pin 1 -->
+  <polyline points="306,460 360,460 360,320 385,320" class="drv"/>
   <rect x="385" y="307" width="60" height="26" rx="5" class="res"/>
   <text x="415" y="325" text-anchor="middle" class="tiny">330 Ω</text>
   <line x1="445" y1="320" x2="465" y2="320" class="drv"/>
 
-  <!-- D1 -> R -> relay 1 pin 1 -->
-  <polyline points="307,505 360,505 360,490 385,490" class="drv"/>
+  <!-- A0 -> R -> relay 1 pin 1 -->
+  <polyline points="306,486 345,486 345,490 385,490" class="drv"/>
   <rect x="385" y="477" width="60" height="26" rx="5" class="res"/>
   <text x="415" y="495" text-anchor="middle" class="tiny">330 Ω</text>
   <line x1="445" y1="490" x2="465" y2="490" class="drv"/>
 
-  <!-- relay pin 2 -> XIAO GND -->
+  <!-- relay pin 2 -> Feather GND -->
   <polyline points="465,360 455,360 455,385" class="gnd"/>
   <line x1="441" y1="385" x2="469" y2="385" stroke="#27323a" stroke-width="3"/>
   <line x1="446" y1="392" x2="464" y2="392" stroke="#27323a" stroke-width="3"/>
@@ -111,7 +127,7 @@
   <line x1="446" y1="562" x2="464" y2="562" stroke="#27323a" stroke-width="3"/>
   <line x1="451" y1="569" x2="459" y2="569" stroke="#27323a" stroke-width="3"/>
   <text x="400" y="666" class="small">
-    <tspan font-weight="700" fill="#27323a">⏚</tspan> = XIAO GND. All three are one wire.</text>
+    <tspan font-weight="700" fill="#27323a">⏚</tspan> = Feather GND. All three are one wire.</text>
 
   <!-- isolation barrier -->
   <line x1="610" y1="280" x2="610" y2="570" stroke="#9b7a43" stroke-width="2" stroke-dasharray="7 6"/>
@@ -141,5 +157,5 @@
   <circle cx="880" cy="590" r="7" fill="#fff" stroke="#a0a8b0" stroke-width="2"/>
   <text x="900" y="595" class="off">Pin 1 · 6 V, not connected</text>
 
-  <text x="50" y="770" class="small">Camera GND (blue) and XIAO GND (black) never touch. That separation is the point of the PhotoMOS relays.</text>
+  <text x="50" y="770" class="small">Camera GND (blue) and Feather GND (black) never touch. That separation is the point of the PhotoMOS relays.</text>
 </svg>

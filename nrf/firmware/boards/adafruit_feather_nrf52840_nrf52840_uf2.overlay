@@ -1,0 +1,49 @@
+/* Perfboard variant, see ../../notes/perfboard.md */
+#include <zephyr/dt-bindings/gpio/nordic-nrf-gpio.h>
+#include <zephyr/dt-bindings/adc/adc.h>
+#include <zephyr/dt-bindings/adc/nrf-saadc.h>
+
+/ {
+	outputs {
+		compatible = "gpio-leds";
+		s1_drv: s1 {
+			gpios = <&gpio0 4 (GPIO_ACTIVE_HIGH | NRF_GPIO_DRIVE_H0H1)>;	/* A0 */
+			label = "camera S1";
+		};
+		s2_drv: s2 {
+			gpios = <&gpio0 5 (GPIO_ACTIVE_HIGH | NRF_GPIO_DRIVE_H0H1)>;	/* A1 */
+			label = "camera S2";
+		};
+	};
+
+	/* LiPo through the Feather's 100k/100k divider into AIN5 */
+	zephyr,user {
+		io-channels = <&adc 5>;
+		vbat-divider = <2>;
+		vbat-empty-mv = <3300>;
+		vbat-full-mv = <4150>;
+	};
+};
+
+&adc {
+	#address-cells = <1>;
+	#size-cells = <0>;
+	channel@5 {
+		reg = <5>;
+		zephyr,gain = "ADC_GAIN_1_6";
+		zephyr,reference = "ADC_REF_INTERNAL";
+		zephyr,acquisition-time = <ADC_ACQ_TIME(ADC_ACQ_TIME_MICROSECONDS, 40)>;
+		zephyr,input-positive = <NRF_SAADC_AIN5>;
+		zephyr,resolution = <12>;
+		zephyr,oversampling = <4>;
+	};
+};
+
+/* USR button on P1.02 via SENSE, as on the coin-cell board */
+&gpio1 {
+	sense-edge-mask = <(1 << 2)>;
+};
+
+&wdt0 {
+	status = "okay";
+};
