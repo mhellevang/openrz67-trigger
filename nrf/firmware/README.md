@@ -13,7 +13,7 @@ SDK v3.4.1 (MCUboot 39 kB, app 147 kB flash, 45 kB RAM); not yet flashed on hard
 | `sysbuild.conf`, `sysbuild/mcuboot.conf` | MCUboot as the bootloader, fed watchdog during a swap |
 | `debug.conf` | add-on: logging over Segger RTT |
 | `boards/openrz67/openrz67_nrf/` | the board: pin map (devicetree), SoC, flash runners |
-| `boards/xiao_nrf54l15_nrf54l15_cpuapp.overlay` | the perfboard variant on a Seeed XIAO nRF54L15, see [`../notes/perfboard.md`](../notes/perfboard.md) |
+| `boards/adafruit_feather_nrf52840_nrf52840_uf2.*` | the perfboard variant on an Adafruit Feather nRF52840 Express, see [`../notes/perfboard.md`](../notes/perfboard.md) |
 
 ## Behaviour
 
@@ -33,8 +33,8 @@ SDK v3.4.1 (MCUboot 39 kB, app 147 kB flash, 45 kB RAM); not yet flashed on hard
   countdown, a short blink every 2 s while advertising, off when connected and idle.
 - Battery: VDD measured on the internal ADC channel every 60 s; mV on the custom
   characteristic (uint16 LE, notify), percent on the Battery Service, linear 2.5 to 3.0 V. A board that measures through a divider
-  (the XIAO) gives the enable pin, ratio and range in `zephyr,user`; the divider is switched
-  on only for the reading.
+  (the Feather) gives the ratio and range in `zephyr,user`, and an enable pin if the divider
+  is switched; then it is on only for the reading.
 
 ## Pins
 
@@ -78,7 +78,7 @@ FW=/path/to/openrz67-trigger/nrf/firmware
 KEY=~/.openrz67/mcuboot-ed25519.pem
 west build -b openrz67_nrf/nrf54l15/cpuapp -s $FW -d $FW/build -- -DBOARD_ROOT=$FW -DSB_CONFIG_BOOT_SIGNATURE_KEY_FILE=\"$KEY\"
 west build -b openrz67_nrf/nrf54l15/cpuapp -s $FW -d $FW/build -- -DBOARD_ROOT=$FW -DSB_CONFIG_BOOT_SIGNATURE_KEY_FILE=\"$KEY\" -DEXTRA_CONF_FILE=debug.conf   # RTT logging
-west build -p -b xiao_nrf54l15/nrf54l15/cpuapp -s $FW -d $FW/build -- -DBOARD_ROOT=$FW -DSB_CONFIG_BOOT_SIGNATURE_KEY_FILE=\"$KEY\"   # perfboard variant, flashes over its USB-C
+west build --no-sysbuild -p -b adafruit_feather_nrf52840/nrf52840/uf2 -s $FW -d $FW/build -- -DBOARD_ROOT=$FW   # perfboard variant, no MCUboot; copy build/zephyr/zephyr.uf2 to the Feather
 ```
 
 MCUboot only boots images signed with the key it was built with. Make the key once, outside

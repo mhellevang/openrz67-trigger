@@ -9,7 +9,7 @@ described in the [top-level README](../README.md).
 | `kicad/` | the board, generated from `tools/design.py`; fab files in `out/` |
 | `case/` | build123d box with a sliding floor |
 | `firmware/` | Zephyr application, builds on nRF Connect SDK v3.4.1 |
-| `notes/` | reasoning and history; [`perfboard.md`](notes/perfboard.md) is the same circuit on perfboard with a XIAO nRF54L15 |
+| `notes/` | reasoning and history; [`perfboard.md`](notes/perfboard.md) is the same circuit on perfboard with an Adafruit Feather nRF52840 |
 
 ## Parts to buy
 
