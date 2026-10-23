@@ -2,8 +2,8 @@
 
 Bluetooth LE remote release for the Mamiya RZ67. A small board plugs into the camera's
 electrical remote port and is controlled from the companion apps,
-[openrz67-android](https://github.com/openrz67/openrz67-android) and
-[openrz67-ios](https://github.com/openrz67/openrz67-ios).
+[openrz67-android](https://github.com/mhellevang/openrz67-android) and
+[openrz67-ios](https://github.com/mhellevang/openrz67-ios).
 
 Two boards, same protocol, same apps:
 

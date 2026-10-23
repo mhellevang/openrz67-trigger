@@ -2,8 +2,8 @@
 
 Zephyr application for the coin-cell trigger in [`../kicad/`](../kicad/). Same Bluetooth
 services and command bytes as the ESP32-C3 firmware in [`../../esp32/`](../../esp32/), so the
-[Android](https://github.com/openrz67/openrz67-android) and
-[iOS](https://github.com/openrz67/openrz67-ios) apps work unchanged. Builds with nRF Connect
+[Android](https://github.com/mhellevang/openrz67-android) and
+[iOS](https://github.com/mhellevang/openrz67-ios) apps work unchanged. Builds with nRF Connect
 SDK v3.4.1 (MCUboot 39 kB, app 147 kB flash, 45 kB RAM); not yet flashed on hardware.
 
 | File | What |
