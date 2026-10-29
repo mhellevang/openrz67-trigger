@@ -6,8 +6,9 @@ Whether a revision turned out to work is a status line in its section below.
 
 ## `2026-10-10-rev-a/`
 
-**Status: received, flashed over SWD, Bluetooth and button wake work.** Two boards, JLCPCB
-Standard PCBA, assembly on both sides. Shutter on the camera not tested yet.
+**Status: received and working.** Flashed over SWD; Bluetooth, button wake, trigger, bulb and
+countdown work on the RZ67. Sleep current not measured. Two boards, JLCPCB Standard PCBA,
+assembly on both sides.
 
 `J1` on rev A is 1 camera ground, 2 not connected, 3 S1, 4 S2, so the camera cable crosses
 its first two wires:
