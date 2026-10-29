@@ -1,7 +1,7 @@
 # nRF coin-cell trigger
 
-An nRF54L15 module on a CR2032, with no regulator, charger or power switch. Rev A is ordered
-(fab package in [`kicad/archive/`](kicad/archive/)). The camera port and the BLE protocol are
+An nRF54L15 module on a CR2032, with no regulator, charger or power switch. Rev A is built and
+runs the firmware (fab package in [`kicad/archive/`](kicad/archive/)). The camera port and the BLE protocol are
 described in the [top-level README](../README.md).
 
 | Directory | What |

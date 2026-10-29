@@ -4,7 +4,7 @@ Zephyr application for the coin-cell trigger in [`../kicad/`](../kicad/). Same B
 services and command bytes as the ESP32-C3 firmware in [`../../esp32/`](../../esp32/), so the
 [Android](https://github.com/mhellevang/openrz67-android) and
 [iOS](https://github.com/mhellevang/openrz67-ios) apps work unchanged. Builds with nRF Connect
-SDK v3.4.1 (MCUboot 39 kB, app 147 kB flash, 45 kB RAM); not yet flashed on hardware.
+SDK v3.4.1 (MCUboot 39 kB, app 147 kB flash, 45 kB RAM); runs on the Rev A board.
 
 | File | What |
 |---|---|
@@ -91,8 +91,9 @@ mkdir -p ~/.openrz67 && ~/ncs/.venv/bin/python ~/ncs/bootloader/mcuboot/scripts/
 Without `SB_CONFIG_BOOT_SIGNATURE_KEY_FILE` the build uses MCUboot's public test key (with a
 warning), and anyone could sign an image the board accepts.
 
-Outputs: `build/merged.hex` (MCUboot + app, for the probe) and `build/dfu_application.zip`
-(app only, for an update over Bluetooth).
+Outputs: `build/mcuboot/zephyr/zephyr.hex` and `build/firmware/zephyr/zephyr.signed.hex`
+(MCUboot and the signed app, for the probe) and `build/dfu_application.zip` (app only, for an
+update over Bluetooth).
 
 ### Update over Bluetooth
 
@@ -124,11 +125,15 @@ no soldering anywhere.
    **`debugprobe_on_pico2.uf2`** file onto it, just as you would copy a file to a USB stick.
    For an original Pico H, copy `debugprobe_on_pico.uf2` instead. The Pico automatically
    restarts as a CMSIS-DAP probe when the copy finishes. This is a one-time step.
+   The drive name tells which file you need: `RP2350` is a Pico 2 (`debugprobe_on_pico2.uf2`),
+   `RPI-RP2` is a Pico H (`debugprobe_on_pico.uf2`). If the drive is still there after the
+   copy, the file was the wrong one.
 3. Unplug USB, remove the RF board's **CR2032**, and connect the four wires below to **J2**.
    The Pico supplies 3.3 V during flashing. Use the side header pins on the Pico; the drawing
    shows logical connections, not physical pin positions. The power pin is labelled **3V3**
    on the Pico: use that label to find it. **3V3_EN** is a different pin and must stay unconnected.
-   Physical pin numbers below are an extra reference. Cable colours can vary.
+   Physical pin numbers below are an extra reference. Cable colours vary between cables, so
+   go by position: with the **SWD** label upright, pin 1 is on the left, next to the white dot.
 4. Connect the Pico to the Mac over USB. After building firmware as above, activate the same
    Python environment and run:
 
@@ -136,23 +141,25 @@ no soldering anywhere.
 source ~/ncs/.venv/bin/activate
 python -m pip install --upgrade pyocd
 pyocd list
-west flash -d $FW/build --runner pyocd
+pyocd load -t nrf54l --frequency 4000000 $FW/build/mcuboot/zephyr/zephyr.hex $FW/build/firmware/zephyr/zephyr.signed.hex
+pyocd reset -t nrf54l
 ```
 
 `pyocd list` should show the Pico. `$FW` is the firmware directory set in the build steps.
-The board configuration selects the `nrf54l` target automatically.
+`west flash --runner pyocd` does not work with this sysbuild setup; it stops with
+`KeyError: 'CONFIG_FLASH_LOAD_OFFSET'`. The warning `NRF54L15 is not in a secure state` is
+normal: the chip is not locked, so it can be flashed again.
 
-| `J2` pin | Qwiic wire | Pico pin |
+| `J2` pin | Position (SWD label upright) | Pico pin |
 |---|---|---|
-| 1 GND | black | GND (pin 3) |
-| 2 VDD | red | **3V3**, as labelled on the Pico (pin 36). Leave **3V3_EN** unconnected. With the cell **out**, the probe powers the board, so both sides run at 3.3 V. Never with the cell in, it would charge the CR2032 |
-| 3 SWCLK | blue | GP2 (pin 4) |
-| 4 SWDIO | yellow | GP3 (pin 5) |
+| 1 GND | left, white dot | GND (pin 3) |
+| 2 VDD | second | **3V3**, as labelled on the Pico (pin 36). Leave **3V3_EN** unconnected. With the cell **out**, the probe powers the board, so both sides run at 3.3 V. Never with the cell in, it would charge the CR2032 |
+| 3 SWCLK | third | GP2 (pin 4) |
+| 4 SWDIO | right | GP3 (pin 5) |
 
 There is no reset line; the probe resets the chip over SWD.
 After flashing, unplug USB and disconnect J2 before inserting the battery. Subsequent app
-updates can use Bluetooth as described above. This procedure has not yet been validated on
-hardware.
+updates can use Bluetooth as described above.
 
 A J-Link can be used instead of the Pico with `west flash -d $FW/build --runner jlink`;
 the Pico wiring table above does not apply to it.

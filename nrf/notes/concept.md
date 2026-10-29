@@ -176,7 +176,7 @@ Noted, not changed:
 - `BT1` on the back means two-sided assembly at JLCPCB (or hand-soldering the clip).
 - The power table above was corrected to the intervals the code actually uses.
 
-## Firmware decisions (firmware/, builds, not flashed)
+## Firmware decisions (firmware/)
 
 - **Zephyr app with its own board** (`boards/openrz67/openrz67_nrf`), not an overlay on the
   nRF52840 DK: the pin map lives in one devicetree file next to the code, and `west build
@@ -426,3 +426,14 @@ From `kicad/notes/review-2026-10-10.md`.
 - Untested: the board's weight and the button force now go through the clip strap into its
   solder legs; the latch: arm spring-back and how easy the catch is to push in; the board's play (`clip_gap` 0.1) under the button. Check
   on the first board.
+
+## First flash (2026-10-29)
+
+- Rev A flashed through the Pico 2 debugprobe on `J2`, MCUboot + app. It boots and answers on
+  Bluetooth.
+- `west flash --runner pyocd` fails under sysbuild with `KeyError:
+  'CONFIG_FLASH_LOAD_OFFSET'`, so the README loads the two hex files with `pyocd load`.
+- The Qwiic pigtail that came was green, yellow, black, red on pins 1 to 4, not black on
+  pin 1 as assumed above. The README wiring table now goes by position instead of colour.
+- A Pico 2 left in BOOTSEL with `debugprobe_on_pico.uf2` (the Pico H file) silently ignores
+  it; the README now says how to tell from the drive name.

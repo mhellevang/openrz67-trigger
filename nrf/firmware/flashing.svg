@@ -19,7 +19,7 @@
   <rect x="40" y="208" width="190" height="230" rx="14" fill="white" stroke="#c8d4df"/>
   <text x="64" y="246" class="heading">Mac</text>
   <text x="64" y="278" class="body">Build firmware</text>
-  <text x="64" y="305" class="body">Run west flash</text>
+  <text x="64" y="305" class="body">Run pyocd load</text>
   <path d="M230 350H310" stroke="#526779" stroke-width="6"/>
   <text x="250" y="333" class="small">USB</text>
 
@@ -57,6 +57,6 @@
   <text x="570" y="522" class="heading">2. Connect and flash</text>
   <text x="570" y="552" class="body">Wire with USB unplugged, then connect USB.</text>
   <text x="570" y="580" class="mono">pyocd list</text>
-  <text x="570" y="607" class="mono">west flash -d $FW/build --runner pyocd</text>
-  <text x="40" y="665" class="small">After flashing: unplug USB and J2 before inserting the battery. Hardware flashing is not yet validated.</text>
+  <text x="570" y="607" class="mono">pyocd load -t nrf54l (see README)</text>
+  <text x="40" y="665" class="small">After flashing: unplug USB and J2 before inserting the battery.</text>
 </svg>
