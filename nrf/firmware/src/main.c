@@ -17,6 +17,7 @@
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/drivers/adc.h>
 #include <zephyr/drivers/watchdog.h>
+#include <zephyr/drivers/timer/system_timer.h>
 #include <zephyr/sys/byteorder.h>
 #include <zephyr/bluetooth/bluetooth.h>
 #include <zephyr/bluetooth/conn.h>
@@ -145,6 +146,9 @@ static void power_off(void)
 	gpio_pin_set_dt(&s2, 0);
 	/* the button (active low, pulled up) wakes the chip from System OFF */
 	gpio_pin_interrupt_configure_dt(&button, GPIO_INT_LEVEL_ACTIVE);
+	/* on the nRF54L the GRTC keeps running in System OFF, and the next kernel timeout
+	 * (LED, battery) wakes the chip at once */
+	sys_clock_disable();
 	sys_poweroff();
 }
 

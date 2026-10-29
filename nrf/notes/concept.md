@@ -437,3 +437,11 @@ From `kicad/notes/review-2026-10-10.md`.
   pin 1 as assumed above. The README wiring table now goes by position instead of colour.
 - A Pico 2 left in BOOTSEL with `debugprobe_on_pico.uf2` (the Pico H file) silently ignores
   it; the README now says how to tell from the drive name.
+- The button did not wake the board, and the 5-minute timeout never really slept: RESETREAS
+  read `GRTC` right after a long press. The GRTC keeps running in System OFF on the nRF54L, and
+  the next kernel timeout woke the chip at once, so it rebooted and advertised again. Fixed by
+  calling `sys_clock_disable()` before `sys_poweroff()`, as Zephyr's `system_off` sample does.
+  Without it the board would have drained the cell in days.
+- The first cell had sat in the blank board and would not run it after the first flash; a
+  new cell did. Most likely drained, since a chip with no firmware never sleeps (not
+  measured). Put the cell in only after flashing.
