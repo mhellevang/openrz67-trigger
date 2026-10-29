@@ -445,3 +445,14 @@ From `kicad/notes/review-2026-10-10.md`.
 - The first cell had sat in the blank board and would not run it after the first flash; a
   new cell did. Most likely drained, since a chip with no firmware never sleeps (not
   measured). Put the cell in only after flashing.
+
+## Camera pin order (2026-10-29)
+
+- Rev A put camera ground on `J1` pin 1 so a Qwiic cable's black wire would be ground. The
+  pigtails that came are green, yellow, black, red, so the colour argument fell away, and even
+  with standard colours the camera cable needed its first two wires crossed (the RZ67 port has
+  6 V on 1 and GND on 2). The ESP32 board was always 1:1.
+- Rev B: `CAM_GND` on pin 2, pin 1 not connected, so the cable is straight like the ESP32's.
+  S1 and S2 stay on 3 and 4. The firmware is unchanged; only the camera-side copper moved.
+  Back silkscreen now says rev B.
+
