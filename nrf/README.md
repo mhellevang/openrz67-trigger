@@ -1,7 +1,8 @@
 # nRF coin-cell trigger
 
 An nRF54L15 module on a CR2032, with no regulator, charger or power switch. Rev A is built and
-runs the firmware (fab package in [`kicad/archive/`](kicad/archive/)). The camera port and the BLE protocol are
+runs the firmware (fab package in [`kicad/archive/`](kicad/archive/)); the source here is rev B,
+not ordered. The camera port and the BLE protocol are
 described in the [top-level README](../README.md).
 
 | Directory | What |
@@ -23,5 +24,6 @@ Nothing is soldered by hand. The board comes assembled, everything else plugs in
 | Raspberry Pi Pico 2 WH | any Pi reseller | the flashing probe; H = headers pre-soldered, W is irrelevant here. Load Raspberry Pi's `debugprobe_on_pico2.uf2` on it; a Pico H (`debugprobe_on_pico.uf2`) works the same |
 
 `J2` pin 2 carries the cell voltage out. Never plug a powered Qwiic device into `J2`; only the
-probe cable belongs there. The camera end of the `J1` cable goes to the RZ67 socket as today (GND, S1, S2). Wiring for
+probe cable belongs there. `J1` has the RZ67 port's pin order, so the camera cable is straight: pin 1 to pin 1 (6 V,
+unused by the board), 2 GND, 3 S1, 4 S2. Rev A differs, see [`kicad/archive/`](kicad/archive/). Wiring for
 `J2` to the Pico is in [`firmware/README.md`](firmware/README.md).

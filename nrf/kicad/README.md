@@ -45,7 +45,9 @@ LED forward voltage, the TLP172AM needs up to 3 mA. The status LED has 1 kΩ (ab
 With a fresh cell both relays and the LED draw about 14 mA, inside Nordic's recommended 15 mA
 sustained total for all GPIOs.
 The PhotoMOS outputs go to the camera connector; camera ground (`CAM_GND`)
-is a separate net from the cell's `GND`.
+is a separate net from the cell's `GND`. `J1` has the camera port's pin order, so the camera
+cable is wired straight through. Pigtail wire colours vary; go by pin position, pin 1 is next
+to the white dot.
 
 | nRF54L15 | Module pad | Function |
 |---|---|---|
@@ -64,14 +66,14 @@ Connectors:
 
 | Ref | Pin | Signal |
 |---|---|---|
-| `J1` camera, SH 1.0 mm (Qwiic/STEMMA QT cable) | 1 | camera ground (black) |
-| | 2 | not connected |
-| | 3 | S1 (blue) |
-| | 4 | S2 (yellow) |
-| `J2` SWD, SH 1.0 mm (Qwiic cable to the probe) | 1 | GND (black) |
-| | 2 | VDD (red). With the cell out, the probe's 3.3 V powers the board here. Never with the cell in: it would charge the CR2032 |
-| | 3 | SWCLK (blue) |
-| | 4 | SWDIO (yellow) |
+| `J1` camera, SH 1.0 mm (Qwiic/STEMMA QT cable) | 1 | not connected (camera 6 V) |
+| | 2 | camera ground |
+| | 3 | S1 |
+| | 4 | S2 |
+| `J2` SWD, SH 1.0 mm (Qwiic cable to the probe) | 1 | GND |
+| | 2 | VDD. With the cell out, the probe's 3.3 V powers the board here. Never with the cell in: it would charge the CR2032 |
+| | 3 | SWCLK |
+| | 4 | SWDIO |
 
 ## Design rules
 
