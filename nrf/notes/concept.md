@@ -442,6 +442,11 @@ From `kicad/notes/review-2026-10-10.md`.
   the next kernel timeout woke the chip at once, so it rebooted and advertised again. Fixed by
   calling `sys_clock_disable()` before `sys_poweroff()`, as Zephyr's `system_off` sample does.
   Without it the board would have drained the cell in days.
+- After a session with the app it still blinked long past the 5 minutes, and a long press did
+  not turn it off. It did go to System OFF, but woke at once (RESETREAS `OFF`, GPIO DETECT) and
+  advertised 5 more minutes, round and round. With `latch-detect` on P1, the button's LATCH bit
+  stayed set with the button released (read under the probe: `IN` bit 4 high, `LATCH` 0x10),
+  and a set latch holds DETECT high. `power_off()` now clears that bit after arming the wake.
 - The first cell had sat in the blank board and would not run it after the first flash; a
   new cell did. Most likely drained, since a chip with no firmware never sleeps (not
   measured). Put the cell in only after flashing.

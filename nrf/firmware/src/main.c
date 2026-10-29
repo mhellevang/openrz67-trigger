@@ -25,6 +25,7 @@
 #include <zephyr/bluetooth/services/bas.h>
 #include <zephyr/logging/log.h>
 #include <zephyr/init.h>
+#include <hal/nrf_gpio.h>
 #if defined(CONFIG_SOC_SERIES_NRF54LX)
 #include <hal/nrf_regulators.h>
 #endif
@@ -146,6 +147,9 @@ static void power_off(void)
 	gpio_pin_set_dt(&s2, 0);
 	/* the button (active low, pulled up) wakes the chip from System OFF */
 	gpio_pin_interrupt_configure_dt(&button, GPIO_INT_LEVEL_ACTIVE);
+	/* latch-detect: a latch bit left set from an earlier SENSE match keeps DETECT high
+	 * after the button is released, and System OFF wakes at once */
+	nrf_gpio_pin_latch_clear(NRF_DT_GPIOS_TO_PSEL(DT_ALIAS(sw0), gpios));
 	/* on the nRF54L the GRTC keeps running in System OFF, and the next kernel timeout
 	 * (LED, battery) wakes the chip at once */
 	sys_clock_disable();
