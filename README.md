@@ -5,24 +5,19 @@ electrical remote port and is controlled from the companion apps,
 [openrz67-android](https://github.com/mhellevang/openrz67-android) and
 [openrz67-ios](https://github.com/mhellevang/openrz67-ios).
 
-Two boards, same protocol, same apps:
-
-| Directory | Board | Status |
-|---|---|---|
-| [`esp32/`](esp32/) | ESP32-C3, 250 mAh LiPo with USB-C charging, PlatformIO firmware | rev 2 in regular use |
-| [`nrf/`](nrf/) | nRF54L15 module on a CR2032, no charger or regulator, Zephyr firmware | rev A in testing |
-
-Both switch the camera through two isolated PhotoMOS relays. [`nrf/notes/perfboard.md`](nrf/notes/perfboard.md)
-shows the same circuit on perfboard with off-the-shelf parts.
+The board is an nRF54L15 module on a CR2032, with no charger or regulator, and Zephyr
+firmware. Everything is in [`nrf/`](nrf/). It switches the camera through two isolated
+PhotoMOS relays. [`nrf/notes/perfboard.md`](nrf/notes/perfboard.md) shows the same circuit
+on perfboard with off-the-shelf parts.
 
 ## History
 
 * **2022-12** Pinout from Julio Ryuuzaki (see Credits).
 * **2023-01** First version on a Seeed XIAO ESP32-C3 with a Fritzing schematic, plus the first
-  Android app. A small carrier PCB followed in April 2023; its source is lost.
-* **2025-09** Custom ESP32-C3 board, rev 1, drawn in EasyEDA. Worked, but the LGS5500 charger
-  led to a new power path.
-* **2026-09** ESP32 rev 2 in KiCad: PhotoMOS relays, BQ25185 + TPS63031. In regular use.
+  Android app.
+* **2025-09** Custom ESP32-C3 board on a LiPo with USB-C charging, two fabricated revisions.
+  Its design, firmware and case are at tag
+  [`esp32-final`](https://github.com/mhellevang/openrz67-trigger/tree/esp32-final/esp32).
 * **2026-10** Coin-cell board on an nRF54L15 module, rev A.
 
 ## Camera connection
@@ -46,12 +41,12 @@ Response. The characteristic is open (no pairing): anyone in radio range can fir
 which is accepted for a shutter release.
 
 Also exposed: the standard Device Information Service (`0x180A`, firmware revision `0x2A26`),
-and on boards that measure their battery (ESP32 rev 3, the nRF board):
+and:
 
 * characteristic `cda71ce6-4af9-4aa2-8d34-329c2acdae09` (read + notify): battery voltage in
   millivolts, little-endian `uint16`.
 * Battery Service (`0x180F`, Battery Level `0x2A19`): the same reading as a percentage, which
-  is what phones show without any app. Each board's README gives its range.
+  is what phones show without any app, linear from 2.5 V (0 %) to 3.0 V (100 %).
 
 **Single-byte commands** (value = button × 10 + state):
 
@@ -76,19 +71,14 @@ the BLE callback and executed outside it, so the BLE stack never blocks on shutt
 
 ## License
 
-[MIT](LICENSE), covering the firmware, the KiCad design files and the enclosure sources for
-both boards. MIT is written for software, but its grant is broad enough
-to serve a hardware design; the closest hardware-specific equivalent is CERN-OHL-P.
+[MIT](LICENSE), covering the firmware, the KiCad design files and the enclosure sources. MIT
+is written for software, but its grant is broad enough to serve a hardware design;
+the closest hardware-specific equivalent is CERN-OHL-P.
 
-Two things in this repository are **not** covered, because they are not mine to license:
-
-* The footprints and symbols in `esp32/pcb/kicad/openrz67.pretty/`, `openrz67.kicad_sym`,
-  `nrf/kicad/openrz67-nrf.pretty/` and `openrz67-nrf.kicad_sym` were imported from the
-  EasyEDA/LCSC part libraries.
-* The 3D models in `esp32/pcb/kicad/openrz67.3dshapes/` were fetched per LCSC part number with
-  `easyeda2kicad`.
-
-Both are redistributed here for convenience under their originators' terms.
+The footprints, symbols and 3D models in `nrf/kicad/openrz67-nrf.pretty/`,
+`openrz67-nrf.kicad_sym` and `openrz67-nrf.3dshapes/` are **not** covered, because they are
+not mine to license. They come from the EasyEDA/LCSC part libraries and are redistributed
+here for convenience under their originators' terms.
 
 ## Credits
 

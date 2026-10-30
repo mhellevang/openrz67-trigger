@@ -1,14 +1,3 @@
-# PlatformIO
-.pio/
-.pioenvs/
-.piolibdeps/
-# pioarduino hybrid compile (custom_sdkconfig) writes these into the project root
-.dummy/
-managed_components/
-sdkconfig.*
-pioenvs/
-piolibdeps/
-
 # Arduino IDE
 *.hex
 *.bin
@@ -23,12 +12,7 @@ CMakeListsPrivate.txt
 CMakeLists.txt
 !nrf/firmware/CMakeLists.txt
 
-# Genererte STL-filer fra esp32/case/export.sh
-esp32/case/stl/
 *.stl
-
-# Generert slicer-prosjekt fra esp32/case/export.sh (bygges fra bambu-template.3mf via make_3mf.py)
-esp32/case/openrz67-case.3mf
 
 # IDE files
 .idea/

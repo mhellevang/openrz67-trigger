@@ -1,4 +1,0 @@
-(fp_lib_table
-	(version 7)
-	(lib (name "openrz67") (type "KiCad") (uri "${KIPRJMOD}/openrz67.pretty") (options "") (descr "Footprints imported from EasyEDA Pro"))
-)
