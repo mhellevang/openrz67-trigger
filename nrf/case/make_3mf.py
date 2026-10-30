@@ -22,7 +22,7 @@ and light pipe aligned with each other and on the plate, and inherits the same
 filament/extruder mapping.
 
 Usage:
-    python3 make_3mf.py [--template bambu-template.3mf] [--stl-dir stl]
+    python3 make_3mf.py [--template qidi-template.3mf] [--stl-dir stl]
                         [--out openrz67-case.3mf] [--objects a.stl,b.stl]
 
 Pure stdlib (no numpy). ASCII STL in, project .3mf out.
@@ -224,7 +224,7 @@ def add_sub_parts(work, args, names, dmodel, model_settings, oid, parent, offset
 def main():
     ap = argparse.ArgumentParser(description="Swap STL geometry into a Bambu/Orca project 3mf.")
     here = os.path.dirname(os.path.abspath(__file__))
-    ap.add_argument("--template", default=os.path.join(here, "bambu-template.3mf"))
+    ap.add_argument("--template", default=os.path.join(here, "qidi-template.3mf"))
     ap.add_argument("--stl-dir", default=os.path.join(here, "stl"))
     ap.add_argument("--out", default=os.path.join(here, "openrz67-case.3mf"))
     ap.add_argument("--objects", default=",".join(sorted(OBJECTS)),

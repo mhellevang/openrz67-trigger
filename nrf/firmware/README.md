@@ -1,7 +1,7 @@
 # Firmware for the nRF52 board (Zephyr / nRF Connect SDK)
 
 Zephyr application for the coin-cell trigger in [`../kicad/`](../kicad/). Same Bluetooth
-services and command bytes as the ESP32-C3 firmware in [`../../esp32/`](../../esp32/), so the
+services and command bytes as the earlier ESP32-C3 firmware ([`esp32-final`](https://github.com/mhellevang/openrz67-trigger/tree/esp32-final/esp32)), so the
 [Android](https://github.com/mhellevang/openrz67-android) and
 [iOS](https://github.com/mhellevang/openrz67-ios) apps work unchanged. Builds with nRF Connect
 SDK v3.4.1 (MCUboot 39 kB, app 147 kB flash, 45 kB RAM); runs on the Rev A board.

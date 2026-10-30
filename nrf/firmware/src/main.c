@@ -1,6 +1,6 @@
 /* OpenRZ67 trigger, nRF54L15 / coin cell. Zephyr (nRF Connect SDK).
  *
- * Same GATT and command protocol as the ESP32-C3 firmware in ../../esp32/src/main.cpp, so the
+ * Same GATT and command protocol as the ESP32-C3 firmware (esp32/src/main.cpp, tag esp32-final), so the
  * Android and iOS apps do not change:
  *   service  c9239c9e-6fc9-4168-b3aa-53105eb990b0
  *   command  458d4dc9-349f-401d-b092-a2b1c55f5319  write-without-response
