@@ -80,10 +80,10 @@ SILK = [
 
 # copper-free band under the module antenna (both layers)
 ANTENNA_KEEPOUT = (0.0, 0.0, 15.0, 5.3)  # x0, y0, x1, y1
-# B.Cu ring under the rim of the CR2032 (its + can wraps over the edge): no copper of any
-# kind there, so a scraped mask cannot short the cell. Inside the ring only GND lives,
-# the same potential as the cell face that rests on it.
-CELL_KEEPOUT = (13.5, 18.0, 7.5, 10.2)  # cx, cy, r_in, r_out
+# B.Cu ring from the minus pad's edge out past the rim of the CR2032: no copper of any kind
+# under the mask there, so the pad (with its solder dome) is the highest point under the cell
+# and a scraped mask cannot short the + can at the rim.
+CELL_KEEPOUT = (13.5, 18.0, 5.0, 10.2)  # cx, cy, r_in, r_out
 
 T = 0.16   # signal
 P = 0.25   # power
@@ -126,13 +126,13 @@ VIAS = [
     ("VBAT", 26.5, 14.1),     # off C1 and the clip foot, so no solder wicks down it
     ("GND", 19.8, 28.3),
     ("GND", 3.8, 22.8),
-    ("GND", 7.0, 19.7),    # ties the GND disc under the cell to the top; C2's GND pad reaches it
+    ("GND", 13.5, 13.7),   # in the minus pad, outside its paste: ties the pad to the top GND
     ("GND", 21.0, 5.2),    # back-side GND north of the VDD loop, under the module
     ("GND", 20.8, 8.8),    # back-side GND between the VDD loop and the cell ring
     ("GND", 4.0, 9.0),     # under the module, inside its pad ring, off the cell rim ring
     ("GND", 9.5, 8.0),
     ("GND", 3.8, 13.5),
-    ("GND", 10.5, 14.0),
+    ("GND", 10.46, 14.96), # in the minus pad, outside its paste
     ("GND", 6.8, 26.5),      # beside SW1, not in its pad; outside the cell rim
     ("GND", 26.5, 21.0),
 ]
