@@ -461,3 +461,19 @@ From `kicad/notes/review-2026-10-10.md`.
   S1 and S2 stay on 3 and 4. The firmware is unchanged; only the camera-side copper moved.
   Back silkscreen now says rev B.
 
+
+## Cell contact (2026-11-03)
+
+- **What failed on rev A**: with the CR2032 fully in the clip the board got no power; pulled
+  half out (tilted) it ran. It worked at first. The bare minus pad sat lower than the GND copper
+  under mask around it (r 5 to 7.5 mm), so a flat cell rested on that ring and floated over the
+  pad. HASL left a thin tin dome on the pad at first, and sliding the cell in and out scraped it
+  flat. The "no paste on the cell pad" call (Second review) was never checked for height.
+- **Fix**: paste on the pad through a Ø7 mm opening (paste margin −1.5 mm), so reflow leaves a
+  solder dome, and the copper-free ring now starts at the pad's edge (r 5.0 instead of 7.5), so
+  nothing under the cell stands higher than mask on bare board. The two GND vias that lived in
+  the old GND disc moved into the pad, outside the paste (r 4.3); some solder may wick into
+  them. The holder's silkscreen inside the cell circle went too (silk is height as well).
+- **A LiPo + USB-C board was drawn instead and dropped**: with charger, LDO, USB-C and the
+  ESP32 board's 31 × 20 mm cell it came to 41.6 × 23.3 mm, against 29.5 × 29 for this board.
+- Not measured: the dome height after reflow.

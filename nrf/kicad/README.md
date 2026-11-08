@@ -89,7 +89,6 @@ DRC and ERC have **0 errors**. The warnings left in the reports:
 | Check | Count | What |
 |---|---|---|
 | ERC `endpoint_off_grid` | 17 | Pins of the imported symbols are not on the 1.27 mm grid. Connectivity is by label; verified by the schematic-parity DRC. |
-| `silk_over_copper` | 11 | The holder footprint's own silkscreen crosses its centre pad. Fab clips it. |
 
 ## Mechanical
 
@@ -105,9 +104,11 @@ lid-off job, no wall opening); the button sits bottom-left, the LED between the 
 | Module `U1` | 2.4 mm (Ebyte drawing) |
 
 `BT1` is only the positive clip (MYOUNG drawing: "TERMINAL(+)"). The cell's negative face
-rests on the Ø10 mm bare pad in the middle of the back. It has no paste, so the cell rests on
-the pad's finish, not on a solder dome with flux on it. On the back a copper-free ring 7.5 to 10.2 mm from the cell centre lies
-under the cell's rim, where the + can wraps over the edge; inside the ring only GND copper,
-the same potential as the cell face resting on it. Ebyte's manual gives no antenna keepout figure; the rule area covers the
+rests on the Ø10 mm pad in the middle of the back. The pad gets solder paste through a Ø7 mm
+stencil opening, so it carries a solder dome, and there is no copper of any kind on the back
+from the pad's edge out to 10.2 mm from the cell centre: under the cell there is only mask on
+bare board, lower than the pad. Two GND vias sit in the pad outside the paste, 4.3 mm from the
+centre, and tie it to the top GND. The holder footprint's silkscreen inside that circle is
+removed. Ebyte's manual gives no antenna keepout figure; the rule area covers the
 PCB antenna (the module's top 5.2 mm) plus 2 mm to its right. The module's 3D model is a plain box from
 `tools/module_3d.py`: blue PCB with the antenna, grey shield.
