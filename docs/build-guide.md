@@ -14,6 +14,9 @@ Nothing is soldered by hand. The board comes assembled, everything else plugs in
 
 ## 1. Order the board
 
+These files are rev B. It fixes the two known faults in rev A, but is not tested yet.
+Rev A and its faults are in [`kicad/archive/`](../kicad/archive/).
+
 Upload these three files from [`kicad/out/`](../kicad/out/) to JLCPCB and pick assembly on
 both sides:
 

@@ -6,9 +6,14 @@ Whether a revision turned out to work is a status line in its section below.
 
 ## `2026-10-10-rev-a/`
 
-**Status: received and working.** Flashed over SWD; Bluetooth, button wake, trigger, bulb and
-countdown work on the RZ67. Sleep current not measured. Two boards, JLCPCB Standard PCBA,
-assembly on both sides.
+**Status: received, works with two faults.** Flashed over SWD; Bluetooth, button wake, trigger,
+bulb and countdown work on the RZ67. Sleep current not measured. Two boards, JLCPCB Standard
+PCBA, assembly on both sides. Both faults are fixed in rev B:
+
+- **Cell contact.** With the CR2032 fully in the clip the board can lose power. The cell rests
+  on the copper around the minus pad instead of on the pad. Details in
+  [`docs/notes/concept.md`](../../docs/notes/concept.md#cell-contact-2026-11-03).
+- **Camera pin order.** The camera cable has to cross its first two wires, see below.
 
 `J1` on rev A is 1 camera ground, 2 not connected, 3 S1, 4 S2, so the camera cable crosses
 its first two wires:

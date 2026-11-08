@@ -22,6 +22,14 @@ runs a countdown.
 
 ## Build one
 
+> **Work in progress.** This board is rev B. It fixes the two known faults in rev A, but is not
+> tested yet. For a board that is tested and in use, build the larger ESP32-C3 version at tag
+> [`esp32-final`](https://github.com/mhellevang/openrz67-trigger/tree/esp32-final/esp32):
+> order the files in
+> [`esp32/pcb/archive/2026-09-07-rev2/`](https://github.com/mhellevang/openrz67-trigger/tree/esp32-final/esp32/pcb/archive/2026-09-07-rev2),
+> not the rev 3 source. It runs on a LiPo, charges and flashes over USB-C, and works with the
+> same apps.
+
 **→ [Build guide](docs/build-guide.md)**: parts, ordering the board, printing the case,
 flashing, the camera cable.
 
