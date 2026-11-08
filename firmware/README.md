@@ -1,4 +1,4 @@
-# Firmware for the nRF52 board (Zephyr / nRF Connect SDK)
+# Firmware (Zephyr / nRF Connect SDK)
 
 Zephyr application for the coin-cell trigger in [`../kicad/`](../kicad/). Same Bluetooth
 services and command bytes as the earlier ESP32-C3 firmware ([`esp32-final`](https://github.com/mhellevang/openrz67-trigger/tree/esp32-final/esp32)), so the
@@ -13,7 +13,7 @@ SDK v3.4.1 (MCUboot 39 kB, app 147 kB flash, 45 kB RAM); runs on the Rev A board
 | `sysbuild.conf`, `sysbuild/mcuboot.conf` | MCUboot as the bootloader, fed watchdog during a swap |
 | `debug.conf` | add-on: logging over Segger RTT |
 | `boards/openrz67/openrz67_nrf/` | the board: pin map (devicetree), SoC, flash runners |
-| `boards/adafruit_feather_nrf52840_nrf52840_uf2.*` | the perfboard variant on an Adafruit Feather nRF52840 Express, see [`../notes/perfboard.md`](../notes/perfboard.md) |
+| `boards/adafruit_feather_nrf52840_nrf52840_uf2.*` | the perfboard variant on an Adafruit Feather nRF52840 Express, see [`../docs/perfboard.md`](../docs/perfboard.md) |
 
 ## Behaviour
 
@@ -74,7 +74,7 @@ MCUboot and the app and signs the app:
 
 ```sh
 cd ~/ncs && source .venv/bin/activate && export ZEPHYR_SDK_INSTALL_DIR=~/zephyr-sdk-1.0.1
-FW=/path/to/openrz67-trigger/nrf/firmware
+FW=/path/to/openrz67-trigger/firmware
 KEY=~/.openrz67/mcuboot-ed25519.pem
 west build -b openrz67_nrf/nrf54l15/cpuapp -s $FW -d $FW/build -- -DBOARD_ROOT=$FW -DSB_CONFIG_BOOT_SIGNATURE_KEY_FILE=\"$KEY\"
 west build -b openrz67_nrf/nrf54l15/cpuapp -s $FW -d $FW/build -- -DBOARD_ROOT=$FW -DSB_CONFIG_BOOT_SIGNATURE_KEY_FILE=\"$KEY\" -DEXTRA_CONF_FILE=debug.conf   # RTT logging

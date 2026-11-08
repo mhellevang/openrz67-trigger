@@ -10,7 +10,7 @@ cmake-build-*/
 .cache/
 CMakeListsPrivate.txt
 CMakeLists.txt
-!nrf/firmware/CMakeLists.txt
+!firmware/CMakeLists.txt
 
 *.stl
 
@@ -47,6 +47,10 @@ __pycache__/
 # KiCad per-user view settings
 *.kicad_prl
 *-backups/
-# Generert slicer-prosjekt fra nrf/case/export.sh (bygges fra qidi-template.3mf)
-nrf/case/openrz67-nrf-case.3mf
-nrf/case/view/
+# Generert slicer-prosjekt fra case/export.sh (bygges fra qidi-template.3mf)
+case/openrz67-nrf-case.3mf
+case/view/
+
+# Blender scene, written by docs/render/render.sh with SAVE_BLEND=1
+*.blend
+*.blend1

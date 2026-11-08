@@ -1,73 +1,76 @@
 # openrz67-trigger
 
-Bluetooth LE remote release for the Mamiya RZ67. A small board plugs into the camera's
-electrical remote port and is controlled from the companion apps,
-[openrz67-android](https://github.com/mhellevang/openrz67-android) and
-[openrz67-ios](https://github.com/mhellevang/openrz67-ios).
+A Bluetooth remote release for the Mamiya RZ67. A small box on a coin cell plugs into the
+camera's remote port. An Android or iPhone app fires the shutter, holds it open for bulb, or
+runs a countdown.
 
-The board is an nRF54L15 module on a CR2032, with no charger or regulator, and Zephyr
-firmware. Everything is in [`nrf/`](nrf/). It switches the camera through two isolated
-PhotoMOS relays. [`nrf/notes/perfboard.md`](nrf/notes/perfboard.md) shows the same circuit
-on perfboard with off-the-shelf parts.
+<img src="docs/img/case-pcb.png" alt="The trigger, exploded: sliding floor, coin cell, board and printed shell" width="480">
 
-## History
+<p>
+  <img src="docs/img/app-direct.jpg" alt="App in direct mode" width="160">
+  <img src="docs/img/app-countdown.jpg" alt="App in countdown mode" width="160">
+  <img src="docs/img/app-bulb.jpg" alt="App in bulb mode" width="160">
+  <img src="docs/img/app-dark.jpg" alt="App with the dark theme" width="160">
+</p>
 
-* **2022-12** Pinout from Julio Ryuuzaki (see Credits).
-* **2023-01** First version on a Seeed XIAO ESP32-C3 with a Fritzing schematic, plus the first
-  Android app.
-* **2025-09** Custom ESP32-C3 board on a LiPo with USB-C charging, two fabricated revisions.
-  Its design, firmware and case are at tag
-  [`esp32-final`](https://github.com/mhellevang/openrz67-trigger/tree/esp32-final/esp32).
-* **2026-10** Coin-cell board on an nRF54L15 module, rev A.
+## What it does
 
-## Camera connection
+- Instant release, bulb, and a countdown of 1 to 255 seconds.
+- Runs on a CR2032. It sleeps between uses and wakes on a button press.
+- Nothing to solder. The board comes assembled from JLCPCB, everything else plugs in.
+- Firmware updates over Bluetooth.
 
-Viewed from the front, the camera's four-pin remote-control port is:
+## Build one
 
-1. 6 V, wired through, unused by the board
-2. GND
-3. S1 switch
-4. S2 switch
+**→ [Build guide](docs/build-guide.md)**: parts, ordering the board, printing the case,
+flashing, the camera cable.
 
-To trigger the shutter, the PhotoMOS outputs short S1/S2 to camera GND. For bulb exposures,
-set the shutter-speed dial to `B`. The camera closes the shutter by itself after about
-60 seconds even if the switches stay closed.
+In short:
 
-## BLE protocol
+1. Order the assembled board from JLCPCB with the files in [`kicad/out/`](kicad/out/).
+2. Print the case from [`case/`](case/).
+3. Flash the firmware once with a Raspberry Pi Pico. After that, updates go over Bluetooth.
+4. Make the camera cable from a Qwiic pigtail.
+5. Install the app.
 
-The device advertises as `OpenRZ67` with service UUID `c9239c9e-6fc9-4168-b3aa-53105eb990b0`
-and characteristic `458d4dc9-349f-401d-b092-a2b1c55f5319`. Send commands using Write Without
-Response. The characteristic is open (no pairing): anyone in radio range can fire the camera,
-which is accepted for a shutter release.
+## Apps
 
-Also exposed: the standard Device Information Service (`0x180A`, firmware revision `0x2A26`),
-and:
+- **Android:** [openrz67-android](https://github.com/mhellevang/openrz67-android), APK on the
+  [releases page](https://github.com/mhellevang/openrz67-android/releases/latest).
+- **iPhone:** [openrz67-ios](https://github.com/mhellevang/openrz67-ios), built from source in
+  Xcode for now.
 
-* characteristic `cda71ce6-4af9-4aa2-8d34-329c2acdae09` (read + notify): battery voltage in
-  millivolts, little-endian `uint16`.
-* Battery Service (`0x180F`, Battery Level `0x2A19`): the same reading as a percentage, which
-  is what phones show without any app, linear from 2.5 V (0 %) to 3.0 V (100 %).
+## Using it
 
-**Single-byte commands** (value = button × 10 + state):
+| You do | It does |
+|---|---|
+| Press the button | Wakes and waits 5 minutes for a phone. The LED blinks every 2 s |
+| Open the app | Connects on its own. The LED goes dark |
+| Leave it | Stays on while the app is connected. With no phone for 5 minutes, it sleeps |
+| Hold the button 3 s | Off, until the next press |
 
-| Value | Action |
-|-------|--------|
-| 11 | Trigger shutter with a 100 ms pulse |
-| 10 | Clear status LED; no shutter action |
-| 21 | Start bulb mode: holds S1/S2 closed until 20 is sent. Camera dial must be on `B` |
-| 20 | End bulb mode |
-| 31 | Start countdown with the default duration of 10 s |
-| 30 | Cancel countdown |
+For bulb, set the camera's shutter-speed dial to `B`. The camera closes the shutter by itself
+after about 60 seconds.
 
-**Three-byte commands** `[command, duration, action]`:
+## What's in here
 
-| Bytes | Action |
-|-------|--------|
-| `[3, n, 1]` | Start countdown of *n* seconds (`1–255`) |
-| `[3, _, 0]` | Cancel countdown |
+```
+openrz67-trigger/
+├── kicad/        # the board, generated from tools/design.py; fab files in out/
+├── case/         # 3D-printed case (build123d), shell + sliding floor + light pipe
+├── firmware/     # Zephyr application for the nRF54L15
+└── docs/
+    ├── build-guide.md
+    ├── protocol.md     # camera port and Bluetooth commands
+    ├── perfboard.md    # the same circuit on perfboard, off-the-shelf parts
+    ├── support.md      # app help
+    ├── privacy.md      # app privacy policy
+    ├── render/         # renders docs/img/case-pcb.png with Blender
+    └── notes/          # design history and reasoning
+```
 
-Starting a trigger or bulb exposure cancels any pending countdown. Commands are queued in
-the BLE callback and executed outside it, so the BLE stack never blocks on shutter timing.
+Earlier ESP32-C3 versions are at tag
+[`esp32-final`](https://github.com/mhellevang/openrz67-trigger/tree/esp32-final/esp32).
 
 ## License
 
@@ -75,15 +78,17 @@ the BLE callback and executed outside it, so the BLE stack never blocks on shutt
 is written for software, but its grant is broad enough to serve a hardware design;
 the closest hardware-specific equivalent is CERN-OHL-P.
 
-The footprints, symbols and 3D models in `nrf/kicad/openrz67-nrf.pretty/`,
+The footprints, symbols and 3D models in `kicad/openrz67-nrf.pretty/`,
 `openrz67-nrf.kicad_sym` and `openrz67-nrf.3dshapes/` are **not** covered, because they are
 not mine to license. They come from the EasyEDA/LCSC part libraries and are redistributed
 here for convenience under their originators' terms.
+
+Not affiliated with Mamiya.
 
 ## Credits
 
 The camera connector pinout that made this project possible was described to me by
 Julio Ryuuzaki, who built and sold the Bluetooth [RZ Blue](https://ryuuzaki.jp/) trigger
-for years. He answered a cold email in December 2022 with the essentials — four pins, one
-ground, two live, one unconnected — and the warning that the camera closes the shutter by
+for years. He answered a cold email in December 2022 with the essentials: four pins, one
+ground, two live, one unconnected. He also warned that the camera closes the shutter by
 itself after about a minute in bulb mode. Thank you.
