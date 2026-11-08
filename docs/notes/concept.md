@@ -365,7 +365,7 @@ option if the cell contact ever proves flaky.
 
 ## Relay drive and module decoupling (2026-10-10)
 
-From `kicad/notes/review-2026-10-10.md`.
+From [`review-2026-10-10.md`](review-2026-10-10.md).
 
 - R1/R2 330 Ω -> 220 Ω (C25091, basic). The third review kept 330 Ω on typical figures; with
   the datasheet limits (VOH = VDD − 0.4 V, VF 1.4 V) 330 Ω drops below the TLP172AM's 3 mA

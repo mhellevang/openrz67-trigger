@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title description">
+  <title id="title">OpenRZ67 coin-cell board wiring</title>
+  <desc id="description">nRF54L15 pins P2.05 and P2.04 drive two TLP172AM input LEDs through 220 ohm resistors. Their isolated outputs close the Mamiya RZ67 S2 and S1 contacts to camera ground. Camera pins are drawn in row order. The 6 volt pin is not connected, and camera ground stays isolated from the cell's ground.</desc>
+  <defs>
+    <style>
+      text { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #17202a; }
+      .title { font-size: 28px; font-weight: 700; }
+      .section { font-size: 18px; font-weight: 700; letter-spacing: .04em; }
+      .label { font-size: 17px; font-weight: 650; }
+      .small { font-size: 14px; fill: #52606d; }
+      .tiny { font-size: 12px; fill: #68737d; }
+      .board { fill: #e9f6f1; stroke: #17815f; stroke-width: 3; }
+      .photo { fill: #fff7e8; stroke: #d88718; stroke-width: 3; }
+      .camera { fill: #eef3ff; stroke: #456bd1; stroke-width: 3; }
+      .channel { fill: #fff; stroke: #d9a34f; stroke-width: 2; }
+      .drv { fill: none; stroke: #c13c66; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .gnd { fill: none; stroke: #27323a; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .out { fill: none; stroke: #337f9c; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .ray { stroke: #d88718; stroke-width: 2.5; }
+      .iso { stroke: #9b7a43; stroke-width: 2; stroke-dasharray: 7 6; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="760" fill="#fff"/>
+  <text x="50" y="52" class="title">nRF54L15 to Mamiya RZ67</text>
+  <text x="50" y="80" class="small">Coin-cell board: two isolated TLP172AM PhotoMOS channels</text>
+
+  <text x="50" y="128" class="section">CONTROLLER</text>
+  <rect x="50" y="145" width="280" height="505" rx="18" class="board"/>
+  <text x="82" y="190" class="label">nRF54L15</text>
+  <text x="82" y="214" class="small">Ebyte E73 module, on the CR2032</text>
+
+  <circle cx="310" cy="280" r="6" fill="#c13c66"/>
+  <text x="82" y="275" class="label">P2.05</text>
+  <text x="82" y="299" class="small">S2 · module pad 28</text>
+
+  <circle cx="310" cy="460" r="6" fill="#c13c66"/>
+  <text x="82" y="455" class="label">P2.04</text>
+  <text x="82" y="479" class="small">S1 · module pad 27</text>
+
+  <circle cx="310" cy="590" r="6" fill="#27323a"/>
+  <text x="82" y="585" class="label">GND</text>
+  <text x="82" y="609" class="small">Cell side only</text>
+
+  <text x="385" y="128" class="section">ISOLATED SHUTTER SWITCHES</text>
+  <rect x="385" y="145" width="410" height="505" rx="18" class="photo"/>
+
+  <rect x="410" y="190" width="360" height="180" rx="14" class="channel"/>
+  <rect x="410" y="390" width="360" height="180" rx="14" class="channel"/>
+
+  <!-- channel S2 -->
+  <text x="430" y="220" class="label">U3 · TLP172AM · S2</text>
+  <rect x="430" y="263" width="82" height="34" rx="7" fill="#fff7e8" stroke="#d88718" stroke-width="2"/>
+  <text x="471" y="285" text-anchor="middle" class="small">R2 220 Ω</text>
+  <line x1="316" y1="280" x2="430" y2="280" class="drv"/>
+  <line x1="512" y1="280" x2="535" y2="280" class="drv"/>
+  <rect x="535" y="258" width="58" height="44" rx="8" fill="#fff7e8" stroke="#d88718" stroke-width="2"/>
+  <text x="564" y="285" text-anchor="middle" class="label">LED</text>
+  <polyline points="593,280 606,280 606,590" class="gnd"/>
+  <line x1="614" y1="268" x2="650" y2="268" class="ray"/><polygon points="658,268 650,263 650,273" fill="#d88718"/>
+  <line x1="614" y1="292" x2="650" y2="292" class="ray"/><polygon points="658,292 650,287 650,297" fill="#d88718"/>
+  <line x1="632" y1="235" x2="632" y2="325" class="iso"/>
+  <rect x="685" y="257" width="68" height="46" rx="8" fill="#eef3ff" stroke="#456bd1" stroke-width="2"/>
+  <text x="719" y="276" text-anchor="middle" class="tiny">MOSFET</text>
+  <text x="719" y="292" text-anchor="middle" class="tiny">output</text>
+  <line x1="672" y1="280" x2="685" y2="280" class="out"/>
+  <line x1="753" y1="280" x2="867" y2="280" class="out"/>
+  <line x1="672" y1="280" x2="672" y2="560" class="out"/>
+
+  <!-- channel S1 -->
+  <text x="430" y="420" class="label">U2 · TLP172AM · S1</text>
+  <rect x="430" y="443" width="82" height="34" rx="7" fill="#fff7e8" stroke="#d88718" stroke-width="2"/>
+  <text x="471" y="465" text-anchor="middle" class="small">R1 220 Ω</text>
+  <line x1="316" y1="460" x2="430" y2="460" class="drv"/>
+  <line x1="512" y1="460" x2="535" y2="460" class="drv"/>
+  <rect x="535" y="438" width="58" height="44" rx="8" fill="#fff7e8" stroke="#d88718" stroke-width="2"/>
+  <text x="564" y="465" text-anchor="middle" class="label">LED</text>
+  <line x1="593" y1="460" x2="606" y2="460" class="gnd"/>
+  <circle cx="606" cy="460" r="6" fill="#27323a"/>
+  <line x1="614" y1="448" x2="650" y2="448" class="ray"/><polygon points="658,448 650,443 650,453" fill="#d88718"/>
+  <line x1="614" y1="472" x2="650" y2="472" class="ray"/><polygon points="658,472 650,467 650,477" fill="#d88718"/>
+  <line x1="632" y1="415" x2="632" y2="505" class="iso"/>
+  <rect x="685" y="437" width="68" height="46" rx="8" fill="#eef3ff" stroke="#456bd1" stroke-width="2"/>
+  <text x="719" y="456" text-anchor="middle" class="tiny">MOSFET</text>
+  <text x="719" y="472" text-anchor="middle" class="tiny">output</text>
+  <line x1="672" y1="460" x2="685" y2="460" class="out"/>
+  <line x1="753" y1="460" x2="867" y2="460" class="out"/>
+  <circle cx="672" cy="460" r="6" fill="#337f9c"/>
+
+  <line x1="606" y1="590" x2="316" y2="590" class="gnd"/>
+  <text x="600" y="613" text-anchor="end" class="tiny">cell GND</text>
+  <line x1="672" y1="560" x2="867" y2="560" class="out"/>
+
+  <text x="850" y="128" class="section">CAMERA PORT</text>
+  <rect x="850" y="145" width="300" height="505" rx="18" class="camera"/>
+  <text x="882" y="190" class="label">Mamiya RZ67</text>
+  <text x="882" y="214" class="small">Pins in row order, pin 1 at the triangle</text>
+
+  <circle cx="885" cy="280" r="18" fill="#fff" stroke="#337f9c" stroke-width="3"/>
+  <text x="885" y="286" text-anchor="middle" class="label">4</text>
+  <text x="920" y="286" class="label">S2</text>
+
+  <circle cx="885" cy="460" r="18" fill="#fff" stroke="#337f9c" stroke-width="3"/>
+  <text x="885" y="466" text-anchor="middle" class="label">3</text>
+  <text x="920" y="466" class="label">S1</text>
+
+  <circle cx="885" cy="560" r="18" fill="#fff" stroke="#337f9c" stroke-width="3"/>
+  <text x="885" y="566" text-anchor="middle" class="label">2</text>
+  <text x="920" y="556" class="label">GND</text>
+  <text x="920" y="578" class="small">Camera side</text>
+
+  <circle cx="885" cy="610" r="18" fill="#fff" stroke="#9ba5ad" stroke-width="3"/>
+  <text x="885" y="616" text-anchor="middle" class="label">1</text>
+  <text x="920" y="606" class="label">6 V</text>
+  <text x="920" y="628" class="small">Not connected</text>
+
+  <rect x="50" y="685" width="1100" height="48" rx="12" fill="#f8fafb" stroke="#cbd5dc" stroke-width="2"/>
+  <circle cx="78" cy="709" r="8" fill="#456bd1"/>
+  <text x="98" y="714" class="small">GPIO high turns the channel on. Camera GND never touches the cell's GND.</text>
+  <text x="1118" y="714" text-anchor="end" class="tiny">U2 = S1 · U3 = S2</text>
+</svg>

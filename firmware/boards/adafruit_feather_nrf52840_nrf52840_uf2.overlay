@@ -1,4 +1,4 @@
-/* Perfboard variant, see ../../notes/perfboard.md */
+/* Perfboard variant, see ../../docs/perfboard.md */
 #include <zephyr/dt-bindings/gpio/nordic-nrf-gpio.h>
 #include <zephyr/dt-bindings/adc/adc.h>
 #include <zephyr/dt-bindings/adc/nrf-saadc.h>

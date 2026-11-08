@@ -1,9 +1,9 @@
-# openrz67 nRF52 PCB — KiCad project
+# Board (KiCad)
 
 KiCad 10 project for the coin-cell trigger: 29.5 × 29 mm, 2 layers, Ebyte E73-2G4M08S1F
 (nRF54L15) module, CR2032 clip on the back, two TLP172AM PhotoMOS relays, JST SH 1.0 mm
 side-entry camera connector, a second SH connector for SWD, one button, one LED, a P-MOSFET against a reversed cell. No regulator, no charger, no power
-switch. Concept stage, not fabricated.
+switch. Rev A is built and works; the source here is rev B, not ordered. Fab packages that were sent are in [`archive/`](archive/).
 
 The schematic and the board are **generated**: `tools/design.py` holds parts, placement,
 nets and every track, and the two generators write the KiCad files from it. Edit the model

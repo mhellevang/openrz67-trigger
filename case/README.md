@@ -1,4 +1,4 @@
-# Parametric enclosure for the nRF52 board (build123d)
+# Case (build123d)
 
 `openrz67_nrf_case.py` is a two-part box, plus a light pipe, for the coin-cell board in
 [`../kicad/`](../kicad/): a one-piece shell and a floor that slides out backwards. Outer size
@@ -93,7 +93,7 @@ way out backwards with the floor out. They run on every export.
 ## Usage
 
 ```sh
-cd nrf/case
+cd case
 ./export.sh                          # base + lid + light pipe -> stl/, then openrz67-nrf-case.3mf
 SLIDE_TEST=true ./export.sh          # also the back end of both parts, for tuning the fit (not in the .3mf)
 ./view.sh                            # board + case in CAD Viewer (browser), closed and with the floor out
