@@ -477,3 +477,19 @@ From [`review-2026-10-10.md`](review-2026-10-10.md).
 - **A LiPo + USB-C board was drawn instead and dropped**: with charger, LDO, USB-C and the
   ESP32 board's 31 × 20 mm cell it came to 41.6 × 23.3 mm, against 29.5 × 29 for this board.
 - Not measured: the dome height after reflow.
+
+## Mask opening under the cell (2026-11-10)
+
+- **Why**: after the cell-contact fix the ring around the minus pad had no copper but still had
+  mask. Mask on bare laminate is 20 to 40 µm, the pad's copper about 35 µm, so without the
+  solder dome the pad and its surroundings were about level. The dome was the whole margin, and
+  its height is not measured: Ø7 mm of paste through a 0.12 mm stencil is about 2.3 mm³ of
+  solder, some 30 µm average over the Ø10 pad (estimate).
+- **Now**: the back mask is open to r 9.0 mm around the cell centre (`CELL_MASK_R`), past the
+  cell's minus face (about Ø16). Bare laminate sits a copper thickness below the pad whatever
+  the dome turns out to be. The mask was there on rev A to keep the + can off the copper under
+  it; the ring has no copper any more, so it guards nothing.
+- The clip's pads start at r 9.95, outside the opening.
+- Not verified: JLCPCB printing paste on a pad with no part on it. Ask in the order remark.
+- Flux residue on the dome can insulate at the clip's contact force; wipe the pad with IPA
+  before the first cell.
