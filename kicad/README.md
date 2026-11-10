@@ -106,8 +106,9 @@ lid-off job, no wall opening); the button sits bottom-left, the LED between the 
 `BT1` is only the positive clip (MYOUNG drawing: "TERMINAL(+)"). The cell's negative face
 rests on the Ø10 mm pad in the middle of the back. The pad gets solder paste through a Ø7 mm
 stencil opening, so it carries a solder dome, and there is no copper of any kind on the back
-from the pad's edge out to 10.2 mm from the cell centre: under the cell there is only mask on
-bare board, lower than the pad. Two GND vias sit in the pad outside the paste, 4.3 mm from the
+from the pad's edge out to 10.2 mm from the cell centre. The solder mask is open out to 9 mm,
+past the cell's minus face, so that face has only bare laminate around the pad, a copper
+thickness lower than the pad. Two GND vias sit in the pad outside the paste, 4.3 mm from the
 centre, and tie it to the top GND. The holder footprint's silkscreen inside that circle is
 removed. Ebyte's manual gives no antenna keepout figure; the rule area covers the
 PCB antenna (the module's top 5.2 mm) plus 2 mm to its right. The module's 3D model is a plain box from

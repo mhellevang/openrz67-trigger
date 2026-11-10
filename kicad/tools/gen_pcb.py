@@ -131,6 +131,9 @@ def zones(b, nets):
         a = -math.tau * i / 72
         c.AppendCorner(V(cx + r_in * math.cos(a), cy + r_in * math.sin(a)), hole)
     b.Add(c)
+    m = pcbnew.PCB_SHAPE(b); m.SetShape(pcbnew.SHAPE_T_CIRCLE)
+    m.SetCenter(V(cx, cy)); m.SetEnd(V(cx + D.CELL_MASK_R, cy))
+    m.SetFilled(True); m.SetWidth(0); m.SetLayer(pcbnew.B_Mask); b.Add(m)
 
 
 def silk(b):

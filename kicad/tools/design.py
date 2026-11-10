@@ -81,9 +81,13 @@ SILK = [
 # copper-free band under the module antenna (both layers)
 ANTENNA_KEEPOUT = (0.0, 0.0, 15.0, 5.3)  # x0, y0, x1, y1
 # B.Cu ring from the minus pad's edge out past the rim of the CR2032: no copper of any kind
-# under the mask there, so the pad (with its solder dome) is the highest point under the cell
-# and a scraped mask cannot short the + can at the rim.
+# there, so the pad (with its solder dome) is the highest point under the cell and the + can
+# at the rim has nothing to short to.
 CELL_KEEPOUT = (13.5, 18.0, 5.0, 10.2)  # cx, cy, r_in, r_out
+# B.Mask opening around the minus pad, past the cell's minus face (about Ø16): mask on bare
+# laminate is about as thick as the pad's copper, so with it the pad's height over its
+# surroundings hung on the solder dome alone. Bare laminate is a copper thickness lower.
+CELL_MASK_R = 9.0
 
 T = 0.16   # signal
 P = 0.25   # power
