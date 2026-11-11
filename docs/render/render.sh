@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Regenerate docs/img/case-pcb.png from the current case and board geometry.
+# Regenerate docs/img/case-pcb.png and case-photo.png from the current case and board geometry.
 #
 #   ./render.sh                  # STLs + board GLB + render
 #   ./render.sh --no-inputs      # render only, reuse the existing STLs/GLB
@@ -30,4 +30,6 @@ if [ "${1:-}" != "--no-inputs" ]; then
 fi
 
 echo "==> render"
-"$BLENDER" --background --factory-startup --python render_nrf.py
+for scene in exploded photo; do
+  RENDER_SCENE=$scene "$BLENDER" --background --factory-startup --python render_nrf.py
+done

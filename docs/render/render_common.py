@@ -22,7 +22,6 @@ C_CASE = (0.88, 0.87, 0.85)
 C_TEXT = (0.05, 0.05, 0.05)
 C_BG = (0.957, 0.937, 0.902)  # --bg  #f4efe6
 RES = int(os.environ.get("RENDER_RES", 1800))
-ASPECT = 0.8  # width / height; the exploded stack is tall
 SAMPLES = int(os.environ.get("RENDER_SAMPLES", 256))
 
 
@@ -109,7 +108,33 @@ def mat(name, rgb, rough=0.55, metallic=0.0, bevel=0.0, grain=0.0, layers=0.0):
         nt.links.new(geo.outputs["Position"], sep.inputs[0])
         nt.links.new(sep.outputs["Z"], freq.inputs[0])
         nt.links.new(freq.outputs[0], sine.inputs[0])
-        nt.links.new(sine.outputs[0], ribs.inputs["Height"])
+        # Flat tops get the diagonal lines of the top infill instead.
+        diag = nt.nodes.new("ShaderNodeMath")
+        diag.operation = "ADD"
+        dfreq = nt.nodes.new("ShaderNodeMath")
+        dfreq.operation = "MULTIPLY"
+        dfreq.inputs[1].default_value = 2.0 * math.pi / (0.42 * math.sqrt(2.0))
+        dsine = nt.nodes.new("ShaderNodeMath")
+        dsine.operation = "SINE"
+        dsoft = nt.nodes.new("ShaderNodeMath")
+        dsoft.operation = "MULTIPLY"
+        dsoft.inputs[1].default_value = 0.35
+        nsep = nt.nodes.new("ShaderNodeSeparateXYZ")
+        flat = nt.nodes.new("ShaderNodeMath")
+        flat.operation = "GREATER_THAN"
+        flat.inputs[1].default_value = 0.98
+        pick = nt.nodes.new("ShaderNodeMix")
+        nt.links.new(sep.outputs["X"], diag.inputs[0])
+        nt.links.new(sep.outputs["Y"], diag.inputs[1])
+        nt.links.new(diag.outputs[0], dfreq.inputs[0])
+        nt.links.new(dfreq.outputs[0], dsine.inputs[0])
+        nt.links.new(dsine.outputs[0], dsoft.inputs[0])
+        nt.links.new(geo.outputs["True Normal"], nsep.inputs[0])
+        nt.links.new(nsep.outputs["Z"], flat.inputs[0])
+        nt.links.new(flat.outputs[0], pick.inputs["Factor"])
+        nt.links.new(sine.outputs[0], pick.inputs["A"])
+        nt.links.new(dsoft.outputs[0], pick.inputs["B"])
+        nt.links.new(pick.outputs["Result"], ribs.inputs["Height"])
         if normal:
             nt.links.new(normal, ribs.inputs["Normal"])
         normal = ribs.outputs["Normal"]
@@ -195,8 +220,12 @@ def move(objs, dz=0.0, delta=None):
             o.location += d
 
 
-def shoot(everything, out, blend):
-    """Backdrop, camera, lights and Cycles around an already placed scene."""
+def shoot(everything, out, blend, aspect=0.8, table=False, el=24.0, margin=1.5, fstop=11.0):
+    """Backdrop, camera, lights and Cycles around an already placed scene.
+
+    aspect is width / height. table=False floats the parts on a transparent
+    background with a shadow; table=True puts them on a dark desk mat.
+    """
     scene = bpy.context.scene
     lo, hi = bbox(everything)
     centre = (lo + hi) / 2.0
@@ -207,8 +236,11 @@ def shoot(everything, out, blend):
     bpy.ops.mesh.primitive_plane_add(size=1200, location=(centre.x, centre.y, lo.z))
     floor = bpy.context.object
     floor.name = "backdrop"
-    assign([floor], mat("backdrop", C_BG, rough=0.95))
-    floor.is_shadow_catcher = True
+    if table:
+        assign([floor], mat("desk-mat", (0.035, 0.035, 0.04), rough=0.75, grain=0.5))
+    else:
+        assign([floor], mat("backdrop", C_BG, rough=0.95))
+        floor.is_shadow_catcher = True
 
     world = bpy.data.worlds.new("w")
     scene.world = world
@@ -240,11 +272,11 @@ def shoot(everything, out, blend):
     # Three-quarter view from the front-left and above, matching the 2026-09-15
     # framing: USB end to the back-left, camera connector to the front-right.
     az = math.radians(float(os.environ.get("CAM_AZ", -55.0)))
-    el = math.radians(float(os.environ.get("CAM_EL", 24.0)))
+    el = math.radians(float(os.environ.get("CAM_EL", el)))
     lens = float(os.environ.get("CAM_LENS", 85.0))
     # Fit the bounding sphere with a margin, rather than a magic distance.
     fit = radius / math.tan(0.5 * 2.0 * math.atan(18.0 / lens))
-    dist = float(os.environ.get("CAM_DIST", fit * float(os.environ.get("CAM_MARGIN", 1.5))))
+    dist = float(os.environ.get("CAM_DIST", fit * float(os.environ.get("CAM_MARGIN", margin))))
     target = Vector((centre.x, centre.y, centre.z))
     eye = target + Vector((
         dist * math.cos(el) * math.cos(az),
@@ -257,7 +289,7 @@ def shoot(everything, out, blend):
     scene.unit_settings.scale_length = 0.001
     cam_data.dof.use_dof = True
     cam_data.dof.focus_distance = dist
-    cam_data.dof.aperture_fstop = float(os.environ.get("CAM_FSTOP", 11.0))
+    cam_data.dof.aperture_fstop = float(os.environ.get("CAM_FSTOP", fstop))
     cam = bpy.data.objects.new("cam", cam_data)
     scene.collection.objects.link(cam)
     cam.location = eye
@@ -305,9 +337,10 @@ def shoot(everything, out, blend):
 
     scene.cycles.samples = SAMPLES
     scene.cycles.use_denoising = True
-    scene.render.film_transparent = True
-    scene.render.resolution_x = int(RES * ASPECT)
-    scene.render.resolution_y = RES
+    scene.render.film_transparent = not table
+    res_x, res_y = (RES, int(RES / aspect)) if aspect >= 1.0 else (int(RES * aspect), RES)
+    scene.render.resolution_x = res_x
+    scene.render.resolution_y = res_y
     scene.render.resolution_percentage = 100
     scene.render.image_settings.file_format = "PNG"
     scene.render.image_settings.color_mode = "RGBA"
@@ -318,7 +351,7 @@ def shoot(everything, out, blend):
 
     out.parent.mkdir(parents=True, exist_ok=True)
     scene.render.filepath = str(out)
-    log(f"rendering {int(RES * ASPECT)}x{RES} @ {SAMPLES} samples -> {out}")
+    log(f"rendering {res_x}x{res_y} @ {SAMPLES} samples -> {out}")
     bpy.ops.render.render(write_still=True)
     log("done")
 

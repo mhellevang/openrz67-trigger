@@ -4,6 +4,8 @@ A Bluetooth remote release for the Mamiya RZ67. A small box on a coin cell plugs
 camera's remote port. An Android or iPhone app fires the shutter, holds it open for bulb, or
 runs a countdown.
 
+<img src="docs/img/case-photo.png" alt="The trigger opened up: board on the sliding floor, printed shell beside it" width="640">
+
 <img src="docs/img/case-pcb.png" alt="The trigger, exploded: sliding floor, coin cell, board and printed shell" width="480">
 
 <p>
@@ -73,7 +75,7 @@ openrz67-trigger/
     ├── perfboard.md    # the same circuit on perfboard, off-the-shelf parts
     ├── support.md      # app help
     ├── privacy.md      # app privacy policy
-    ├── render/         # renders docs/img/case-pcb.png with Blender
+    ├── render/         # renders docs/img/case-*.png with Blender
     └── notes/          # design history and reasoning
 ```
 

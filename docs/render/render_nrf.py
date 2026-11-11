@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""Exploded render of the nRF54L15 coin-cell trigger: floor, cell, PCB, shell.
+"""Renders of the nRF54L15 coin-cell trigger from the current geometry.
 
-Rebuilds docs/img/case-pcb.png from the current geometry.
+    RENDER_SCENE=exploded   docs/img/case-pcb.png    floor, cell, PCB, shell
+    RENDER_SCENE=photo      docs/img/case-photo.png  open unit on a desk mat
 
     docs/render/render.sh
 
@@ -31,6 +32,7 @@ import sys
 from pathlib import Path
 
 import bpy
+from mathutils import Vector
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from render_common import (  # noqa: E402
@@ -40,7 +42,9 @@ from render_common import (  # noqa: E402
 
 STL = REPO / "case" / "stl"
 GLB = REPO / "kicad" / "out" / "openrz67-nrf.glb"
-OUT = Path(os.environ.get("RENDER_OUT", REPO / "docs" / "img" / "case-pcb.png"))
+SCENE = os.environ.get("RENDER_SCENE", "exploded")
+OUT = Path(os.environ.get(
+    "RENDER_OUT", REPO / "docs" / "img" / ("case-photo.png" if SCENE == "photo" else "case-pcb.png")))
 
 # wall + clr + board_w, wall + ant_wall_clr + clr, floor_t + clip_h + clip_gap
 BOARD_X0, BOARD_Y0, PCB_Z = 33.3, 4.8, 5.45
@@ -109,12 +113,23 @@ def main():
 
     cr = cell()
 
-    move(cr, dz=LIFT_CELL)
-    move(roots, dz=LIFT_PCB)
-    move(lid + pipe + text, dz=LIFT_LID)
-    bpy.context.view_layer.update()
-
-    shoot(base + cr + pcb + lid + pipe + text, OUT, HERE / "case-pcb.blend")
+    everything = base + cr + pcb + lid + pipe + text
+    if SCENE == "photo":
+        # Shell set down beside the floor, which still carries cell and board.
+        # The offsets run along the camera's left-right axis.
+        bpy.context.view_layer.update()
+        shell_z = min((o.matrix_world @ Vector(c)).z for o in lid for c in o.bound_box)
+        move(lid + pipe + text, delta=(21.0, 14.5, -shell_z))
+        move(base + cr + roots, delta=(-21.0, -14.5, 0.0))
+        bpy.context.view_layer.update()
+        shoot(everything, OUT, HERE / "case-photo.blend",
+              aspect=1.5, table=True, el=30.0, margin=1.5, fstop=8.0)
+    else:
+        move(cr, dz=LIFT_CELL)
+        move(roots, dz=LIFT_PCB)
+        move(lid + pipe + text, dz=LIFT_LID)
+        bpy.context.view_layer.update()
+        shoot(everything, OUT, HERE / "case-pcb.blend")
 
 
 if __name__ == "__main__":
