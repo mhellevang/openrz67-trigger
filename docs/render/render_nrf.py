@@ -35,7 +35,7 @@ import bpy
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from render_common import (  # noqa: E402
     HERE, REPO, C_CASE, C_TEXT, assign, clear_scene, import_glb, import_stl, mat, move,
-    shade_smooth, shoot,
+    fix_step_materials, shade_smooth, shoot,
 )
 
 STL = REPO / "case" / "stl"
@@ -66,7 +66,7 @@ def cell():
     bev.segments = 4
     bev.limit_method = "ANGLE"
     bpy.ops.object.shade_smooth()
-    assign([o], mat("cell", (0.78, 0.78, 0.76), rough=0.28, metallic=1.0))
+    assign([o], mat("cell", (0.82, 0.82, 0.8), rough=0.22, metallic=1.0))
     return [o]
 
 
@@ -85,20 +85,21 @@ def main():
     pipe = import_stl(STL / "openrz67-nrf-lightpipe.stl")
     text = import_stl(STL / "openrz67-nrf-lid-text.stl")
 
-    m_case = mat("case", C_CASE, rough=0.62)
+    m_case = mat("case", C_CASE, rough=0.5, bevel=0.3, grain=0.25, layers=0.2)
     m_pipe = mat("lightpipe", (0.92, 0.94, 0.95), rough=0.12)
     pn = m_pipe.node_tree.nodes["Principled BSDF"]
     pn.inputs["Transmission Weight"].default_value = 0.75
     pn.inputs["IOR"].default_value = 1.5
 
     assign(base + lid, m_case)
-    assign(text, mat("lid-text", C_TEXT, rough=0.58))
+    assign(text, mat("lid-text", (0.015, 0.015, 0.015), rough=0.7))
     assign(pipe, m_pipe)
     shade_smooth(base + lid + pipe + text)
 
     # KiCad glTF: metres, Y up, KiCad's Y negated. Scale to mm, turn 180 degrees
     # about Z (board x -> -x, board y -> +y), then put the corner at BOARD_X0/Y0.
     pcb = import_glb(GLB)
+    fix_step_materials(pcb)
     roots = [o for o in pcb if o.parent is None]
     for o in roots:
         o.scale = (1000.0, 1000.0, 1000.0)
