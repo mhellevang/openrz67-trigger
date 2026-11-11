@@ -10,7 +10,7 @@ Nothing is soldered by hand. The board comes assembled, everything else plugs in
 | CR2032 | anywhere | one per board |
 | SH1.0 4P to Dupont female cable (Qwiic / STEMMA QT pigtail) | AliExpress | three: one camera cable (`J1`), one for flashing (`J2`), one spare |
 | Raspberry Pi Pico 2 WH | any Pi reseller | the flashing probe. H = headers pre-soldered, W is irrelevant here. A Pico H works the same |
-| ABS and a little clear filament | | for the case and the light pipe |
+| Filament, plus a little clear | | for the case and the light pipe |
 
 ## 1. Order the board
 
@@ -34,8 +34,9 @@ cd case
 ```
 
 This writes the STLs to `case/stl/` and a QIDI Studio project. It needs
-[uv](https://docs.astral.sh/uv/). Print the shell and the floor in ABS, no supports. Print the
-light pipe in clear filament and glue it into the shell. Details in
+[uv](https://docs.astral.sh/uv/). Print the shell and the floor without supports. The fits are
+tuned in ABS, but PLA or PETG should work too. Print the light pipe in clear filament and glue
+it into the shell. Details in
 [`case/README.md`](../case/README.md).
 
 ## 3. Flash the firmware
@@ -46,8 +47,8 @@ Step by step, with wiring: [`firmware/README.md`](../firmware/README.md).
 
 ## 4. Make the camera cable
 
-`J1` has the camera port's pin order, so the cable is straight: pin 1 to pin 1. Push the
-pigtail's Dupont ends onto the camera pins and tape them.
+`J1` has the camera port's pin order, so the cable is straight: pin 1 to pin 1. Tape the
+pigtail's four Dupont ends together side by side, so they plug onto the camera as one.
 
 | `J1` / camera pin | Signal | Wire on a typical pigtail |
 |---|---|---|
