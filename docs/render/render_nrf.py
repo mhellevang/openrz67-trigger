@@ -129,7 +129,7 @@ def main():
         move(roots, dz=LIFT_PCB)
         move(lid + pipe + text, dz=LIFT_LID)
         bpy.context.view_layer.update()
-        shoot(everything, OUT, HERE / "case-pcb.blend")
+        shoot(everything, OUT, HERE / "case-pcb.blend", table=True)
 
 
 if __name__ == "__main__":
