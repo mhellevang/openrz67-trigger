@@ -40,6 +40,11 @@ runs right to left in the case: the module sits front-right, the camera plug bac
   Below the board the back wall is missing: that part belongs to the floor.
   - **Bosses** (`bosses`, board x/y/Ø) at four free spots press on bare board. The module owns
     the board's (0, 0) corner and `C1` + `J1` the (29.5, 29) one.
+  - **Locating ribs**: two per wall (`ribs_side`, `ribs_front`, `ribs_back`), `rib_w` (2.0)
+    wide, at the board's height only. They leave `board_fit` (0.15) to the board edge on each
+    side, so the board has 0.3 mm of play in X and in Y. Between the ribs the walls stay
+    `clr` (0.4) off the board, and the front ribs sit right of the antenna. Each rib has a
+    45° lead-in below, for the board on its way in.
   - **Button**: a `tab_w × tab_l` (6 × 7.45) cantilever tab cut free by a `tab_slot` (0.7)
     U-slot with `tab_r` (1.5) corners at the free end, hinged at its front end, thinned to `tab_t` (0.8) from the inside, with a
     Ø`nub_d` (2.4) nub that stops `nub_gap` (0.3) above the switch cap. The free end is
@@ -82,7 +87,8 @@ runs right to left in the case: the module sits front-right, the camera plug bac
 
 The script carries module-level assertions: each part is one body, the parts do not
 overlap, outer dimensions, the board / cell / clip / module / connector / switch / LED
-keepouts (the clip as strap plus solder legs, from its 3D model), the bosses and the
+keepouts (the clip as strap plus solder legs, from its 3D model), the ribs holding the board
+to `board_fit` each way and no tighter, the bosses and the
 light-pipe collar clear of every top-side part, the light pipe clear of the shell, the button
 tab tip over the cavity, the camera plug opening on the left (a board mapped without the
 mirror fails here), every opening breaking through, the board's way into the shell from

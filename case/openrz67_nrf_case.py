@@ -78,6 +78,14 @@ over_clr = 0.6            # air over the tallest part
 # the front-left one and C1 + J1 the back-right one
 bosses = [(1.3, 21.2, 2.4), (28.0, 1.5, 2.4), (1.5, 27.5, 2.4), (28.5, 23.0, 2.0)]
 ant_wall_clr = 1.0        # air in front of the antenna end (board y 0)
+# Locating ribs: two per wall, at the board's height only, so the walls keep clr everywhere
+# else and the board still drops in. Without them the board slid clr sideways and
+# clr + ant_wall_clr forward when the camera plug was pushed in.
+board_fit = 0.15          # rib to board edge, per side: the board's play in X and Y
+rib_w, rib_lead = 2.0, 0.4   # along the wall; 45 deg lead-in at the rib's lower end
+ribs_side = (8.0, 24.0)   # board y, on both side walls
+ribs_front = (18.0, 26.0) # board x: right of the antenna, which keeps its air
+ribs_back = (4.0, 16.0)   # board x: clear of the plug opening
 # Sliding floor: dovetail edge, slide_d into the side and front walls, the lower slide_d of it
 # a 45 deg chamfer (prints without support on both parts).
 slide_d, slide_gap = 1.0, 0.15
@@ -214,6 +222,24 @@ lid -= dovetail(slide_sk, slide_gap, floor_t + slide_gap)                       
 lid -= box(outer_w - wall, latch_y0 - slide_gap, -1, wall + 1, latch_catch_l + 2 * slide_gap, floor_t + slide_gap + 1)   # latch window
 for cx, cy, d in bosses:
     lid += cyl(bx(cx), by(cy), pcb_top_z, d, ceiling_z - pcb_top_z + eps)
+
+
+def rib(x, y, nx, ny, p):
+    """Locating rib on the wall face at (x, y), inward normal (nx, ny), standing p proud over
+    the board's thickness. 45 deg at both ends: a lead-in for the board from below, and no
+    overhang on the print (the shell prints upside-down)."""
+    c = min(p, rib_lead)
+    pts = ((-0.2, pcb_z), (p - c, pcb_z), (p, pcb_z + c), (p, pcb_top_z), (0, pcb_top_z + p), (-0.2, pcb_top_z + p))
+    return extrude(Plane((x, y, 0), x_dir=(nx, ny, 0), z_dir=(ny, -nx, 0)) * Polygon(*pts, align=None),
+                   amount=rib_w / 2, both=True)
+
+
+for y in ribs_side:
+    lid += rib(wall, by(y), 1, 0, clr - board_fit) + rib(wall + inner_w, by(y), -1, 0, clr - board_fit)
+for x in ribs_front:
+    lid += rib(bx(x), wall, 0, 1, clr + ant_wall_clr - board_fit)
+for x in ribs_back:
+    lid += rib(bx(x), wall + inner_h, 0, -1, clr - board_fit)
 # Camera plug opening: body width + clearance, from the board top up
 conn_x0 = bx(conn_c[0]) - conn_w / 2 - conn_clr
 conn_open_w = conn_w + 2 * conn_clr
@@ -358,6 +384,12 @@ under_keep = (cyl(bx(cell_c[0]), by(cell_c[1]), pcb_z - cell_t - 0.1, cell_d + 1
               + box(bx(cell_c[0]) - clip_l / 2 - 0.3, by(cell_c[1]) - clip_leg_w / 2 - 0.3, pcb_z - clip_h + eps,
                     clip_l + 0.6, clip_leg_w + 0.6, clip_h - 2 * eps))
 _clear(base + lid, board_keep, "board")
+# The ribs hold the board to board_fit each way, and no tighter
+for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+    _clear(lid, Pos(dx * (board_fit - 0.03), dy * (board_fit - 0.03), 0) * board_keep, "rib tighter than board_fit")
+    check((lid & Pos(dx * (board_fit + 0.1), dy * (board_fit + 0.1), 0) * board_keep).volume > 1e-3,
+          f"board free to move more than board_fit toward ({dx}, {dy})")
+check(min(ribs_front) >= module[2] + 2, "front rib in front of the antenna")
 _clear(base + lid, under_keep, "cell + clip")
 _clear(lid, box(bx(module[2]), by(module[1]), pcb_top_z, module[2] - module[0], module[3] - module[1], module[4] + 0.3), "module")
 _clear(lid, box(bx(conn_c[0]) - conn_w / 2 - 0.3, by(conn_c[1]) - 2.5, pcb_top_z, conn_w + 0.6, 2.5 + conn_mouth + clr + 1, conn_h + 0.3), "connector")

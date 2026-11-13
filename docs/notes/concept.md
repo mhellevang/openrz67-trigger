@@ -504,3 +504,20 @@ From [`review-2026-10-10.md`](review-2026-10-10.md).
 - `firmware/dfu.py` does upload, test mark, reset, check, confirm with `smpclient`. The hash it
   marks is the image's SHA512 TLV (ed25519 signing), the same value the board reports.
 - First used on rev A on 2026-11-13, by hand with `smpmgr` steps.
+
+## Board play in the shell (2026-11-13)
+
+The board moved in the printed case. In the model nothing located it in the plane: the cavity
+walls stood `clr` (0.4) off the board on three sides and 1.4 mm off at the front, where
+`ant_wall_clr` keeps air in front of the antenna. That is 0.8 mm of play sideways and 1.8 mm
+front to back, and pushing the camera plug in shoved the board forward. Only the height was
+held, between the bosses and the floor.
+
+Fix: eight locating ribs in the shell, two per wall, leaving `board_fit` 0.15 per side. Ribs
+and not a tighter cavity: the case's outer size, the floor and the lid text stay as they are,
+the board still drops in past a short contact band, and the antenna keeps its air (the front
+ribs are right of it). They span only the board's thickness, so they miss the floor's rail
+below and the plug opening and button slot above. 0.15 is the floor's `slide_gap`, which
+printed as a sliding fit in ABS; JLCPCB's outline tolerance is ±0.2 mm, so a tighter nominal
+fit could jam a board from another batch. Not printed yet.
+
