@@ -1,7 +1,6 @@
 /* OpenRZ67 trigger, nRF54L15 / coin cell. Zephyr (nRF Connect SDK).
  *
- * Same GATT and command protocol as the ESP32-C3 firmware (esp32/src/main.cpp, tag esp32-final), so the
- * Android and iOS apps do not change:
+ * GATT interface, as the Android and iOS apps use it:
  *   service  c9239c9e-6fc9-4168-b3aa-53105eb990b0
  *   command  458d4dc9-349f-401d-b092-a2b1c55f5319  write-without-response
  *            1 byte:  button * 10 + state        (1 trigger, 2 bulb, 3 countdown; 1 start, 0 stop)
@@ -122,7 +121,7 @@ static const struct bt_data ad[] = {
 static const struct bt_data sd[] = {
 	BT_DATA(BT_DATA_NAME_COMPLETE, CONFIG_BT_DEVICE_NAME, sizeof(CONFIG_BT_DEVICE_NAME) - 1),
 };
-/* 30-60 ms advertising, as on the ESP32 board; the phone sees us at once */
+/* 30-60 ms advertising, so the phone sees us at once */
 static const struct bt_le_adv_param adv_param =
 	BT_LE_ADV_PARAM_INIT(BT_LE_ADV_OPT_CONN, 0x0030, 0x0060, NULL);
 
@@ -257,8 +256,7 @@ static void trigger_shutter(void)
 	close_shutter();
 }
 
-/* Same semantics as handleCommand() in the ESP32 firmware: only 1 starts, a start
- * cancels a pending countdown, a stop leaves it running. */
+/* Only 1 starts. A start cancels a pending countdown, a stop leaves it running. */
 static void handle(const struct command *c)
 {
 	bool start = c->value == 1;
