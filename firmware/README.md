@@ -96,6 +96,12 @@ Outputs: `build/mcuboot/zephyr/zephyr.hex` and `build/firmware/zephyr/zephyr.sig
 (MCUboot and the signed app, for the probe) and `build/dfu_application.zip` (app only, for an
 update over Bluetooth).
 
+For CLion or clangd, link the build's compilation database to the repo root (ignored by git):
+
+```sh
+ln -s firmware/build/firmware/compile_commands.json compile_commands.json
+```
+
 ### Update over Bluetooth
 
 Once MCUboot is on the board, the app updates from a phone. Close the OpenRZ67 app first, the

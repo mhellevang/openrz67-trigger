@@ -54,3 +54,6 @@ case/view/
 # Blender scene, written by docs/render/render.sh with SAVE_BLEND=1
 *.blend
 *.blend1
+
+# CLion/clangd: symlink to the west build's compilation database
+/compile_commands.json
