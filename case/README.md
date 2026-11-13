@@ -103,6 +103,9 @@ SLIDE_TEST=true ./export.sh          # also the back end of both parts, for tuni
 `view.py`, writes GLBs to `view/` and serves them with `cadgen viewer`. Open the printed URL
 with `?file=nrf-closed.glb` or `?file=nrf-floor-out.glb`.
 
+`stl/` is tracked, so the printable files are always in the repository. After a change to
+the script, run `./export.sh` and commit `stl/`.
+
 Requires [uv](https://docs.astral.sh/uv/); the script carries its own dependency header.
 The lid text needs the font Futura, which comes with macOS. Without it the stroke-width check
 stops the export; `LID_TEXT_SHOW=false` exports a plain top.

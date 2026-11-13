@@ -443,7 +443,12 @@ if __name__ == "__main__":
     parts = [("openrz67-nrf-base", base), ("openrz67-nrf-lid", lid), ("openrz67-nrf-lightpipe", lightpipe)]
     stale = out / "openrz67-nrf-lid-text.stl"
     if lid_text is not None:
-        parts.append(("openrz67-nrf-lid-text", lid_text))
+        # the boolean hands back the glyph solids in a different order on every run; a fixed
+        # order keeps the tracked STL byte-identical when nothing changed
+        def _corner(s):
+            b = s.bounding_box()
+            return (round(b.min.X, 3), round(b.min.Y, 3), round(b.max.X, 3), round(b.max.Y, 3))
+        parts.append(("openrz67-nrf-lid-text", Compound(sorted(lid_text.solids(), key=_corner))))
     elif stale.exists():
         stale.unlink()     # make_3mf.py would otherwise add an old inlay
     if os.environ.get("SLIDE_TEST", "false") == "true":

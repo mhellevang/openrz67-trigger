@@ -12,7 +12,10 @@ CMakeListsPrivate.txt
 CMakeLists.txt
 !firmware/CMakeLists.txt
 
+# Printable case files are tracked; the fit-test pieces are not
 *.stl
+!case/stl/*.stl
+case/stl/*-slidetest-*.stl
 
 # IDE files
 .idea/

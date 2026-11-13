@@ -28,21 +28,17 @@ The schematic is [`openrz67-nrf-schematic.pdf`](../kicad/out/openrz67-nrf-schema
 
 ## 2. Print the case
 
-```sh
-cd case
-./export.sh
-```
+The files are in [`case/stl/`](../case/stl/):
 
-This writes the STLs to `case/stl/`. It needs [uv](https://docs.astral.sh/uv/). The text on
-the top uses the font Futura, which comes with macOS. Without it the export stops; run
-`LID_TEXT_SHOW=false ./export.sh` for a plain top instead.
+| File | What | How it prints |
+|---|---|---|
+| `openrz67-nrf-lid.stl` | the shell | upside-down |
+| `openrz67-nrf-lid-text.stl` | the text in the shell's top | a second colour, loaded as a part of the shell. Without it the text is a 0.8 mm recess |
+| `openrz67-nrf-base.stl` | the floor | floor-down |
+| `openrz67-nrf-lightpipe.stl` | the light pipe | head-down, clear filament |
 
-The export also writes `openrz67-nrf-case.3mf`, a ready project for QIDI Studio. In any other
-slicer, load the STLs: shell upside-down, floor floor-down, light pipe head-down. Print the
-shell and the floor without supports. The fits are
-tuned in ABS, but PLA or PETG should work too. Print the light pipe in clear filament and glue
-it into the shell. Details in
-[`case/README.md`](../case/README.md).
+No supports. The fits are tuned in ABS, but PLA or PETG should work too. Glue the light pipe
+into the shell. Details, and how to change the case, in [`case/README.md`](../case/README.md).
 
 ## 3. Flash the firmware
 

@@ -67,7 +67,7 @@ after about 60 seconds.
 ```
 openrz67-trigger/
 ├── kicad/        # the board, generated from tools/design.py; fab files in out/
-├── case/         # 3D-printed case (build123d), shell + sliding floor + light pipe
+├── case/         # 3D-printed case (build123d), shell + sliding floor + light pipe; STLs in stl/
 ├── firmware/     # Zephyr application for the nRF54L15
 └── docs/
     ├── build-guide.md

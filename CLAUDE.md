@@ -7,6 +7,12 @@
   `kicad/out/` (gerber/, gerber zip, BOM, pos, DRC/ERC, renders).
   The zip is tracked so the fab-ready file is always in the repo.
 
+## Case
+
+- The case is generated from `case/openrz67_nrf_case.py`. After any change to it, run
+  `case/export.sh` and commit the STLs it writes to `case/stl/`, so the printable files are
+  always in the repo.
+
 ## Docs
 
 - READMEs describe things as they are, for humans: what, how to build, how to use. No dates,
