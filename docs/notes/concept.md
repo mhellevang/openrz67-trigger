@@ -495,3 +495,12 @@ From [`review-2026-10-10.md`](review-2026-10-10.md).
 - Not verified: JLCPCB printing paste on a pad with no part on it. Ask in the order remark.
 - Flux residue on the dome can insulate at the clip's contact force; wipe the pad with IPA
   before the first cell.
+
+## Bluetooth update from a computer (2026-11-13)
+
+- **Why a script**: `smpmgr upgrade` (0.20.2) uploads and resets but only marks the image for
+  a test boot when `--slot` is not 0 or with `--confirm`. With the default it does not mark it,
+  so MCUboot keeps the old image and nothing reports an error. `--confirm` skips the test boot.
+- `firmware/dfu.py` does upload, test mark, reset, check, confirm with `smpclient`. The hash it
+  marks is the image's SHA512 TLV (ed25519 signing), the same value the board reports.
+- First used on rev A on 2026-11-13, by hand with `smpmgr` steps.

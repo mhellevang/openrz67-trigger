@@ -12,6 +12,7 @@ SDK v3.4.1 (MCUboot 39 kB, app 147 kB flash, 45 kB RAM); runs on the Rev A board
 | `prj.conf` | Kconfig: Bluetooth peripheral, BAS, DIS, SMP (updates), ADC, GPIO, HFINT calibration, no serial |
 | `sysbuild.conf`, `sysbuild/mcuboot.conf` | MCUboot as the bootloader, fed watchdog during a swap |
 | `debug.conf` | add-on: logging over Segger RTT |
+| `dfu.py` | update over Bluetooth from a computer |
 | `boards/openrz67/openrz67_nrf/` | the board: pin map (devicetree), SoC, flash runners |
 | `boards/adafruit_feather_nrf52840_nrf52840_uf2.*` | the perfboard variant on an Adafruit Feather nRF52840 Express, see [`../docs/perfboard.md`](../docs/perfboard.md) |
 
@@ -107,6 +108,16 @@ board takes one connection.
 
 The board restarts into the new image. If that image does not come back on Bluetooth, MCUboot
 falls back to the old one on the next reset.
+
+From a computer instead (needs [uv](https://docs.astral.sh/uv/)), with the board awake and the
+phone app closed:
+
+```sh
+uv run firmware/dfu.py   # default: build/firmware/zephyr/zephyr.signed.bin
+```
+
+It uploads, marks the image for a test boot, resets, checks that the new image runs and then
+confirms it.
 
 ### First flash with the probe
 
