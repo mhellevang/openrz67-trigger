@@ -33,8 +33,13 @@ cd case
 ./export.sh
 ```
 
-This writes the STLs to `case/stl/` and a QIDI Studio project. It needs
-[uv](https://docs.astral.sh/uv/). Print the shell and the floor without supports. The fits are
+This writes the STLs to `case/stl/`. It needs [uv](https://docs.astral.sh/uv/). The text on
+the top uses the font Futura, which comes with macOS. Without it the export stops; run
+`LID_TEXT_SHOW=false ./export.sh` for a plain top instead.
+
+The export also writes `openrz67-nrf-case.3mf`, a ready project for QIDI Studio. In any other
+slicer, load the STLs: shell upside-down, floor floor-down, light pipe head-down. Print the
+shell and the floor without supports. The fits are
 tuned in ABS, but PLA or PETG should work too. Print the light pipe in clear filament and glue
 it into the shell. Details in
 [`case/README.md`](../case/README.md).

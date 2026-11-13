@@ -25,12 +25,21 @@ run overwrites them.
 
 ## Regenerate
 
+Only needed to change the board. The files to order one are already in `out/`.
+
 ```sh
 tools/regen.sh
 ```
 
-Close KiCad first. Needs `kicad-cli` and KiCad's bundled python (for pcbnew); override with
-`KICAD_CLI=… KICAD_PY=…`. It exits non-zero on any DRC/ERC error or unconnected pad.
+Close KiCad first. Needs KiCad 10: `kicad-cli`, and a python that has KiCad's `pcbnew` module.
+On macOS the script finds both in `/Applications/KiCad`. Elsewhere, give it the full paths. On
+Linux that is usually:
+
+```sh
+KICAD_CLI=/usr/bin/kicad-cli KICAD_PY=/usr/bin/python3 tools/regen.sh
+```
+
+It exits non-zero on any DRC/ERC error or unconnected pad.
 
 ## Circuit
 

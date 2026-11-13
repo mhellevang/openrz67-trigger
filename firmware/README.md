@@ -58,39 +58,42 @@ Chip anomalies handled: 114 (a bouncing button on a SENSE pin can leave ~300 µA
 
 ## Build and flash
 
-Needs the nRF Connect SDK (west workspace) and the Zephyr SDK toolchain. One-time setup, as
-done on the development Mac:
+Needs the nRF Connect SDK v3.4.1 and its toolchain, on Windows, macOS or Linux. Install both
+with Nordic's guide,
+[Installing the nRF Connect SDK](https://nrfconnectdocs.nordicsemi.com/ncs/latest/nrf/installation/install_ncs.html),
+and pick v3.4.1. Run the commands below in a terminal that has the SDK's environment, set up
+as the guide shows, from the SDK's workspace directory. They are written for a POSIX shell;
+in PowerShell or cmd, write the paths straight into the commands.
+
+### Signing key
+
+MCUboot only boots images signed with the key it was built with. Make the key once, keep it
+outside the repository and keep a backup: without it, updates need the probe again.
 
 ```sh
-brew install cmake ninja dtc
-uv venv --python 3.12 ~/ncs/.venv && uv pip install -p ~/ncs/.venv west
-cd ~/ncs && source .venv/bin/activate
-west init -m https://github.com/nrfconnect/sdk-nrf --mr v3.4.1 . && west update --narrow -o=--depth=1
-uv pip install -p .venv -r zephyr/scripts/requirements.txt -r nrf/scripts/requirements-build.txt
-# Zephyr SDK 1.0.1 (zephyr/SDK_VERSION): minimal bundle + the arm toolchain into gnu/, then setup.sh -h -c
-```
-
-Build (the board lives in this directory, so pass it as `BOARD_ROOT`). Sysbuild builds
-MCUboot and the app and signs the app:
-
-```sh
-cd ~/ncs && source .venv/bin/activate && export ZEPHYR_SDK_INSTALL_DIR=~/zephyr-sdk-1.0.1
-FW=/path/to/openrz67-trigger/firmware
-KEY=~/.openrz67/mcuboot-ed25519.pem
-west build -b openrz67_nrf/nrf54l15/cpuapp -s $FW -d $FW/build -- -DBOARD_ROOT=$FW -DSB_CONFIG_BOOT_SIGNATURE_KEY_FILE=\"$KEY\"
-west build -b openrz67_nrf/nrf54l15/cpuapp -s $FW -d $FW/build -- -DBOARD_ROOT=$FW -DSB_CONFIG_BOOT_SIGNATURE_KEY_FILE=\"$KEY\" -DEXTRA_CONF_FILE=debug.conf   # RTT logging
-west build --no-sysbuild -p -b adafruit_feather_nrf52840/nrf52840/uf2 -s $FW -d $FW/build -- -DBOARD_ROOT=$FW   # perfboard variant, no MCUboot; copy build/zephyr/zephyr.uf2 to the Feather
-```
-
-MCUboot only boots images signed with the key it was built with. Make the key once, outside
-the repository, and keep a backup: without it, updates need the probe again.
-
-```sh
-mkdir -p ~/.openrz67 && ~/ncs/.venv/bin/python ~/ncs/bootloader/mcuboot/scripts/imgtool.py keygen -t ed25519 -k ~/.openrz67/mcuboot-ed25519.pem
+python bootloader/mcuboot/scripts/imgtool.py keygen -t ed25519 -k /path/to/mcuboot-ed25519.pem
 ```
 
 Without `SB_CONFIG_BOOT_SIGNATURE_KEY_FILE` the build uses MCUboot's public test key (with a
 warning), and anyone could sign an image the board accepts.
+
+### Build
+
+The board lives in this directory, so pass it as `BOARD_ROOT`. Sysbuild builds MCUboot and the
+app and signs the app. `FW` is this directory, `KEY` the signing key:
+
+```sh
+FW=/path/to/openrz67-trigger/firmware
+KEY=/path/to/mcuboot-ed25519.pem
+west build -b openrz67_nrf/nrf54l15/cpuapp -s $FW -d $FW/build -- -DBOARD_ROOT=$FW -DSB_CONFIG_BOOT_SIGNATURE_KEY_FILE=\"$KEY\"
+```
+
+Two other builds, when you need them:
+
+```sh
+west build -b openrz67_nrf/nrf54l15/cpuapp -s $FW -d $FW/build -- -DBOARD_ROOT=$FW -DSB_CONFIG_BOOT_SIGNATURE_KEY_FILE=\"$KEY\" -DEXTRA_CONF_FILE=debug.conf   # RTT logging
+west build --no-sysbuild -p -b adafruit_feather_nrf52840/nrf52840/uf2 -s $FW -d $FW/build -- -DBOARD_ROOT=$FW   # perfboard variant, no MCUboot; copy build/zephyr/zephyr.uf2 to the Feather
+```
 
 Outputs: `build/mcuboot/zephyr/zephyr.hex` and `build/firmware/zephyr/zephyr.signed.hex`
 (MCUboot and the signed app, for the probe) and `build/dfu_application.zip` (app only, for an
@@ -127,7 +130,7 @@ confirms it.
 
 ### First flash with the probe
 
-![Mac to Pico to RF board: setup and SWD wiring](flashing.svg)
+![Computer to Pico to RF board: setup and SWD wiring](flashing.svg)
 
 Flashing is over SWD through `J2`, a JST SH 1.0 mm connector: a Qwiic / STEMMA QT cable with
 female Dupont ends goes straight onto a Raspberry Pi Pico 2 WH (pre-soldered headers) running
@@ -137,8 +140,8 @@ no soldering anywhere.
 1. Download **`debugprobe_on_pico2.uf2`** for the Pico 2 WH from the
    [debugprobe releases](https://github.com/raspberrypi/debugprobe/releases).
    For an original Pico H, download `debugprobe_on_pico.uf2` instead.
-2. Hold **BOOTSEL** on the Pico while plugging its USB cable into the Mac, then release it.
-   Open the Pico drive that appears in Finder and drag the downloaded
+2. Hold **BOOTSEL** on the Pico while plugging its USB cable into the computer, then release it.
+   Open the Pico drive that appears and drag the downloaded
    **`debugprobe_on_pico2.uf2`** file onto it, just as you would copy a file to a USB stick.
    For an original Pico H, copy `debugprobe_on_pico.uf2` instead. The Pico automatically
    restarts as a CMSIS-DAP probe when the copy finishes. This is a one-time step.
@@ -151,11 +154,10 @@ no soldering anywhere.
    on the Pico: use that label to find it. **3V3_EN** is a different pin and must stay unconnected.
    Physical pin numbers below are an extra reference. Cable colours vary between cables, so
    go by position: with the **SWD** label upright, pin 1 is on the left, next to the white dot.
-4. Connect the Pico to the Mac over USB. After building firmware as above, activate the same
-   Python environment and run:
+4. Connect the Pico to the computer over USB. After building the firmware, in the same
+   terminal:
 
 ```sh
-source ~/ncs/.venv/bin/activate
 python -m pip install --upgrade pyocd
 pyocd list
 pyocd load -t nrf54l --frequency 4000000 $FW/build/mcuboot/zephyr/zephyr.hex $FW/build/firmware/zephyr/zephyr.signed.hex
@@ -163,6 +165,8 @@ pyocd reset -t nrf54l
 ```
 
 `pyocd list` should show the Pico. `$FW` is the firmware directory set in the build steps.
+On Linux, pyOCD needs [udev rules](https://github.com/pyocd/pyOCD/tree/main/udev) to reach
+the probe.
 `west flash --runner pyocd` does not work with this sysbuild setup; it stops with
 `KeyError: 'CONFIG_FLASH_LOAD_OFFSET'`. The warning `NRF54L15 is not in a secure state` is
 normal: the chip is not locked, so it can be flashed again.

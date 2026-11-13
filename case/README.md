@@ -104,6 +104,11 @@ SLIDE_TEST=true ./export.sh          # also the back end of both parts, for tuni
 with `?file=nrf-closed.glb` or `?file=nrf-floor-out.glb`.
 
 Requires [uv](https://docs.astral.sh/uv/); the script carries its own dependency header.
+The lid text needs the font Futura, which comes with macOS. Without it the stroke-width check
+stops the export; `LID_TEXT_SHOW=false` exports a plain top.
+
+With another slicer, load the STLs from `stl/` in the orientations above; the lid text STL is
+a second part of the lid, for a second filament.
 
 `openrz67-nrf-case.3mf` is the QIDI Studio project: plate 1 floor floor-down and shell upside-down
 (ABS profile, lid text on filament 2), plate 2 the light pipe head-down on filament 3 (clear,
