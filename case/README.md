@@ -10,8 +10,9 @@ Layout: the board sits in the shell component side up, against four bosses off t
 with the CR2032 and its clip hanging below it. The floor holds it up from below and carries
 the lower back wall. Nothing flexes to open it.
 
-**Changing the cell:** take the box off the camera and turn it upside down. Pull the floor out
-backwards with a fingernail in the notch at the top of its back. The board stays in the shell.
+**Changing the cell:** take the box off the camera and turn it upside down. Push the catch in
+with a fingernail, through the small window in the side wall next to the floor, and slide the
+floor out backwards. The board stays in the shell.
 Slide the cell out of the clip backwards, slide the new one in, + side up (toward you), then
 slide the floor back in until it clicks.
 
@@ -32,7 +33,7 @@ runs right to left in the case: the module sits front-right, the camera plug bac
 | LED `D1` | (18.2, 27.6) |
 | Camera connector `J1` | SM04B-SRSS-TB at (23.6, 24.7), 6.0 wide, 2.9 high, mouth toward board y = 29 |
 | SWD connector `J2` | same part at (12.3, 24.7), same mouth direction, no wall opening |
-| Module `U1` | 15 × 19 × 2.0 incl. pads, antenna end at board y = 0 |
+| Module `U1` | 12 × 17.2 × 2.4 at board x 1 to 13, antenna end at board y = 0 |
 
 ## Construction
 
@@ -105,7 +106,8 @@ SLIDE_TEST=true ./export.sh          # also the back end of both parts, for tuni
 ./view.sh                            # board + case in CAD Viewer (browser), closed and with the floor out
 ```
 
-`view.sh` exports the board STEP from KiCad (`kicad-cli`), places it in the case with
+`view.sh` is only for looking at the result. It needs `kicad-cli` and `cadgen`
+(`uv tool install cadgen`). It exports the board STEP from KiCad, places it in the case with
 `view.py`, writes GLBs to `view/` and serves them with `cadgen viewer`. Open the printed URL
 with `?file=nrf-closed.glb` or `?file=nrf-floor-out.glb`.
 

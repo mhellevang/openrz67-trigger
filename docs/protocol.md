@@ -5,12 +5,14 @@ speaks this protocol.
 
 ## Camera connection
 
-Viewed from the front, the camera's four-pin remote-control port is:
+Viewed from the front, the camera's four-pin remote-control port is, left to right:
 
 1. 6 V, wired through, unused by the board
 2. GND
 3. S1 switch
 4. S2 switch
+
+A small triangle sits above pin 1. It marks the sliding cover that hides the port.
 
 To trigger the shutter, the PhotoMOS outputs short S1/S2 to camera GND. For bulb exposures,
 set the shutter-speed dial to `B`. The camera closes the shutter by itself after about
@@ -48,7 +50,7 @@ and:
 
 | Bytes | Action |
 |-------|--------|
-| `[3, n, 1]` | Start countdown of *n* seconds (`1–255`) |
+| `[3, n, 1]` | Start countdown of *n* seconds (`1–255`). `n = 0` is rejected |
 | `[3, _, 0]` | Cancel countdown |
 
 Starting a trigger or bulb exposure cancels any pending countdown. Commands are queued in

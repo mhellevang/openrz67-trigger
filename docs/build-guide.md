@@ -10,6 +10,7 @@ Nothing is soldered by hand. The board comes assembled, everything else plugs in
 | CR2032 | anywhere | one per board |
 | SH1.0 4P to Dupont female cable (Qwiic / STEMMA QT pigtail) | AliExpress | three: one camera cable (`J1`), one for flashing (`J2`), one spare |
 | Raspberry Pi Pico 2 WH | any Pi reseller | the flashing probe. H = headers pre-soldered, W is irrelevant here. A Pico H works the same |
+| Micro-USB cable | anywhere | from the Pico to the computer. A data cable, not a charge-only one |
 | Filament, plus a little clear | | for the case and the light pipe |
 
 ## 1. Order the board
@@ -23,6 +24,10 @@ both sides:
 - `openrz67-nrf-gerber.zip`
 - `openrz67-nrf-bom.csv`
 - `openrz67-nrf-pos.csv`
+
+The round pad in the middle of the back is the cell's minus contact. It has no part on it, but
+it needs its solder paste. In the order remark, ask JLCPCB to print paste on that pad as the
+paste layer shows.
 
 The schematic is [`openrz67-nrf-schematic.pdf`](../kicad/out/openrz67-nrf-schematic.pdf).
 
@@ -59,11 +64,15 @@ pigtail's four Dupont ends together side by side, so they plug onto the camera a
 | 4 | S2 | yellow |
 
 Wire colours vary between cables. Go by position: pin 1 is next to the white dot on the
-connector. Check the orientation before you plug it into the camera.
+connector. On the camera, seen from the front, pin 1 is the leftmost, under the small triangle.
+Check the orientation before you plug it into the camera.
 
 Rev A boards have a different `J1` order, see [`kicad/archive/`](../kicad/archive/).
 
 ## 5. Put it together
+
+Before the first cell, wipe the round pad on the back of the board with isopropyl alcohol.
+Flux left on it can keep the cell from making contact.
 
 Slide the CR2032 into the clip, **+ side toward the floor** (there is a + on the floor).
 Slide the floor in until it clicks. To change the cell later, see

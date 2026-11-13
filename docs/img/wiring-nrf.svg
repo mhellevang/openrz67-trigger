@@ -94,7 +94,7 @@
   <text x="850" y="128" class="section">CAMERA PORT</text>
   <rect x="850" y="145" width="300" height="505" rx="18" class="camera"/>
   <text x="882" y="190" class="label">Mamiya RZ67</text>
-  <text x="882" y="214" class="small">Pins in row order, pin 1 at the triangle</text>
+  <text x="882" y="214" class="small">Pin 1 is leftmost, under the triangle</text>
 
   <circle cx="885" cy="280" r="18" fill="#fff" stroke="#337f9c" stroke-width="3"/>
   <text x="885" y="286" text-anchor="middle" class="label">4</text>
@@ -111,6 +111,7 @@
 
   <circle cx="885" cy="610" r="18" fill="#fff" stroke="#9ba5ad" stroke-width="3"/>
   <text x="885" y="616" text-anchor="middle" class="label">1</text>
+  <polygon points="962,593 976,593 969,605" fill="#52606d"/>
   <text x="920" y="606" class="label">6 V</text>
   <text x="920" y="628" class="small">Not connected</text>
 

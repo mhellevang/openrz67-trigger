@@ -122,7 +122,7 @@ From a computer instead (needs [uv](https://docs.astral.sh/uv/)), with the board
 phone app closed:
 
 ```sh
-uv run firmware/dfu.py   # default: build/firmware/zephyr/zephyr.signed.bin
+uv run $FW/dfu.py   # default: $FW/build/firmware/zephyr/zephyr.signed.bin
 ```
 
 It uploads, marks the image for a test boot, resets, checks that the new image runs and then
