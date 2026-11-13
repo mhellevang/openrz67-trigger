@@ -33,20 +33,22 @@ async def request(client: SMPClient, req):
     return r
 
 
-async def active_hash(client: SMPClient) -> bytes:
+async def active_image(client: SMPClient):
     r = await request(client, ImageStatesRead())
-    return next(i.hash for i in r.images if i.active)
+    return next(i for i in r.images if i.active)
 
 
 async def connect() -> SMPClient:
+    err = None
     for _ in range(10):
         client = SMPClient(SMPBLETransport(), NAME, timeout_s=10)
         try:
             await client.connect()
             return client
-        except Exception:
+        except Exception as e:
+            err = e
             await asyncio.sleep(2)
-    die(f"{NAME} not found. Press the button and close the phone app.")
+    die(f"{NAME} not found ({err!r}). Press the button and close the phone app.")
 
 
 async def main(path: Path) -> None:
@@ -55,8 +57,13 @@ async def main(path: Path) -> None:
     new = info.get_tlv(IMAGE_TLV.SHA512).value
 
     client = await connect()
-    if await active_hash(client) == new:
-        print("already running this image")
+    running = await active_image(client)
+    if running.hash == new:
+        # an earlier run that stopped before the confirm left it on a test boot: the next
+        # reset would go back to the old image
+        if not running.confirmed:
+            await request(client, ImageStatesWrite(confirm=True))
+        print("already running this image" + ("" if running.confirmed else ", now confirmed"))
         return await client.disconnect()
 
     data = path.read_bytes()
@@ -70,7 +77,7 @@ async def main(path: Path) -> None:
     print("rebooting into the new image")
     await asyncio.sleep(3)
     client = await connect()
-    if await active_hash(client) != new:
+    if (await active_image(client)).hash != new:
         die("the board did not boot the new image, still on the old one")
     await request(client, ImageStatesWrite(confirm=True))
     await client.disconnect()

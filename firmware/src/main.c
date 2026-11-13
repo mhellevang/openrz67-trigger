@@ -81,7 +81,7 @@ static ssize_t write_command(struct bt_conn *conn, const struct bt_gatt_attr *at
 	if (len == 1) {
 		c.button = d[0] / 10;
 		c.value = d[0] % 10;
-	} else if (len == 3 && d[0] == 3) {
+	} else if (len == 3 && d[0] == 3 && (d[1] > 0 || d[2] != 1)) {   /* a start needs 1..255 s */
 		c.button = 3;
 		c.duration_ms = d[1] * 1000U;
 		c.value = d[2];
@@ -262,7 +262,8 @@ static void trigger_shutter(void)
 	close_shutter();
 }
 
-/* Only 1 starts. A start cancels a pending countdown, a stop leaves it running. */
+/* Only value 1 starts. A start of any button cancels a pending countdown; a stop ends only
+ * its own button's action. */
 static void handle(const struct command *c)
 {
 	bool start = c->value == 1;
@@ -420,6 +421,7 @@ int main(void)
 		if (countdown_active && now >= countdown_end) {
 			countdown_active = false;
 			trigger_shutter();
+			led_hold_until = k_uptime_get() + LED_HOLD_MS;
 		}
 		led_tick(now);
 		wdt_feed(wdt, wdt_ch);
