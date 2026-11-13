@@ -477,6 +477,8 @@ From [`review-2026-10-10.md`](review-2026-10-10.md).
 - **A LiPo + USB-C board was drawn instead and dropped**: with charger, LDO, USB-C and the
   ESP32 board's 31 × 20 mm cell it came to 41.6 × 23.3 mm, against 29.5 × 29 for this board.
 - Not measured: the dome height after reflow.
+- **Confirmed (2026-11-13)**: a piece of copper tape on the minus pad of a rev A board, so the
+  cell rests on it and not on the ring, and the board runs with the cell fully in.
 
 ## Mask opening under the cell (2026-11-10)
 

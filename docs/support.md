@@ -9,7 +9,7 @@ to build one.
 ## The app stays on "Scanning for devices"
 
 - Press the button on the trigger to wake it. A short blink every 2 seconds means it is
-  waiting for a phone. It goes back to sleep after 5 minutes without one.
+  waiting for a phone. It goes back to sleep after 3 minutes without one.
 - Check that Bluetooth is on and that the app is allowed to use it. On iPhone: Settings →
   Apps → OpenRZ67 → Bluetooth (on iOS 17: Settings → OpenRZ67).
 - The trigger talks to one phone at a time. Close the app on any other phone that is connected

@@ -54,9 +54,9 @@ In short:
 
 | You do | It does |
 |---|---|
-| Press the button | Wakes and waits 5 minutes for a phone. The LED blinks every 2 s |
+| Press the button | Wakes and waits 3 minutes for a phone. The LED blinks every 2 s |
 | Open the app | Connects on its own. The LED goes dark |
-| Leave it | Stays on while the app is connected. With no phone for 5 minutes, it sleeps |
+| Leave it | Stays on while the app is connected. With no phone for 3 minutes, it sleeps |
 | Hold the button 3 s | Off, until the next press |
 
 For bulb, set the camera's shutter-speed dial to `B`. The camera closes the shutter by itself

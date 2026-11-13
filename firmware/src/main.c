@@ -32,7 +32,7 @@
 
 LOG_MODULE_REGISTER(openrz67, LOG_LEVEL_INF);
 
-#define ADV_TIMEOUT      K_MINUTES(5)
+#define ADV_TIMEOUT      K_MINUTES(3)
 #define VBAT_PERIOD      K_SECONDS(60)
 /* Defaults are the CR2032 board's; a board with a divider or a LiPo sets them in zephyr,user */
 #define VBAT_EMPTY_MV    DT_PROP_OR(DT_PATH(zephyr_user), vbat_empty_mv, 2500)

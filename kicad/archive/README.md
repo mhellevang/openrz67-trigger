@@ -13,6 +13,7 @@ PCBA, assembly on both sides. Both faults are fixed in rev B:
 - **Cell contact.** With the CR2032 fully in the clip the board can lose power. The cell rests
   on the copper around the minus pad instead of on the pad. Details in
   [`docs/notes/concept.md`](../../docs/notes/concept.md#cell-contact-2026-11-03).
+  Workaround: a piece of copper tape on the minus pad.
 - **Camera pin order.** The camera cable has to cross its first two wires, see below.
 
 `J1` on rev A is 1 camera ground, 2 not connected, 3 S1, 4 S2, so the camera cable crosses
