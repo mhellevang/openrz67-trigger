@@ -18,7 +18,8 @@ SDK v3.4.1 (MCUboot 39 kB, app 147 kB flash, 45 kB RAM); runs on the Rev A board
 ## Behaviour
 
 - Power on (or a button press from sleep): advertises as `OpenRZ67` for 3 minutes. No
-  connection in that time: System OFF (about 0.7 µA), the button wakes it.
+  connection in that time: System OFF (about 0.7 µA), the button wakes it. A running
+  countdown finishes first.
 - Connected: stays on as long as the app holds the link. After a disconnect it advertises
   3 minutes again (started from the `recycled` connection callback), then sleeps.
 - Button held 3 s: off. It disconnects the app, waits for the button to be released (a held

@@ -126,6 +126,7 @@ static const struct bt_le_adv_param adv_param =
 	BT_LE_ADV_PARAM_INIT(BT_LE_ADV_OPT_CONN, 0x0030, 0x0060, NULL);
 
 static struct bt_conn *current_conn;
+static bool bulb_active, countdown_active;
 static void adv_timeout_fn(struct k_work *work);
 static K_WORK_DELAYABLE_DEFINE(adv_timeout, adv_timeout_fn);
 
@@ -157,10 +158,16 @@ static void power_off(void)
 
 static void adv_timeout_fn(struct k_work *work)
 {
-	if (current_conn == NULL) {
-		LOG_INF("nobody came, sleeping");
-		power_off();
+	if (current_conn) {
+		return;
 	}
+	if (countdown_active) {
+		/* the phone is gone but the picture is still owed: sleep after it fires */
+		k_work_reschedule(&adv_timeout, K_SECONDS(5));
+		return;
+	}
+	LOG_INF("nobody came, sleeping");
+	power_off();
 }
 
 static void connected(struct bt_conn *conn, uint8_t err)
@@ -232,7 +239,6 @@ static void vbat_update(struct k_work *work)
 }
 
 /* --- Shutter ----------------------------------------------------------------------- */
-static bool bulb_active, countdown_active;
 static int64_t countdown_end, led_hold_until;
 
 static void open_shutter(void)
