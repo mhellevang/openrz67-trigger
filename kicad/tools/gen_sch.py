@@ -140,7 +140,7 @@ def main():
     w('(kicad_sch (version 20250114) (generator "gen_sch") (generator_version "10.0")')
     w(f'  (uuid "{PROJECT_UUID}")')
     w('  (paper "A4")')
-    w('  (title_block (title "OpenRZ67 trigger, nRF52 / coin cell") (rev "A") (company "openrz67"))')
+    w(f'  (title_block (title "OpenRZ67 trigger, nRF54L15 / coin cell") (rev "{D.REV}") (company "openrz67"))')
     w('  (lib_symbols')
     for name in sorted(set(SYMBOL.values()) | {"PWR_FLAG"}):
         blk = blocks[name].replace(f'(symbol "{name}"', f'(symbol "{D.LIB}:{name}"', 1)

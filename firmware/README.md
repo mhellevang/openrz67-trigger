@@ -29,8 +29,8 @@ SDK v3.4.1 (MCUboot 39 kB, app 147 kB flash, 45 kB RAM); runs on the Rev A board
 - Trigger: S1 on, 10 ms, S2 on, 100 ms, both off. Bulb: S1 then S2 on until stop or a
   disconnect. Countdown: fast LED blink, then a trigger.
 - Watchdog: 5 s. A hung main loop resets the chip, which releases S1/S2.
-- LED: solid while the shutter is held or for 2 s after a trigger, fast blink in a
-  countdown, a short blink every 2 s while advertising, off when connected and idle.
+- LED: solid for 2 s after a trigger, a short blink every second while a bulb exposure is
+  held, fast blink in a countdown, a short blink every 2 s while advertising, off when connected and idle.
 - Battery: VDD measured on the internal ADC channel every 60 s; mV on the custom
   characteristic (uint16 LE, notify), percent on the Battery Service, linear 2.5 to 3.0 V. A board that measures through a divider
   (the Feather) gives the ratio and range in `zephyr,user`, and an enable pin if the divider

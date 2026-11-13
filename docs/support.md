@@ -23,7 +23,8 @@ which helps if you switched to a different one.
 
 ## The shutter does not fire
 
-- The LED is off while the trigger is connected and idle. It lights while it holds the release.
+- The LED is off while the trigger is connected and idle. It lights for 2 seconds after a
+  release and blinks once a second while it holds the shutter open in bulb.
 - Check the camera cable and that pin 1 is the right way round at both ends.
 
 ## Bulb mode takes a normal picture

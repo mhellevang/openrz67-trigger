@@ -24,11 +24,11 @@
 			label = "status LED";
 		};
 		s1_drv: s1 {
-			gpios = <&gpio2 4 (GPIO_ACTIVE_HIGH | NRF_GPIO_DRIVE_S0H1)>;	/* U2 PhotoMOS LED through R1, pad 27; high drive, 5 mA */
+			gpios = <&gpio2 4 (GPIO_ACTIVE_HIGH | NRF_GPIO_DRIVE_S0H1)>;	/* U2 PhotoMOS LED through R1, pad 27; high drive, 4 to 7 mA */
 			label = "camera S1";
 		};
 		s2_drv: s2 {
-			gpios = <&gpio2 5 (GPIO_ACTIVE_HIGH | NRF_GPIO_DRIVE_S0H1)>;	/* U3 PhotoMOS LED through R2, pad 28; high drive, 5 mA */
+			gpios = <&gpio2 5 (GPIO_ACTIVE_HIGH | NRF_GPIO_DRIVE_S0H1)>;	/* U3 PhotoMOS LED through R2, pad 28; high drive, 4 to 7 mA */
 			label = "camera S2";
 		};
 	};

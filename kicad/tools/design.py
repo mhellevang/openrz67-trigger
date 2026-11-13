@@ -1,10 +1,11 @@
-"""Single source of truth for the nRF52 trigger board: parts, placement, nets, routing.
+"""Single source of truth for the nRF54L15 trigger board: parts, placement, nets, routing.
 
 gen_pcb.py builds the board from it with pcbnew, gen_sch.py writes the schematic.
 Coordinates are board mm, origin top-left, y down. rot is KiCad degrees (CCW on screen).
 """
 
 LIB = "openrz67-nrf"
+REV = "B"
 BOARD_W, BOARD_H, BOARD_R = 29.5, 29.0, 0.8
 
 # ref: (footprint, value, lcsc, mpn, manufacturer, layer, x, y, rot, description)
@@ -14,7 +15,7 @@ PARTS = {
     "BT1": ("BAT-SMD_MY-2032-16", "CR2032", "C2902340", "MY-2032-16", "MYOUNG",
             "B", 13.5, 18.0, 0, "CR2032 holder, SMD clip, on the back"),
     "J1": ("CONN-SMD_4P-P1.00_SM04B-SRSS-TB-LF-SN", "Camera", "C160404", "SM04B-SRSS-TB(LF)(SN)", "JST",
-           "F", 23.6, 24.7, 0, "SH 1.0 mm side-entry SMD (Qwiic cable fits): 1 GND, 2 NC, 3 S1, 4 S2"),
+           "F", 23.6, 24.7, 0, "SH 1.0 mm side-entry SMD (Qwiic cable fits): 1 NC, 2 camera GND, 3 S1, 4 S2"),
     "U2": ("SMD-4_L4.6-W3.7-P2.54-LS7.0-BR", "TLP172AM", "C2152276", "TLP172AM(TPL,E)", "TOSHIBA",
            "F", 18.6, 10.0, 90, "PhotoMOS relay, S1"),
     "U3": ("SMD-4_L4.6-W3.7-P2.54-LS7.0-BR", "TLP172AM", "C2152276", "TLP172AM(TPL,E)", "TOSHIBA",
@@ -73,7 +74,7 @@ NETS = {
 # (text, layer, x, y, height)
 SILK = [
     ("CR2032  + SIDE OUT", "B", 14.75, 4.0, 1.2),
-    ("OpenRZ67 nRF rev B", "B", 14.75, 1.9, 1.0),
+    (f"OpenRZ67 nRF rev {REV}", "B", 14.75, 1.9, 1.0),
     ("CAM", "F", 23.6, 20.9, 1.0),
     ("SWD", "F", 12.3, 20.9, 1.0),
 ]

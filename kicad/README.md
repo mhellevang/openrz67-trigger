@@ -58,8 +58,8 @@ to the white dot.
 | SWCLK / SWDIO | 11 / 12 | `J2` pins 3 / 4 |
 | nRESET | 19 | not brought out; reset over SWD |
 
-The button has to be on P0 or P1: P2 cannot wake the chip from System OFF. The three outputs run
-at high drive (S0H1) so the PhotoMOS LEDs get their 5 mA. The left pad column faces the board
+The button has to be on P0 or P1: P2 cannot wake the chip from System OFF. The two relay outputs run
+at high drive (S0H1) for the 4 to 7 mA the PhotoMOS LEDs draw. The left pad column faces the board
 edge; `VDD` (pad 9) and the button (pad 7) leave it on two tracks between the module and the edge.
 
 Connectors:
@@ -82,13 +82,7 @@ Clearance 0.127 mm, min track 0.127, default track 0.20 (signals 0.16, power 0.2
 0.051. JLCPCB silkscreen minimums (1.0 mm text, 0.15 mm line). A rule area over the
 module antenna (x 0–15, y 0–5.3) keeps copper, tracks and vias off both layers.
 
-## Accepted warnings
-
-DRC and ERC have **0 errors**. The warnings left in the reports:
-
-| Check | Count | What |
-|---|---|---|
-| ERC `endpoint_off_grid` | 17 | Pins of the imported symbols are not on the 1.27 mm grid. Connectivity is by label; verified by the schematic-parity DRC. |
+DRC and ERC report 0 errors and 0 warnings; the reports are in `out/`.
 
 ## Mechanical
 

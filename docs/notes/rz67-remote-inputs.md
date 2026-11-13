@@ -10,7 +10,7 @@ Low contact resistance is a reasonable way to reduce uncertainty. The TLP172AM i
 
 ## What the original manual actually says
 
-Source: [Mamiya RZ67 repair manual](/Users/mathiashellevang/Koofr/Manualer/Mamiya-RZ67-repair.pdf). Page numbers below refer to the printed page numbers. The entire document was searched using OCR, and the relevant pages were also inspected visually. OCR may miss text.
+Source: the Mamiya RZ67 repair manual (a PDF copy, not in this repository). Page numbers below refer to the printed page numbers. The entire document was searched using OCR, and the relevant pages were also inspected visually. OCR may miss text.
 
 | Page | Information | Relevance to the trigger |
 |---|---|---|

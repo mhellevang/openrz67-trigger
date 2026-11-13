@@ -158,7 +158,7 @@ def route(b, nets):
 def main():
     b = pcbnew.CreateEmptyBoard()
     b.SetCopperLayerCount(2)
-    tb = b.GetTitleBlock(); tb.SetTitle("OpenRZ67 trigger, nRF52 / coin cell"); tb.SetRevision("A")
+    tb = b.GetTitleBlock(); tb.SetTitle("OpenRZ67 trigger, nRF54L15 / coin cell"); tb.SetRevision(D.REV)
     rules(b); edge(b)
     nets, fps = place(b)
     zones(b, nets); route(b, nets); silk(b)

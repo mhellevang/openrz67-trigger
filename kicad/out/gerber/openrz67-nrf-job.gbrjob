@@ -3,15 +3,15 @@
     "GenerationSoftware": {
       "Vendor": "KiCad",
       "Application": "Pcbnew",
-      "Version": "10.0.8"
+      "Version": "10.0.6"
     },
-    "CreationDate": "2026-11-10T14:57:21+01:00"
+    "CreationDate": "2026-11-13T22:22:28+01:00"
   },
   "GeneralSpecs": {
     "ProjectId": {
       "Name": "openrz67-nrf",
       "GUID": "6f70656e-727a-4363-972d-6e72662e6b69",
-      "Revision": "A"
+      "Revision": "B"
     },
     "Size": {
       "X": 29.6,

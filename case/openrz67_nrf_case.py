@@ -2,7 +2,7 @@
 # requires-python = ">=3.12"
 # dependencies = ["build123d>=0.11.1"]
 # ///
-"""openrz67 nRF52 trigger enclosure (build123d).
+"""openrz67 nRF54L15 trigger enclosure (build123d).
 
 Two-part box for the coin-cell board in ../kicad/ (29.5 x 29 mm, CR2032 clip on the back):
 a one-piece shell (top and walls, open at the bottom) and a sliding floor. The board sits in
